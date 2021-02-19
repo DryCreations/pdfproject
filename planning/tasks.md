@@ -2,8 +2,6 @@
 
 ## User Story 1
 
-{ description }
-
 ### Tasks
 
 #### 1.1
@@ -15,8 +13,6 @@
 { description }
 
 ## User Story 2
-
-{ description }
 
 ### Tasks
 
@@ -30,8 +26,6 @@
 
 ## User Story 3
 
-{ description }
-
 ### Tasks
 
 #### 3.1
@@ -43,8 +37,6 @@
 { description }
 
 ## User Story 4
-
-{ description }
 
 ### Tasks
 
@@ -58,8 +50,6 @@
 
 ## User Story 5
 
-{ description }
-
 ### Tasks
 
 #### 5.1
@@ -71,8 +61,6 @@
 { description }
 
 ## User Story 6
-
-{ description }
 
 ### Tasks
 
@@ -86,8 +74,6 @@
 
 ## User Story 7
 
-{ description }
-
 ### Tasks
 
 #### 7.1
@@ -99,8 +85,6 @@
 { description }
 
 ## User Story 8
-
-{ description }
 
 ### Tasks
 
@@ -114,8 +98,6 @@
 
 ## User Story 9
 
-{ description }
-
 ### Tasks
 
 #### 9.1
@@ -127,8 +109,6 @@
 { description }
 
 ## User Story 10
-
-{ description }
 
 ### Tasks
 
@@ -142,8 +122,6 @@
 
 ## User Story 11
 
-{ description }
-
 ### Tasks
 
 #### 11.1
@@ -155,8 +133,6 @@
 { description }
 
 ## User Story 12
-
-{ description }
 
 ### Tasks
 
@@ -170,8 +146,6 @@
 
 ## User Story 13
 
-{ description }
-
 ### Tasks
 
 #### 13.1
@@ -184,8 +158,6 @@
 
 ## User Story 14
 
-{ description }
-
 ### Tasks
 
 #### 14.1
@@ -193,33 +165,5 @@
 { description }
 
 #### 14.2
-
-{ description }
-
-## User Story 15
-
-{ description }
-
-### Tasks
-
-#### 15.1
-
-{ description }
-
-#### 15.2
-
-{ description }
-
-## User Story 16
-
-{ description }
-
-### Tasks
-
-#### 16.1
-
-{ description }
-
-#### 16.2
 
 { description }
