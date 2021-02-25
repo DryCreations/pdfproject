@@ -22,7 +22,7 @@ Reorder the PDF (1 point)
 
 #### 2.1 
 
-Implement a button and textfield that allows the user to quickly jump to any "page" of the pdf that is requested. (2 pt)
+Implement a textfield that allows the user to quickly jump to any "page" of the pdf that is requested. (2 pt)
 
 #### 2.2
 
