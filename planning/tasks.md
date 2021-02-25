@@ -16,17 +16,17 @@ Drag and drop [event] feature to reorder the desired page. (2 points)
 
 Reorder the PDF (1 point)
 
-## User Story 2
+## User Story 2: As a reader, I want to be able to have a jump to any "page" of the pdf to make it easier to read over time and so I don't have to spend 4-5 minutes scrolling, OR a bookmark feature to click on to jump back to.
 
 ### Tasks
 
-#### 2.1
+#### 2.1 
 
-{ description }
+Implement a button feature to quickly jump to any "page" of the pdf that is requested. 
 
 #### 2.2
 
-{ description }
+Implement a button that when clicked bookmarked the page currently on and added it to a list that could later be accessed.
 
 ## User Story 3: As a user, having a displayable word and character count when dealing with PDFs with raw text would be beneficial for adhering to document guidelines.
 
@@ -48,7 +48,7 @@ Using a reader, scan the document for raw text and increment a counter based on 
 
 The merge functionality needs to be implemented. This will require creating a new PDF that is made up of two or more separate PDF files. (2 points)
 
-## User Story 5
+## User Story 5: As a user, I want an easy way to be able to select multiple occurrences of the same word so that I can edit  them all at once.
 
 ### Tasks
 
