@@ -22,7 +22,7 @@ Reorder the PDF (1 point)
 
 #### 2.1 
 
-Implement a textfield that allows the user to quickly jump to any "page" of the pdf that is requested. (2 pt)
+Implement a text field that allows the user to quickly jump to any "page" of the pdf that is requested. (2 pt)
 
 #### 2.2
 
@@ -54,11 +54,11 @@ The merge functionality needs to be implemented. This will require creating a ne
 
 #### 5.1
 
-{ description }
+Implement a text field that scans the document for all occurences of a word and highlights them. (1 pt)
 
 #### 5.2
 
-{ description }
+Implement a text field that replaces all instances of a word that has been discovered previously. (1 pt)
 
 ## User Story 6: As a user, I want to be able to highlight text in a PDF document to make it easier to refer back to important information.
 
