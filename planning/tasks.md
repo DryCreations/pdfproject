@@ -28,17 +28,17 @@ Reorder the PDF (1 point)
 
 { description }
 
-## User Story 3
+## User Story 3: As a user, having a displayable word and character count when dealing with PDFs with raw text would be beneficial for adhering to document guidelines.
 
 ### Tasks
 
 #### 3.1
 
-{ description }
+Implement a displayable text box into the PDF editor GUI that displays a counter. (1 pt)
 
 #### 3.2
 
-{ description }
+Using a reader, scan the document for raw text and increment a counter based on either individual characters or whole words. (2 pt)
 
 ## User Story 4: As a user, I would like to be able to merge multiple PDF files into one so that I can easily consolidate information across multiple files into one document.
 
@@ -120,17 +120,21 @@ The select and coloring functionality and the persistence strategy need to be co
 
 { description }
 
-## User Story 10
+## User Story 10: As an editor, an undo feature implemented through a toolbar button with unlimited undos would allow me to fix mistakes much more easily.
 
 ### Tasks
 
 #### 10.1
 
-{ description }
+Implement a button into the PDF editor GUI with an indicator that it is an undo button via text label or an "undo arrow" image. (1 pt)
 
 #### 10.2
 
-{ description }
+Create a data structure to keep track of the individual actions taken by the user to edit the PDF. (3 pt)
+
+#### 10.3
+
+When the undo button is pressed a move is retrieved from the structure and the move is reversed from the PDF. (2 pt)
 
 ## User Story 11: As a student, I want to be able to extract code from the PDF so that I can refer later to the required specific notes, i.e. code, without wandering in the whole PDF.
 
