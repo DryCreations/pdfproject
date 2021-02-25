@@ -1,16 +1,20 @@
 # Tasks
 
-## User Story 1
+## User Story 1: As a user, I sometimes put the pages in the incorrect order. Could you give me a way to re-order the "pages" in a PDF so they make sense?
 
 ### Tasks
 
 #### 1.1
 
-{ description }
+Show all the pages in a navigation bar with page number.(3 points)
 
 #### 1.2
 
-{ description }
+Drag and drop [event] feature to reorder the desired page. (2 points)
+
+#### 1.3
+
+Reorder the PDF (1 point)
 
 ## User Story 2
 
@@ -120,17 +124,21 @@
 
 { description }
 
-## User Story 11
+## User Story 11: As a student, I want to be able to extract code from the PDF so that I can refer later to the required specific notes, i.e. code, without wandering in the whole PDF.
 
 ### Tasks
 
 #### 11.1
 
-{ description }
+Identify the code from the given page in the PDF.(2 points)
 
 #### 11.2
 
-{ description }
+Extract the identified code.(1 point)
+
+#### 11.3
+
+Provide option to select the existing file for appending the code or create a new file.(1 point)
 
 ## User Story 12
 
