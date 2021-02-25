@@ -40,13 +40,13 @@ Reorder the PDF (1 point)
 
 { description }
 
-## User Story 4 - Story Points: 2
+## User Story 4: As a user, I would like to be able to merge multiple PDF files into one so that I can easily consolidate information across multiple files into one document.
 
 ### Tasks
 
-#### 4.1 - Story Points: 2
+#### 4.1
 
-The merge functionality needs to be implemented. This will require creating a new PDF that is made up of two or more separate PDF files.
+The merge functionality needs to be implemented. This will require creating a new PDF that is made up of two or more separate PDF files. (2 points)
 
 ## User Story 5
 
@@ -60,29 +60,29 @@ The merge functionality needs to be implemented. This will require creating a ne
 
 { description }
 
-## User Story 6 - Story Points: 5
+## User Story 6: As a user, I want to be able to highlight text in a PDF document to make it easier to refer back to important information.
 
 ### Tasks
 
-#### 6.1 - Story Points: 1
+#### 6.1
 
-Select functionality needs to be implemented. Once functionality is implemented, a user will be able to select a word.
+Select functionality needs to be implemented. Once functionality is implemented, a user will be able to select a word. (1 point)
 
-#### 6.2 - Story Points: 1
+#### 6.2
 
-The coloring functionality needs to be implemented. Once implemented, the user will be able to color text.
+The coloring functionality needs to be implemented. Once implemented, the user will be able to color text. (1 point)
 
-#### 6.3 - Story Points: 1
+#### 6.3
 
-The persistence strategy for highlighted words needs to be designed. Once the persistence strategy is designed, the design can be used to implement the persistence strategy.
+The persistence strategy for highlighted words needs to be designed. Once the persistence strategy is designed, the design can be used to implement the persistence strategy. (1 point)
 
-#### 6.4 - Story Points: 1
+#### 6.4
 
-The persistence strategy needs to be implemented. Once implemented, a user will be able to save specific words to be highlighted in the future.
+The persistence strategy needs to be implemented. Once implemented, a user will be able to save specific words to be highlighted in the future. (1 point)
 
-#### 6.5 - Story Points: 1
+#### 6.5
 
-The select and coloring functionality and the persistence strategy need to be combined to form the highlighting functionality.
+The select and coloring functionality and the persistence strategy need to be combined to form the highlighting functionality. (1 point)
 
 ## User Story 7
 
