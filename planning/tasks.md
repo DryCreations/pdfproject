@@ -22,11 +22,11 @@ Reorder the PDF (1 point)
 
 #### 2.1 
 
-Implement a button feature to quickly jump to any "page" of the pdf that is requested. 
+Implement a button and textfield that allows the user to quickly jump to any "page" of the pdf that is requested. (2 pt)
 
 #### 2.2
 
-Implement a button that when clicked bookmarked the page currently on and added it to a list that could later be accessed.
+Implement a button that when clicked bookmarks the page currently on and added it to a list that can later be accessed. (2 pt)
 
 ## User Story 3: As a user, having a displayable word and character count when dealing with PDFs with raw text would be beneficial for adhering to document guidelines.
 
