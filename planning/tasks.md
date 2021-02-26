@@ -132,17 +132,18 @@ add ability to add text boxes to document (3 points)
 
 add ability to export pdf document (1 point)
 
-## User Story 9
+## User Story 9: As a Student I want to be able to directly draw on and annotate pdfs, this will allow me to complete assignments easily, or take notes more efficiently.
+
 
 ### Tasks
 
 #### 9.1
 
-{ description }
+Create a bitmap drawing tool - 8 points
 
 #### 9.2
 
-{ description }
+ensure drawing can be erased without affecting whatever might be underneath - 3 points
 
 ## User Story 10: As an editor, an undo feature implemented through a toolbar button with unlimited undos would allow me to fix mistakes much more easily.
 
@@ -176,17 +177,38 @@ Extract the identified code.(1 point)
 
 Provide option to select the existing file for appending the code or create a new file.(1 point)
 
-## User Story 12
+## User Story 12: As a user, I want to convert PDF document to/from various file formats (docx, xlsx, pptx, jpg) without changing the alignment so that, I can manipulate it as I wish.
 
 ### Tasks
 
-#### 12.1
+#### 12.1:
 
-{ description }
+   Add file extension adaptability into the save window for various file types - 1 point
 
-#### 12.2
+#### Task 12.2.0: 
 
-{ description }
+   be able to read non-editable/handwritten text into typed text that is editable - 5 points
+
+#### Task 12.3.0: 
+
+Save Pdf "pages" as images that are viewable - 3 points
+
+#### Task 12.3.1: 
+
+Parsing a pdf into individual images - 1 point
+
+#### Task 12.3.2: 
+
+Saving each individual image specified in 2.1 in an individual file - 3 points
+
+#### Task 12.3.3: 
+
+Saving each page into a slideshow for a powerpoint file extension - 3 points
+
+#### Task 12.4.0: 
+
+Save Pdf content in an excel spreadsheet format 
+	(I need more help on this part, seeing as grids are picky and I don't know what I'm doing here) - 8 points
 
 ## User Story 13
 
