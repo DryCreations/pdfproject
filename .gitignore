@@ -1,3 +1,9 @@
+.classpath
+.idea
+.project
+.settings
+.vscode
+*.iml
 target/
 pom.xml.tag
 pom.xml.releaseBackup
