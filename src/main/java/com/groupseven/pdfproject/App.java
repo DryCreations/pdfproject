@@ -21,13 +21,49 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart.Data;
 import javafx.scene.chart.XYChart.Series;
 import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 
 public class App extends Application {
+    
+    /// 14.1
+    VBox createViewbox() {
+        return null;
+    }
+    
+    /// 14.2.1
+    Menu createFileMenu() {
+        return null;
+    }
+    
+    /// 14.2.2
+    Menu createDrawingMenu() {
+        return null;
+    }
+    
+    /// 14.2.3
+    Menu createHelpMenu() {
+        return null;
+    }
+    
+    /// 14.2
+    VBox createMenuBar() {
+        return null;
+    }
+    
+    /// 14.3
+    VBox createToolBox() {
+        return null;
+    }
+    
     @Override
     public void start(Stage primaryStage) throws Exception {
         BarChart<String, Number> chart = new BarChart<>(new CategoryAxis(), new NumberAxis());
