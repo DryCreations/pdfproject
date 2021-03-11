@@ -12,6 +12,8 @@ import com.itextpdf.layout.Document;
 
 import javafx.application.Application;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -22,9 +24,6 @@ import javafx.scene.chart.XYChart.Data;
 import javafx.scene.chart.XYChart.Series;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -34,33 +33,41 @@ import javafx.stage.Stage;
 
 public class App extends Application {
     
+    /// 8.3
+    private EventHandler handleImportAsset = new EventHandler<ActionEvent>() {
+        @Override 
+        public void handle(ActionEvent e) {
+
+        }
+    };
+    
     /// 14.1
-    VBox createViewbox() {
+    private VBox createViewbox() {
         return null;
     }
     
     /// 14.2.1
-    Menu createFileMenu() {
+    private Menu createFileMenu() {
         return null;
     }
     
     /// 14.2.2
-    Menu createDrawingMenu() {
+    private Menu createDrawingMenu() {
         return null;
     }
     
     /// 14.2.3
-    Menu createHelpMenu() {
+    private Menu createHelpMenu() {
         return null;
     }
     
     /// 14.2
-    VBox createMenuBar() {
+    private VBox createMenuBar() {
         return null;
     }
     
     /// 14.3
-    VBox createToolBox() {
+    private VBox createToolBox() {
         return null;
     }
     
