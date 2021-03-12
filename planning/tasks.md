@@ -90,19 +90,19 @@ The select and coloring functionality and the persistence strategy need to be co
 
 #### 7.1
 
-Select what digital signature type to implement. Once implemented determine whether to find a signature library / build a library to use the EdDSA scheme. 
+Select what digital signature type to implement. Once implemented determine whether to find a signature library / build a library to use the EdDSA scheme. (1 point)
 
 #### 7.2
 
-A button for users to add their digital signature to sign documents. Once implemented, users would get to save their digital signature on documents. 
+A button for users to add their digital signature to sign documents. Once implemented, users would get to save their digital signature on documents. ( 8 points )
 
 #### 7.3 
 
-A button to add signature and initialize areas. Once implemented users can add signature areas and initialize markup. 
+A button to add signature and initialize areas. Once implemented users can add signature areas and initialize markup. ( 5 points )
 
 #### 7.4 
 
-Implment addon to verify a document was signed. Once implemented users get notified that a document was signed on opening a document. 
+Implment addon to verify a document was signed. Once implemented users get notified that a document was signed on opening a document. ( 8 points ) 
 
 ## User Story 8: As a UI Designer I want to create and export mock UI/UX designs, so that I can create sharable designs in a common format like .pdf
 
@@ -224,11 +224,11 @@ Save Pdf content in an excel spreadsheet format
 
 #### 13.1
 
-Decide whether to implement this via a button/right-click dropdown. Once implemented users click to insert a comment. 
+Decide whether to implement this via a button/right-click dropdown. Once implemented users click to insert a comment. ( 5 points )
 
 #### 13.2
 
-Implement a button to toggle comments. Once implemented users could toggle whether comments show. 
+Implement a button to toggle comments. Once implemented users could toggle whether comments show. ( 5 points ) 
 
 ## User Story 14: As a user, I want a GUI to better work with and the pdf files.
 
