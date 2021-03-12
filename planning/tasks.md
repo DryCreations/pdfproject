@@ -84,17 +84,25 @@ The persistence strategy needs to be implemented. Once implemented, a user will 
 
 The select and coloring functionality and the persistence strategy need to be combined to form the highlighting functionality. (1 point)
 
-## User Story 7
+## User Story 7: As a contractor/consultant, adding an esign/everify to a pdf document whenever seems very useful.
 
 ### Tasks
 
 #### 7.1
 
-{ description }
+Select what digital signature type to implement. Once implemented determine whether to find a signature library / build a library to use the EdDSA scheme. 
 
 #### 7.2
 
-{ description }
+A button for users to add their digital signature to sign documents. Once implemented, users would get to save their digital signature on documents. 
+
+#### 7.3 
+
+A button to add signature and initialize areas. Once implemented users can add signature areas and initialize markup. 
+
+#### 7.4 
+
+Implment addon to verify a document was signed. Once implemented users get notified that a document was signed on opening a document. 
 
 ## User Story 8: As a UI Designer I want to create and export mock UI/UX designs, so that I can create sharable designs in a common format like .pdf
 
@@ -210,17 +218,17 @@ Saving each page into a slideshow for a powerpoint file extension - 3 points
 Save Pdf content in an excel spreadsheet format 
 	(I need more help on this part, seeing as grids are picky and I don't know what I'm doing here) - 8 points
 
-## User Story 13
+## User Story 13 : As a user, I want to be able to comment on any part of the PDF so that I can effectively add extra details or communicate with others who might view it.
 
 ### Tasks
 
 #### 13.1
 
-{ description }
+Decide whether to implement this via a button/right-click dropdown. Once implemented users click to insert a comment. 
 
 #### 13.2
 
-{ description }
+Implement a button to toggle comments. Once implemented users could toggle whether comments show. 
 
 ## User Story 14: As a user, I want a GUI to better work with and the pdf files.
 
