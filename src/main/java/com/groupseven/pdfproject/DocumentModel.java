@@ -10,38 +10,38 @@ package com.groupseven.pdfproject;
  * @author hayde
  */
 public class DocumentModel {
-    /// 8.1
+    /// \ref t8_1 "task 8.1"
     public DocumentModel() {
-        
+
     }
-    
-    /// 8.2
+
+    /// \ref t8.2 "task 8.2"
     public void setDimensions() {
-        
+
     }
-    
-    /// 8.4
+
+    /// \ref t8_4 "task 8.4"
     public void insertAsset() {
-        
+
     }
-    
-    /// 8.5
+
+    /// \ref t8_5 "task 8.5"
     public void insertShape() {
-        
+
     }
-    
-    /// 8.6
+
+    /// \ref t8_6 "task 8.6"
     public void moveObject() {
-        
+
     }
-    
-    /// 8.7
+
+    /// \ref t8_7 "task 8.7"
     public void insertTextBox() {
-        
+
     }
-    
-    /// 8.8
+
+    /// \ref t8_8 "task 8.8"
     public void export() {
-        
+
     }
 }

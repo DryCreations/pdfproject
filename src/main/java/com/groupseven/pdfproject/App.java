@@ -32,45 +32,45 @@ import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 
 public class App extends Application {
-    
-    /// 8.3
+
+    /// \ref t8_3 "task 8.3"
     private EventHandler handleImportAsset = new EventHandler<ActionEvent>() {
-        @Override 
+        @Override
         public void handle(ActionEvent e) {
 
         }
     };
-    
-    /// 14.1
+
+    /// \ref t14_1 "task 14.2"
     private VBox createViewbox() {
         return null;
     }
-    
-    /// 14.2.1
+
+    /// \ref t14_2_1 "task 14.2.1"
     private Menu createFileMenu() {
         return null;
     }
-    
-    /// 14.2.2
+
+    /// \ref t14_2_2 "task 14.2.2"
     private Menu createDrawingMenu() {
         return null;
     }
-    
-    /// 14.2.3
+
+    /// \ref t14.2.3 "task 14.2.3"
     private Menu createHelpMenu() {
         return null;
     }
-    
-    /// 14.2
+
+    /// \ref t14.2 "task 14.2"
     private VBox createMenuBar() {
         return null;
     }
-    
-    /// 14.3
+
+    /// \ref t14.3 "task 14.3"
     private VBox createToolBox() {
         return null;
     }
-    
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         BarChart<String, Number> chart = new BarChart<>(new CategoryAxis(), new NumberAxis());
@@ -100,7 +100,7 @@ public class App extends Application {
                     doc.close();
                 } catch (Exception exc) {
                     exc.printStackTrace();
-                }               
+                }
             }
         });
 
