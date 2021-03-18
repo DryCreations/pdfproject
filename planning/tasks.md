@@ -44,7 +44,7 @@ Using a reader, scan the document for raw text and increment a counter based on 
 
 ### Tasks
 
-#### 4.1
+#### @anchor T4_1 4.1
 
 The merge functionality needs to be implemented. This will require creating a new PDF that is made up of two or more separate PDF files. (2 points)
 
@@ -54,7 +54,7 @@ The merge functionality needs to be implemented. This will require creating a ne
 
 #### 5.1
 
-Implement a text field that scans the document for all occurences of a word and highlights them. (1 pt)
+Implement a text field that scans the document for all occurrences of a word and highlights them. (1 pt)
 
 #### 5.2
 
@@ -64,25 +64,9 @@ Implement a text field that replaces all instances of a word that has been disco
 
 ### Tasks
 
-#### 6.1
-
-Select functionality needs to be implemented. Once functionality is implemented, a user will be able to select a word. (1 point)
-
-#### 6.2
+#### @anchor T6_1 6.1
 
 The coloring functionality needs to be implemented. Once implemented, the user will be able to color text. (1 point)
-
-#### 6.3
-
-The persistence strategy for highlighted words needs to be designed. Once the persistence strategy is designed, the design can be used to implement the persistence strategy. (1 point)
-
-#### 6.4
-
-The persistence strategy needs to be implemented. Once implemented, a user will be able to save specific words to be highlighted in the future. (1 point)
-
-#### 6.5
-
-The select and coloring functionality and the persistence strategy need to be combined to form the highlighting functionality. (1 point)
 
 ## User Story 7: As a contractor/consultant, adding an esign/everify to a pdf document whenever seems very useful.
 
