@@ -11,15 +11,15 @@ import javafx.stage.Stage;
  * @{
  *
  */
-/// \ref User_Story_1
-/// \ref task_1_1
+/// 
+/// \ref task_1_1 "Task 1.1"
 /// This class provides the functionality for the navigation pane while 
 /// accessing the PDF. 
 
 public class NavigationPane extends Application{
 	
-	/// Ref: task 1.1
-	/// Ref: task 1.2 
+	/// \ref t1_1
+	/// \ref t1_2 
 	/// 
 
 	@Override
@@ -27,15 +27,24 @@ public class NavigationPane extends Application{
 		// TODO Auto-generated method stub
 		
 	}
-	/// Ref: task 1.1
+	/// \ref t1_1
 		public VBox getNavigationPane() {
-			VBox navBar =  new VBox();
-			return navBar;
+			
+			return null;
 		}
-	/// Ref: task 1.3 
-	///	This method is called only after the [drag and drop event](Ref: task 1.2).	
+	/// \ref t1_3  
+	///	This method is called only after the [drag and drop event](\ref t_2 "task 1.2").	
 		public void PdfReorder() {
 				
+		}
+		/// \ref t1_1
+		public void convertPdfToImage() {
+			
+		}
+		
+		///\ref t1_1
+		public static void getThumbnail() {
+			
 		}
 
 }
