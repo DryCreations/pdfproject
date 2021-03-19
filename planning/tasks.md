@@ -4,15 +4,15 @@
 
 ### Tasks
 
-#### 1.1
+#### @anchor T1_1 1.1
 
 Show all the pages in a navigation bar with page number.(3 points)
 
-#### 1.2
+#### @anchor T1_2 1.2
 
 Drag and drop [event] feature to reorder the desired page. (2 points)
 
-#### 1.3
+#### @anchor T1_3 1.3
 
 Reorder the PDF (1 point)
 
@@ -20,11 +20,11 @@ Reorder the PDF (1 point)
 
 ### Tasks
 
-#### 2.1 
+#### @anchor T2_1 2.1 
 
 Implement a text field that allows the user to quickly jump to any "page" of the pdf that is requested. (2 pt)
 
-#### 2.2
+#### @anchor T2_2 2.2
 
 Implement a button that when clicked bookmarks the page currently on and added it to a list that can later be accessed. (2 pt)
 
@@ -32,11 +32,11 @@ Implement a button that when clicked bookmarks the page currently on and added i
 
 ### Tasks
 
-#### 3.1
+#### @anchor T3_1 3.1
 
 Implement a displayable text box into the PDF editor GUI that displays a counter. (1 pt)
 
-#### 3.2
+#### @anchor T3_2 3.2
 
 Using a reader, scan the document for raw text and increment a counter based on either individual characters or whole words. (2 pt)
 
@@ -52,11 +52,11 @@ The merge functionality needs to be implemented. This will require creating a ne
 
 ### Tasks
 
-#### 5.1
+#### @anchor T5_1 5.1
 
 Implement a text field that scans the document for all occurrences of a word and highlights them. (1 pt)
 
-#### 5.2
+#### @anchor T5_2 5.2
 
 Implement a text field that replaces all instances of a word that has been discovered previously. (1 pt)
 
@@ -72,19 +72,19 @@ The coloring functionality needs to be implemented. Once implemented, the user w
 
 ### Tasks
 
-#### 7.1
+#### @anchor T7_1 7.1
 
 Select what digital signature type to implement. Once implemented determine whether to find a signature library / build a library to use the EdDSA scheme. 
 
-#### 7.2
+#### @anchor T7_2 7.2
 
 A button for users to add their digital signature to sign documents. Once implemented, users would get to save their digital signature on documents. 
 
-#### 7.3 
+#### @anchor T7_3 7.3 
 
 A button to add signature and initialize areas. Once implemented users can add signature areas and initialize markup. 
 
-#### 7.4 
+#### @anchor T7_4 7.4 
 
 Implment addon to verify a document was signed. Once implemented users get notified that a document was signed on opening a document. 
 
@@ -92,35 +92,35 @@ Implment addon to verify a document was signed. Once implemented users get notif
 
 ### Tasks
 
-#### 8.1
+#### @anchor T8_1 8.1
 
 add ability to create new pdf document (1 point)
 
-#### 8.2
+#### @anchor T8_2 8.2
 
 add ability to specify dimensions of document pages (1 point)
 
-#### 8.3
+#### @anchor T8_3 8.3
 
 add ability to import external assets into the program (3 points)
 
-#### 8.4
+#### @anchor T8_4 8.4
 
 add ability to place imported assets onto document (3 points)
 
-#### 8.5
+#### @anchor T8_5 8.5
 
 add ability to draw geometric shapes on document (3 points)
 
-#### 8.6
+#### @anchor T8_6 8.6
 
 add ability to move assets around within document (3 points)
 
-#### 8.7
+#### @anchor T8_7 8.7
 
 add ability to add text boxes to document (3 points)
 
-#### 8.8
+#### @anchor T8_8 8.8
 
 add ability to export pdf document (1 point)
 
@@ -129,11 +129,11 @@ add ability to export pdf document (1 point)
 
 ### Tasks
 
-#### 9.1
+#### @anchor T9_1 9.1
 
 Create a bitmap drawing tool - 8 points
 
-#### 9.2
+#### @anchor T9_2 9.2
 
 ensure drawing can be erased without affecting whatever might be underneath - 3 points
 
@@ -141,15 +141,15 @@ ensure drawing can be erased without affecting whatever might be underneath - 3 
 
 ### Tasks
 
-#### 10.1
+#### @anchor T10_1 10.1
 
 Implement a button into the PDF editor GUI with an indicator that it is an undo button via text label or an "undo arrow" image. (1 pt)
 
-#### 10.2
+#### @anchor T10_2 10.2
 
 Create a data structure to keep track of the individual actions taken by the user to edit the PDF. (3 pt)
 
-#### 10.3
+#### @anchor T10_3 10.3
 
 When the undo button is pressed a move is retrieved from the structure and the move is reversed from the PDF. (2 pt)
 
@@ -157,15 +157,15 @@ When the undo button is pressed a move is retrieved from the structure and the m
 
 ### Tasks
 
-#### 11.1
+#### @anchor T11_1 11.1
 
 Identify the code from the given page in the PDF.(2 points)
 
-#### 11.2
+#### @anchor T11_2 11.2
 
 Extract the identified code.(1 point)
 
-#### 11.3
+#### @anchor T11_3 11.3
 
 Provide option to select the existing file for appending the code or create a new file.(1 point)
 
@@ -173,31 +173,31 @@ Provide option to select the existing file for appending the code or create a ne
 
 ### Tasks
 
-#### 12.1:
+#### @anchor T12_1 12.1:
 
    Add file extension adaptability into the save window for various file types - 1 point
 
-#### Task 12.2.0: 
+#### @anchor T12_2_0 12.2.0: 
 
    be able to read non-editable/handwritten text into typed text that is editable - 5 points
 
-#### Task 12.3.0: 
+#### @anchor T12_3_0 12.3.0: 
 
 Save Pdf "pages" as images that are viewable - 3 points
 
-#### Task 12.3.1: 
+#### @anchor T12_3_1 12.3.1: 
 
 Parsing a pdf into individual images - 1 point
 
-#### Task 12.3.2: 
+#### @anchor T12_3_2 12.3.2: 
 
 Saving each individual image specified in 2.1 in an individual file - 3 points
 
-#### Task 12.3.3: 
+#### @anchor T12_3_3 12.3.3: 
 
 Saving each page into a slideshow for a powerpoint file extension - 3 points
 
-#### Task 12.4.0: 
+#### @anchor T12_4_0 12.4.0: 
 
 Save Pdf content in an excel spreadsheet format 
 	(I need more help on this part, seeing as grids are picky and I don't know what I'm doing here) - 8 points
@@ -206,11 +206,11 @@ Save Pdf content in an excel spreadsheet format
 
 ### Tasks
 
-#### 13.1
+#### @anchor T13_1 13.1
 
 Decide whether to implement this via a button/right-click dropdown. Once implemented users click to insert a comment. 
 
-#### 13.2
+#### @anchor T13_2 13.2
 
 Implement a button to toggle comments. Once implemented users could toggle whether comments show. 
 
@@ -218,26 +218,26 @@ Implement a button to toggle comments. Once implemented users could toggle wheth
 
 ### Tasks
 
-#### 14.1
+#### @anchor T14_1 14.1
 
 create a view box to display a pdf document (2 point)
 
-#### 14.2
+#### @anchor T14_2 14.2
 
 create tool ribbon at the top of the screen to access different tools/commands (2 point)
 
-#### 14.2.1
+#### @anchor T14_2_1 14.2.1
 
 create a ribbon tab for file i/o (1 point)
 
-#### 14.2.2
+#### @anchor T14_2_2 14.2.2
 
 create a ribbon tab for drawing tools (1 point)
 
-#### 14.2.3
+#### @anchor T14_2_3 14.2.3
 
 create a ribbon tab for help and documentation (1 point)
 
-#### 14.3
+#### @anchor T14_3 14.3
 
 create toolbox on the side to display useful tools for manipulating the document (5 points)

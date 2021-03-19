@@ -1,4 +1,6 @@
-package com.groupseven.pdfproject;
+package com.groupseven.pdfproject.utilities;
+
+import com.groupseven.pdfproject.model.PdfArea;
 
 import java.util.List;
 
