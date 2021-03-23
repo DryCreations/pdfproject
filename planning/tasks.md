@@ -5,14 +5,17 @@
 ### Tasks
 
 #### 1.1
+\anchor t1_1
 
 Show all the pages in a navigation bar with page number.(3 points)
 
 #### 1.2
+\anchor t1_2
 
 Drag and drop [event] feature to reorder the desired page. (2 points)
 
 #### 1.3
+\anchor t1_1
 
 Reorder the PDF (1 point)
 
@@ -21,10 +24,12 @@ Reorder the PDF (1 point)
 ### Tasks
 
 #### 2.1
+\anchor t2_1
 
 Implement a text field that allows the user to quickly jump to any "page" of the pdf that is requested. (2 pt)
 
 #### 2.2
+\anchor t2_2
 
 Implement a button that when clicked bookmarks the page currently on and added it to a list that can later be accessed. (2 pt)
 
@@ -33,10 +38,12 @@ Implement a button that when clicked bookmarks the page currently on and added i
 ### Tasks
 
 #### 3.1
+\anchor t3_1
 
 Implement a displayable text box into the PDF editor GUI that displays a counter. (1 pt)
 
 #### 3.2
+\anchor t3_2
 
 Using a reader, scan the document for raw text and increment a counter based on either individual characters or whole words. (2 pt)
 
@@ -45,6 +52,7 @@ Using a reader, scan the document for raw text and increment a counter based on 
 ### Tasks
 
 #### 4.1
+\anchor t4_1
 
 The merge functionality needs to be implemented. This will require creating a new PDF that is made up of two or more separate PDF files. (2 points)
 
@@ -53,10 +61,12 @@ The merge functionality needs to be implemented. This will require creating a ne
 ### Tasks
 
 #### 5.1
+\anchor t5_1
 
 Implement a text field that scans the document for all occurences of a word and highlights them. (1 pt)
 
 #### 5.2
+\anchor t5_2
 
 Implement a text field that replaces all instances of a word that has been discovered previously. (1 pt)
 
@@ -65,22 +75,27 @@ Implement a text field that replaces all instances of a word that has been disco
 ### Tasks
 
 #### 6.1
+\anchor t6_1
 
 Select functionality needs to be implemented. Once functionality is implemented, a user will be able to select a word. (1 point)
 
 #### 6.2
+\anchor t6_2
 
 The coloring functionality needs to be implemented. Once implemented, the user will be able to color text. (1 point)
 
 #### 6.3
+\anchor t6_3
 
 The persistence strategy for highlighted words needs to be designed. Once the persistence strategy is designed, the design can be used to implement the persistence strategy. (1 point)
 
 #### 6.4
+\anchor t6_4
 
 The persistence strategy needs to be implemented. Once implemented, a user will be able to save specific words to be highlighted in the future. (1 point)
 
 #### 6.5
+\anchor t6_5
 
 The select and coloring functionality and the persistence strategy need to be combined to form the highlighting functionality. (1 point)
 
@@ -89,10 +104,12 @@ The select and coloring functionality and the persistence strategy need to be co
 ### Tasks
 
 #### 7.1
+\anchor t7_1
 
 { description }
 
 #### 7.2
+\anchor t7_2
 
 { description }
 
@@ -111,26 +128,32 @@ add ability to create new pdf document (1 point)
 add ability to specify dimensions of document pages (1 point)
 
 #### 8.3
+\anchor t8_3
 
 add ability to import external assets into the program (3 points)
 
 #### 8.4
+\anchor t8_4
 
 add ability to place imported assets onto document (3 points)
 
 #### 8.5
+\anchor t8_5
 
 add ability to draw geometric shapes on document (3 points)
 
 #### 8.6
+\anchor t8_6
 
 add ability to move assets around within document (3 points)
 
 #### 8.7
+\anchor t8_7
 
 add ability to add text boxes to document (3 points)
 
 #### 8.8
+\anchor t8_8
 
 add ability to export pdf document (1 point)
 
@@ -139,14 +162,17 @@ add ability to export pdf document (1 point)
 ### Tasks
 
 #### 9.1
+\anchor t9_1
 
 Create basic drawing tools - 5 points
 
 #### 9.1.1
+\anchor t9_1_1
 
 Create a selectable pen tool, to draw on the document
 
 #### 9.1.2
+\anchor t9_1_2
 
 Create a selectable eraser tool, to erase pen strokes
 
@@ -157,14 +183,17 @@ Create a selectable eraser tool, to erase pen strokes
 ### Tasks
 
 #### 10.1
+\anchor t10_1
 
 Implement buttons into the PDF editor GUI with an indicator that it is an undo/redo buttons via text label or an "undo/redo arrow" image. (1 pt)
 
 #### 10.2
+\anchor t10_2
 
 Create a data structure to keep track of the individual actions taken by the user to edit the PDF. (3 pt)
 
 #### 10.3
+\anchor t10_3
 
 When the undo/redo button is pressed a move is retrieved from the structure and the move is reversed/redone in the PDF. (2 pt)
 
@@ -173,14 +202,17 @@ When the undo/redo button is pressed a move is retrieved from the structure and 
 ### Tasks
 
 #### 11.1
+\anchor t11_1
 
 Identify the code from the given page in the PDF.(2 points)
 
 #### 11.2
+\anchor t11_1
 
 Extract the identified code.(1 point)
 
 #### 11.3
+\anchor t11_3
 
 Provide option to select the existing file for appending the code or create a new file.(1 point)
 
@@ -189,30 +221,37 @@ Provide option to select the existing file for appending the code or create a ne
 ### Tasks
 
 #### 12.1:
+\anchor t12_1
 
-   Add file extension adaptability into the save window for various file types - 1 point
+Add file extension adaptability into the save window for various file types - 1 point
 
 #### Task 12.2.0:
+\anchor t12_2_0
 
    be able to read non-editable/handwritten text into typed text that is editable - 5 points
 
 #### Task 12.3.0:
+\anchor t12_3_0
 
 Save Pdf "pages" as images that are viewable - 3 points
 
 #### Task 12.3.1:
+\anchor t12_3_1
 
 Parsing a pdf into individual images - 1 point
 
 #### Task 12.3.2:
+\anchor t12_3_2
 
 Saving each individual image specified in 2.1 in an individual file - 3 points
 
 #### Task 12.3.3:
+\anchor t12_3_3
 
 Saving each page into a slideshow for a powerpoint file extension - 3 points
 
 #### Task 12.4.0:
+\anchor t12_4
 
 Save Pdf content in an excel spreadsheet format
 	(I need more help on this part, seeing as grids are picky and I don't know what I'm doing here) - 8 points
@@ -222,10 +261,12 @@ Save Pdf content in an excel spreadsheet format
 ### Tasks
 
 #### 13.1
+\anchor t13_1
 
 { description }
 
 #### 13.2
+\anchor t13_2
 
 { description }
 
@@ -234,35 +275,70 @@ Save Pdf content in an excel spreadsheet format
 ### Tasks
 
 #### 14.1
+\anchor t14_1
 
 create a canvas to display a pdf document (2 point)
 
 #### 14.2
+\anchor t14_2
 
 create tool ribbon at the top of the screen to access different tools/commands (3 point)
 
 #### 14.2.1
+\anchor t14_2_1
 
 create a ribbon tab for file i/o
 
 #### 14.2.2
+\anchor t14_2_2
 
 create a ribbon tab for drawing tools
 
 #### 14.2.3
+\anchor t14_2_3
 
 create a ribbon tab for help and documentation
 
 #### 14.3
+\anchor t14_3
 
 create toolbox on the side to display useful tools for manipulating the document (2 points)
 
+## User Story 15 - As a developer I would like to set up developer tooling and environment
 
-User Story 15 - As a developer I would like to set up developer tooling and environment
-15.1 automated testing with github (2)
-15.2 automated doxygen generation (2)
-15.3 setting jira board (1)
+### Tasks
 
-18 adding links to objects or text
-18.1 Demonstrate a way to select an element on the page (5)
-18.2 Attach a link to a selected element (2)
+#### 15.1
+\anchor t15_1
+
+automated testing with github (2 points)
+
+#### 15.2
+\anchor t15_2
+
+automated doxygen generation (2 points)
+
+#### 15.3
+\anchor t15_3
+
+setting jira board (1 points)
+
+## User Story 16 - creating forms on a pdf
+
+### Tasks
+
+## User Story 17 - add page numbers
+
+## User Story 18 - adding links to objects or text
+
+### Tasks
+
+#### 18.1
+\anchor t18_1
+
+Demonstrate a way to select an element on the page (5 points)
+
+#### 18.2
+\anchor t18_2
+
+Attach a link to a selected element (2 points)

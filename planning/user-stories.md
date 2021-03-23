@@ -83,3 +83,27 @@ Priority: 5
 As a user, I want a GUI to better work with and the pdf files.
 
 Priority: 0
+
+## User Story 15
+
+As a developer I would like to set up developer tooling and environment
+
+Priority: 2
+
+## User Story 16
+
+creating forms on a pdf
+
+Priority: 4
+
+## User Story 17
+
+add page numbers
+
+Priority: 5
+
+## User Story 18
+
+adding links to objects or text
+
+Priority: 3
