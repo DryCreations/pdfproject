@@ -49,17 +49,23 @@ public class App extends Application {
 
     /// \ref t14_2_1 "task 14.2.1"
     private Menu createFileMenu() {
-        return null;
+        Menu fileMenu = new Menu("File");
+        
+        return fileMenu;
     }
 
     /// \ref t14_2_2 "task 14.2.2"
     private Menu createDrawingMenu() {
-        return null;
+        Menu drawingMenu = new Menu("Drawing");
+        
+        return drawingMenu;
     }
 
     /// \ref t14.2.3 "task 14.2.3"
     private Menu createHelpMenu() {
-        return null;
+        Menu helpMenu = new Menu("Help");
+        
+        return helpMenu;
     }
 
     /// \ref t14.2 "task 14.2"
