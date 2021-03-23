@@ -307,3 +307,22 @@ create a ribbon tab for help and documentation (1 point)
 \anchor t14_3
 
 create toolbox on the side to display useful tools for manipulating the document (5 points)
+
+## User Story 15: As a developer I would like to set up developer tooling and environment.
+
+### Tasks
+
+#### 15.1
+\anchor t15_1
+
+Setup github actions to run tests automatically
+
+#### 15.2
+\anchor t15_2
+
+Generate doxygen upon commit using github actions
+
+#### 15.3
+\anchor t15_3
+
+Set up a jira board to manage tasks and development.
