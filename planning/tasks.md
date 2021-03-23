@@ -207,7 +207,7 @@ When the undo/redo button is pressed a move is retrieved from the structure and 
 Identify the code from the given page in the PDF.(2 points)
 
 #### 11.2
-\anchor t11_1
+\anchor t11_2
 
 Extract the identified code.(1 point)
 
