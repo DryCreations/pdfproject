@@ -24,6 +24,7 @@ import javafx.scene.chart.XYChart.Data;
 import javafx.scene.chart.XYChart.Series;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -63,7 +64,19 @@ public class App extends Application {
 
     /// \ref t14.2 "task 14.2"
     private VBox createMenuBar() {
-        return null;
+        MenuBar menuBar = new MenuBar();
+        
+        Menu fileMenu = createFileMenu();
+        Menu drawingMenu = createDrawingMenu();
+        Menu helpMenu = createHelpMenu();
+        
+        menuBar.getMenus().addAll(fileMenu, drawingMenu, helpMenu);
+        
+        VBox vbox = new VBox(0);
+        
+        vbox.getChildren().add(menuBar);
+        
+        return vbox;
     }
 
     /// \ref t14.3 "task 14.3"
