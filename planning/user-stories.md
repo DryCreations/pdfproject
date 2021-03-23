@@ -86,7 +86,7 @@ Priority: 0
 
 ## User Story 15
 
-As a developer I would like to set up developer tooling and environment
+As a developer I would like to set up developer tooling and environment.
 
 Priority: 2
 
@@ -98,7 +98,7 @@ Priority: 4
 
 ## User Story 17
 
-add page numbers
+As a user, having displayable page numbers when working with multi-page PDF's would help me keep organized while editing.
 
 Priority: 5
 
@@ -107,3 +107,4 @@ Priority: 5
 adding links to objects or text
 
 Priority: 3
+

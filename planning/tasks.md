@@ -304,19 +304,19 @@ create a ribbon tab for help and documentation
 
 create toolbox on the side to display useful tools for manipulating the document (2 points)
 
-## User Story 15 - As a developer I would like to set up developer tooling and environment
+## User Story 15: As a developer I would like to set up developer tooling and environment.
 
 ### Tasks
 
 #### 15.1
 \anchor t15_1
 
-automated testing with github (2 points)
+Setup github actions to run tests automatically (2 points)
 
 #### 15.2
 \anchor t15_2
 
-automated doxygen generation (2 points)
+Generate doxygen upon commit using github actions (2 points)
 
 #### 15.3
 \anchor t15_3
