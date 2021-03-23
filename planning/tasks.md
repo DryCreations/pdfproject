@@ -15,7 +15,7 @@ Show all the pages in a navigation bar with page number.(3 points)
 Drag and drop [event] feature to reorder the desired page. (2 points)
 
 #### 1.3
-\anchor t1_1
+\anchor t1_3
 
 Reorder the PDF (1 point)
 
