@@ -63,7 +63,7 @@ public class App extends Application {
     }
 
     /// \ref t14.2 "task 14.2"
-    private VBox createMenuBar() {
+    private MenuBar createMenuBar() {
         MenuBar menuBar = new MenuBar();
         
         Menu fileMenu = createFileMenu();
@@ -72,11 +72,7 @@ public class App extends Application {
         
         menuBar.getMenus().addAll(fileMenu, drawingMenu, helpMenu);
         
-        VBox vbox = new VBox(0);
-        
-        vbox.getChildren().add(menuBar);
-        
-        return vbox;
+        return menuBar;
     }
 
     /// \ref t14.3 "task 14.3"
