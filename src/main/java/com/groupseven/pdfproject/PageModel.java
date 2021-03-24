@@ -5,7 +5,6 @@
  */
 package com.groupseven.pdfproject;
 
-import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.canvas.Canvas;
@@ -17,7 +16,6 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 
 /**
  *
