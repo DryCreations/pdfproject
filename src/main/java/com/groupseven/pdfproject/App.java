@@ -98,8 +98,10 @@ public class App extends Application {
         initializeDocument();
 
         primaryStage.setTitle("PDF Project");
-        Group root = new Group();
+        VBox root = new VBox();
         VBox viewbox = createViewbox();
+        MenuBar menuBar = createMenuBar();
+        root.getChildren().add(menuBar);
         root.getChildren().add(viewbox);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
