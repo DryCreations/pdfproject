@@ -25,7 +25,7 @@ public class App extends Application {
         }
     };
 
-    /// \ref t14_1 "task 14.2"
+    /// \ref t14_1 "task 14.1"
     private VBox createViewbox() {
         try {
             doc = new DocumentModel("src/main/resources/test_pdf.pdf");
