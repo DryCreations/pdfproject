@@ -1,7 +1,5 @@
 package com.groupseven.pdfproject.utilities;
 
-import com.groupseven.pdfproject.model.PdfArea;
-
 import java.util.List;
 
 /// This class includes utilities for working with the PDF files
@@ -13,7 +11,7 @@ public class PdfUtilities {
     }
 
     /// \imp \ref T6_1 Highlights an area of the PDF file
-    public void highlight(PdfArea area) {
+    public void highlight(Object area) {
 
     }
 }
