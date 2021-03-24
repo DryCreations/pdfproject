@@ -25,14 +25,16 @@ public class App extends Application {
         }
     };
 
-    /// \ref t14_1 "task 14.1"
-    private VBox createViewbox() {
+    private void initializeDocument() {
         try {
             doc = new DocumentModel("src/main/resources/test_pdf.pdf");
         } catch (IOException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+    }
+    
+    /// \ref t14_1 "task 14.1"
+    private VBox createViewbox() {
         PageModel page = doc.getPage(0);
         VBox vbox = new VBox(0);
         vbox.getChildren().add(page.getNode());
@@ -66,6 +68,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        initializeDocument();
+        
         primaryStage.setTitle("PDF Project");
         Group root = new Group();
         VBox viewbox = createViewbox();
