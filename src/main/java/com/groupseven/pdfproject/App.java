@@ -9,6 +9,9 @@ import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.scene.canvas.Canvas;
 
 import javafx.application.Application;
@@ -35,6 +38,8 @@ import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 
 public class App extends Application {
+    
+    DocumentModel doc;
 
     /// \ref t8_3 "task 8.3"
     private EventHandler handleImportAsset = new EventHandler<ActionEvent>() {
@@ -45,12 +50,18 @@ public class App extends Application {
     };
 
     /// \ref t14_1 "task 14.2"
-    private VBox createViewbox(int width, int height) {
-        Canvas canvas = new Canvas(width, height);
+    private VBox createViewbox() {
+        try {
+            doc = new DocumentModel("src/main/resources/test_pdf.pdf");
+        } catch (IOException ex) {
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        PageModel page = doc.getPage(0);
         
         VBox vbox = new VBox(0);
         
-        vbox.getChildren().add(canvas);
+        vbox.getChildren().add(page.getNode());
         
         return vbox;
     }
@@ -84,7 +95,7 @@ public class App extends Application {
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("PDF Project");
         Group root = new Group();
-        VBox viewbox = createViewbox(300, 300);
+        VBox viewbox = createViewbox();
         root.getChildren().add(viewbox);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

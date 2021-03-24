@@ -11,11 +11,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
     <repositories>
-        <repository>
-          <id>itext</id>
-          <name>iText Repository - releases</name>
-          <url>https://repo.itextsupport.com/releases</url>
-        </repository>
+        
     </repositories>
     <build>
     <plugins>
@@ -90,9 +86,9 @@
             <version>7.0.4</version>
         </dependency>
         <dependency>
-            <groupId>com.itextpdf</groupId>
-            <artifactId>pdfrender</artifactId>
-            <version>1.0.3</version>
+            <groupId>org.swinglabs</groupId>
+            <artifactId>pdf-renderer</artifactId>
+            <version>1.0.5</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
