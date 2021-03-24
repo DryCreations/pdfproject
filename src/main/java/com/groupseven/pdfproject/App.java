@@ -51,6 +51,9 @@ public class App extends Application {
         return vbox;
     }
 
+    /// \brief create file menu element
+    /// \return Menu containing all relevant dropdown elements
+    ///
     /// \ref t14_2_1 "task 14.2.1"
     private Menu createFileMenu() {
         Menu fileMenu = new Menu("File");
@@ -58,6 +61,9 @@ public class App extends Application {
         return fileMenu;
     }
 
+    /// \brief create drawing menu element
+    /// \return
+    ///
     /// \ref t14_2_2 "task 14.2.2"
     private Menu createDrawingMenu() {
         Menu drawingMenu = new Menu("Drawing");
@@ -65,6 +71,9 @@ public class App extends Application {
         return drawingMenu;
     }
 
+    /// \brief create help menu element
+    /// \return Menu containing all relevant dropdown elements
+    ///
     /// \ref t14_2_3 "task 14.2.3"
     private Menu createHelpMenu() {
         Menu helpMenu = new Menu("Help");
@@ -72,6 +81,9 @@ public class App extends Application {
         return helpMenu;
     }
 
+    /// \brief create menu bar element
+    /// \return Menu containing all relevant dropdown elements
+    ///
     /// \ref t14.2 "task 14.2"
     private MenuBar createMenuBar() {
         MenuBar menuBar = new MenuBar();
