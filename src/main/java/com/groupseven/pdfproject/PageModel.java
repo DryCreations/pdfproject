@@ -21,6 +21,10 @@ import javafx.scene.layout.VBox;
  *
  * @author hayde
  */
+
+/// \brief representation of a single page of a PDF 
+///
+/// \ref t14_1 "task 14.1"
 public class PageModel {
     private Canvas canvas;
     private BufferedImage bufferedImage;
@@ -28,6 +32,9 @@ public class PageModel {
     private VBox node;
     private GraphicsContext graphicsContext;
     
+    /// \brief create a new page from an Image.
+    ///
+    /// \ref t14_1 "task 14.1"
     public PageModel(BufferedImage image) {
         bufferedImage = image;
         Image fximage = SwingFXUtils.toFXImage(image, null);
@@ -39,6 +46,10 @@ public class PageModel {
         node.getChildren().add(canvas);
     }
     
+    /// \brief get the javafx node for the page
+    /// \return VBox containing page
+    ///
+    /// \ref t14_1 "task 14.1"
     public VBox getNode() {
         return node;
     }

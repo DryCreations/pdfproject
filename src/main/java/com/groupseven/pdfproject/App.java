@@ -24,7 +24,11 @@ public class App extends Application {
 
         }
     };
-
+    
+    /// \brief creates a new instance of the Document Model to be displayed
+    /// \return void
+    ///
+    /// \ref t14_1 "task 14.1"
     private void initializeDocument() {
         try {
             doc = new DocumentModel("src/main/resources/test_pdf.pdf");
@@ -33,6 +37,9 @@ public class App extends Application {
         }
     }
     
+    /// \brief creates a viewbox element containing a pdf document
+    /// \return VBox displaying the pdf and canvas element
+    ///
     /// \ref t14_1 "task 14.1"
     private VBox createViewbox() {
         PageModel page = doc.getPage(0);
@@ -51,21 +58,24 @@ public class App extends Application {
         return null;
     }
 
-    /// \ref t14.2.3 "task 14.2.3"
+    /// \ref t14_2_3 "task 14.2.3"
     private Menu createHelpMenu() {
         return null;
     }
 
-    /// \ref t14.2 "task 14.2"
+    /// \ref t14_2 "task 14.2"
     private VBox createMenuBar() {
         return null;
     }
 
-    /// \ref t14.3 "task 14.3"
+    /// \ref t14_3 "task 14.3"
     private VBox createToolBox() {
         return null;
     }
 
+    /// \brief starts javafx GUI
+    ///
+    /// \return void
     @Override
     public void start(Stage primaryStage) throws Exception {
         initializeDocument();

@@ -32,6 +32,9 @@ public class DocumentModel {
 
     }
     
+    /// \brief create document from a specific filename
+    ///
+    /// \ref t14_1 "task 14.1"
     public DocumentModel(String filename) throws IOException{
         this.filename = filename;
         this.pages = new ArrayList<>();
@@ -58,6 +61,10 @@ public class DocumentModel {
         raf.close(); 
     }
     
+    /// \brief get a specific page from the document
+    /// \return PageModel representing the desired page
+    ///
+    /// \ref t14_1 "task 14.1"
     public PageModel getPage(int i) {
         return pages.get(i);
     }
