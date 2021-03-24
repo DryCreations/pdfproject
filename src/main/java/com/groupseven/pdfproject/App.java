@@ -7,12 +7,16 @@ import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -47,6 +51,7 @@ public class App extends Application {
     private VBox createViewbox() {
         PageModel page = doc.getPage(0);
         VBox vbox = new VBox(0);
+        vbox.setAlignment(Pos.BASELINE_RIGHT);
         vbox.getChildren().add(page.getNode());
         return vbox;
     }
@@ -97,9 +102,24 @@ public class App extends Application {
         return menuBar;
     }
 
+    /// \brief Create Toolbox elements and populate with buttons
+    /// \return GridPane element containing all relevant buttons
+    ///
     /// \ref t14_3 "task 14.3"
-    private VBox createToolBox() {
-        return null;
+    private GridPane createToolBox() {
+        GridPane ToolWindow = new GridPane( );
+
+        Button doNothing = new Button();
+        Button doNothing2 = new Button();
+
+        ToolWindow.setMinWidth(300);
+        ToolWindow.setAlignment(Pos.BASELINE_LEFT);
+        ToolWindow.setStyle("-fx-background-color: Gray;");
+
+        ToolWindow.getChildren().add(doNothing);
+        ToolWindow.getChildren().add(doNothing2);
+
+        return ToolWindow;
     }
 
     /// \brief starts javafx GUI
@@ -108,13 +128,17 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         initializeDocument();
-
         primaryStage.setTitle("PDF Project");
-        VBox root = new VBox();
+        //root BorderPane allows for more versatile alignment than HBox or VBox
+        BorderPane root = new BorderPane();
         VBox viewbox = createViewbox();
+        GridPane ToolBox = createToolBox();
         MenuBar menuBar = createMenuBar();
-        root.getChildren().add(menuBar);
-        root.getChildren().add(viewbox);
+
+        root.setTop(menuBar);
+        root.setLeft(ToolBox);
+        root.setCenter(viewbox);
+
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
