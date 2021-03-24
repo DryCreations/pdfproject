@@ -99,29 +99,19 @@ The persistence strategy needs to be implemented. Once implemented, a user will 
 
 The select and coloring functionality and the persistence strategy need to be combined to form the highlighting functionality. (1 point)
 
-## User Story 7: As a contractor/consultant, adding an esign/everify to a pdf document whenever seems very useful.
+## User Story 7
 
 ### Tasks
 
 #### 7.1
 \anchor t7_1
 
-Select what digital signature type to implement. Once implemented determine whether to find a signature library / build a library to use the EdDSA scheme.
+{ description }
 
 #### 7.2
 \anchor t7_2
 
-A button for users to add their digital signature to sign documents. Once implemented, users would get to save their digital signature on documents.
-
-#### 7.3
-\anchor t7_3
-
-A button to add signature and initialize areas. Once implemented users can add signature areas and initialize markup.
-
-#### 7.4
-\anchor t7_4
-
-Implment addon to verify a document was signed. Once implemented users get notified that a document was signed on opening a document.
+{ description }
 
 ## User Story 8: As a UI Designer I want to create and export mock UI/UX designs, so that I can create sharable designs in a common format like .pdf
 
@@ -169,27 +159,33 @@ add ability to export pdf document (1 point)
 
 ## User Story 9: As a Student I want to be able to directly draw on and annotate pdfs, this will allow me to complete assignments easily, or take notes more efficiently.
 
-
 ### Tasks
 
 #### 9.1
 \anchor t9_1
 
-Create a bitmap drawing tool - 8 points
+Create basic drawing tools - 5 points
 
-#### 9.2
-\anchor t9_2
+#### 9.1.1
+\anchor t9_1_1
 
-ensure drawing can be erased without affecting whatever might be underneath - 3 points
+Create a selectable pen tool, to draw on the document
 
-## User Story 10: As an editor, an undo feature implemented through a toolbar button with unlimited undos would allow me to fix mistakes much more easily.
+#### 9.1.2
+\anchor t9_1_2
+
+Create a selectable eraser tool, to erase pen strokes
+
+####
+
+## User Story 10: As an editor, an undo/redo feature implemented through a toolbar button with unlimited undos/redo would allow me to fix mistakes much more easily.
 
 ### Tasks
 
 #### 10.1
 \anchor t10_1
 
-Implement a button into the PDF editor GUI with an indicator that it is an undo button via text label or an "undo arrow" image. (1 pt)
+Implement buttons into the PDF editor GUI with an indicator that it is an undo/redo buttons via text label or an "undo/redo arrow" image. (1 pt)
 
 #### 10.2
 \anchor t10_2
@@ -199,7 +195,7 @@ Create a data structure to keep track of the individual actions taken by the use
 #### 10.3
 \anchor t10_3
 
-When the undo button is pressed a move is retrieved from the structure and the move is reversed from the PDF. (2 pt)
+When the undo/redo button is pressed a move is retrieved from the structure and the move is reversed/redone in the PDF. (2 pt)
 
 ## User Story 11: As a student, I want to be able to extract code from the PDF so that I can refer later to the required specific notes, i.e. code, without wandering in the whole PDF.
 
@@ -255,24 +251,24 @@ Saving each individual image specified in 2.1 in an individual file - 3 points
 Saving each page into a slideshow for a powerpoint file extension - 3 points
 
 #### Task 12.4.0:
-\anchor t12_4_0
+\anchor t12_4
 
 Save Pdf content in an excel spreadsheet format
 (I need more help on this part, seeing as grids are picky and I don't know what I'm doing here) - 8 points
 
-## User Story 13 : As a user, I want to be able to comment on any part of the PDF so that I can effectively add extra details or communicate with others who might view it.
+## User Story 13
 
 ### Tasks
 
 #### 13.1
 \anchor t13_1
 
-Decide whether to implement this via a button/right-click dropdown. Once implemented users click to insert a comment.
+{ description }
 
 #### 13.2
 \anchor t13_2
 
-Implement a button to toggle comments. Once implemented users could toggle whether comments show.
+{ description }
 
 ## User Story 14: As a user, I want a GUI to better work with and the pdf files.
 
@@ -281,32 +277,32 @@ Implement a button to toggle comments. Once implemented users could toggle wheth
 #### 14.1
 \anchor t14_1
 
-create a view box to display a pdf document (2 point)
+create a canvas to display a pdf document (2 point)
 
 #### 14.2
 \anchor t14_2
 
-create tool ribbon at the top of the screen to access different tools/commands (2 point)
+create tool ribbon at the top of the screen to access different tools/commands (3 point)
 
 #### 14.2.1
 \anchor t14_2_1
 
-create a ribbon tab for file i/o (1 point)
+create a ribbon tab for file i/o
 
 #### 14.2.2
 \anchor t14_2_2
 
-create a ribbon tab for drawing tools (1 point)
+create a ribbon tab for drawing tools
 
 #### 14.2.3
 \anchor t14_2_3
 
-create a ribbon tab for help and documentation (1 point)
+create a ribbon tab for help and documentation
 
 #### 14.3
 \anchor t14_3
 
-create toolbox on the side to display useful tools for manipulating the document (5 points)
+create toolbox on the side to display useful tools for manipulating the document (2 points)
 
 ## User Story 15: As a developer I would like to set up developer tooling and environment.
 
@@ -315,14 +311,34 @@ create toolbox on the side to display useful tools for manipulating the document
 #### 15.1
 \anchor t15_1
 
-Setup github actions to run tests automatically
+Setup github actions to run tests automatically (2 points)
 
 #### 15.2
 \anchor t15_2
 
-Generate doxygen upon commit using github actions
+Generate doxygen upon commit using github actions (2 points)
 
 #### 15.3
 \anchor t15_3
 
-Set up a jira board to manage tasks and development.
+setting jira board (1 points)
+
+## User Story 16 - creating forms on a pdf
+
+### Tasks
+
+## User Story 17 - add page numbers
+
+## User Story 18 - adding links to objects or text
+
+### Tasks
+
+#### 18.1
+\anchor t18_1
+
+Demonstrate a way to select an element on the page (5 points)
+
+#### 18.2
+\anchor t18_2
+
+Attach a link to a selected element (2 points)
