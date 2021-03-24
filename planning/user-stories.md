@@ -88,10 +88,23 @@ Priority: 0
 
 As a developer I would like to set up developer tooling and environment.
 
-Priority 1
+Priority: 2
+
+## User Story 16
+
+creating forms on a pdf
+
+Priority: 4
 
 ## User Story 17
 
 As a user, having displayable page numbers when working with multi-page PDF's would help me keep organized while editing.
 
-Priority: 6
+Priority: 5
+
+## User Story 18
+
+adding links to objects or text
+
+Priority: 3
+
