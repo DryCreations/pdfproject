@@ -10,11 +10,14 @@ import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class App extends Application {
-    
+
     DocumentModel doc;
 
     /// \ref t8_3 "task 8.3"
@@ -24,7 +27,7 @@ public class App extends Application {
 
         }
     };
-    
+
     /// \brief creates a new instance of the Document Model to be displayed
     /// \return void
     ///
@@ -36,7 +39,7 @@ public class App extends Application {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     /// \brief creates a viewbox element containing a pdf document
     /// \return VBox displaying the pdf and canvas element
     ///
@@ -48,24 +51,50 @@ public class App extends Application {
         return vbox;
     }
 
+    /// \brief create file menu element
+    /// \return Menu containing all relevant dropdown elements
+    ///
     /// \ref t14_2_1 "task 14.2.1"
     private Menu createFileMenu() {
-        return null;
+        Menu fileMenu = new Menu("File");
+
+        return fileMenu;
     }
 
+    /// \brief create drawing menu element
+    /// \return
+    ///
     /// \ref t14_2_2 "task 14.2.2"
     private Menu createDrawingMenu() {
-        return null;
+        Menu drawingMenu = new Menu("Drawing");
+
+        return drawingMenu;
     }
 
+    /// \brief create help menu element
+    /// \return Menu containing all relevant dropdown elements
+    ///
     /// \ref t14_2_3 "task 14.2.3"
     private Menu createHelpMenu() {
-        return null;
+        Menu helpMenu = new Menu("Help");
+
+        return helpMenu;
     }
 
-    /// \ref t14_2 "task 14.2"
-    private VBox createMenuBar() {
-        return null;
+    /// \brief create menu bar element
+    /// \return Menu containing all relevant dropdown elements
+    ///
+    /// \ref t14.2 "task 14.2"
+    private MenuBar createMenuBar() {
+        MenuBar menuBar = new MenuBar();
+
+        Menu fileMenu = createFileMenu();
+        Menu drawingMenu = createDrawingMenu();
+        Menu helpMenu = createHelpMenu();
+
+        menuBar.getMenus().addAll(fileMenu, drawingMenu, helpMenu);
+
+        return menuBar;
     }
 
     /// \ref t14_3 "task 14.3"
@@ -79,10 +108,12 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         initializeDocument();
-        
+
         primaryStage.setTitle("PDF Project");
-        Group root = new Group();
+        VBox root = new VBox();
         VBox viewbox = createViewbox();
+        MenuBar menuBar = createMenuBar();
+        root.getChildren().add(menuBar);
         root.getChildren().add(viewbox);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
