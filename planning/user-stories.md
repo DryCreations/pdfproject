@@ -83,3 +83,15 @@ Priority: 5
 As a user, I want a GUI to better work with and the pdf files.
 
 Priority: 0
+
+## User Story 15
+
+As a developer I would like to set up developer tooling and environment.
+
+Priority 1
+
+## User Story 17
+
+As a user, having displayable page numbers when working with multi-page PDF's would help me keep organized while editing.
+
+Priority: 6
