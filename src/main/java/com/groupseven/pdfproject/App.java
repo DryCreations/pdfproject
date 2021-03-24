@@ -34,11 +34,8 @@ public class App extends Application {
         }
         
         PageModel page = doc.getPage(0);
-        
         VBox vbox = new VBox(0);
-        
         vbox.getChildren().add(page.getNode());
-        
         return vbox;
     }
 

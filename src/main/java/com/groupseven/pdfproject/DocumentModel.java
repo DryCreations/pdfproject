@@ -34,32 +34,28 @@ public class DocumentModel {
     
     public DocumentModel(String filename) throws IOException{
         this.filename = filename;
+        this.pages = new ArrayList<>();
         
-        pages = new ArrayList<>();
+        File file = new File(filename);
         
-        File pdfFile = new File(filename);
-        
-        RandomAccessFile raf = new RandomAccessFile(pdfFile, "r");
-        FileChannel channel = raf.getChannel();
-        ByteBuffer buf = channel.map(FileChannel.MapMode.READ_ONLY, 0, channel.size());
-        PDFFile pdf = new PDFFile(buf);
+        RandomAccessFile raf = new RandomAccessFile(file, "r");
+        FileChannel fileChannel = raf.getChannel();
+        ByteBuffer buffer = fileChannel.map(FileChannel.MapMode.READ_ONLY, 0, fileChannel.size());
+        PDFFile pdfFile = new PDFFile(buffer);
 
-        for (int pageNumber = 1; pageNumber <= pdf.getNumPages(); ++pageNumber) {
-                double scale = 1;
-                PDFPage page = pdf.getPage(pageNumber);
+        for (int i = 1; i <= pdfFile.getNumPages(); i++) {
+                PDFPage page = pdfFile.getPage(i);
                 Rectangle rect = new Rectangle(0, 0, (int) page.getBBox().getWidth(), (int) page.getBBox().getHeight());
-                BufferedImage bufferedImage = new BufferedImage((int)(rect.width * scale), (int)(rect.height * scale), BufferedImage.TYPE_INT_RGB);
-                Image image = page.getImage((int)(rect.width * scale), (int)(rect.height * scale), rect, null, true, true);
-                Graphics2D bufImageGraphics = bufferedImage.createGraphics();
-                bufImageGraphics.drawImage(image, 0, 0, null);
-                bufImageGraphics.dispose();
+                BufferedImage bufferedImage = new BufferedImage(rect.width, rect.height, BufferedImage.TYPE_INT_RGB);
+                Image image = page.getImage(rect.width, rect.height, rect, null, true, true);
+                Graphics2D graphicsContext = bufferedImage.createGraphics();
+                graphicsContext.drawImage(image, 0, 0, null);
+                graphicsContext.dispose();
                 
                 pages.add(new PageModel(bufferedImage));
         }
 
-        raf.close();
-        
-        
+        raf.close(); 
     }
     
     public PageModel getPage(int i) {
