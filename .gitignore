@@ -16,3 +16,4 @@ buildNumber.properties
 .settings/org.eclipse.m2e.core.prefs
 doxygen/
 .idea/
+*.iml
