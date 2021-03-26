@@ -13,7 +13,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -122,6 +124,36 @@ public class App extends Application {
         return ToolWindow;
     }
 
+    /// \brief create undo button element
+    /// \return Button for activating undo feature
+    ///
+    /// \ref t10_1 "task 10.1"
+    private Button createUndoButton(){
+        Image undoimg = new Image("undoarrow.png");
+        ImageView undoview = new ImageView(undoimg);
+
+        Button undobutton = new Button();
+        undobutton.setGraphic(undoview);
+        Tooltip undotip = new Tooltip("Undo");
+        Tooltip.install(undobutton, undotip);
+        return undobutton;
+    }
+
+    /// \brief create redo button element
+    /// \return Button for activating redo feature
+    ///
+    /// \ref t10_1 "task 10.1"
+    private Button createRedoButton(){
+        Image redoimg = new Image("redoarrow.png");
+        ImageView redoview = new ImageView(redoimg);
+
+        Button redobutton = new Button();
+        redobutton.setGraphic(redoview);
+        Tooltip redotip = new Tooltip("Redo");
+        Tooltip.install(redobutton, redotip);
+        return redobutton;
+    }
+
     /// \brief starts javafx GUI
     ///
     /// \return void
@@ -134,10 +166,17 @@ public class App extends Application {
         VBox viewbox = createViewbox();
         GridPane ToolBox = createToolBox();
         MenuBar menuBar = createMenuBar();
+        Button undobutton = createUndoButton();
+        Button redobutton = createRedoButton();
+
+        GridPane.setConstraints(undobutton, 0, 0);
+        GridPane.setConstraints(redobutton, 1, 0);
 
         root.setTop(menuBar);
         root.setLeft(ToolBox);
         root.setCenter(viewbox);
+
+        ToolBox.getChildren().addAll(undobutton,redobutton);
 
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
