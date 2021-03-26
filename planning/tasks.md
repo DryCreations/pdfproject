@@ -7,17 +7,29 @@
 #### 1.1
 \anchor t1_1
 
-Show all the pages in a navigation bar with page number.(3 points)
+Show all the pages in a navigation bar with page number.(5 points)
+
+#### 1.1.1
+
+convert pdf to image
+
+#### 1.1.2
+
+convert image into thumbnail
+
+#### 1.1.3
+
+display navigation pane
 
 #### 1.2
 \anchor t1_2
 
-Drag and drop [event] feature to reorder the desired page. (2 points)
+Drag and drop [event] feature to reorder the desired page. (5 points)
 
 #### 1.3
 \anchor t1_3
 
-Reorder the PDF (1 point)
+Reorder the PDF (3 point)
 
 ## User Story 2: As a reader, I want to be able to have a jump to any "page" of the pdf to make it easier to read over time and so I don't have to spend 4-5 minutes scrolling, OR a bookmark feature to click on to jump back to.
 
@@ -121,7 +133,7 @@ A button to add signature and initialize areas. Once implemented users can add s
 #### 7.4
 \anchor t7_4
 
-Implment addon to verify a document was signed. Once implemented users get notified that a document was signed on opening a document.
+Implement addon to verify a document was signed. Once implemented users get notified that a document was signed on opening a document.
 
 ## User Story 8: As a UI Designer I want to create and export mock UI/UX designs, so that I can create sharable designs in a common format like .pdf
 
@@ -135,17 +147,12 @@ add ability to create new pdf document (1 point)
 #### 8.2
 \anchor t8_2
 
-add ability to specify dimensions of document pages (1 point)
+add ability to specify dimensions of document pages (2 point)
 
 #### 8.3
 \anchor t8_3
 
-add ability to import external assets into the program (3 points)
-
-#### 8.4
-\anchor t8_4
-
-add ability to place imported assets onto document (3 points)
+add ability to import external assets onto the document (5 points)
 
 #### 8.5
 \anchor t8_5
@@ -165,31 +172,37 @@ add ability to add text boxes to document (3 points)
 #### 8.8
 \anchor t8_8
 
-add ability to export pdf document (1 point)
+add ability to export pdf document (3 point)
 
 ## User Story 9: As a Student I want to be able to directly draw on and annotate pdfs, this will allow me to complete assignments easily, or take notes more efficiently.
-
 
 ### Tasks
 
 #### 9.1
 \anchor t9_1
 
-Create a bitmap drawing tool - 8 points
+Create basic drawing tools - 5 points
 
-#### 9.2
-\anchor t9_2
+#### 9.1.1
+\anchor t9_1_1
 
-ensure drawing can be erased without affecting whatever might be underneath - 3 points
+Create a selectable pen tool, to draw on the document
 
-## User Story 10: As an editor, an undo feature implemented through a toolbar button with unlimited undos would allow me to fix mistakes much more easily.
+#### 9.1.2
+\anchor t9_1_2
+
+Create a selectable eraser tool, to erase pen strokes
+
+####
+
+## User Story 10: As an editor, an undo/redo feature implemented through a toolbar button with unlimited undos/redo would allow me to fix mistakes much more easily.
 
 ### Tasks
 
 #### 10.1
 \anchor t10_1
 
-Implement a button into the PDF editor GUI with an indicator that it is an undo button via text label or an "undo arrow" image. (1 pt)
+Implement buttons into the PDF editor GUI with an indicator that it is an undo/redo buttons via text label or an "undo/redo arrow" image. (1 pt)
 
 #### 10.2
 \anchor t10_2
@@ -199,7 +212,7 @@ Create a data structure to keep track of the individual actions taken by the use
 #### 10.3
 \anchor t10_3
 
-When the undo button is pressed a move is retrieved from the structure and the move is reversed from the PDF. (2 pt)
+When the undo/redo button is pressed a move is retrieved from the structure and the move is reversed/redone in the PDF. (2 pt)
 
 ## User Story 11: As a student, I want to be able to extract code from the PDF so that I can refer later to the required specific notes, i.e. code, without wandering in the whole PDF.
 
@@ -281,32 +294,32 @@ Implement a button to toggle comments. Once implemented users could toggle wheth
 #### 14.1
 \anchor t14_1
 
-create a view box to display a pdf document (2 point)
+create a canvas to display a pdf document (2 point)
 
 #### 14.2
 \anchor t14_2
 
-create tool ribbon at the top of the screen to access different tools/commands (2 point)
+create tool ribbon at the top of the screen to access different tools/commands (3 point)
 
 #### 14.2.1
 \anchor t14_2_1
 
-create a ribbon tab for file i/o (1 point)
+create a ribbon tab for file i/o
 
 #### 14.2.2
 \anchor t14_2_2
 
-create a ribbon tab for drawing tools (1 point)
+create a ribbon tab for drawing tools
 
 #### 14.2.3
 \anchor t14_2_3
 
-create a ribbon tab for help and documentation (1 point)
+create a ribbon tab for help and documentation
 
 #### 14.3
 \anchor t14_3
 
-create toolbox on the side to display useful tools for manipulating the document (5 points)
+create toolbox on the side to display useful tools for manipulating the document (2 points)
 
 ## User Story 15: As a developer I would like to set up developer tooling and environment.
 
@@ -315,14 +328,49 @@ create toolbox on the side to display useful tools for manipulating the document
 #### 15.1
 \anchor t15_1
 
-Setup github actions to run tests automatically
+Setup github actions to run tests automatically (2 points)
 
 #### 15.2
 \anchor t15_2
 
-Generate doxygen upon commit using github actions
+Generate doxygen upon commit using github actions (2 points)
 
 #### 15.3
 \anchor t15_3
 
-Set up a jira board to manage tasks and development.
+setting jira board (1 points)
+
+## User Story 16 - creating forms on a pdf
+
+### Tasks
+
+#### 16.1
+\anchor t16_1
+
+Demonstrate a way to create text input field (2 points)
+
+#### 16.2
+\anchor t16_2
+
+Demonstrate a way to create radio buttons (2 points)
+
+#### 16.3
+\anchor t16_3
+
+Demonstrate a way to create checkboxes (2 points)
+
+## User Story 17 - add page numbers
+
+## User Story 18 - adding links to objects or text
+
+### Tasks
+
+#### 18.1
+\anchor t18_1
+
+Demonstrate a way to select an element on the page (5 points)
+
+#### 18.2
+\anchor t18_2
+
+Attach a link to a selected element (2 points)

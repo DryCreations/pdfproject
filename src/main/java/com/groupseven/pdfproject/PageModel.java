@@ -33,7 +33,7 @@ public class PageModel {
     private GraphicsContext graphicsContext;
     
     /// \brief create a new page from an Image.
-    ///gi
+    ///
     /// \ref t14_1 "task 14.1"
     public PageModel(BufferedImage image) {
         bufferedImage = image;
