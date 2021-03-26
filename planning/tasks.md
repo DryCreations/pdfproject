@@ -7,17 +7,29 @@
 #### 1.1
 \anchor t1_1
 
-Show all the pages in a navigation bar with page number.(3 points)
+Show all the pages in a navigation bar with page number.(5 points)
+
+#### 1.1.1
+
+convert pdf to image
+
+#### 1.1.2
+
+convert image into thumbnail
+
+#### 1.1.3
+
+display navigation pane
 
 #### 1.2
 \anchor t1_2
 
-Drag and drop [event] feature to reorder the desired page. (2 points)
+Drag and drop [event] feature to reorder the desired page. (5 points)
 
 #### 1.3
 \anchor t1_3
 
-Reorder the PDF (1 point)
+Reorder the PDF (3 point)
 
 ## User Story 2: As a reader, I want to be able to have a jump to any "page" of the pdf to make it easier to read over time and so I don't have to spend 4-5 minutes scrolling, OR a bookmark feature to click on to jump back to.
 
@@ -99,19 +111,29 @@ The persistence strategy needs to be implemented. Once implemented, a user will 
 
 The select and coloring functionality and the persistence strategy need to be combined to form the highlighting functionality. (1 point)
 
-## User Story 7
+## User Story 7: User Story 7: As a contractor/consultant, adding an esign/everify to a pdf document whenever seems very useful.
 
 ### Tasks
 
 #### 7.1
 \anchor t7_1
 
-{ description }
+Select what digital signature type to implement. Once implemented determine whether to find a signature library / build a library to use the EdDSA scheme.
 
 #### 7.2
 \anchor t7_2
 
-{ description }
+A button for users to add their digital signature to sign documents. Once implemented, users would get to save their digital signature on documents.
+
+#### 7.3
+\anchor t7_3
+
+A button to add signature and initialize areas. Once implemented users can add signature areas and initialize markup.
+
+#### 7.4
+\anchor t7_4
+
+Implement addon to verify a document was signed. Once implemented users get notified that a document was signed on opening a document.
 
 ## User Story 8: As a UI Designer I want to create and export mock UI/UX designs, so that I can create sharable designs in a common format like .pdf
 
@@ -125,17 +147,12 @@ add ability to create new pdf document (1 point)
 #### 8.2
 \anchor t8_2
 
-add ability to specify dimensions of document pages (1 point)
+add ability to specify dimensions of document pages (2 point)
 
 #### 8.3
 \anchor t8_3
 
-add ability to import external assets into the program (3 points)
-
-#### 8.4
-\anchor t8_4
-
-add ability to place imported assets onto document (3 points)
+add ability to import external assets onto the document (5 points)
 
 #### 8.5
 \anchor t8_5
@@ -155,7 +172,7 @@ add ability to add text boxes to document (3 points)
 #### 8.8
 \anchor t8_8
 
-add ability to export pdf document (1 point)
+add ability to export pdf document (3 point)
 
 ## User Story 9: As a Student I want to be able to directly draw on and annotate pdfs, this will allow me to complete assignments easily, or take notes more efficiently.
 
@@ -326,6 +343,21 @@ setting jira board (1 points)
 ## User Story 16 - creating forms on a pdf
 
 ### Tasks
+
+#### 16.1
+\anchor t16_1
+
+Demonstrate a way to create text input field (2 points)
+
+#### 16.2
+\anchor t16_2
+
+Demonstrate a way to create radio buttons (2 points)
+
+#### 16.3
+\anchor t16_3
+
+Demonstrate a way to create checkboxes (2 points)
 
 ## User Story 17 - add page numbers
 
