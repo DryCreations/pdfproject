@@ -111,7 +111,7 @@ The persistence strategy needs to be implemented. Once implemented, a user will 
 
 The select and coloring functionality and the persistence strategy need to be combined to form the highlighting functionality. (1 point)
 
-## User Story 7: User Story 7: As a contractor/consultant, adding an esign/everify to a pdf document whenever seems very useful.
+## User Story 7: As a contractor/consultant, adding an esign/everify to a pdf document whenever seems very useful.
 
 ### Tasks
 
@@ -245,7 +245,7 @@ Add file extension adaptability into the save window for various file types - 1 
 #### Task 12.2.0:
 \anchor t12_2_0
 
-   be able to read non-editable/handwritten text into typed text that is editable - 5 points
+be able to read non-editable/handwritten text into typed text that is editable - 5 points
 
 #### Task 12.3.0:
 \anchor t12_3_0
@@ -268,24 +268,24 @@ Saving each individual image specified in 2.1 in an individual file - 3 points
 Saving each page into a slideshow for a powerpoint file extension - 3 points
 
 #### Task 12.4.0:
-\anchor t12_4
+\anchor t12_4_0
 
 Save Pdf content in an excel spreadsheet format
-	(I need more help on this part, seeing as grids are picky and I don't know what I'm doing here) - 8 points
+(I need more help on this part, seeing as grids are picky and I don't know what I'm doing here) - 8 points
 
-## User Story 13
+## User Story 13 : As a user, I want to be able to comment on any part of the PDF so that I can effectively add extra details or communicate with others who might view it.
 
 ### Tasks
 
 #### 13.1
 \anchor t13_1
 
-{ description }
+Decide whether to implement this via a button/right-click dropdown. Once implemented users click to insert a comment.
 
 #### 13.2
 \anchor t13_2
 
-{ description }
+Implement a button to toggle comments. Once implemented users could toggle whether comments show.
 
 ## User Story 14: As a user, I want a GUI to better work with and the pdf files.
 
