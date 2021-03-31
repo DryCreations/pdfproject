@@ -15,6 +15,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -183,7 +184,8 @@ public class App extends Application {
         /// ref t18_1 "task 18.1"
         /// The HBox SelectBox provides the option for Select Tool and the Shape
         HBox selectBox =new HBox();
-        selectBox.getChildren().add(new ShapesToolBar(doc.getPage(currentPage).getCanvas()));
+        MainCanvas canvas = doc.getPage(currentPage).getCanvas();
+        selectBox.getChildren().add(new ShapesToolBar(canvas));
 
 
         GridPane.setConstraints(undobutton, 0, 0);
@@ -201,12 +203,9 @@ public class App extends Application {
        
         primaryStage.show();
         
-//        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-//            @Override
-//            public void handle(KeyEvent event) {
-//                canvas.getEventHandler().Event(event);
-//            }
-//        });
+        scene.setOnKeyPressed((KeyEvent event) -> {
+            canvas.getEventHandler().Event(event);
+        });
     }
 
     public static void main(String[] args) {
