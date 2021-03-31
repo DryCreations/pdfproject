@@ -8,7 +8,6 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
@@ -24,15 +23,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class App extends Application {
-	
-
-	public static final int WINDOW_WIDTH = 700;
-    public static final int WINDOW_HEIGHT = 790;
-    
-    MainCanvas canvas = new MainCanvas();
-    
-
     DocumentModel doc;
+    int currentPage;
 
     /// \ref t8_3 "task 8.3"
     private EventHandler handleImportAsset = new EventHandler<ActionEvent>() {
@@ -49,6 +41,7 @@ public class App extends Application {
     private void initializeDocument() {
         try {
             doc = new DocumentModel("src/main/resources/test_pdf.pdf");
+            currentPage = 0;
         } catch (IOException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -60,13 +53,12 @@ public class App extends Application {
     /// \ref t14_1 "task 14.1"
     private VBox createViewbox() {
     	
-        PageModel page = doc.getPage(0);
+        PageModel page = doc.getPage(currentPage);
         VBox vbox = new VBox(0);
         vbox.setAlignment(Pos.BASELINE_RIGHT);
         
-       vbox.getChildren().add(page.getNode());
-        
-        vbox.getChildren().add(canvas);
+        vbox.getChildren().add(page.getNode());
+        page.clear();
         
 //        vbox.setOnKeyPressed(new EventHandler<KeyEvent>() {
 //            @Override
@@ -74,7 +66,6 @@ public class App extends Application {
 //                canvas.getEventHandler().Event(event);
 //            }
 //        });
-        
         
         return vbox;
     }
@@ -193,32 +184,27 @@ public class App extends Application {
         /// ref t18_1 "task 18.1"
         /// The HBox SelectBox provides the option for Select Tool and the Shape
         HBox selectBox =new HBox();
+        MainCanvas canvas = doc.getPage(currentPage).getCanvas();
         selectBox.getChildren().add(new ShapesToolBar(canvas));
 
 
         GridPane.setConstraints(undobutton, 0, 0);
         GridPane.setConstraints(redobutton, 1, 0);
        
-
-        
         root.setTop(menuBar);
         root.setLeft(ToolBox);
         root.setCenter(viewbox);
         root.setRight(selectBox);
         
-
         ToolBox.getChildren().addAll(undobutton,redobutton);
 
-        Scene scene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
+        Scene scene = new Scene(root);
         primaryStage.setScene(scene);
        
         primaryStage.show();
         
-        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                canvas.getEventHandler().Event(event);
-            }
+        scene.setOnKeyPressed((KeyEvent event) -> {
+            canvas.getEventHandler().Event(event);
         });
     }
 

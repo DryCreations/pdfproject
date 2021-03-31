@@ -3,6 +3,7 @@
  */
 package com.groupseven.pdfproject;
 
+import java.awt.image.BufferedImage;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -13,6 +14,7 @@ import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.image.Image;
 
 
 /**
@@ -27,89 +29,110 @@ import java.util.List;
 public class MainCanvas extends Pane{
 	
 	protected Canvas canvas;
-	private List<Shapes> shapes;
+	private List<Shape> shapes;
 	private HandlingEvents eventHandler;
+        private Image bg;
+        private double width, height;
 	
-	
-	public MainCanvas() {
-        canvas = new Canvas(App.WINDOW_WIDTH, App.WINDOW_HEIGHT);
-        shapes = new ArrayList<>();
-        getChildren().add(canvas);
+	public MainCanvas(double width, double height, Image bg) {
+            this.width = width;
+            this.height = height;
+            canvas = new Canvas(width, height);
+            shapes = new ArrayList<>();
+            getChildren().add(canvas);
+            this.bg = bg;
+            
+            // default event handler to avoid errors in console.
+            eventHandler = new HandlingEvents() {
+                @Override
+                public void Event(MouseEvent mouseEvent) {
+                    
+                }
 
-        EventHandler<MouseEvent> handler = new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent e) {
+                @Override
+                public void Event(KeyEvent keyEvent) {
+                    
+                }
+            };
+
+            EventHandler<MouseEvent> handler = (MouseEvent e) -> {
                 eventHandler.Event(e);
-            }
-        };
+            };
 
-        canvas.addEventHandler(MouseEvent.MOUSE_PRESSED, handler);
-        canvas.addEventHandler(MouseEvent.MOUSE_DRAGGED, handler);
-        canvas.addEventHandler(MouseEvent.MOUSE_RELEASED, handler);
-        canvas.addEventHandler(MouseEvent.MOUSE_CLICKED, handler);
-    }
+            canvas.addEventHandler(MouseEvent.MOUSE_PRESSED, handler);
+            canvas.addEventHandler(MouseEvent.MOUSE_DRAGGED, handler);
+            canvas.addEventHandler(MouseEvent.MOUSE_RELEASED, handler);
+            canvas.addEventHandler(MouseEvent.MOUSE_CLICKED, handler);
+        }
 	
 	/// \brief keep the track of all the shapes on canvas
 	/// \ref t18_1 "task 18.1" 
 	
-	public List<Shapes> getShapes() {
-        return shapes;
-    }
+	public List<Shape> getShapes() {
+            return shapes;
+        }
 	
 	/// \return the current event handler
 	/// \ref t18_1 "task 18.1"
 	 public HandlingEvents getEventHandler() {
-	        return eventHandler;
-	    }
+            return eventHandler;
+        }
 	 
 	 /// \brief sets the event handler
 	/// \ref t18_1 "task 18.1"
 	 /// @param  eventHandler the new event handler
 	 public void setEventHandler(HandlingEvents eventHandler) {
-	        this.eventHandler = eventHandler;
-	    }
+            this.eventHandler = eventHandler;
+        }
 	 
 	
 	 public void clear(Color color) {
-	        GraphicsContext gc = canvas.getGraphicsContext2D();
-	        gc.setFill(color);
-	        gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
-	    }
+            GraphicsContext gc = canvas.getGraphicsContext2D();
+            gc.setFill(color);
+            gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+            
+            
+        }
 	 
 	 /// \brief clears the canvas leaving a fresh new white background
 	/// \ref t18_1 "task 18.1"
 	 public void clear() {
-	        clear(Color.WHITE);
-	    }
+            clear(Color.WHITE);
+            GraphicsContext gc = canvas.getGraphicsContext2D();
+            gc.drawImage(bg,0.0,0.0,canvas.getWidth(),canvas.getHeight());
+        }
 	 
 	 /// \brief draws the shape on the canvas and when selected highlights the shape
 	/// \ref t18_1 "task 18.1"
 	 private void render() {
-	        GraphicsContext gc = canvas.getGraphicsContext2D(); 
-	        for (Shapes myShape : shapes) {
-	            myShape.draw(gc);
-	            if(myShape.selected) {
-	            	shapes.get(0).HghlightShape(gc);
-	            }
-	        }
+            GraphicsContext gc = canvas.getGraphicsContext2D(); 
+            for (Shape myShape : shapes) {
+                myShape.draw(gc);
+                if(myShape.selected) {
+                    myShape.HighlightShape(gc);
+                }
+            }
 	 }
 	 
 	 /// \brief The canvas is updated every time the shape is selected  or deselected 
 	/// or whenever the backspace or delete key is pressed to remove the selected shape.
 	/// \ref t18_1 "task 18.1"
 	 public void update() {
-	        clear();
-	        render();
-	    }
+            clear();
+            render();
+        }
 	 
 	/// \ref t18_1 "task 18.1"
 	 private void deselectShapes() {
-	        for (Shapes shape : shapes) {
-	            shape.setElementSelected(false);
-	        }
-	        update();
+            for (Shape shape : shapes) {
+                shape.setElementSelected(false);
+            }
+            update();
 	 }
-
+         
+         public GraphicsContext getGraphicsContext() {
+             return canvas.getGraphicsContext2D();
+         }
 }
 
 /**@}*/
