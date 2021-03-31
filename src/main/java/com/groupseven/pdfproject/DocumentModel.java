@@ -18,6 +18,7 @@ import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.List;
+import java.awt.Color;
 
 /**
  *
@@ -29,7 +30,12 @@ public class DocumentModel {
     
     /// \ref t8_1 "task 8.1"
     public DocumentModel() {
-
+        this.pages = new ArrayList<>();
+        BufferedImage bufferedImage = new BufferedImage(595 , 842 , BufferedImage.TYPE_INT_RGB);
+        Graphics2D graphics = bufferedImage.createGraphics();
+        graphics.setColor(Color.WHITE);
+        graphics.fillRect ( 0, 0, bufferedImage.getWidth(), bufferedImage.getHeight() );
+        pages.add(new PageModel(bufferedImage));
     }
     
     /// \brief create document from a specific filename
