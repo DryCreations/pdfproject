@@ -17,7 +17,7 @@ import javafx.scene.input.MouseEvent;
 public class SelectTool implements HandlingEvents{
 	
 	private MainCanvas canvas;
-	private Shapes selectedShape;
+	private Shape selectedShape;
 	private Point2D pressedPoint;
 	
 	///\ref t18_1 "task 18.1"
@@ -35,7 +35,7 @@ public class SelectTool implements HandlingEvents{
         if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {
             pressedPoint = currentPoint;
             selectedShape = null;
-            for (Shapes obj : canvas.getShapes())
+            for (Shape obj : canvas.getShapes())
                 if (obj.contains(currentPoint)) {
                     selectedShape = obj;
                     obj.setElementSelected(true);

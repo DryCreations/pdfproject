@@ -47,15 +47,15 @@ public class DocumentModel {
         PDFFile pdfFile = new PDFFile(buffer);
 
         for (int i = 1; i <= pdfFile.getNumPages(); i++) {
-                PDFPage page = pdfFile.getPage(i);
-                Rectangle rect = new Rectangle(0, 0, (int) page.getBBox().getWidth(), (int) page.getBBox().getHeight());
-                BufferedImage bufferedImage = new BufferedImage(rect.width, rect.height, BufferedImage.TYPE_INT_RGB);
-                Image image = page.getImage(rect.width, rect.height, rect, null, true, true);
-                Graphics2D graphicsContext = bufferedImage.createGraphics();
-                graphicsContext.drawImage(image, 0, 0, null);
-                graphicsContext.dispose();
-                
-                pages.add(new PageModel(bufferedImage));
+            PDFPage page = pdfFile.getPage(i);
+            Rectangle rect = new Rectangle(0, 0, (int) page.getBBox().getWidth(), (int) page.getBBox().getHeight());
+            BufferedImage bufferedImage = new BufferedImage(rect.width, rect.height, BufferedImage.TYPE_INT_RGB);
+            Image image = page.getImage(rect.width, rect.height, rect, null, true, true);
+            Graphics2D graphicsContext = bufferedImage.createGraphics();
+            graphicsContext.drawImage(image, 0, 0, null);
+            graphicsContext.dispose();
+
+            pages.add(new PageModel(bufferedImage));
         }
 
         raf.close(); 

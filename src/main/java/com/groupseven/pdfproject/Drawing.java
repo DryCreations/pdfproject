@@ -20,10 +20,10 @@ public class Drawing implements HandlingEvents{
 	
 	private MainCanvas canvas;
 	private Color color;
-	private Shapes selectedShape;
-	private Supplier<Shapes> provideShape;
+	private Shape selectedShape;
+	private Supplier<Shape> provideShape;
 	
-	public Drawing(MainCanvas canvas, Supplier<Shapes> provider, Color color) {
+	public Drawing(MainCanvas canvas, Supplier<Shape> provider, Color color) {
         this.canvas = canvas;
         this.provideShape = provider;
         this.color = color;
