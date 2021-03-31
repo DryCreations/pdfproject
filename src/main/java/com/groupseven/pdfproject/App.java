@@ -85,8 +85,17 @@ public class App extends Application {
             DocumentModel newDoc = new DocumentModel();
             setDisplayDoc(newDoc, 0);
         });
+       
+        
+        MenuItem saveDocument = new MenuItem("Save Document");
+        
+        /// ref t8_8 "task 8.8"
+        saveDocument.setOnAction(e -> {
+            
+        });
         
         fileMenu.getItems().add(newDocument);
+        fileMenu.getItems().add(saveDocument);
 
         return fileMenu;
     }

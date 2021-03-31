@@ -5,6 +5,7 @@
  */
 package com.groupseven.pdfproject;
 
+import com.itextpdf.kernel.pdf.PdfDocument;
 import com.sun.pdfview.PDFFile;
 import com.sun.pdfview.PDFPage;
 import java.awt.Graphics2D;
@@ -27,6 +28,7 @@ import java.awt.Color;
 public class DocumentModel {
     private String filename;
     private List<PageModel> pages;
+    PdfDocument pdfDoc;
     
     /// \ref t8_1 "task 8.1"
     public DocumentModel() {
