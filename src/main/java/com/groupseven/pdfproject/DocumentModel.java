@@ -6,6 +6,12 @@
 package com.groupseven.pdfproject;
 
 import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfPage;
+import com.itextpdf.kernel.pdf.PdfReader;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.itextpdf.layout.Canvas;
+import com.itextpdf.layout.Document;
 import com.sun.pdfview.PDFFile;
 import com.sun.pdfview.PDFPage;
 import java.awt.Graphics2D;
@@ -28,7 +34,6 @@ import java.awt.Color;
 public class DocumentModel {
     private String filename;
     private List<PageModel> pages;
-    PdfDocument pdfDoc;
     
     /// \ref t8_1 "task 8.1"
     public DocumentModel() {
@@ -103,7 +108,26 @@ public class DocumentModel {
     }
 
     /// \ref t8_8 "task 8.8"
-    public void export() {
-
+    public void export(File dest) throws IOException {
+        dest.getParentFile().mkdirs();
+        PdfReader reader = new PdfReader(filename);
+//        PdfDocument srcDoc = new PdfDocument(reader);
+        PdfWriter writer = new PdfWriter(dest);
+        PdfDocument pdfDoc = new PdfDocument(reader, writer);
+        
+//        srcDoc.copyPagesTo(1, srcDoc.getNumberOfPages() - 1, pdfDoc);
+        
+        for (int i = 0; i < pages.size(); i++) {
+            PdfPage page = pdfDoc.getPage(i + 1);
+            List<Shape> shapes = pages.get(i).getCanvas().getShapes();
+            PdfCanvas canvas = new PdfCanvas(page);
+            
+            for (Shape s : shapes) {
+                s.drawOnPdfCanvas(canvas, page);
+            }
+            
+        }
+//        srcDoc.close();
+        pdfDoc.close();
     }
 }
