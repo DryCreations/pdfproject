@@ -1,2 +1,5 @@
-package com.groupseven.pdfproject.utilities;public class DrawSettings {
+package com.groupseven.pdfproject.utilities;
+
+public class DrawSettings {
+
 }

@@ -1,31 +1,37 @@
-package com.groupseven.pdfproject.model;
+package com.groupseven.pdfproject.utilities;
 
 import com.groupseven.pdfproject.MainCanvas;
-import javafx.geometry.Point2D;
-import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
 
 import java.util.function.BiConsumer;
 
 
 public enum DrawingMode {
 
-    PEN((BiConsumer<Canvas, Line>) (canvas, line) -> {
-//        canvas.getChildren().add(line);
-        canvas.getGraphicsContext2D().strokeLine(
+    PEN((BiConsumer<MainCanvas, Line>) (canvas, line) -> {
+        canvas.getCanvas().getGraphicsContext2D().strokeLine(
                 line.getStartX(),
                 line.getStartY(),
                 line.getEndX(),
                 line.getEndY()
         );
     })
-    , ERASER((BiConsumer<Canvas, Point2D>) (canvas, origin) ->
-            canvas.getGraphicsContext2D().clearRect(
-                    origin.getX() - 2,
-                    origin.getY() - 2,
-                    100,
-                    100
+    , ERASER((BiConsumer<MainCanvas, Rectangle>) (canvas, rect) ->
+            canvas.getCanvas().getGraphicsContext2D().clearRect(
+                    rect.getX() - 2,
+                    rect.getY() - 2,
+                    rect.getWidth(),
+                    rect.getHeight()
             ))
+    , RECTANGLE((BiConsumer<MainCanvas, Rectangle>) (canvas, rect) -> {
+        canvas.getCanvas().getGraphicsContext2D().fillRect(
+                rect.getX(),
+                rect.getY(),
+                rect.getWidth(),
+                rect.getHeight());
+    })
     ;
     private BiConsumer<?, ?> _action;
 

@@ -60,7 +60,7 @@ public abstract class Shapes implements HandlingEvents{
 	  * \brief Highlights the respective shape
 	  * @param gc graphic context from the canvas
 	  */   
-	    public abstract void HghlightShape(final GraphicsContext gc);
+	    public abstract void highlightShape(final GraphicsContext gc);
 	    
 	    public boolean isValidShape() {
 	        for (Point2D p : pointsOfShape)

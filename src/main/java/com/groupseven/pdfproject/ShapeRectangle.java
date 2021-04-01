@@ -69,10 +69,9 @@ public class ShapeRectangle extends Shapes{
 	 * \brief highlights the rectangle when it is selected.
 	 */
 	@Override
-	public void HghlightShape(GraphicsContext gc) {
+	public void highlightShape(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		if(Shapes.selected) {
-			
 
 			javafx.scene.shape.Rectangle bound = getBound();
 			gc.setLineWidth(7.0);
