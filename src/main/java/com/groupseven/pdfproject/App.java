@@ -8,10 +8,12 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -25,6 +27,8 @@ import javafx.stage.Stage;
 public class App extends Application {
     DocumentModel doc;
     int currentPage;
+    private Scene mainScene;
+    ShapesToolBar shapesToolBar;
 
     /// \ref t8_3 "task 8.3"
     private EventHandler handleImportAsset = new EventHandler<ActionEvent>() {
@@ -41,6 +45,7 @@ public class App extends Application {
     private void initializeDocument() {
         try {
             doc = new DocumentModel("src/main/resources/test_pdf.pdf");
+//            doc = new DocumentModel();
             currentPage = 0;
         } catch (IOException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
@@ -51,9 +56,7 @@ public class App extends Application {
     /// \return VBox displaying the pdf and canvas element
     ///
     /// \ref t14_1 "task 14.1"
-    private VBox createViewbox() {
-    	
-        PageModel page = doc.getPage(currentPage);
+    private VBox createViewbox(PageModel page) {
         VBox vbox = new VBox(0);
         vbox.setAlignment(Pos.BASELINE_RIGHT);
         
@@ -76,6 +79,14 @@ public class App extends Application {
     /// \ref t14_2_1 "task 14.2.1"
     private Menu createFileMenu() {
         Menu fileMenu = new Menu("File");
+        
+        MenuItem newDocument = new MenuItem("New Document");
+        newDocument.setOnAction(e -> {
+            DocumentModel newDoc = new DocumentModel();
+            setDisplayDoc(newDoc, 0);
+        });
+        
+        fileMenu.getItems().add(newDocument);
 
         return fileMenu;
     }
@@ -175,7 +186,6 @@ public class App extends Application {
         primaryStage.setTitle("PDF Project");
         //root BorderPane allows for more versatile alignment than HBox or VBox
         BorderPane root = new BorderPane();
-        VBox viewbox = createViewbox();
         GridPane ToolBox = createToolBox();
         MenuBar menuBar = createMenuBar();
         Button undobutton = createUndoButton();
@@ -184,8 +194,8 @@ public class App extends Application {
         /// ref t18_1 "task 18.1"
         /// The HBox SelectBox provides the option for Select Tool and the Shape
         HBox selectBox =new HBox();
-        MainCanvas canvas = doc.getPage(currentPage).getCanvas();
-        selectBox.getChildren().add(new ShapesToolBar(canvas));
+        shapesToolBar = new ShapesToolBar();
+        selectBox.getChildren().add(shapesToolBar);
 
 
         GridPane.setConstraints(undobutton, 0, 0);
@@ -193,19 +203,34 @@ public class App extends Application {
        
         root.setTop(menuBar);
         root.setLeft(ToolBox);
-        root.setCenter(viewbox);
         root.setRight(selectBox);
         
         ToolBox.getChildren().addAll(undobutton,redobutton);
 
-        Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
+        mainScene = new Scene(root);
+        primaryStage.setScene(mainScene);
+        
+        setDisplayDoc(doc, 0);
        
         primaryStage.show();
         
-        scene.setOnKeyPressed((KeyEvent event) -> {
+        MainCanvas canvas = doc.getPage(currentPage).getCanvas();
+        mainScene.setOnKeyPressed((KeyEvent event) -> {
             canvas.getEventHandler().Event(event);
         });
+    }
+    
+    public void setDisplayDoc(DocumentModel document, int pageNum) {
+        currentPage = 0;
+        doc = document;
+        PageModel page = document.getPage(pageNum);
+        BorderPane root = (BorderPane) mainScene.getRoot();
+        
+        MainCanvas canvas = page.getCanvas();
+        
+        shapesToolBar.setCanvas(canvas);
+        
+        root.setCenter(createViewbox(page));
     }
 
     public static void main(String[] args) {
