@@ -5,6 +5,7 @@
  */
 package com.groupseven.pdfproject;
 
+import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfReader;
@@ -38,7 +39,7 @@ public class DocumentModel {
     /// \ref t8_1 "task 8.1"
     public DocumentModel() {
         this.pages = new ArrayList<>();
-        BufferedImage bufferedImage = new BufferedImage(595 , 842 , BufferedImage.TYPE_INT_RGB);
+        BufferedImage bufferedImage = new BufferedImage(600 , 700 , BufferedImage.TYPE_INT_RGB);
         Graphics2D graphics = bufferedImage.createGraphics();
         graphics.setColor(Color.WHITE);
         graphics.fillRect ( 0, 0, bufferedImage.getWidth(), bufferedImage.getHeight() );
@@ -110,16 +111,26 @@ public class DocumentModel {
     /// \ref t8_8 "task 8.8"
     public void export(File dest) throws IOException {
         dest.getParentFile().mkdirs();
-        PdfReader reader = new PdfReader(filename);
-//        PdfDocument srcDoc = new PdfDocument(reader);
         PdfWriter writer = new PdfWriter(dest);
-        PdfDocument pdfDoc = new PdfDocument(reader, writer);
-        
-//        srcDoc.copyPagesTo(1, srcDoc.getNumberOfPages() - 1, pdfDoc);
+        PdfDocument pdfDoc;
+        if (filename != null) {
+            PdfReader reader = new PdfReader(filename);
+            pdfDoc = new PdfDocument(reader, writer);
+        } else {
+            pdfDoc = new PdfDocument(writer);
+        }
         
         for (int i = 0; i < pages.size(); i++) {
-            PdfPage page = pdfDoc.getPage(i + 1);
-            List<Shape> shapes = pages.get(i).getCanvas().getShapes();
+            PdfPage page;
+            PageModel pageModel = pages.get(i);
+            if (filename != null) {
+                page = pdfDoc.getPage(i + 1);
+            } else {
+                PageSize pageSize = new PageSize((float)pageModel.getCanvas().getWidth(), (float)pageModel.getCanvas().getHeight());
+                page = pdfDoc.addNewPage(pageSize);
+            }
+            
+            List<Shape> shapes = pageModel.getCanvas().getShapes();
             PdfCanvas canvas = new PdfCanvas(page);
             
             for (Shape s : shapes) {
