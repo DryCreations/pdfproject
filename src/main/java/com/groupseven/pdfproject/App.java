@@ -5,8 +5,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,6 +18,10 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tooltip;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -82,13 +89,103 @@ public class App extends Application {
         
         MenuItem newDocument = new MenuItem("New Document");
         newDocument.setOnAction(e -> {
-            DocumentModel newDoc = new DocumentModel();
-            setDisplayDoc(newDoc, 0);
+            newDocumentWindow();
         });
         
         fileMenu.getItems().add(newDocument);
 
         return fileMenu;
+    }
+
+    /// \brief display new window for creating new documents
+    ///
+    /// \ref t8_2 "task 8.2"
+    private void newDocumentWindow(){
+        BorderPane newdocPane = new BorderPane();
+        Scene newdocScene = new Scene(newdocPane, 300, 250);
+        Stage newdocWindow = new Stage();
+
+        Button createdocButton = new Button("Create New Document");
+        RadioButton defaultButton = new RadioButton("Default");
+        RadioButton customButton = new RadioButton("Custom");
+        ToggleGroup newdocGroup = new ToggleGroup();
+        defaultButton.setToggleGroup(newdocGroup);
+        defaultButton.setSelected(true);
+        customButton.setToggleGroup(newdocGroup);
+
+        Label widthLabel = new Label("Width: ");
+        Label heightLabel = new Label("Height: ");
+        TextField widthField = new TextField("595");
+        widthField.setMaxWidth(100);
+        TextField heightField = new TextField("842");
+        heightField.setMaxWidth(100);
+
+        widthField.disableProperty().bind(defaultButton.selectedProperty());
+        heightField.disableProperty().bind(defaultButton.selectedProperty());
+
+        defaultButton.setOnAction(f -> {
+            widthField.setText("595");
+            heightField.setText("842");
+        });
+
+        widthField.textProperty().addListener(new ChangeListener<String>() {
+                @Override
+                public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue){
+                    if(!newValue.matches("\\d*")){
+                        widthField.setText("595");
+                    }
+                }
+        });
+
+        heightField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue){
+                if(!newValue.matches("\\d*")){
+                    heightField.setText("842");
+                }
+            }
+        });
+
+        VBox dimensionBox = new VBox(5);
+
+        dimensionBox.setPadding(new Insets(25, 25, 25, 50));
+        dimensionBox.getChildren().addAll(defaultButton, customButton, widthLabel, widthField, heightLabel, heightField, createdocButton);
+
+        createdocButton.setOnAction(f -> {
+            if(defaultButton.isSelected()){
+                DocumentModel newDoc = new DocumentModel();
+                setDisplayDoc(newDoc, 0);
+            }else{
+                int width = Integer.parseInt(widthField.getText());
+                int height = Integer.parseInt(heightField.getText());
+                DocumentModel newDoc = new DocumentModel(width, height);
+                setDisplayDoc(newDoc, 0);
+            }
+            newdocWindow.close();
+        });
+
+        newdocPane.setCenter(dimensionBox);
+
+        newdocWindow.setTitle("New Document");
+        newdocWindow.setScene(newdocScene);
+        newdocWindow.show();
+    }
+
+    /// \brief create edit menu element
+    /// \return Menu containing all relevant dropdown elements
+    ///
+    /// \ref t8_2 "task 8.2"
+    private Menu createEditMenu(){
+        Menu editMenu = new Menu("Edit");
+
+        MenuItem resize = new MenuItem("Resize");
+        resize.setOnAction(e -> {
+
+        });
+
+        editMenu.getItems().add(resize);
+
+        return editMenu;
     }
 
     /// \brief create drawing menu element
@@ -121,8 +218,9 @@ public class App extends Application {
         Menu fileMenu = createFileMenu();
         Menu drawingMenu = createDrawingMenu();
         Menu helpMenu = createHelpMenu();
+        Menu editMenu = createEditMenu();
 
-        menuBar.getMenus().addAll(fileMenu, drawingMenu, helpMenu);
+        menuBar.getMenus().addAll(fileMenu, editMenu, drawingMenu, helpMenu);
 
         return menuBar;
     }

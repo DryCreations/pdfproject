@@ -37,6 +37,18 @@ public class DocumentModel {
         graphics.fillRect ( 0, 0, bufferedImage.getWidth(), bufferedImage.getHeight() );
         pages.add(new PageModel(bufferedImage));
     }
+
+    /// \brief create new document with specific dimensions
+    ///
+    /// \ref t8_2 "task 8.2"
+    public DocumentModel(int width, int height){
+        this.pages = new ArrayList<>();
+        BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        Graphics2D graphics = bufferedImage.createGraphics();
+        graphics.setColor(Color.WHITE);
+        graphics.fillRect ( 0, 0, bufferedImage.getWidth(), bufferedImage.getHeight() );
+        pages.add(new PageModel(bufferedImage));
+    }
     
     /// \brief create document from a specific filename
     ///
