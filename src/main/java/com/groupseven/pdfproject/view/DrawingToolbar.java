@@ -1,9 +1,9 @@
 package com.groupseven.pdfproject.view;
 
 import com.groupseven.pdfproject.MainCanvas;
+import com.groupseven.pdfproject.utilities.DrawingAction;
 import com.groupseven.pdfproject.utilities.DrawingMode;
 import com.groupseven.pdfproject.utilities.DrawingTool;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
@@ -13,9 +13,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Shape;
 
-
-import java.util.ArrayList;
+import java.util.function.BiConsumer;
 
 public class DrawingToolbar extends ToolBar {
 
@@ -27,7 +27,7 @@ public class DrawingToolbar extends ToolBar {
     public DrawingToolbar(MainCanvas canvas) {
         _canvas = canvas;
         _toggleGroup = new ToggleGroup();
-        _colorPicker = new ColorPicker(Color.BLACK);
+        _colorPicker = new ColorPicker(Color.PINK);
         _drawingTool = new DrawingTool(_canvas);
 
         RadioButton penBtn = new RadioButton("Pen");

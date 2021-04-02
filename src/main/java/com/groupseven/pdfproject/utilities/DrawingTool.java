@@ -6,21 +6,20 @@ import javafx.geometry.Point2D;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
-import java.util.stream.Collectors;
 
 public class DrawingTool implements EventHandler<MouseEvent> {
 
-    private DrawingMode _mode;
+    private DrawingMode _drawingMode;
     private final MainCanvas _canvas;
-    private Stack<Pair<BiConsumer,?>> _subActions;
+    private Stack<Pair<BiConsumer<MainCanvas, Shape>, Shape>> _subActions;
     private double _xStart;
     private double _xEnd;
     private double _yStart;
@@ -28,6 +27,7 @@ public class DrawingTool implements EventHandler<MouseEvent> {
     private double _fillWidth;
     private double _fillHeight;
     private boolean _shapeStarted;
+    private boolean _isSelected;
 
     public DrawingTool(MainCanvas canvas) {
         _canvas = canvas;
@@ -37,11 +37,12 @@ public class DrawingTool implements EventHandler<MouseEvent> {
         _fillWidth = 5;
         _fillHeight = 5;
         _shapeStarted = false;
+        _isSelected = false;
     }
 
     public void setDrawingMode(DrawingMode drawingMode) {
         reset();
-        _mode = drawingMode;
+        _drawingMode = drawingMode;
     }
 
     private void reset() {
@@ -52,7 +53,7 @@ public class DrawingTool implements EventHandler<MouseEvent> {
 
     @Override
     public void handle(MouseEvent mouseEvent) {
-        if (mouseEvent.getEventType() == MouseEvent.MOUSE_PRESSED && _mode == DrawingMode.SELECT)
+        if (mouseEvent.getEventType() == MouseEvent.MOUSE_PRESSED && _drawingMode == DrawingMode.SELECT)
             handleSelect(mouseEvent);
 
         if (mouseEvent.getEventType() == MouseEvent.MOUSE_RELEASED) {
@@ -61,7 +62,7 @@ public class DrawingTool implements EventHandler<MouseEvent> {
             return;
         }
 
-        if (_mode == DrawingMode.RECTANGLE) {
+        if (_drawingMode == DrawingMode.RECTANGLE) {
             handleRectangle(mouseEvent);
             return;
         }
@@ -72,7 +73,7 @@ public class DrawingTool implements EventHandler<MouseEvent> {
         if (_xStart >= 0) {
             _xEnd = mouseEvent.getX();
             _yEnd = mouseEvent.getY();
-            Object methodArgs = getMethodArgs();
+            Shape methodArgs = getMethodArgs();
 
             if (methodArgs != null)
                 performActionAndPushOntoUndoStack(methodArgs);
@@ -92,7 +93,7 @@ public class DrawingTool implements EventHandler<MouseEvent> {
             _xEnd = event.getX();
             _yEnd = event.getY();
 
-            Object methodArgs = getMethodArgs();
+            Shape methodArgs = getMethodArgs();
 
             if (methodArgs != null) {
                 if (_shapeStarted )
@@ -109,62 +110,102 @@ public class DrawingTool implements EventHandler<MouseEvent> {
         }
     }
 
-    private boolean shapeContainsPoint(Object shape) {
-        return ((Rectangle) shape).contains(new Point2D(_xEnd, _yEnd));
+    private boolean shapeContainsPoint(Shape shape) {
+        return shape.contains(new Point2D(_xEnd, _yEnd));
     }
 
 
     private void handleSelect(MouseEvent mouseEvent) {
-        _xEnd = mouseEvent.getX();
-        _yEnd = mouseEvent.getY();
 
-        Stack<Pair<Consumer, ?>> undos = _canvas.getUndoStack();
-        while (!undos.empty() && !shapeContainsPoint(undos.peek().getValue())) {
-            _canvas.undo();
+        if (!_isSelected){
+            _xEnd =  mouseEvent.getX();
+            _yEnd =  mouseEvent.getY();
         }
 
-        Stack<Pair<Consumer, ?>> redos = _canvas.getRedoStack();
+        Stack<Pair<Consumer<Shape>, Shape>> undos = _canvas.getUndoStack();
+        Stack<Pair<Consumer<Shape>, Shape>> redos = new Stack<>();
+        redos.addAll(_canvas.getRedoStack());
+        Stack<Pair<Consumer<Shape>, Shape>> dirtyRedos = new Stack<>();
 
+        // undo until you find a shape in that area
+        // if you don't find a shape, redo until dirtyRedos is empty
+        Pair<Consumer<Shape>,Shape> shapeDrawing = undos.peek();
+        boolean currentShapeContainsPoint = shapeContainsPoint(shapeDrawing.getValue());
+        while (!undos.empty() && !currentShapeContainsPoint) {
+            dirtyRedos.push(shapeDrawing);
+            undos.pop();
+            _canvas.refresh();
 
+            shapeDrawing = undos.peek();
+            currentShapeContainsPoint = shapeContainsPoint(shapeDrawing.getValue());
+        }
 
-        // undo until this point
         // wrap the object
+        if (currentShapeContainsPoint && !_isSelected) {
+            shapeDrawing.getValue();
+            Consumer<Shape> action = consumable -> _drawingMode
+                .executeAction(_canvas, consumable);
+
+            // only wanna select one. for some reason it's selecting multiple
+            _canvas.addAction(new Pair<>(action, shapeDrawing.getValue()));
+            System.out.println("HERE");
+            _drawingMode.executeAction(_canvas, shapeDrawing.getValue());
+        }
+
         // redo everything
+        while (!dirtyRedos.empty()) {
+            Pair<Consumer<Shape>, Shape> consumerPair = dirtyRedos.pop();
+            consumerPair.getKey()
+                    .accept(consumerPair.getValue());
+        }
+        _canvas.setRedoStack(redos);
 
     }
 
-    private <T> void addActionToUndo(T t) {
-        Consumer<T> action = consumable -> _mode.getAction()
-                .accept(_canvas, consumable);
+    private void addActionToUndo(Shape shape) {
+        Consumer<Shape> action = consumable ->   {
+            if (_drawingMode == DrawingMode.PEN)
+                DrawingAction.DRAW.accept(_canvas, consumable);
+            else if (_drawingMode == DrawingMode.ERASER)
+                DrawingAction.ERASE.accept(_canvas, consumable);
+            else if (_drawingMode == DrawingMode.RECTANGLE)
+                DrawingAction.DRAW_RECTANGLE.accept(_canvas, consumable);
+            else if (_drawingMode == DrawingMode.SELECT)
+                DrawingAction.SELECT.accept(_canvas, consumable);
+        };
 
-        _canvas.addAction(new Pair<>(action, t));
-        _mode.getAction().accept(_canvas, t);
+        _canvas.addAction(new Pair<>(action, shape));
+        _drawingMode.executeAction(_canvas, shape);
     }
 
-    private Object getMethodArgs() {
-        return _mode == DrawingMode.PEN ?
+    private Shape getMethodArgs() {
+        return _drawingMode == DrawingMode.PEN ?
                 new Line(_xStart, _yStart, _xEnd, _yEnd)
-                : _mode == DrawingMode.ERASER ?
+                : _drawingMode == DrawingMode.ERASER ?
                 new Rectangle(_xStart, _yStart, _fillWidth, _fillHeight)
-                : _mode == DrawingMode.RECTANGLE ?
+                : _drawingMode == DrawingMode.RECTANGLE ?
                 new Rectangle(_xStart, _yStart, (_xEnd - _xStart), (_yEnd - _yStart))
                 : null;
     }
 
     private void addCombinedSubActionsToUndo() {
-        Consumer<List<Pair<BiConsumer,?>>> aggregateAction =  actions -> {
-            actions.forEach(
-                    action -> action.getKey().accept(
-                            _canvas,
-                            action.getValue()));
+
+        if (_subActions.empty()) {
+            reset();
+            return;
+        }
+
+        List<Pair<BiConsumer<MainCanvas,Shape>,Shape>> subActions = new ArrayList<>(_subActions);
+        Consumer<Shape> aggregateAction = __ -> {
+            subActions.forEach(action -> action.getKey().accept(_canvas, action.getValue()));
         };
 
-        _canvas.addAction(new Pair<>(aggregateAction, new ArrayList(_subActions)));
+        _canvas.addAction(new Pair<>(aggregateAction, null));
         reset();
     }
 
-    private <T> void performActionAndPushOntoUndoStack(T t) {
-        _subActions.push(new Pair<>(_mode.getAction(), t));
-        _mode.getAction().accept(_canvas, t);
+    private void performActionAndPushOntoUndoStack(Shape shape) {
+        _subActions.push(new Pair<>(_drawingMode.getAction(), shape));
+        _drawingMode.executeAction(_canvas, shape);
     }
 }

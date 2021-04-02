@@ -11,6 +11,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Shape;
 import javafx.util.Pair;
 import sun.security.util.Cache;
 
@@ -37,13 +38,14 @@ public class MainCanvas extends Pane {
     protected Canvas canvas;
     private List<Shapes> shapes;
     private HandlingEvents eventHandler;
-    private final Stack<Pair<Consumer,?>> _undoStack;
-    private Stack<Pair<Consumer,?>> _redoStack;
+    private final Stack<Pair<Consumer<Shape>,Shape>> _undoStack;
+    private Stack<Pair<Consumer<Shape>,Shape>> _redoStack;
 
     public MainCanvas() {
         _undoStack = new Stack<>();
         _redoStack = new Stack<>();
         canvas = new Canvas(App.WINDOW_WIDTH, App.WINDOW_HEIGHT);
+        canvas.getGraphicsContext2D().setFill(Color.PINK); // TODO Charles: Make Dynamic
         shapes = new ArrayList<>();
         getChildren().add(canvas);
     }
@@ -119,15 +121,18 @@ public class MainCanvas extends Pane {
     }
 
 
-    public void addAction(Pair<Consumer, ?> actionAndArgPair){
+    public void addAction(Pair<Consumer<Shape>, Shape> actionAndArgPair){
         _undoStack.push(actionAndArgPair);
     }
 
     public void undo() {
         if (_undoStack.empty())
             return;
-
         _redoStack.push(_undoStack.pop());
+        refresh();
+    }
+
+    public void refresh() {
         clearScreen();
         _undoStack.forEach(
                 consumerPair -> consumerPair.getKey().accept(consumerPair.getValue()));
@@ -137,7 +142,7 @@ public class MainCanvas extends Pane {
         if (_redoStack.empty())
             return;
 
-        Pair<Consumer, ?> redoPair = _redoStack.pop();
+        Pair<Consumer<Shape>, Shape> redoPair = _redoStack.pop();
         _undoStack.push(redoPair);
         redoPair.getKey().accept(redoPair.getValue());
     }
@@ -152,12 +157,16 @@ public class MainCanvas extends Pane {
         gc.clearRect(0,0,canvas.getWidth(), canvas.getWidth());
     }
 
-    public Stack<Pair<Consumer, ?>> getUndoStack() {
+    public Stack<Pair<Consumer<Shape>, Shape>> getUndoStack() {
         return _undoStack;
     }
 
-    public Stack<Pair<Consumer, ?>> getRedoStack() {
+    public Stack<Pair<Consumer<Shape>, Shape>> getRedoStack() {
         return _redoStack;
+    }
+
+    public void setRedoStack(Stack<Pair<Consumer<Shape>, Shape>> stack) {
+        _redoStack = stack;
     }
 }
 
