@@ -3,6 +3,7 @@
  */
 package com.groupseven.pdfproject;
 
+import com.sun.xml.internal.bind.v2.runtime.reflect.opt.FieldAccessor_Ref;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.scene.canvas.Canvas;
@@ -14,9 +15,12 @@ import javafx.util.Pair;
 import sun.security.util.Cache;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Stack;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 
 /**
@@ -83,6 +87,7 @@ public class MainCanvas extends Pane {
     /// \ref t18_1 "task 18.1"
     public void clear() {
         clear(Color.WHITE);
+
     }
 
     /// \brief draws the shape on the canvas and when selected highlights the shape
@@ -145,6 +150,14 @@ public class MainCanvas extends Pane {
         Canvas canvas = getCanvas();
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.clearRect(0,0,canvas.getWidth(), canvas.getWidth());
+    }
+
+    public Stack<Pair<Consumer, ?>> getUndoStack() {
+        return _undoStack;
+    }
+
+    public Stack<Pair<Consumer, ?>> getRedoStack() {
+        return _redoStack;
     }
 }
 

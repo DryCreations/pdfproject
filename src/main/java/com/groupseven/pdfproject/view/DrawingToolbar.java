@@ -41,6 +41,7 @@ public class DrawingToolbar extends ToolBar {
         rectangleBtn.setUserData(DrawingMode.RECTANGLE);
         RadioButton selectBtn = new RadioButton("Select");
         selectBtn.setToggleGroup(_toggleGroup);
+        selectBtn.setUserData(DrawingMode.SELECT);
 
         RadioButton[] buttons = new RadioButton[]{penBtn, eraserBtn, rectangleBtn, selectBtn};
         getItems().addAll(buttons);
