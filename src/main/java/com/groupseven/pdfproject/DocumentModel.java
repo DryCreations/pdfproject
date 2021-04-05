@@ -18,6 +18,7 @@ import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.List;
+import java.awt.Color;
 
 /**
  *
@@ -29,7 +30,12 @@ public class DocumentModel {
     
     /// \ref t8_1 "task 8.1"
     public DocumentModel() {
-
+        this.pages = new ArrayList<>();
+        BufferedImage bufferedImage = new BufferedImage(595 , 842 , BufferedImage.TYPE_INT_RGB);
+        Graphics2D graphics = bufferedImage.createGraphics();
+        graphics.setColor(Color.WHITE);
+        graphics.fillRect ( 0, 0, bufferedImage.getWidth(), bufferedImage.getHeight() );
+        pages.add(new PageModel(bufferedImage));
     }
     
     /// \brief create document from a specific filename
@@ -47,15 +53,15 @@ public class DocumentModel {
         PDFFile pdfFile = new PDFFile(buffer);
 
         for (int i = 1; i <= pdfFile.getNumPages(); i++) {
-                PDFPage page = pdfFile.getPage(i);
-                Rectangle rect = new Rectangle(0, 0, (int) page.getBBox().getWidth(), (int) page.getBBox().getHeight());
-                BufferedImage bufferedImage = new BufferedImage(rect.width, rect.height, BufferedImage.TYPE_INT_RGB);
-                Image image = page.getImage(rect.width, rect.height, rect, null, true, true);
-                Graphics2D graphicsContext = bufferedImage.createGraphics();
-                graphicsContext.drawImage(image, 0, 0, null);
-                graphicsContext.dispose();
-                
-                pages.add(new PageModel(bufferedImage));
+            PDFPage page = pdfFile.getPage(i);
+            Rectangle rect = new Rectangle(0, 0, (int) page.getBBox().getWidth(), (int) page.getBBox().getHeight());
+            BufferedImage bufferedImage = new BufferedImage(rect.width, rect.height, BufferedImage.TYPE_INT_RGB);
+            Image image = page.getImage(rect.width, rect.height, rect, null, true, true);
+            Graphics2D graphicsContext = bufferedImage.createGraphics();
+            graphicsContext.drawImage(image, 0, 0, null);
+            graphicsContext.dispose();
+
+            pages.add(new PageModel(bufferedImage));
         }
 
         raf.close(); 

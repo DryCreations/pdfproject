@@ -22,7 +22,7 @@ public class Drawing implements HandlingEvents{
 	private Color color;
 	private Shapes selectedShape;
 	private Supplier<Shapes> provideShape;
-	
+
 	public Drawing(MainCanvas canvas, Supplier<Shapes> provider, Color color) {
         this.canvas = canvas;
         this.provideShape = provider;

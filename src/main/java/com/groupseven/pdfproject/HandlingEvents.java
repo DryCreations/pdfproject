@@ -14,18 +14,18 @@ import javafx.scene.input.MouseEvent;
  *\ref t18_1 "task 18.1"
  */
 public interface HandlingEvents {
-	/**
-	 * \ref t18_1 "task 18.1"
-	 * @param mouseEvent the event to be handled when mouse clicked or dragged
-	 * or released or pressed.
-	 */
-	void Event(MouseEvent mouseEvent);
-	
-	
-	/**
-	 * \ref t18_1 "task 18.1"
-	 * @param keyEvent the event to be handled when backspace or delete key is pressed
-	 * or released or pressed.
-	 */
-	void Event(KeyEvent keyEvent);
+    /**
+     * \ref t18_1 "task 18.1"
+     * @param mouseEvent the event to be handled when mouse clicked or dragged
+     * or released or pressed.
+     */
+    void Event(MouseEvent mouseEvent);
+
+
+    /**
+     * \ref t18_1 "task 18.1"
+     * @param keyEvent the event to be handled when backspace or delete key is pressed
+     * or released or pressed.
+     */
+    void Event(KeyEvent keyEvent);
 }

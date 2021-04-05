@@ -12,12 +12,19 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -34,10 +41,16 @@ public class App extends Application {
     private static DrawingToolbar _drawingToolBar;
 
     private DocumentModel doc;
+    int currentPage;
+    private Scene mainScene;
+    ShapesToolBar shapesToolBar;
 
     /// \ref t8_3 "task 8.3"
-    private EventHandler handleImportAsset = (EventHandler<ActionEvent>) e -> {
+    private EventHandler handleImportAsset = new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent e) {
 
+        }
     };
 
     /// \brief creates a new instance of the Document Model to be displayed
@@ -47,6 +60,8 @@ public class App extends Application {
     private void initializeDocument() {
         try {
             doc = new DocumentModel("src/main/resources/test_pdf.pdf");
+//            doc = new DocumentModel();
+            currentPage = 0;
         } catch (IOException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -56,15 +71,11 @@ public class App extends Application {
     /// \return VBox displaying the pdf and canvas element
     ///
     /// \ref t14_1 "task 14.1"
-    private VBox createViewbox() {
-
-        PageModel page = doc.getPage(0);
+    private VBox createViewbox(PageModel page) {
         VBox vbox = new VBox(0);
         vbox.setAlignment(Pos.BASELINE_RIGHT);
-
         vbox.getChildren().add(page.getNode());
-
-        vbox.getChildren().add(canvas);
+        page.clear();
 
 //        vbox.setOnKeyPressed(new EventHandler<KeyEvent>() {
 //            @Override
@@ -72,7 +83,6 @@ public class App extends Application {
 //                canvas.getEventHandler().Event(event);
 //            }
 //        });
-
 
         return vbox;
     }
@@ -83,6 +93,14 @@ public class App extends Application {
     /// \ref t14_2_1 "task 14.2.1"
     private Menu createFileMenu() {
         Menu fileMenu = new Menu("File");
+
+        MenuItem newDocument = new MenuItem("New Document");
+        newDocument.setOnAction(e -> {
+            DocumentModel newDoc = new DocumentModel();
+            setDisplayDoc(newDoc, 0);
+        });
+
+        fileMenu.getItems().add(newDocument);
 
         return fileMenu;
     }
@@ -127,14 +145,12 @@ public class App extends Application {
 
         Menu fileMenu = createFileMenu();
         Menu drawingMenu = createDrawingMenu();
-
         Menu helpMenu = createHelpMenu();
 
         menuBar.getMenus().addAll(fileMenu, drawingMenu, helpMenu);
 
         return menuBar;
     }
-
 
     /// \brief Create Toolbox elements and populate with buttons
     /// \return GridPane element containing all relevant buttons
@@ -197,7 +213,6 @@ public class App extends Application {
         primaryStage.setTitle("PDF Project");
         //root BorderPane allows for more versatile alignment than HBox or VBox
         BorderPane root = new BorderPane();
-        VBox viewbox = createViewbox();
         GridPane ToolBox = createToolBox();
         MenuBar menuBar = createMenuBar();
         Button undobutton = createUndoButton();
@@ -205,26 +220,43 @@ public class App extends Application {
 
         /// ref t18_1 "task 18.1"
         /// The HBox SelectBox provides the option for Select Tool and the Shape
-        HBox selectBox = new HBox();
-        selectBox.getChildren().add(new ShapesToolBar(canvas));
-
+        HBox selectBox =new HBox();
+        shapesToolBar = new ShapesToolBar();
+        selectBox.getChildren().add(shapesToolBar);
 
         GridPane.setConstraints(undobutton, 0, 0);
         GridPane.setConstraints(redobutton, 1, 0);
 
-
         root.setTop(menuBar);
         root.setLeft(ToolBox);
-        root.setCenter(viewbox);
         root.setRight(selectBox);
 
+        ToolBox.getChildren().addAll(undobutton,redobutton);
 
-        ToolBox.getChildren().addAll(undobutton, redobutton);
+        mainScene = new Scene(root);
+        primaryStage.setScene(mainScene);
 
-        Scene scene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
-        primaryStage.setScene(scene);
+        setDisplayDoc(doc, 0);
 
         primaryStage.show();
+
+        MainCanvas canvas = doc.getPage(currentPage).getCanvas();
+        mainScene.setOnKeyPressed((KeyEvent event) -> {
+            canvas.getEventHandler().Event(event);
+        });
+    }
+
+    public void setDisplayDoc(DocumentModel document, int pageNum) {
+        currentPage = 0;
+        doc = document;
+        PageModel page = document.getPage(pageNum);
+        BorderPane root = (BorderPane) mainScene.getRoot();
+
+        MainCanvas canvas = page.getCanvas();
+
+        shapesToolBar.setCanvas(canvas);
+
+        root.setCenter(createViewbox(page));
     }
 
     public static void main(String[] args) {

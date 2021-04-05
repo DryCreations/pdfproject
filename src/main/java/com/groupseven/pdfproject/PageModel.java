@@ -26,9 +26,8 @@ import javafx.scene.layout.VBox;
 ///
 /// \ref t14_1 "task 14.1"
 public class PageModel {
-    private Canvas canvas;
+    private MainCanvas canvas;
     private BufferedImage bufferedImage;
-    private BackgroundImage background;
     private VBox node;
     private GraphicsContext graphicsContext;
     
@@ -38,11 +37,12 @@ public class PageModel {
     public PageModel(BufferedImage image) {
         bufferedImage = image;
         Image fximage = SwingFXUtils.toFXImage(image, null);
-        canvas = new Canvas(fximage.getWidth(), fximage.getHeight());
-        graphicsContext = canvas.getGraphicsContext2D();
+        
+        canvas = new MainCanvas(fximage.getWidth(), fximage.getHeight(), fximage);
+        
+        graphicsContext = canvas.getGraphicsContext();
+        
         node = new VBox(0);
-        background = new BackgroundImage(fximage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(100, 100, true, true, true, false));
-        node.setBackground(new Background(background));
         node.getChildren().add(canvas);
     }
     
@@ -52,5 +52,14 @@ public class PageModel {
     /// \ref t14_1 "task 14.1"
     public VBox getNode() {
         return node;
+    }
+    
+    
+    public void clear() {
+        canvas.clear();
+    }
+    
+    public MainCanvas getCanvas() {
+        return canvas;
     }
 }
