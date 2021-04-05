@@ -5,7 +5,6 @@ package com.groupseven.pdfproject;
 
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -13,120 +12,136 @@ import java.util.List;
 
 import com.groupseven.pdfproject.HandlingEvents;
 import com.groupseven.pdfproject.MainCanvas;
+
 /**
- * @author Cassandra Mae
- *\defgroup Shapes
- *@{
- *\brief Base class for all the shapes.
- *\ref t18_1 "task 18.1" This class creates the shapes required in order to select them.
+ * @author Cassandra Mae \defgroup Shapes
+ * @{ \brief Base class for all the shapes. \ref t18_1 "task 18.1" This class
+ *    creates the shapes required in order to select them.
  */
-public abstract class Shape implements HandlingEvents{
+public abstract class Shape implements HandlingEvents {
 	public MainCanvas canvas;
 	protected List<Point2D> pointsOfShape;
 	protected Color color;
-        protected boolean selected;
+	protected boolean selected;
 	protected Runnable finishedDrawing;
-	 
-	 
+	protected boolean isLinked;
+	protected String link;
+
 	public Shape() {
-            selected = false;
-        }
-	 
-        public void setColor(Color color) {
-            this.color = color;
-        }
+		selected = false;
+	}
 
-        /**
-         * \ref t18_1 "task 18.1"
-         * 
-         */
-        public void setElementSelected(boolean selected) {
-            this.selected = selected;
-        }
+	public void setColor(Color color) {
+		this.color = color;
+	}
 
+	/**
+	 * \ref t18_1 "task 18.1"
+	 * 
+	 */
+	public void setElementSelected(boolean selected) {
+		this.selected = selected;
+	}
 
-        public void setDidFinishDrawing(Runnable didFinishDrawingCallback) {
-            this.finishedDrawing = didFinishDrawingCallback;
-        }
+	public void setDidFinishDrawing(Runnable didFinishDrawingCallback) {
+		this.finishedDrawing = didFinishDrawingCallback;
+	}
 
-        /**
-         * \brief Draws the respective shape
-         * @param gc graphic context from the canvas
-         */
-        public abstract void draw(final GraphicsContext gc);
+	/**
+	 * \brief Draws the respective shape
+	 * 
+	 * @param gc graphic context from the canvas
+	 */
+	public abstract void draw(final GraphicsContext gc);
 
-        /**
-         * \brief Highlights the respective shape
-         * @param gc graphic context from the canvas
-         */   
-        public abstract void HighlightShape(final GraphicsContext gc);
+	/**
+	 * \brief Highlights the respective shape
+	 * 
+	 * @param gc graphic context from the canvas
+	 */
+	public abstract void HighlightShape(final GraphicsContext gc);
 
-        public boolean isValidShape() {
-            for (Point2D p : pointsOfShape)
-                if (p == null)
-                    return false;
+	/// \ref t18_2 "task 18.2"
+	public void setIsElementLinked(boolean linked) {
+		this.isLinked = linked;
+	}
 
-            return true;
-        }
+	/// \ref t18_2 "task 18.2"
+	public abstract void HighlightLinkedShape(final GraphicsContext gc);
 
-        public boolean contains(final Point2D point) {
-            final Point2D topLeft = getTopLeftPoint();
-            final Point2D bottomRight = getBottomRightPoint();
+	/// \ref t18_2 "task 18.2"
+	public void setUrl(String link) {
+		this.link = link;
+	}
 
-            return point.getX() >= topLeft.getX() && point.getX() <= bottomRight.getX()
-                && point.getY() >= topLeft.getY() && point.getY() <= bottomRight.getY();
-        }
+	public boolean isValidShape() {
+		for (Point2D p : pointsOfShape)
+			if (p == null)
+				return false;
 
-       /**
-        * \ref t18_1 "task 18.1" 
-        * @return the coordinates of the top left corner of the shape
-        */
-       public Point2D getTopLeftPoint() {
-           if (pointsOfShape.isEmpty())
-               return null;
+		return true;
+	}
 
-           double x = pointsOfShape.get(0).getX();
-           double y = pointsOfShape.get(0).getY();
+	public boolean contains(final Point2D point) {
+		final Point2D topLeft = getTopLeftPoint();
+		final Point2D bottomRight = getBottomRightPoint();
 
-           for (int i = 1; i < pointsOfShape.size(); i++) {
-               Point2D p = pointsOfShape.get(i);
-               if (p.getX() < x)
-                   x = p.getX();
-               if (p.getY() < y)
-                   y = p.getY();
-           }
+		return point.getX() >= topLeft.getX() && point.getX() <= bottomRight.getX() && point.getY() >= topLeft.getY()
+				&& point.getY() <= bottomRight.getY();
+	}
 
-           return new Point2D(x, y);
-       }
+	/**
+	 * \ref t18_1 "task 18.1"
+	 * 
+	 * @return the coordinates of the top left corner of the shape
+	 */
+	public Point2D getTopLeftPoint() {
+		if (pointsOfShape.isEmpty())
+			return null;
 
-       /**
-        * \ref t18_1 "task 18.1" 
-        * @return the coordinates of the bottom right corner of the shape
-        */
-       public Point2D getBottomRightPoint() {
-           if (pointsOfShape.isEmpty())
-               return null;
+		double x = pointsOfShape.get(0).getX();
+		double y = pointsOfShape.get(0).getY();
 
-           double x = pointsOfShape.get(0).getX();
-           double y = pointsOfShape.get(0).getY();
+		for (int i = 1; i < pointsOfShape.size(); i++) {
+			Point2D p = pointsOfShape.get(i);
+			if (p.getX() < x)
+				x = p.getX();
+			if (p.getY() < y)
+				y = p.getY();
+		}
 
-           for (int i = 1; i < pointsOfShape.size(); i++) {
-               Point2D p = pointsOfShape.get(i);
-               if (p.getX() > x)
-                   x = p.getX();
-               if (p.getY() > y)
-                   y = p.getY();
-           }
+		return new Point2D(x, y);
+	}
 
-           return new Point2D(x, y);
-       }
+	/**
+	 * \ref t18_1 "task 18.1"
+	 * 
+	 * @return the coordinates of the bottom right corner of the shape
+	 */
+	public Point2D getBottomRightPoint() {
+		if (pointsOfShape.isEmpty())
+			return null;
 
-       public Rectangle getBound() {
-           final Point2D topLeft = getTopLeftPoint();
-           final Point2D bottomRight = getBottomRightPoint();
-           final Point2D delta = bottomRight.subtract(topLeft);
-           return new Rectangle(topLeft.getX(), topLeft.getY(), delta.getX(), delta.getY());
-       }
+		double x = pointsOfShape.get(0).getX();
+		double y = pointsOfShape.get(0).getY();
+
+		for (int i = 1; i < pointsOfShape.size(); i++) {
+			Point2D p = pointsOfShape.get(i);
+			if (p.getX() > x)
+				x = p.getX();
+			if (p.getY() > y)
+				y = p.getY();
+		}
+
+		return new Point2D(x, y);
+	}
+
+	public Rectangle getBound() {
+		final Point2D topLeft = getTopLeftPoint();
+		final Point2D bottomRight = getBottomRightPoint();
+		final Point2D delta = bottomRight.subtract(topLeft);
+		return new Rectangle(topLeft.getX(), topLeft.getY(), delta.getX(), delta.getY());
+	}
 
 }
-/**@}**/
+/** @} **/

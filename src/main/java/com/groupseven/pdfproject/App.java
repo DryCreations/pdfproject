@@ -25,215 +25,207 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class App extends Application {
-    DocumentModel doc;
-    int currentPage;
-    private Scene mainScene;
-    ShapesToolBar shapesToolBar;
+	DocumentModel doc;
+	int currentPage;
+	private Scene mainScene;
+	ShapesToolBar shapesToolBar;
 
-    /// \ref t8_3 "task 8.3"
-    private EventHandler handleImportAsset = new EventHandler<ActionEvent>() {
-        @Override
-        public void handle(ActionEvent e) {
+	/// \ref t8_3 "task 8.3"
+	private EventHandler handleImportAsset = new EventHandler<ActionEvent>() {
+		@Override
+		public void handle(ActionEvent e) {
 
-        }
-    };
+		}
+	};
 
-    /// \brief creates a new instance of the Document Model to be displayed
-    /// \return void
-    ///
-    /// \ref t14_1 "task 14.1"
-    private void initializeDocument() {
-        try {
-            doc = new DocumentModel("src/main/resources/test_pdf.pdf");
+	/// \brief creates a new instance of the Document Model to be displayed
+	/// \return void
+	///
+	/// \ref t14_1 "task 14.1"
+	private void initializeDocument() {
+		try {
+			doc = new DocumentModel("src/main/resources/test_pdf.pdf");
 //            doc = new DocumentModel();
-            currentPage = 0;
-        } catch (IOException ex) {
-            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+			currentPage = 0;
+		} catch (IOException ex) {
+			Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
 
-    /// \brief creates a viewbox element containing a pdf document
-    /// \return VBox displaying the pdf and canvas element
-    ///
-    /// \ref t14_1 "task 14.1"
-    private VBox createViewbox(PageModel page) {
-        VBox vbox = new VBox(0);
-        vbox.setAlignment(Pos.BASELINE_RIGHT);
-        
-        vbox.getChildren().add(page.getNode());
-        page.clear();
-        
-//        vbox.setOnKeyPressed(new EventHandler<KeyEvent>() {
-//            @Override
-//            public void handle(KeyEvent event) {
-//                canvas.getEventHandler().Event(event);
-//            }
-//        });
-        
-        return vbox;
-    }
+	/// \brief creates a viewbox element containing a pdf document
+	/// \return VBox displaying the pdf and canvas element
+	///
+	/// \ref t14_1 "task 14.1"
+	private VBox createViewbox(PageModel page) {
+		VBox vbox = new VBox(0);
+		vbox.setAlignment(Pos.BASELINE_RIGHT);
 
-    /// \brief create file menu element
-    /// \return Menu containing all relevant dropdown elements
-    ///
-    /// \ref t14_2_1 "task 14.2.1"
-    private Menu createFileMenu() {
-        Menu fileMenu = new Menu("File");
-        
-        MenuItem newDocument = new MenuItem("New Document");
-        newDocument.setOnAction(e -> {
-            DocumentModel newDoc = new DocumentModel();
-            setDisplayDoc(newDoc, 0);
-        });
-        
-        fileMenu.getItems().add(newDocument);
+		vbox.getChildren().add(page.getNode());
+		page.clear();
 
-        return fileMenu;
-    }
+		return vbox;
+	}
 
-    /// \brief create drawing menu element
-    /// \return
-    ///
-    /// \ref t14_2_2 "task 14.2.2"
-    private Menu createDrawingMenu() {
-        Menu drawingMenu = new Menu("Drawing");
+	/// \brief create file menu element
+	/// \return Menu containing all relevant dropdown elements
+	///
+	/// \ref t14_2_1 "task 14.2.1"
+	private Menu createFileMenu() {
+		Menu fileMenu = new Menu("File");
 
-        return drawingMenu;
-    }
+		MenuItem newDocument = new MenuItem("New Document");
+		newDocument.setOnAction(e -> {
+			DocumentModel newDoc = new DocumentModel();
+			setDisplayDoc(newDoc, 0);
+		});
 
-    /// \brief create help menu element
-    /// \return Menu containing all relevant dropdown elements
-    ///
-    /// \ref t14_2_3 "task 14.2.3"
-    private Menu createHelpMenu() {
-        Menu helpMenu = new Menu("Help");
+		fileMenu.getItems().add(newDocument);
 
-        return helpMenu;
-    }
+		return fileMenu;
+	}
 
-    /// \brief create menu bar element
-    /// \return Menu containing all relevant dropdown elements
-    ///
-    /// \ref t14.2 "task 14.2"
-    private MenuBar createMenuBar() {
-        MenuBar menuBar = new MenuBar();
+	/// \brief create drawing menu element
+	/// \return
+	///
+	/// \ref t14_2_2 "task 14.2.2"
+	private Menu createDrawingMenu() {
+		Menu drawingMenu = new Menu("Drawing");
 
-        Menu fileMenu = createFileMenu();
-        Menu drawingMenu = createDrawingMenu();
-        Menu helpMenu = createHelpMenu();
+		return drawingMenu;
+	}
 
-        menuBar.getMenus().addAll(fileMenu, drawingMenu, helpMenu);
+	/// \brief create help menu element
+	/// \return Menu containing all relevant dropdown elements
+	///
+	/// \ref t14_2_3 "task 14.2.3"
+	private Menu createHelpMenu() {
+		Menu helpMenu = new Menu("Help");
 
-        return menuBar;
-    }
+		return helpMenu;
+	}
 
-    /// \brief Create Toolbox elements and populate with buttons
-    /// \return GridPane element containing all relevant buttons
-    ///
-    /// \ref t14_3 "task 14.3"
-    private GridPane createToolBox() {
-        GridPane ToolWindow = new GridPane( );
+	/// \brief create menu bar element
+	/// \return Menu containing all relevant dropdown elements
+	///
+	/// \ref t14.2 "task 14.2"
+	private MenuBar createMenuBar() {
+		MenuBar menuBar = new MenuBar();
 
-        Button doNothing = new Button();
-        Button doNothing2 = new Button();
+		Menu fileMenu = createFileMenu();
+		Menu drawingMenu = createDrawingMenu();
+		Menu helpMenu = createHelpMenu();
 
-        ToolWindow.setMinWidth(300);
-        ToolWindow.setAlignment(Pos.BASELINE_LEFT);
-        ToolWindow.setStyle("-fx-background-color: Gray;");
+		menuBar.getMenus().addAll(fileMenu, drawingMenu, helpMenu);
 
-        ToolWindow.getChildren().add(doNothing);
-        ToolWindow.getChildren().add(doNothing2);
+		return menuBar;
+	}
 
-        return ToolWindow;
-    }
+	/// \brief Create Toolbox elements and populate with buttons
+	/// \return GridPane element containing all relevant buttons
+	///
+	/// \ref t14_3 "task 14.3"
+	private GridPane createToolBox() {
+		GridPane ToolWindow = new GridPane();
 
-    /// \brief create undo button element
-    /// \return Button for activating undo feature
-    ///
-    /// \ref t10_1 "task 10.1"
-    private Button createUndoButton(){
-        Image undoimg = new Image("undoarrow.png");
-        ImageView undoview = new ImageView(undoimg);
+		Button doNothing = new Button();
+		Button doNothing2 = new Button();
 
-        Button undobutton = new Button();
-        undobutton.setGraphic(undoview);
-        Tooltip undotip = new Tooltip("Undo");
-        Tooltip.install(undobutton, undotip);
-        return undobutton;
-    }
+		ToolWindow.setMinWidth(300);
+		ToolWindow.setAlignment(Pos.BASELINE_LEFT);
+		ToolWindow.setStyle("-fx-background-color: Gray;");
 
-    /// \brief create redo button element
-    /// \return Button for activating redo feature
-    ///
-    /// \ref t10_1 "task 10.1"
-    private Button createRedoButton(){
-        Image redoimg = new Image("redoarrow.png");
-        ImageView redoview = new ImageView(redoimg);
+		ToolWindow.getChildren().add(doNothing);
+		ToolWindow.getChildren().add(doNothing2);
 
-        Button redobutton = new Button();
-        redobutton.setGraphic(redoview);
-        Tooltip redotip = new Tooltip("Redo");
-        Tooltip.install(redobutton, redotip);
-        return redobutton;
-    }
+		return ToolWindow;
+	}
 
-    /// \brief starts javafx GUI
-    ///
-    /// \return void
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        initializeDocument();
-        primaryStage.setTitle("PDF Project");
-        //root BorderPane allows for more versatile alignment than HBox or VBox
-        BorderPane root = new BorderPane();
-        GridPane ToolBox = createToolBox();
-        MenuBar menuBar = createMenuBar();
-        Button undobutton = createUndoButton();
-        Button redobutton = createRedoButton(); 
-        
-        /// ref t18_1 "task 18.1"
-        /// The HBox SelectBox provides the option for Select Tool and the Shape
-        HBox selectBox =new HBox();
-        shapesToolBar = new ShapesToolBar();
-        selectBox.getChildren().add(shapesToolBar);
+	/// \brief create undo button element
+	/// \return Button for activating undo feature
+	///
+	/// \ref t10_1 "task 10.1"
+	private Button createUndoButton() {
+		Image undoimg = new Image("undoarrow.png");
+		ImageView undoview = new ImageView(undoimg);
 
+		Button undobutton = new Button();
+		undobutton.setGraphic(undoview);
+		Tooltip undotip = new Tooltip("Undo");
+		Tooltip.install(undobutton, undotip);
+		return undobutton;
+	}
 
-        GridPane.setConstraints(undobutton, 0, 0);
-        GridPane.setConstraints(redobutton, 1, 0);
-       
-        root.setTop(menuBar);
-        root.setLeft(ToolBox);
-        root.setRight(selectBox);
-        
-        ToolBox.getChildren().addAll(undobutton,redobutton);
+	/// \brief create redo button element
+	/// \return Button for activating redo feature
+	///
+	/// \ref t10_1 "task 10.1"
+	private Button createRedoButton() {
+		Image redoimg = new Image("redoarrow.png");
+		ImageView redoview = new ImageView(redoimg);
 
-        mainScene = new Scene(root);
-        primaryStage.setScene(mainScene);
-        
-        setDisplayDoc(doc, 0);
-       
-        primaryStage.show();
-        
-        MainCanvas canvas = doc.getPage(currentPage).getCanvas();
-        mainScene.setOnKeyPressed((KeyEvent event) -> {
-            canvas.getEventHandler().Event(event);
-        });
-    }
-    
-    public void setDisplayDoc(DocumentModel document, int pageNum) {
-        currentPage = 0;
-        doc = document;
-        PageModel page = document.getPage(pageNum);
-        BorderPane root = (BorderPane) mainScene.getRoot();
-        
-        MainCanvas canvas = page.getCanvas();
-        
-        shapesToolBar.setCanvas(canvas);
-        
-        root.setCenter(createViewbox(page));
-    }
+		Button redobutton = new Button();
+		redobutton.setGraphic(redoview);
+		Tooltip redotip = new Tooltip("Redo");
+		Tooltip.install(redobutton, redotip);
+		return redobutton;
+	}
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+	/// \brief starts javafx GUI
+	///
+	/// \return void
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		initializeDocument();
+		primaryStage.setTitle("PDF Project");
+		// root BorderPane allows for more versatile alignment than HBox or VBox
+		BorderPane root = new BorderPane();
+		GridPane ToolBox = createToolBox();
+		MenuBar menuBar = createMenuBar();
+		Button undobutton = createUndoButton();
+		Button redobutton = createRedoButton();
+
+		/// ref t18_1 "task 18.1"
+		/// The HBox SelectBox provides the option for Select Tool and the Shape
+		HBox selectBox = new HBox();
+		shapesToolBar = new ShapesToolBar();
+		selectBox.getChildren().add(shapesToolBar);
+
+		GridPane.setConstraints(undobutton, 0, 0);
+		GridPane.setConstraints(redobutton, 1, 0);
+
+		root.setTop(menuBar);
+		root.setLeft(ToolBox);
+		root.setRight(selectBox);
+
+		ToolBox.getChildren().addAll(undobutton, redobutton);
+
+		mainScene = new Scene(root);
+		primaryStage.setScene(mainScene);
+
+		setDisplayDoc(doc, 0);
+
+		primaryStage.show();
+
+		MainCanvas canvas = doc.getPage(currentPage).getCanvas();
+		mainScene.setOnKeyPressed((KeyEvent event) -> {
+			canvas.getEventHandler().Event(event);
+		});
+	}
+
+	public void setDisplayDoc(DocumentModel document, int pageNum) {
+		currentPage = 0;
+		doc = document;
+		PageModel page = document.getPage(pageNum);
+		BorderPane root = (BorderPane) mainScene.getRoot();
+
+		MainCanvas canvas = page.getCanvas();
+
+		shapesToolBar.setCanvas(canvas);
+
+		root.setCenter(createViewbox(page));
+	}
+
+	public static void main(String[] args) {
+		launch(args);
+	}
 }
