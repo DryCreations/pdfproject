@@ -60,9 +60,7 @@ public class DrawingAction {
         if (!(object instanceof Rectangle))
             return;
 
-        System.out.println("Selected");
         Rectangle rectangle = (Rectangle) object;
-        DRAW_RECTANGLE.accept(canvas, rectangle);
 
         GraphicsContext gc = canvas.getCanvas().getGraphicsContext2D();
         Paint currentColor = gc.getFill();

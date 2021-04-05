@@ -28,6 +28,7 @@ public class DrawingTool implements EventHandler<MouseEvent> {
     private double _fillHeight;
     private boolean _shapeStarted;
     private boolean _isSelected;
+    private Shape _selectedShape;
 
     public DrawingTool(MainCanvas canvas) {
         _canvas = canvas;
@@ -38,6 +39,7 @@ public class DrawingTool implements EventHandler<MouseEvent> {
         _fillHeight = 5;
         _shapeStarted = false;
         _isSelected = false;
+        _selectedShape = null;
     }
 
     public void setDrawingMode(DrawingMode drawingMode) {
@@ -110,70 +112,57 @@ public class DrawingTool implements EventHandler<MouseEvent> {
         }
     }
 
-    private boolean shapeContainsPoint(Shape shape) {
-        return shape.contains(new Point2D(_xEnd, _yEnd));
+    private boolean pointIsContainedBy(Shape shape) {
+        return shape != null && shape.contains(new Point2D(_xEnd, _yEnd));
     }
 
 
     private void handleSelect(MouseEvent mouseEvent) {
+        boolean selectedShapeWasFound = false;
+            Stack<Pair<Consumer<Shape>, Shape>> undos = _canvas.getUndoStack();
+            Stack<Pair<Consumer<Shape>, Shape>> dirtyRedos = new Stack<>();
 
-        if (!_isSelected){
-            _xEnd =  mouseEvent.getX();
-            _yEnd =  mouseEvent.getY();
-        }
+            Shape currentShape = undos.peek().getValue();
+            boolean currentShapeIsAtMousePosition = currentShape.contains(new Point2D(mouseEvent.getX(), mouseEvent.getY()));
+            while (currentShapeIsAtMousePosition == false && undos.empty() == false) {
+                if (currentShape == _selectedShape) {
+                    selectedShapeWasFound = true;
+                } else {
+                    dirtyRedos.push(undos.pop());
+                }
+                currentShape = undos.peek().getValue();
+                currentShapeIsAtMousePosition = currentShape.contains(new Point2D(mouseEvent.getX(), mouseEvent.getY()));
+                if (currentShapeIsAtMousePosition) {
+                    if (currentShape != _selectedShape) {
+//                        addActionToUndo(currentShape);
+                        Consumer<Shape> action = consumable -> _drawingMode.executeAction(_canvas, consumable);
+                        _canvas.addAction(new Pair<>(action, currentShape));
+                        _isSelected = true;
+                        _selectedShape = currentShape;
+                    }
 
-        Stack<Pair<Consumer<Shape>, Shape>> undos = _canvas.getUndoStack();
-        Stack<Pair<Consumer<Shape>, Shape>> redos = new Stack<>();
-        redos.addAll(_canvas.getRedoStack());
-        Stack<Pair<Consumer<Shape>, Shape>> dirtyRedos = new Stack<>();
+                }
+            }
 
-        // undo until you find a shape in that area
-        // if you don't find a shape, redo until dirtyRedos is empty
-        Pair<Consumer<Shape>,Shape> shapeDrawing = undos.peek();
-        boolean currentShapeContainsPoint = shapeContainsPoint(shapeDrawing.getValue());
-        while (!undos.empty() && !currentShapeContainsPoint) {
-            dirtyRedos.push(shapeDrawing);
-            undos.pop();
+            while (selectedShapeWasFound == false && _isSelected) {
+                if (currentShape == _selectedShape) {
+                    selectedShapeWasFound = true;
+                    _isSelected = false;
+                    _selectedShape = null;
+                }
+                else {
+                    dirtyRedos.push(undos.pop());
+                }
+            }
+
+            while (dirtyRedos.empty() == false)
+                undos.push(dirtyRedos.pop());
+
             _canvas.refresh();
-
-            shapeDrawing = undos.peek();
-            currentShapeContainsPoint = shapeContainsPoint(shapeDrawing.getValue());
-        }
-
-        // wrap the object
-        if (currentShapeContainsPoint && !_isSelected) {
-            shapeDrawing.getValue();
-            Consumer<Shape> action = consumable -> _drawingMode
-                .executeAction(_canvas, consumable);
-
-            // only wanna select one. for some reason it's selecting multiple
-            _canvas.addAction(new Pair<>(action, shapeDrawing.getValue()));
-            System.out.println("HERE");
-            _drawingMode.executeAction(_canvas, shapeDrawing.getValue());
-        }
-
-        // redo everything
-        while (!dirtyRedos.empty()) {
-            Pair<Consumer<Shape>, Shape> consumerPair = dirtyRedos.pop();
-            consumerPair.getKey()
-                    .accept(consumerPair.getValue());
-        }
-        _canvas.setRedoStack(redos);
-
     }
 
     private void addActionToUndo(Shape shape) {
-        Consumer<Shape> action = consumable ->   {
-            if (_drawingMode == DrawingMode.PEN)
-                DrawingAction.DRAW.accept(_canvas, consumable);
-            else if (_drawingMode == DrawingMode.ERASER)
-                DrawingAction.ERASE.accept(_canvas, consumable);
-            else if (_drawingMode == DrawingMode.RECTANGLE)
-                DrawingAction.DRAW_RECTANGLE.accept(_canvas, consumable);
-            else if (_drawingMode == DrawingMode.SELECT)
-                DrawingAction.SELECT.accept(_canvas, consumable);
-        };
-
+        Consumer<Shape> action = consumable ->  _drawingMode.executeAction(_canvas, consumable);
         _canvas.addAction(new Pair<>(action, shape));
         _drawingMode.executeAction(_canvas, shape);
     }
