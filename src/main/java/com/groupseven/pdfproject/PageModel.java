@@ -40,9 +40,16 @@ public class PageModel {
         
         canvas = new MainCanvas(fximage.getWidth(), fximage.getHeight(), fximage);
         
-        graphicsContext = canvas.getGraphicsContext();
+        graphicsContext = canvas.getCanvas().getGraphicsContext2D();
         
         node = new VBox(0);
+        BackgroundImage backgroundImage = new BackgroundImage(
+                fximage,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.CENTER,
+                BackgroundSize.DEFAULT);
+        node.setBackground(new Background(backgroundImage));
         node.getChildren().add(canvas);
     }
     
@@ -56,7 +63,7 @@ public class PageModel {
     
     
     public void clear() {
-        canvas.clear();
+        canvas.clearScreen();
     }
     
     public MainCanvas getCanvas() {

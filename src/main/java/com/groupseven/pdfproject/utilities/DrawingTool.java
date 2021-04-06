@@ -99,7 +99,7 @@ public class DrawingTool implements EventHandler<MouseEvent> {
 
             if (methodArgs != null) {
                 if (_shapeStarted )
-                    _canvas.undo();
+                    _canvas.getUndoStack().pop();
                 else
                     _shapeStarted = true;
                 addActionToUndo(methodArgs);

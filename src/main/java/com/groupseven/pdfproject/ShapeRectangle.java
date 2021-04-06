@@ -18,7 +18,7 @@ import javafx.scene.paint.Color;
  *\ref t18_1 "task 18.1"
  *\brief This class creates a rectangle shape in order to demonstrate the selection operation.
  */
-public class ShapeRectangle extends Shape{
+public class ShapeRectangle extends Shapes {
 
 	public ShapeRectangle() {
             pointsOfShape = Arrays.asList(null, null);
@@ -68,7 +68,7 @@ public class ShapeRectangle extends Shape{
 	 * \brief highlights the rectangle when it is selected.
 	 */
 	@Override
-	public void HighlightShape(GraphicsContext gc) {
+	public void highlightShape(GraphicsContext gc) {
             // TODO Auto-generated method stub
             if(selected) {
 

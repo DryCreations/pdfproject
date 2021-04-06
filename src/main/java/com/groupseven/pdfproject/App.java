@@ -37,7 +37,7 @@ public class App extends Application {
     public static final int WINDOW_WIDTH = 700;
     public static final int WINDOW_HEIGHT = 790;
 
-    private MainCanvas canvas = new MainCanvas();
+    private MainCanvas canvas;
     private static DrawingToolbar _drawingToolBar;
 
     private DocumentModel doc;
@@ -240,7 +240,7 @@ public class App extends Application {
 
         primaryStage.show();
 
-        MainCanvas canvas = doc.getPage(currentPage).getCanvas();
+        canvas = doc.getPage(currentPage).getCanvas();
         mainScene.setOnKeyPressed((KeyEvent event) -> {
             canvas.getEventHandler().Event(event);
         });

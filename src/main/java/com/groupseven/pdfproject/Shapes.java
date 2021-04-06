@@ -27,7 +27,7 @@ public abstract class Shapes implements HandlingEvents{
     protected static boolean selected;
 	protected Runnable finishedDrawing;
 	 
-	 
+
 	 public Shapes() {
 	        selected = false;
 	       
