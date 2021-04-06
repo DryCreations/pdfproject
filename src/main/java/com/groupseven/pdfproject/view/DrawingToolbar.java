@@ -1,7 +1,6 @@
 package com.groupseven.pdfproject.view;
 
 import com.groupseven.pdfproject.MainCanvas;
-import com.groupseven.pdfproject.utilities.DrawingAction;
 import com.groupseven.pdfproject.utilities.DrawingMode;
 import com.groupseven.pdfproject.utilities.DrawingTool;
 import javafx.scene.control.ColorPicker;
@@ -13,9 +12,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Shape;
-
-import java.util.function.BiConsumer;
 
 public class DrawingToolbar extends ToolBar {
 
@@ -56,6 +52,7 @@ public class DrawingToolbar extends ToolBar {
         });
 
         _canvas.setHandlerForTypes(_drawingTool, MouseEvent.ANY);
+        penBtn.setSelected(true);
     }
 
 }

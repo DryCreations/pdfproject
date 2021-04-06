@@ -1,26 +1,17 @@
 
 package com.groupseven.pdfproject;
 
-import com.sun.xml.internal.bind.v2.runtime.reflect.opt.FieldAccessor_Ref;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Shape;
-import javafx.util.Pair;
-import sun.security.util.Cache;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Stack;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 
 
@@ -39,8 +30,8 @@ public class MainCanvas extends Pane {
     protected Canvas canvas;
     private List<Shapes> shapes;
     private HandlingEvents eventHandler;
-    private final Stack<Pair<Consumer<Shape>,Shape>> _undoStack;
-    private Stack<Pair<Consumer<Shape>,Shape>> _redoStack;
+    private final Stack<Action> _undoStack;
+    private Stack<Action> _redoStack;
     private double _width;
     private double _height;
     private BackgroundImage _backgroundImage;
@@ -133,11 +124,6 @@ public class MainCanvas extends Pane {
         update();
     }
 
-
-    public void addAction(Pair<Consumer<Shape>, Shape> actionAndArgPair){
-        _undoStack.push(actionAndArgPair);
-    }
-
     public void undo() {
         if (_undoStack.empty())
             return;
@@ -147,17 +133,16 @@ public class MainCanvas extends Pane {
 
     public void refresh() {
         clearScreen();
-        _undoStack.forEach(
-                consumerPair -> consumerPair.getKey().accept(consumerPair.getValue()));
+        _undoStack.forEach(Action::execute);
     }
 
     public void redo() {
         if (_redoStack.empty())
             return;
 
-        Pair<Consumer<Shape>, Shape> redoPair = _redoStack.pop();
-        _undoStack.push(redoPair);
-        redoPair.getKey().accept(redoPair.getValue());
+        Action redo = _redoStack.pop();
+        _undoStack.push(redo);
+        redo.execute();
     }
 
     public void clearRedo() {
@@ -170,16 +155,12 @@ public class MainCanvas extends Pane {
         gc.clearRect(0,0,canvas.getWidth(), canvas.getWidth());
     }
 
-    public Stack<Pair<Consumer<Shape>, Shape>> getUndoStack() {
+    public Stack<Action> getUndoStack() {
         return _undoStack;
     }
 
-    public Stack<Pair<Consumer<Shape>, Shape>> getRedoStack() {
+    public Stack<Action> getRedoStack() {
         return _redoStack;
-    }
-
-    public void setRedoStack(Stack<Pair<Consumer<Shape>, Shape>> stack) {
-        _redoStack = stack;
     }
 }
 

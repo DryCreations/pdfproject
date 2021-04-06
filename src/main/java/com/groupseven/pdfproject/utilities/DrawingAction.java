@@ -13,18 +13,18 @@ import java.util.function.BiConsumer;
 
 public class DrawingAction {
 
-    public static final BiConsumer<MainCanvas, Shape> DRAW = (canvas, object) -> {
+    public static final BiConsumer<MainCanvas, Shape> DRAW_LINE = (canvas, object) -> {
         if (!(object instanceof Line))
             return;
 
         Line line = (Line) object;
         canvas.getCanvas()
-                    .getGraphicsContext2D()
-                    .strokeLine(
-                            line.getStartX(),
-                            line.getStartY(),
-                            line.getEndX(),
-                            line.getEndY());
+                .getGraphicsContext2D()
+                .strokeLine(
+                        line.getStartX(),
+                        line.getStartY(),
+                        line.getEndX(),
+                        line.getEndY());
     };
 
     public static final BiConsumer<MainCanvas, Shape> ERASE = (canvas, object) -> {
@@ -38,8 +38,7 @@ public class DrawingAction {
                         rectangle.getX() - 2,
                         rectangle.getY() - 2,
                         rectangle.getWidth(),
-                        rectangle.getHeight()
-        );
+                        rectangle.getHeight());
     };
 
     public static final BiConsumer<MainCanvas, Shape> DRAW_RECTANGLE = (canvas, object) -> {
@@ -48,12 +47,12 @@ public class DrawingAction {
 
         Rectangle rectangle = (Rectangle) object;
         canvas.getCanvas()
-                    .getGraphicsContext2D()
-                    .fillRect(
-                            rectangle.getX(),
-                            rectangle.getY(),
-                            rectangle.getWidth(),
-                            rectangle.getHeight());
+                .getGraphicsContext2D()
+                .fillRect(
+                        rectangle.getX(),
+                        rectangle.getY(),
+                        rectangle.getWidth(),
+                        rectangle.getHeight());
     };
 
     public static final BiConsumer<MainCanvas, Shape> SELECT = (canvas, object) -> {
@@ -61,20 +60,16 @@ public class DrawingAction {
             return;
 
         Rectangle rectangle = (Rectangle) object;
-
         GraphicsContext gc = canvas.getCanvas().getGraphicsContext2D();
         Paint currentColor = gc.getFill();
-        double currentLineWidth = gc.getLineWidth();
         Paint selectColor = Color.grayRgb(100, 0.2);
-        double selectLineWidth = 7.0;
-
         gc.setFill(selectColor);
-        gc.setLineWidth(selectLineWidth);
-
-        DRAW_RECTANGLE.accept(canvas, rectangle);
-
+        gc.fillRect(
+                rectangle.getX() - 2,
+                rectangle.getY() - 2,
+                rectangle.getWidth() + 4,
+                rectangle.getHeight() + 4);
         gc.setFill(currentColor);
-        gc.setLineWidth(currentLineWidth);
     };
 
 
