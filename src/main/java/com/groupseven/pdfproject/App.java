@@ -267,7 +267,7 @@ public class App extends Application {
         PageModel page = document.getPage(pageNum);
         BorderPane root = (BorderPane) mainScene.getRoot();
 
-        MainCanvas canvas = page.getCanvas();
+        canvas = page.getCanvas();
         root.setCenter(createViewbox(page));
     }
 

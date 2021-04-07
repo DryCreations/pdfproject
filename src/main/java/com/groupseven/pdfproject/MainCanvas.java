@@ -77,7 +77,7 @@ public class MainCanvas extends Pane {
     public void clearScreen() {
         Canvas canvas = getCanvas();
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.clearRect(0,0,canvas.getWidth(), canvas.getWidth());
+        gc.clearRect(0,0,canvas.getWidth(), canvas.getHeight());
     }
 
     public Stack<Action> getUndoStack() {

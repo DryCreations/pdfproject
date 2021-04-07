@@ -46,8 +46,8 @@ public class PdfAction {
         Color c = (Color) rectangle.getFill();
         
         int red = (int) (c.getRed() * 255);
-        int green = (int) (c.getRed() * 255);
-        int blue = (int) (c.getRed() * 255);
+        int green = (int) (c.getGreen() * 255);
+        int blue = (int) (c.getBlue() * 255);
         
         canvas.setColor(new DeviceRgb(red, green, blue), true);
         
