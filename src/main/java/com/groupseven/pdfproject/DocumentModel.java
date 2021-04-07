@@ -86,10 +86,11 @@ public class DocumentModel {
     public PageModel getPage(int i) {
         return pages.get(i);
     }
-    
-    /// \ref t8.2 "task 8.2"
-    public void setDimensions() {
 
+    /// \brief set dimensions of page to new dimensions
+    /// \ref t8.2 "task 8.2"
+    public void setDimensions(double width, double height, int pagenumber) {
+        pages.get(pagenumber).getCanvas().resizeCanvas(width, height);
     }
 
     /// \ref t8_4 "task 8.4"

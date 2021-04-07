@@ -87,7 +87,7 @@ public class App extends Application {
     private Menu createFileMenu() {
         Menu fileMenu = new Menu("File");
         
-        MenuItem newDocument = new MenuItem("New Document");
+        MenuItem newDocument = new MenuItem("New Document...");
         newDocument.setOnAction(e -> {
             newDocumentWindow();
         });
@@ -147,7 +147,6 @@ public class App extends Application {
         });
 
         VBox dimensionBox = new VBox(5);
-
         dimensionBox.setPadding(new Insets(25, 25, 25, 50));
         dimensionBox.getChildren().addAll(defaultButton, customButton, widthLabel, widthField, heightLabel, heightField, createdocButton);
 
@@ -165,7 +164,6 @@ public class App extends Application {
         });
 
         newdocPane.setCenter(dimensionBox);
-
         newdocWindow.setTitle("New Document");
         newdocWindow.setScene(newdocScene);
         newdocWindow.show();
@@ -178,14 +176,75 @@ public class App extends Application {
     private Menu createEditMenu(){
         Menu editMenu = new Menu("Edit");
 
-        MenuItem resize = new MenuItem("Resize");
+        MenuItem resize = new MenuItem("Resize...");
         resize.setOnAction(e -> {
-
+            resizeWindow();
         });
 
         editMenu.getItems().add(resize);
 
         return editMenu;
+    }
+
+    /// \brief display new window for resizing existing documents
+    ///
+    /// \ref t8.2 "task 8.2"
+    private void resizeWindow(){
+        BorderPane resizePane = new BorderPane();
+        Scene resizeScene = new Scene(resizePane, 300, 250);
+        Stage resizeStage = new Stage();
+
+        Button resizeButton = new Button("Resize");
+        Button cancelButton = new Button("Cancel");
+        Label widthLabel = new Label("Width: ");
+        Label heightLabel = new Label("Height: ");
+        TextField widthField = new TextField("" + (int) doc.getPage(currentPage).getCanvas().getWidth());
+        widthField.setMaxWidth(100);
+        TextField heightField = new TextField("" + (int) doc.getPage(currentPage).getCanvas().getHeight());
+        heightField.setMaxWidth(100);
+
+        widthField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue){
+                if(!newValue.matches("\\d*")){
+                    widthField.setText("" + (int) doc.getPage(currentPage).getCanvas().getWidth());
+                }
+            }
+        });
+
+        heightField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue){
+                if(!newValue.matches("\\d*")){
+                    heightField.setText("" + (int) doc.getPage(currentPage).getCanvas().getHeight());
+                }
+            }
+        });
+
+        cancelButton.setOnAction(e ->{
+            resizeStage.close();
+        });
+
+        resizeButton.setOnAction(e ->{
+            double width = Double.parseDouble(widthField.getText());
+            double height = Double.parseDouble(heightField.getText());
+            doc.setDimensions(width, height, currentPage);
+            setDisplayDoc(doc, currentPage);
+            doc.getPage(currentPage).getCanvas().update();
+            resizeStage.close();
+        });
+
+        HBox resizeHBox = new HBox(5);
+        resizeHBox.setPadding(new Insets(25, 25, 25, 50));
+        resizeHBox.getChildren().addAll(resizeButton, cancelButton);
+        VBox resizeVBox = new VBox(5);
+        resizeVBox.setPadding(new Insets(25, 25, 25, 50));
+        resizeVBox.getChildren().addAll(widthLabel, widthField, heightLabel, heightField, resizeHBox);
+
+        resizePane.setCenter(resizeVBox);
+        resizeStage.setTitle("Resize");
+        resizeStage.setScene(resizeScene);
+        resizeStage.show();
     }
 
     /// \brief create drawing menu element

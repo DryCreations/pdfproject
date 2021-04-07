@@ -37,7 +37,9 @@ public class MainCanvas extends Pane{
 	public MainCanvas(double width, double height, Image bg) {
             this.width = width;
             this.height = height;
-            canvas = new Canvas(width, height);
+            canvas = new ResizableCanvas();
+            canvas.widthProperty().set(width);
+            canvas.heightProperty().set(height);
             shapes = new ArrayList<>();
             getChildren().add(canvas);
             this.bg = bg;
@@ -66,11 +68,16 @@ public class MainCanvas extends Pane{
         }
 	
 	/// \brief keep the track of all the shapes on canvas
-	/// \ref t18_1 "task 18.1" 
-	
+	/// \ref t18_1 "task 18.1"
 	public List<Shape> getShapes() {
             return shapes;
         }
+
+    /// \brief resize canvas with new width and height
+    /// \ref t8.2 "task 8.2"
+    public void resizeCanvas(double width, double height){
+	    canvas.resize(width, height);
+    }
 	
 	/// \return the current event handler
 	/// \ref t18_1 "task 18.1"
@@ -90,8 +97,6 @@ public class MainCanvas extends Pane{
             GraphicsContext gc = canvas.getGraphicsContext2D();
             gc.setFill(color);
             gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
-            
-            
         }
 	 
 	 /// \brief clears the canvas leaving a fresh new white background
@@ -129,8 +134,8 @@ public class MainCanvas extends Pane{
             }
             update();
 	 }
-         
-         public GraphicsContext getGraphicsContext() {
+
+	 public GraphicsContext getGraphicsContext() {
              return canvas.getGraphicsContext2D();
          }
 }
