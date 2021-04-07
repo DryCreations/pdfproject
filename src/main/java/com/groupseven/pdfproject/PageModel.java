@@ -7,6 +7,7 @@ package com.groupseven.pdfproject;
 
 import java.awt.image.BufferedImage;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.geometry.Side;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -38,11 +39,21 @@ public class PageModel {
         bufferedImage = image;
         Image fximage = SwingFXUtils.toFXImage(image, null);
         
-        canvas = new MainCanvas(fximage.getWidth(), fximage.getHeight(), fximage);
+        canvas = new MainCanvas(fximage.getWidth(), fximage.getHeight());
         
-        graphicsContext = canvas.getGraphicsContext();
+        graphicsContext = canvas.getCanvas().getGraphicsContext2D();
         
         node = new VBox(0);
+        
+        BackgroundPosition bp = new BackgroundPosition(Side.LEFT, 0, false, Side.TOP, 0, false);
+        
+        BackgroundImage backgroundImage = new BackgroundImage(
+                fximage,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                bp,
+                BackgroundSize.DEFAULT);
+        node.setBackground(new Background(backgroundImage));
         node.getChildren().add(canvas);
     }
     
@@ -56,7 +67,7 @@ public class PageModel {
     
     
     public void clear() {
-        canvas.clear();
+        canvas.clearScreen();
     }
     
     public MainCanvas getCanvas() {
