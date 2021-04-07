@@ -60,7 +60,7 @@ public class App extends Application {
     private void initializeDocument() {
         try {
             File file = new File("src/main/resources/test_pdf.pdf");
-            
+
             doc = new DocumentModel(file);
             // doc = new DocumentModel();
             currentPage = 0;
@@ -102,22 +102,21 @@ public class App extends Application {
             setDisplayDoc(newDoc, 0);
         });
 
-                
         MenuItem openDocument = new MenuItem("Open Document");
-        
+
         openDocument.setOnAction(e -> {
             FileChooser fileChooser = new FileChooser();
             File selectedFile = fileChooser.showOpenDialog(null);
-            
+
             try {
                 DocumentModel newDoc = new DocumentModel(selectedFile);
                 setDisplayDoc(newDoc, 0);
             } catch (IOException ex) {
                 Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
         });
-        
+
         MenuItem saveDocument = new MenuItem("Save Document");
 
         /// ref t8_8 "task 8.8"

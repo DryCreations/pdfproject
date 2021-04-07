@@ -53,7 +53,7 @@ public class DocumentModel {
         this.file = file;
         this.pages = new ArrayList<>();
 
-//        File file = new File(filename);
+        // File file = new File(filename);
 
         RandomAccessFile raf = new RandomAccessFile(file, "r");
         FileChannel fileChannel = raf.getChannel();
@@ -120,8 +120,6 @@ public class DocumentModel {
             pdfDoc = new PdfDocument(writer);
         }
 
-        
-        
         for (int i = 0; i < pages.size(); i++) {
             PdfPage page;
             PageModel pageModel = pages.get(i);
