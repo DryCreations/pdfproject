@@ -44,7 +44,6 @@ public class PdfAction {
                 .closePathStroke();
         
         canvas.restoreState();
-        
     };
 
     public static final TriConsumer<PdfCanvas, PdfPage, Shape> ERASE = (canvas, page, object) -> {
@@ -55,11 +54,11 @@ public class PdfAction {
         
         canvas.saveState();
         
-        canvas.setExtGState(new PdfExtGState().setFillOpacity(0.1f));
+//        canvas.setExtGState(new PdfExtGState().setFillOpacity(0.1f));
 
         com.itextpdf.kernel.geom.Rectangle size = page.getPageSize();
         
-        Color c = (Color.BLACK);
+        Color c = (Color.WHITE);
         
         int red = (int) (c.getRed() * 255);
         int green = (int) (c.getGreen() * 255);

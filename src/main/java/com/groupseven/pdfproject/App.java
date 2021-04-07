@@ -44,6 +44,7 @@ public class App extends Application {
     private DocumentModel doc;
     int currentPage;
     private Scene mainScene;
+    private static DrawingToolbar _drawingToolBar;
 
     /// \ref t8_3 "task 8.3"
     private EventHandler handleImportAsset = new EventHandler<ActionEvent>() {
@@ -131,11 +132,11 @@ public class App extends Application {
         Label drawLabel = new Label("Drawing");
         drawLabel.setOnMouseClicked(
                 action -> {
-                    DrawingToolbar drawingToolBar = new DrawingToolbar(canvas);
-                    if (canvas.getChildren().contains(drawingToolBar)) {
-                        canvas.getChildren().remove(drawingToolBar);
+                    if (_drawingToolBar != null && canvas.getChildren().contains(_drawingToolBar)) {
+                        canvas.getChildren().remove(_drawingToolBar);
                     } else {
-                        canvas.getChildren().add(drawingToolBar);
+                        _drawingToolBar = new DrawingToolbar(canvas);
+                        canvas.getChildren().add(_drawingToolBar);
                     }
 
                 });
