@@ -59,7 +59,9 @@ public class App extends Application {
     /// \ref t14_1 "task 14.1"
     private void initializeDocument() {
         try {
-            doc = new DocumentModel("src/main/resources/test_pdf.pdf");
+            File file = new File("src/main/resources/test_pdf.pdf");
+            
+            doc = new DocumentModel(file);
             // doc = new DocumentModel();
             currentPage = 0;
         } catch (IOException ex) {
@@ -100,6 +102,22 @@ public class App extends Application {
             setDisplayDoc(newDoc, 0);
         });
 
+                
+        MenuItem openDocument = new MenuItem("Open Document");
+        
+        openDocument.setOnAction(e -> {
+            FileChooser fileChooser = new FileChooser();
+            File selectedFile = fileChooser.showOpenDialog(null);
+            
+            try {
+                DocumentModel newDoc = new DocumentModel(selectedFile);
+                setDisplayDoc(newDoc, 0);
+            } catch (IOException ex) {
+                Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        });
+        
         MenuItem saveDocument = new MenuItem("Save Document");
 
         /// ref t8_8 "task 8.8"
@@ -115,6 +133,7 @@ public class App extends Application {
         });
 
         fileMenu.getItems().add(newDocument);
+        fileMenu.getItems().add(openDocument);
         fileMenu.getItems().add(saveDocument);
 
         return fileMenu;
