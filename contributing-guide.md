@@ -16,7 +16,7 @@ hlm_action50
 
 ## Pull Requests
 
-Follow the pull request template format found here [here](.github\PULL_REQUEST_TEMPLATE.md)
+Follow the pull request template format found here [here](.github/PULL_REQUEST_TEMPLATE.md)
 
 ```
 # List Any Relevant Actions or Tasks
