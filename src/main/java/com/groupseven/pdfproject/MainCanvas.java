@@ -60,40 +60,8 @@ public class MainCanvas extends Pane {
 
     /// \brief keep the track of all the shapes on canvas
     /// \ref t18_1 "task 18.1"
-
     public List<Shapes> getShapes() {
         return shapes;
-    }
-
-    /// \return the current event handler
-    /// \ref t18_1 "task 18.1"
-    public HandlingEvents getEventHandler() {
-        return eventHandler;
-    }
-
-    /// \brief sets the event handler
-    /// \ref t18_1 "task 18.1"
-    /// @param  eventHandler the new event handler
-    public void setEventHandler(HandlingEvents eventHandler) {
-        this.eventHandler = eventHandler;
-    }
-
-    public void setHandlerForTypes(EventHandler handler, EventType... eventTypes) {
-        for (EventType type: eventTypes)
-            canvas.addEventHandler(type, handler);
-    }
-
-    public void clear(Color color) {
-        GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.setFill(color);
-        gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
-    }
-
-    /// \brief clears the canvas leaving a fresh new white background
-    /// \ref t18_1 "task 18.1"
-    public void clear() {
-        clear(Color.WHITE);
-
     }
 
     /// \brief draws the shape on the canvas and when selected highlights the shape
@@ -108,20 +76,9 @@ public class MainCanvas extends Pane {
         }
     }
 
-    /// \brief The canvas is updated every time the shape is selected  or deselected
-    /// or whenever the backspace or delete key is pressed to remove the selected shape.
-    /// \ref t18_1 "task 18.1"
-    public void update() {
-        clear();
-        render();
-    }
-
-    /// \ref t18_1 "task 18.1"
-    private void deselectShapes() {
-        for (Shapes shape : shapes) {
-            shape.setElementSelected(false);
-        }
-        update();
+    public void setHandlerForTypes(EventHandler handler, EventType... eventTypes) {
+        for (EventType type: eventTypes)
+            canvas.addEventHandler(type, handler);
     }
 
     public void undo() {
@@ -131,6 +88,9 @@ public class MainCanvas extends Pane {
         refresh();
     }
 
+    /// \brief The canvas is updated every time the shape is selected  or deselected
+    /// or whenever the backspace or delete key is pressed to remove the selected shape.
+    /// \ref t18_1 "task 18.1"
     public void refresh() {
         clearScreen();
         _undoStack.forEach(Action::execute);
@@ -149,6 +109,8 @@ public class MainCanvas extends Pane {
         _redoStack = new Stack<>();
     }
 
+    /// \brief clears the canvas leaving a fresh new white background
+    /// \ref t18_1 "task 18.1"
     public void clearScreen() {
         Canvas canvas = getCanvas();
         GraphicsContext gc = canvas.getGraphicsContext2D();
@@ -157,10 +119,6 @@ public class MainCanvas extends Pane {
 
     public Stack<Action> getUndoStack() {
         return _undoStack;
-    }
-
-    public Stack<Action> getRedoStack() {
-        return _redoStack;
     }
 }
 

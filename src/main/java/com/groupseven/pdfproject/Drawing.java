@@ -44,7 +44,7 @@ public class Drawing implements HandlingEvents{
             else
                 selectedShape.Event(m_event);
 
-            canvas.update();
+//            canvas.update();
         }
     }
 	

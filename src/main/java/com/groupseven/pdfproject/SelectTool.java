@@ -45,7 +45,7 @@ public class SelectTool implements HandlingEvents{
 }
         
 
-        canvas.update();
+//        canvas.update();
     }
 
 	/// \brief Removes the selected shape
@@ -54,7 +54,7 @@ public class SelectTool implements HandlingEvents{
     public void Event(KeyEvent k_event) {
         if (selectedShape != null && k_event.getCode() == KeyCode.DELETE || k_event.getCode() == KeyCode.BACK_SPACE) {
             canvas.getShapes().remove(selectedShape);
-            canvas.update();
+//            canvas.update();
         }
     }
 

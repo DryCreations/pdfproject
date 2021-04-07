@@ -218,18 +218,12 @@ public class App extends Application {
         Button undobutton = createUndoButton();
         Button redobutton = createRedoButton();
 
-        /// ref t18_1 "task 18.1"
-        /// The HBox SelectBox provides the option for Select Tool and the Shape
-        HBox selectBox =new HBox();
-        shapesToolBar = new ShapesToolBar();
-        selectBox.getChildren().add(shapesToolBar);
 
         GridPane.setConstraints(undobutton, 0, 0);
         GridPane.setConstraints(redobutton, 1, 0);
 
         root.setTop(menuBar);
         root.setLeft(ToolBox);
-        root.setRight(selectBox);
 
         ToolBox.getChildren().addAll(undobutton,redobutton);
 
@@ -241,9 +235,9 @@ public class App extends Application {
         primaryStage.show();
 
         canvas = doc.getPage(currentPage).getCanvas();
-        mainScene.setOnKeyPressed((KeyEvent event) -> {
-            canvas.getEventHandler().Event(event);
-        });
+//        mainScene.setOnKeyPressed((KeyEvent event) -> {
+//            canvas.getEventHandler().Event(event);
+//        });
     }
 
     public void setDisplayDoc(DocumentModel document, int pageNum) {
@@ -253,9 +247,6 @@ public class App extends Application {
         BorderPane root = (BorderPane) mainScene.getRoot();
 
         MainCanvas canvas = page.getCanvas();
-
-        shapesToolBar.setCanvas(canvas);
-
         root.setCenter(createViewbox(page));
     }
 

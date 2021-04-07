@@ -72,14 +72,14 @@ public class ShapesToolBar extends ToolBar {
                @Override
                public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
                    selectedTool = (ToolsOptions) group.getSelectedToggle().getUserData();
-                   canvas.setEventHandler(createEventHandler());
+//                   canvas.setEventHandler(createEventHandler());
                }
            });
 
            colorPicker.setOnAction(new EventHandler<ActionEvent>() {
                @Override
                public void handle(ActionEvent event) {
-                   canvas.setEventHandler(createEventHandler());
+//                   canvas.setEventHandler(createEventHandler());
                }
            });
        }
