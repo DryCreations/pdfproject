@@ -25,24 +25,23 @@ public class PdfAction {
             return;
 
         Line line = (Line) object;
-        
+
         canvas.saveState();
-        
+
         com.itextpdf.kernel.geom.Rectangle size = page.getPageSize();
-        
+
         Color c = (Color) line.getStroke();
-        
+
         int red = (int) (c.getRed() * 255);
         int green = (int) (c.getGreen() * 255);
         int blue = (int) (c.getBlue() * 255);
-        
+
         canvas.setColor(new DeviceRgb(red, green, blue), true);
-        
+
         canvas.setStrokeColor(new DeviceRgb(red, green, blue))
                 .moveTo(line.getStartX(), size.getHeight() - line.getStartY())
-                .lineTo(line.getEndX(), size.getHeight() - line.getEndY())
-                .closePathStroke();
-        
+                .lineTo(line.getEndX(), size.getHeight() - line.getEndY()).closePathStroke();
+
         canvas.restoreState();
     };
 
@@ -51,23 +50,24 @@ public class PdfAction {
             return;
 
         Rectangle rectangle = (Rectangle) object;
-        
+
         canvas.saveState();
-        
-//        canvas.setExtGState(new PdfExtGState().setFillOpacity(0.1f));
+
+        // canvas.setExtGState(new PdfExtGState().setFillOpacity(0.1f));
 
         com.itextpdf.kernel.geom.Rectangle size = page.getPageSize();
-        
+
         Color c = (Color.WHITE);
-        
+
         int red = (int) (c.getRed() * 255);
         int green = (int) (c.getGreen() * 255);
         int blue = (int) (c.getBlue() * 255);
-        
+
         canvas.setColor(new DeviceRgb(red, green, blue), true);
-        
-        canvas.rectangle(rectangle.getX(), size.getHeight() - rectangle.getY() - rectangle.getHeight(), rectangle.getWidth(), rectangle.getHeight()).fill();
-        
+
+        canvas.rectangle(rectangle.getX(), size.getHeight() - rectangle.getY() - rectangle.getHeight(),
+                rectangle.getWidth(), rectangle.getHeight()).fill();
+
         canvas.restoreState();
     };
 
@@ -76,21 +76,22 @@ public class PdfAction {
             return;
 
         Rectangle rectangle = (Rectangle) object;
-        
+
         canvas.saveState();
-        
+
         com.itextpdf.kernel.geom.Rectangle size = page.getPageSize();
-        
+
         Color c = (Color) rectangle.getFill();
-        
+
         int red = (int) (c.getRed() * 255);
         int green = (int) (c.getGreen() * 255);
         int blue = (int) (c.getBlue() * 255);
-        
+
         canvas.setColor(new DeviceRgb(red, green, blue), true);
-        
-        canvas.rectangle(rectangle.getX(), size.getHeight() - rectangle.getY() - rectangle.getHeight(), rectangle.getWidth(), rectangle.getHeight()).fill();
-        
+
+        canvas.rectangle(rectangle.getX(), size.getHeight() - rectangle.getY() - rectangle.getHeight(),
+                rectangle.getWidth(), rectangle.getHeight()).fill();
+
         canvas.restoreState();
     };
 

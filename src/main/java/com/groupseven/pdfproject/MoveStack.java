@@ -1,6 +1,7 @@
 package com.groupseven.pdfproject;
 
 import java.util.EmptyStackException;
+
 /// \brief stack for storing move data
 ///
 /// \ref t10_2 "task 10.2"
@@ -9,14 +10,14 @@ public class MoveStack<T> {
     /// \brief nodes for storing individual moves
     ///
     /// \ref t10_2 "task 10.2"
-    private class Node{
+    private class Node {
         T move;
         Node next;
 
         /// \brief create a new node given data
         ///
         /// \ref t10_2 "task 10.2"
-        public Node(T move, Node next){
+        public Node(T move, Node next) {
             this.move = move;
             this.next = next;
         }
@@ -24,7 +25,7 @@ public class MoveStack<T> {
         /// \brief set move of node
         ///
         /// \ref t10_2 "task 10.2"
-        public void setMove(T move){
+        public void setMove(T move) {
             this.move = move;
         }
 
@@ -32,7 +33,7 @@ public class MoveStack<T> {
         /// \return Generic object containing move
         ///
         /// \ref t10_2 "task 10.2"
-        public T getMove(){
+        public T getMove() {
             return move;
         }
 
@@ -40,14 +41,14 @@ public class MoveStack<T> {
         /// \return Node next in stack
         ///
         /// \ref t10_2 "task 10.2"
-        public Node getNext(){
+        public Node getNext() {
             return next;
         }
 
         /// \brief set next node in stack
         ///
         /// \ref t10_2 "task 10.2"
-        public void setNext(Node next){
+        public void setNext(Node next) {
             this.next = next;
         }
 
@@ -59,7 +60,7 @@ public class MoveStack<T> {
     /// \brief create a new stack for storing moves
     ///
     /// \ref t10_2 "task 10.2"
-    public MoveStack(){
+    public MoveStack() {
         top = null;
         size = 0;
     }
@@ -68,7 +69,7 @@ public class MoveStack<T> {
     /// \return Boolean indicating emptiness of stack
     ///
     /// \ref t10_2 "task 10.2"
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return top == null;
     }
 
@@ -76,14 +77,14 @@ public class MoveStack<T> {
     /// \return Integer indicating size of stack
     ///
     /// \ref t10_2 "task 10.2"
-    public int getSize(){
+    public int getSize() {
         return size;
     }
 
     /// \brief push a new move onto the stack
     ///
     /// \ref t10_2 "task 10.2"
-    public void push(T val){
+    public void push(T val) {
         Node newnode = new Node(val, top);
         top = newnode;
         size++;
@@ -93,11 +94,11 @@ public class MoveStack<T> {
     /// \return Move of the node removed
     ///
     /// \ref t10_2 "task 10.2"
-    public T pop(){
+    public T pop() {
         T data = null;
         if (isEmpty()) {
             throw new EmptyStackException();
-        }else{
+        } else {
             data = top.getMove();
             Node temp = top;
             top = top.getNext();
@@ -111,11 +112,11 @@ public class MoveStack<T> {
     /// \return Move of top node
     ///
     /// \ref t10_2 "task 10.2"
-    public T peek(){
+    public T peek() {
         T data = null;
         if (isEmpty()) {
             throw new EmptyStackException();
-        }else{
+        } else {
             data = top.getMove();
         }
         return data;

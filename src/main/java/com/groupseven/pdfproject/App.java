@@ -35,7 +35,6 @@ import javafx.stage.Stage;
 
 public class App extends Application {
 
-
     public static final int WINDOW_WIDTH = 700;
     public static final int WINDOW_HEIGHT = 790;
 
@@ -61,7 +60,7 @@ public class App extends Application {
     private void initializeDocument() {
         try {
             doc = new DocumentModel("src/main/resources/test_pdf.pdf");
-//            doc = new DocumentModel();
+            // doc = new DocumentModel();
             currentPage = 0;
         } catch (IOException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
@@ -78,12 +77,12 @@ public class App extends Application {
         vbox.getChildren().add(page.getNode());
         page.clear();
 
-//        vbox.setOnKeyPressed(new EventHandler<KeyEvent>() {
-//            @Override
-//            public void handle(KeyEvent event) {
-//                canvas.getEventHandler().Event(event);
-//            }
-//        });
+        // vbox.setOnKeyPressed(new EventHandler<KeyEvent>() {
+        // @Override
+        // public void handle(KeyEvent event) {
+        // canvas.getEventHandler().Event(event);
+        // }
+        // });
 
         return vbox;
     }
@@ -100,7 +99,6 @@ public class App extends Application {
             DocumentModel newDoc = new DocumentModel();
             setDisplayDoc(newDoc, 0);
         });
-
 
         MenuItem saveDocument = new MenuItem("Save Document");
 
@@ -130,16 +128,15 @@ public class App extends Application {
     /// \ref t9_1_2 "task 9.1.2"
     private Menu createDrawingMenu() {
         Label drawLabel = new Label("Drawing");
-        drawLabel.setOnMouseClicked(
-                action -> {
-                    if (_drawingToolBar != null && canvas.getChildren().contains(_drawingToolBar)) {
-                        canvas.getChildren().remove(_drawingToolBar);
-                    } else {
-                        _drawingToolBar = new DrawingToolbar(canvas);
-                        canvas.getChildren().add(_drawingToolBar);
-                    }
+        drawLabel.setOnMouseClicked(action -> {
+            if (_drawingToolBar != null && canvas.getChildren().contains(_drawingToolBar)) {
+                canvas.getChildren().remove(_drawingToolBar);
+            } else {
+                _drawingToolBar = new DrawingToolbar(canvas);
+                canvas.getChildren().add(_drawingToolBar);
+            }
 
-                });
+        });
 
         Menu drawingMenu = new Menu();
         drawingMenu.setGraphic(drawLabel);
@@ -231,13 +228,12 @@ public class App extends Application {
     public void start(Stage primaryStage) throws Exception {
         initializeDocument();
         primaryStage.setTitle("PDF Project");
-        //root BorderPane allows for more versatile alignment than HBox or VBox
+        // root BorderPane allows for more versatile alignment than HBox or VBox
         BorderPane root = new BorderPane();
         GridPane ToolBox = createToolBox();
         MenuBar menuBar = createMenuBar();
         Button undobutton = createUndoButton();
         Button redobutton = createRedoButton();
-
 
         GridPane.setConstraints(undobutton, 0, 0);
         GridPane.setConstraints(redobutton, 1, 0);
@@ -245,7 +241,7 @@ public class App extends Application {
         root.setTop(menuBar);
         root.setLeft(ToolBox);
 
-        ToolBox.getChildren().addAll(undobutton,redobutton);
+        ToolBox.getChildren().addAll(undobutton, redobutton);
 
         mainScene = new Scene(root);
         primaryStage.setScene(mainScene);
@@ -255,9 +251,9 @@ public class App extends Application {
         primaryStage.show();
 
         canvas = doc.getPage(currentPage).getCanvas();
-//        mainScene.setOnKeyPressed((KeyEvent event) -> {
-//            canvas.getEventHandler().Event(event);
-//        });
+        // mainScene.setOnKeyPressed((KeyEvent event) -> {
+        // canvas.getEventHandler().Event(event);
+        // });
     }
 
     public void setDisplayDoc(DocumentModel document, int pageNum) {
