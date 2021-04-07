@@ -40,7 +40,6 @@ public class App extends Application {
     public static final int WINDOW_HEIGHT = 790;
 
     private MainCanvas canvas;
-    private static DrawingToolbar _drawingToolBar;
 
     private DocumentModel doc;
     int currentPage;
@@ -132,12 +131,11 @@ public class App extends Application {
         Label drawLabel = new Label("Drawing");
         drawLabel.setOnMouseClicked(
                 action -> {
-                    if (_drawingToolBar == null)
-                        _drawingToolBar = new DrawingToolbar(canvas);
-                    if (canvas.getChildren().contains(_drawingToolBar)) {
-                        canvas.getChildren().remove(_drawingToolBar);
+                    DrawingToolbar drawingToolBar = new DrawingToolbar(canvas);
+                    if (canvas.getChildren().contains(drawingToolBar)) {
+                        canvas.getChildren().remove(drawingToolBar);
                     } else {
-                        canvas.getChildren().add(_drawingToolBar);
+                        canvas.getChildren().add(drawingToolBar);
                     }
 
                 });

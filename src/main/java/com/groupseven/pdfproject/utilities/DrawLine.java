@@ -81,7 +81,10 @@ public class DrawLine implements Action {
     @Override
     public void pdfExecute(PdfCanvas canvas, PdfPage page) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        
+        _lines.forEach(
+            line -> {
+                PdfAction.DRAW_LINE.accept(canvas, page, line);
+            });
         System.out.println("Line");
     }
 }

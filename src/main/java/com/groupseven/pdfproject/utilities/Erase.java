@@ -67,7 +67,8 @@ public class Erase implements Action {
     @Override
     public void pdfExecute(PdfCanvas canvas, PdfPage page) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-
+        _eraseAreas.forEach(
+            area -> PdfAction.ERASE.accept(canvas, page, area));
         System.out.println("Erase");
     }
 }
