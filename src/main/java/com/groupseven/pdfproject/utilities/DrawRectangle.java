@@ -1,6 +1,9 @@
-package com.groupseven.pdfproject;
+package com.groupseven.pdfproject.utilities;
 
-import com.groupseven.pdfproject.utilities.DrawingAction;
+import com.groupseven.pdfproject.MainCanvas;
+import com.groupseven.pdfproject.model.Action;
+import com.groupseven.pdfproject.model.Draggable;
+import com.groupseven.pdfproject.model.Selectable;
 import javafx.event.Event;
 import javafx.geometry.Point2D;
 import javafx.scene.input.MouseEvent;
@@ -21,9 +24,11 @@ public class DrawRectangle implements Action, Selectable, Draggable {
     private Rectangle _selectionOverlay;
     private boolean _moved;
     private boolean _selected;
+    private Color _color;
 
-    public DrawRectangle(MainCanvas canvas) {
+    public DrawRectangle(MainCanvas canvas, Color color) {
         _canvas = canvas;
+        _color = color;
     }
 
     @Override
@@ -43,12 +48,14 @@ public class DrawRectangle implements Action, Selectable, Draggable {
 
         if (_origin == null)
             _origin = new Point2D(mouseEvent.getX(), mouseEvent.getY());
-        else
+        else {
             _rectangle = new Rectangle(
                     _origin.getX(),
                     _origin.getY(),
                     mouseEvent.getX() - _origin.getX(),
                     mouseEvent.getY() - _origin.getY());
+            _rectangle.setFill(_color);
+        }
 
         _isComplete = (mouseEvent.getEventType() == MouseEvent.MOUSE_RELEASED);
         if (_isComplete) {
@@ -104,12 +111,13 @@ public class DrawRectangle implements Action, Selectable, Draggable {
     public Action dragTo(double x, double y) {
         unselect();
         _moved = true;
-        DrawRectangle drawRectangle = new DrawRectangle(_canvas);
+        DrawRectangle drawRectangle = new DrawRectangle(_canvas, _color);
         drawRectangle._rectangle = new Rectangle(
                 _rectangle.getX(),
                 _rectangle.getY(),
                 _rectangle.getWidth(),
                 _rectangle.getHeight());
+        drawRectangle._rectangle.setFill(_color);
         return drawRectangle;
     }
 }

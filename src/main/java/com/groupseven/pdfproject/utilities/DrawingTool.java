@@ -1,9 +1,11 @@
 package com.groupseven.pdfproject.utilities;
 
 import com.groupseven.pdfproject.*;
+import com.groupseven.pdfproject.model.Action;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 
 /**
  * @author Charles Witherspoon
@@ -15,10 +17,11 @@ public class DrawingTool implements EventHandler<MouseEvent> {
     private MainCanvas _canvas;
     private DrawingMode _drawingMode;
     private Action _currentAction;
-
+    private Color _color;
 
     public DrawingTool(MainCanvas canvas) {
         _canvas = canvas;
+        _color = Color.BLACK;
     }
 
     public void setDrawingMode(DrawingMode drawingMode) {
@@ -35,13 +38,13 @@ public class DrawingTool implements EventHandler<MouseEvent> {
 
         if (_currentAction == null)
             _currentAction = (_drawingMode == DrawingMode.PEN) ?
-                    new DrawLine(_canvas)
+                    new DrawLine(_canvas, _color)
                     : (_drawingMode == DrawingMode.ERASER) ?
                     new Erase(_canvas)
                     : (_drawingMode == DrawingMode.SELECT) ?
                     new Select(_canvas)
                     : (_drawingMode == DrawingMode.RECTANGLE) ?
-                    new DrawRectangle(_canvas)
+                    new DrawRectangle(_canvas, _color)
                     : null;
 
         if (_currentAction != null)
@@ -59,5 +62,9 @@ public class DrawingTool implements EventHandler<MouseEvent> {
             _canvas.clearRedo();
             _currentAction = null;
         }
+    }
+
+    public void setColor(Color color) {
+        _color = color;
     }
 }

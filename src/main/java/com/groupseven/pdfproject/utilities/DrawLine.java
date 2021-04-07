@@ -1,9 +1,12 @@
-package com.groupseven.pdfproject;
+package com.groupseven.pdfproject.utilities;
 
+import com.groupseven.pdfproject.MainCanvas;
+import com.groupseven.pdfproject.model.Action;
 import com.groupseven.pdfproject.utilities.DrawingAction;
 import javafx.event.Event;
 import javafx.geometry.Point2D;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
 import java.util.ArrayList;
@@ -22,9 +25,11 @@ public class DrawLine implements Action {
     private List<Line> _lines;
     private Point2D _origin;
     private boolean _isComplete;
+    private Color _color;
 
-    public DrawLine(MainCanvas canvas) {
+    public DrawLine(MainCanvas canvas, Color color) {
         _canvas = canvas;
+        _color = color;
         _lines = new ArrayList<>();
     }
 
@@ -44,12 +49,15 @@ public class DrawLine implements Action {
 
         MouseEvent mouseEvent = (MouseEvent) event;
 
-        if (_origin != null)
-            _lines.add(new Line(
+        if (_origin != null) {
+            Line line = new Line(
                     _origin.getX(),
                     _origin.getY(),
                     mouseEvent.getX(),
-                    mouseEvent.getY()));
+                    mouseEvent.getY());
+            line.setStroke(_color);
+            _lines.add(line);
+        }
 
         _origin = new Point2D(mouseEvent.getX(), mouseEvent.getY());
         _isComplete = (mouseEvent.getEventType() == MouseEvent.MOUSE_RELEASED);

@@ -1,5 +1,9 @@
-package com.groupseven.pdfproject;
+package com.groupseven.pdfproject.utilities;
 
+import com.groupseven.pdfproject.MainCanvas;
+import com.groupseven.pdfproject.model.Action;
+import com.groupseven.pdfproject.model.Draggable;
+import com.groupseven.pdfproject.model.Selectable;
 import com.groupseven.pdfproject.utilities.DrawingAction;
 import javafx.event.Event;
 import javafx.geometry.Point2D;
@@ -12,7 +16,8 @@ import java.util.Optional;
 
 /**
  * @author Charles Witherspoon
- * @{ \brief This class represents an action to select an object on the canvas
+ * @{
+ * \brief This class represents an action to select an object on the canvas
  * \ref t18_1 "Task 18.1"
  */
 public class Select implements Action {

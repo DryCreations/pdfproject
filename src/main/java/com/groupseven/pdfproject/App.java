@@ -43,7 +43,6 @@ public class App extends Application {
     private DocumentModel doc;
     int currentPage;
     private Scene mainScene;
-    ShapesToolBar shapesToolBar;
 
     /// \ref t8_3 "task 8.3"
     private EventHandler handleImportAsset = new EventHandler<ActionEvent>() {

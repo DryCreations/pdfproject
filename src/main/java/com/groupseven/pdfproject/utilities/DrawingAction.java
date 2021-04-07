@@ -7,10 +7,15 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
-import sun.applet.Main;
 
 import java.util.function.BiConsumer;
 
+/**
+ * @author Charles Witherspoon
+ *
+ * \brief This class contains the drawing actions to be performed on the canvas
+ * \ref t9_1 "Task 9.1"
+ */
 public class DrawingAction {
 
     public static final BiConsumer<MainCanvas, Shape> DRAW_LINE = (canvas, object) -> {
@@ -18,13 +23,15 @@ public class DrawingAction {
             return;
 
         Line line = (Line) object;
-        canvas.getCanvas()
-                .getGraphicsContext2D()
-                .strokeLine(
-                        line.getStartX(),
-                        line.getStartY(),
-                        line.getEndX(),
-                        line.getEndY());
+        GraphicsContext gc = canvas.getCanvas().getGraphicsContext2D();
+        Paint currentColor = gc.getStroke();
+        gc.setStroke(line.getStroke());
+        gc.strokeLine(
+                line.getStartX(),
+                line.getStartY(),
+                line.getEndX(),
+                line.getEndY());
+        gc.setStroke(currentColor);
     };
 
     public static final BiConsumer<MainCanvas, Shape> ERASE = (canvas, object) -> {
@@ -46,13 +53,15 @@ public class DrawingAction {
             return;
 
         Rectangle rectangle = (Rectangle) object;
-        canvas.getCanvas()
-                .getGraphicsContext2D()
-                .fillRect(
-                        rectangle.getX(),
-                        rectangle.getY(),
-                        rectangle.getWidth(),
-                        rectangle.getHeight());
+        GraphicsContext gc = canvas.getCanvas().getGraphicsContext2D();
+        Paint currentFill = gc.getFill();
+        gc.setFill(rectangle.getFill());
+        gc.fillRect(
+                rectangle.getX(),
+                rectangle.getY(),
+                rectangle.getWidth(),
+                rectangle.getHeight());
+        gc.setFill(currentFill);
     };
 
     public static final BiConsumer<MainCanvas, Shape> SELECT = (canvas, object) -> {

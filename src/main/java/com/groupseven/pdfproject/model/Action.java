@@ -1,11 +1,11 @@
-package com.groupseven.pdfproject;
+package com.groupseven.pdfproject.model;
 
 import javafx.event.Event;
 import javafx.geometry.Point2D;
 
 /**
  * @author Charles Witherspoon
- * @{
+ *
  * \brief This interface represents an action to be undone/redone
  * \ref t10_2 "Task 10.2"
  */
@@ -15,4 +15,3 @@ public interface Action {
     boolean isComplete();
     boolean contains(Point2D point);
 }
-/**@}*/

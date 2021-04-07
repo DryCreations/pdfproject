@@ -38,7 +38,7 @@ public class PageModel {
         bufferedImage = image;
         Image fximage = SwingFXUtils.toFXImage(image, null);
         
-        canvas = new MainCanvas(fximage.getWidth(), fximage.getHeight(), fximage);
+        canvas = new MainCanvas(fximage.getWidth(), fximage.getHeight());
         
         graphicsContext = canvas.getCanvas().getGraphicsContext2D();
         

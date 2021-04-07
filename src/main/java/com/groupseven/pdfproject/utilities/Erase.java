@@ -1,5 +1,7 @@
-package com.groupseven.pdfproject;
+package com.groupseven.pdfproject.utilities;
 
+import com.groupseven.pdfproject.MainCanvas;
+import com.groupseven.pdfproject.model.Action;
 import com.groupseven.pdfproject.utilities.DrawingAction;
 import javafx.event.Event;
 import javafx.geometry.Point2D;

@@ -1,16 +1,13 @@
 
 package com.groupseven.pdfproject;
 
+import com.groupseven.pdfproject.model.Action;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
 
 
@@ -28,52 +25,18 @@ import java.util.Stack;
 public class MainCanvas extends Pane {
 
     protected Canvas canvas;
-    private List<Shapes> shapes;
-    private HandlingEvents eventHandler;
     private final Stack<Action> _undoStack;
     private Stack<Action> _redoStack;
-    private double _width;
-    private double _height;
-    private BackgroundImage _backgroundImage;
 
-    public MainCanvas(double width, double height, Image image) {
+    public MainCanvas(double width, double height) {
         _undoStack = new Stack<>();
         _redoStack = new Stack<>();
-        _width = width;
-        _height = height;
-        _backgroundImage = new BackgroundImage(
-                image,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.CENTER,
-                BackgroundSize.DEFAULT);
         canvas = new Canvas(width, height);
-        GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.setFill(Color.PINK); // TODO Charles: Make Dynamic
-        shapes = new ArrayList<>();
         getChildren().add(canvas);
     }
 
     public Canvas getCanvas() {
         return this.canvas;
-    }
-
-    /// \brief keep the track of all the shapes on canvas
-    /// \ref t18_1 "task 18.1"
-    public List<Shapes> getShapes() {
-        return shapes;
-    }
-
-    /// \brief draws the shape on the canvas and when selected highlights the shape
-    /// \ref t18_1 "task 18.1"
-    private void render() {
-        GraphicsContext gc = canvas.getGraphicsContext2D();
-        for (Shapes myShape : shapes) {
-            myShape.draw(gc);
-            if (myShape.selected) {
-                shapes.get(0).highlightShape(gc);
-            }
-        }
     }
 
     public void setHandlerForTypes(EventHandler handler, EventType... eventTypes) {
