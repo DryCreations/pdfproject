@@ -116,8 +116,12 @@ public class App extends Application {
                 action -> {
                     if (_drawingToolBar == null)
                         _drawingToolBar = new DrawingToolbar(canvas);
-
-                    canvas.getChildren().add(_drawingToolBar);
+                    if (canvas.getChildren().contains(_drawingToolBar)) {
+                        canvas.getChildren().remove(_drawingToolBar);
+                    } else {
+                        canvas.getChildren().add(_drawingToolBar);
+                    }
+                    
                 });
 
         Menu drawingMenu = new Menu();
