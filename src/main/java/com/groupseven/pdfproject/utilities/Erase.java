@@ -3,6 +3,8 @@ package com.groupseven.pdfproject.utilities;
 import com.groupseven.pdfproject.MainCanvas;
 import com.groupseven.pdfproject.model.Action;
 import com.groupseven.pdfproject.utilities.DrawingAction;
+import com.itextpdf.kernel.pdf.PdfPage;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import javafx.event.Event;
 import javafx.geometry.Point2D;
 import javafx.scene.input.MouseEvent;
@@ -60,6 +62,13 @@ public class Erase implements Action {
     @Override
     public boolean contains(Point2D point) {
         return false;
+    }
+
+    @Override
+    public void pdfExecute(PdfCanvas canvas, PdfPage page) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        System.out.println("Erase");
     }
 }
 /**@}*/

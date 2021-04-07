@@ -5,6 +5,7 @@
  */
 package com.groupseven.pdfproject;
 
+import com.groupseven.pdfproject.model.Action;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfPage;
@@ -27,6 +28,7 @@ import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.Color;
+import java.util.Stack;
 
 /**
  *
@@ -130,15 +132,15 @@ public class DocumentModel {
                 page = pdfDoc.addNewPage(pageSize);
             }
             
-            List<Shape> shapes = pageModel.getCanvas().getShapes();
             PdfCanvas canvas = new PdfCanvas(page);
             
-            for (Shape s : shapes) {
-                s.drawOnPdfCanvas(canvas, page);
-            }
+            Stack<Action> undoStack = pageModel.getCanvas().getUndoStack();
+            
+            undoStack.forEach(action -> action.pdfExecute(canvas, page));
+            
+            canvas.release();
             
         }
-//        srcDoc.close();
         pdfDoc.close();
     }
 }

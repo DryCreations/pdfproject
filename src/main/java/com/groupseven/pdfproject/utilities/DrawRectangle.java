@@ -4,6 +4,8 @@ import com.groupseven.pdfproject.MainCanvas;
 import com.groupseven.pdfproject.model.Action;
 import com.groupseven.pdfproject.model.Draggable;
 import com.groupseven.pdfproject.model.Selectable;
+import com.itextpdf.kernel.pdf.PdfPage;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import javafx.event.Event;
 import javafx.geometry.Point2D;
 import javafx.scene.input.MouseEvent;
@@ -119,6 +121,13 @@ public class DrawRectangle implements Action, Selectable, Draggable {
                 _rectangle.getHeight());
         drawRectangle._rectangle.setFill(_color);
         return drawRectangle;
+    }
+
+    @Override
+    public void pdfExecute(PdfCanvas canvas, PdfPage page) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PdfAction.DRAW_RECTANGLE.accept(canvas, page, _rectangle);
+        System.out.println("Rectangle");
     }
 }
 /**
