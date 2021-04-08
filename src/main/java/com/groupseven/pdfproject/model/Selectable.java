@@ -9,7 +9,5 @@ import javafx.scene.shape.Shape;
  * \ref t18_1 "Task 18.1"
  */
 public interface Selectable {
-    void select();
-    void unselect();
     Shape getSelection();
 }

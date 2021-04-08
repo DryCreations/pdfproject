@@ -47,10 +47,11 @@ public class DrawingTool implements EventHandler<MouseEvent> {
                     new DrawRectangle(_canvas, _color)
                     : null;
 
-        if (_currentAction != null)
-            _currentAction.handle(event);
+        if (_currentAction != null) {
+            _currentAction = _currentAction.handle(event);
+            updateScreen();
+        }
 
-        updateScreen();
     }
 
     private void updateScreen() {

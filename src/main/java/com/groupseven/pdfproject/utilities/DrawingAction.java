@@ -18,11 +18,11 @@ import java.util.function.BiConsumer;
  */
 public class DrawingAction {
 
-    public static final BiConsumer<MainCanvas, Shape> DRAW_LINE = (canvas, object) -> {
-        if (!(object instanceof Line))
+    public static final BiConsumer<MainCanvas, Shape> DRAW_LINE = (canvas, shape) -> {
+        if (!(shape instanceof Line))
             return;
 
-        Line line = (Line) object;
+        Line line = (Line) shape;
         GraphicsContext gc = canvas.getCanvas().getGraphicsContext2D();
         Paint currentColor = gc.getStroke();
         gc.setStroke(line.getStroke());
@@ -34,11 +34,11 @@ public class DrawingAction {
         gc.setStroke(currentColor);
     };
 
-    public static final BiConsumer<MainCanvas, Shape> ERASE = (canvas, object) -> {
-        if (!(object instanceof Rectangle))
+    public static final BiConsumer<MainCanvas, Shape> ERASE = (canvas, shape) -> {
+        if (!(shape instanceof Rectangle))
             return;
 
-        Rectangle rectangle = (Rectangle) object;
+        Rectangle rectangle = (Rectangle) shape;
         canvas.getCanvas()
                 .getGraphicsContext2D()
                 .clearRect(
@@ -48,11 +48,11 @@ public class DrawingAction {
                         rectangle.getHeight());
     };
 
-    public static final BiConsumer<MainCanvas, Shape> DRAW_RECTANGLE = (canvas, object) -> {
-        if (!(object instanceof Rectangle))
+    public static final BiConsumer<MainCanvas, Shape> DRAW_RECTANGLE = (canvas, shape) -> {
+        if (!(shape instanceof Rectangle))
             return;
 
-        Rectangle rectangle = (Rectangle) object;
+        Rectangle rectangle = (Rectangle) shape;
         GraphicsContext gc = canvas.getCanvas().getGraphicsContext2D();
         Paint currentFill = gc.getFill();
         gc.setFill(rectangle.getFill());
@@ -64,11 +64,11 @@ public class DrawingAction {
         gc.setFill(currentFill);
     };
 
-    public static final BiConsumer<MainCanvas, Shape> SELECT = (canvas, object) -> {
-        if (!(object instanceof Rectangle))
+    public static final BiConsumer<MainCanvas, Shape> SELECT = (canvas, shape) -> {
+        if (!(shape instanceof Rectangle))
             return;
 
-        Rectangle rectangle = (Rectangle) object;
+        Rectangle rectangle = (Rectangle) shape;
         GraphicsContext gc = canvas.getCanvas().getGraphicsContext2D();
         Paint currentColor = gc.getFill();
         Paint selectColor = Color.grayRgb(100, 0.2);
@@ -80,6 +80,4 @@ public class DrawingAction {
                 rectangle.getHeight() + 4);
         gc.setFill(currentColor);
     };
-
-
 }

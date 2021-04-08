@@ -2,6 +2,7 @@
 package com.groupseven.pdfproject;
 
 import com.groupseven.pdfproject.model.Action;
+import com.groupseven.pdfproject.model.Draggable;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.scene.canvas.Canvas;
@@ -47,6 +48,7 @@ public class MainCanvas extends Pane {
     public void undo() {
         if (_undoStack.empty())
             return;
+
         _redoStack.push(_undoStack.pop());
         refresh();
     }
@@ -82,6 +84,10 @@ public class MainCanvas extends Pane {
 
     public Stack<Action> getUndoStack() {
         return _undoStack;
+    }
+
+    public Stack<Action> getRedoStack() {
+        return _redoStack;
     }
 }
 

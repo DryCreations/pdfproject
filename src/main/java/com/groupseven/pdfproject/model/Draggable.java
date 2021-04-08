@@ -8,4 +8,5 @@ package com.groupseven.pdfproject.model;
  */
 public interface Draggable {
     Action dragTo(double x, double y);
+    boolean wasMoved();
 }

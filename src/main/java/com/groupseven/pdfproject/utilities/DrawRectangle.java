@@ -13,7 +13,7 @@ import javafx.scene.shape.Shape;
 
 /**
  * @author Charles Witherspoon
- * @{ \brief This class represents an action to draw a shape on the canvas
+ * \brief This class represents an action to draw a shape on the canvas
  * \ref t9_1 "Task 9.1"
  */
 public class DrawRectangle implements Action, Selectable, Draggable {
@@ -21,10 +21,10 @@ public class DrawRectangle implements Action, Selectable, Draggable {
     private Point2D _origin;
     private Rectangle _rectangle;
     private boolean _isComplete;
-    private Rectangle _selectionOverlay;
     private boolean _moved;
-    private boolean _selected;
     private Color _color;
+    private DrawRectangle _dragReplacement;
+    private DrawRectangle _dragSource;
 
     public DrawRectangle(MainCanvas canvas, Color color) {
         _canvas = canvas;
@@ -33,10 +33,17 @@ public class DrawRectangle implements Action, Selectable, Draggable {
 
     @Override
     public void execute() {
-        if (!_moved || !_selected)
+        if (!wasMoved())
             DrawingAction.DRAW_RECTANGLE.accept(_canvas, _rectangle);
-        else
-            _moved = false;
+    }
+
+    @Override
+    public boolean wasMoved() {
+        return _dragReplacement != null && !dragReplacementIsInRedoStack();
+    }
+
+    private boolean dragReplacementIsInRedoStack() {
+        return _canvas.getRedoStack().contains(_dragReplacement);
     }
 
     @Override
@@ -58,16 +65,11 @@ public class DrawRectangle implements Action, Selectable, Draggable {
         }
 
         _isComplete = (mouseEvent.getEventType() == MouseEvent.MOUSE_RELEASED);
-        if (_isComplete) {
-            _selectionOverlay = new Rectangle(
-                    _rectangle.getX() - 2,
-                    _rectangle.getY() - 2,
-                    _rectangle.getWidth() + 4,
-                    _rectangle.getHeight() + 4);
-            _selectionOverlay.setFill(Color.grayRgb(100, 0.2));
-            _selectionOverlay.setOnMouseClicked(__ -> unselect());
-        }
         return this;
+    }
+
+    public void complete() {
+        _isComplete = true;
     }
 
     @Override
@@ -80,15 +82,6 @@ public class DrawRectangle implements Action, Selectable, Draggable {
         return _rectangle.contains(point);
     }
 
-    @Override
-    public void select() {
-        _selected = true;
-    }
-
-    @Override
-    public void unselect() {
-       _selected = false;
-    }
 
     @Override
     public Shape getSelection() {
@@ -109,18 +102,15 @@ public class DrawRectangle implements Action, Selectable, Draggable {
 
     @Override
     public Action dragTo(double x, double y) {
-        unselect();
         _moved = true;
         DrawRectangle drawRectangle = new DrawRectangle(_canvas, _color);
         drawRectangle._rectangle = new Rectangle(
-                _rectangle.getX(),
-                _rectangle.getY(),
+                x,
+                y,
                 _rectangle.getWidth(),
                 _rectangle.getHeight());
         drawRectangle._rectangle.setFill(_color);
+        _dragReplacement = drawRectangle;
         return drawRectangle;
     }
 }
-/**
- * @}
- */
