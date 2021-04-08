@@ -1,8 +1,13 @@
 package com.groupseven.pdfproject;
 
+import com.sun.pdfview.PDFPage;
 import javafx.application.Application;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.List;
 
 /**
  * \defgroup NavBar Navigation Pane
@@ -17,7 +22,7 @@ import javafx.stage.Stage;
 /// accessing the PDF. 
 
 public class NavigationPane extends Application{
-	
+	private List<PageModel> pages;
 	/// \ref t1_1
 	/// \ref t1_2 
 	/// 
@@ -38,9 +43,18 @@ public class NavigationPane extends Application{
 				
 		}
 		/// \ref t1_1
-		public void convertPdfToImage() {
-			
+		public BufferedImage convertPdfToImage(String fileName, int Num) {
+
+			try {
+				 new DocumentModel(fileName).getPage(Num);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			return null;
 		}
+
+
 		
 		///\ref t1_1
 		public static void getThumbnail() {
