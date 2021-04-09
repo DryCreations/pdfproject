@@ -120,6 +120,5 @@ To earn full credit, each Graduate Student must demonstrate all of the following
 - Named data types must be used as a form of documentation.
 - Contractual elements like acceptable values, preconditions, and postconditions must be documented.
 - Formatted documentation must explain WHY each function or method exists.
-- Undergraduate Students receive these points for free.
 
 - [ ] [5 non-trivial functions meet the described characteristics of literate programming.](./literate.md#5-non-trivial-functions-meet-the-described-characteristics-of-literate-programming)

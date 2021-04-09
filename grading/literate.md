@@ -22,10 +22,6 @@
 
 { TODO: describe how the requirement has been, along with evidence of completion }
 
-- [ ] Undergraduate Students receive these points for free.
-
-{ TODO: describe how the requirement has been, along with evidence of completion }
-
 ### Function 2
 
 { TODO: describe how the requirement has been, along with evidence of completion }
@@ -43,10 +39,6 @@
 { TODO: describe how the requirement has been, along with evidence of completion }
 
 - [ ] Formatted documentation must explain WHY each function or method exists.
-
-{ TODO: describe how the requirement has been, along with evidence of completion }
-
-- [ ] Undergraduate Students receive these points for free.
 
 { TODO: describe how the requirement has been, along with evidence of completion }
 
@@ -70,10 +62,6 @@
 
 { TODO: describe how the requirement has been, along with evidence of completion }
 
-- [ ] Undergraduate Students receive these points for free.
-
-{ TODO: describe how the requirement has been, along with evidence of completion }
-
 ### Function 4
 
 { TODO: describe how the requirement has been, along with evidence of completion }
@@ -94,10 +82,6 @@
 
 { TODO: describe how the requirement has been, along with evidence of completion }
 
-- [ ] Undergraduate Students receive these points for free.
-
-{ TODO: describe how the requirement has been, along with evidence of completion }
-
 ### Function 5
 
 { TODO: describe how the requirement has been, along with evidence of completion }
@@ -115,9 +99,5 @@
 { TODO: describe how the requirement has been, along with evidence of completion }
 
 - [ ] Formatted documentation must explain WHY each function or method exists.
-
-{ TODO: describe how the requirement has been, along with evidence of completion }
-
-- [ ] Undergraduate Students receive these points for free.
 
 { TODO: describe how the requirement has been, along with evidence of completion }
