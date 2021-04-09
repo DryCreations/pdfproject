@@ -1,19 +1,3 @@
-- [Grading Breakdown](#grading-breakdown)
-  * [Team Project](#team-project)
-    + [Process (12 Points)](#process-12-points)
-    + [Traceability (5 points)](#traceability-5-points)
-    + [Test Coverage (8 points)](#test-coverage-8-points)
-    + [Product Backlog Items or Requirements (10 points)](#product-backlog-items-or-requirements-10-points)
-    + [Design Exists in Formatted Code Documentation (5 points)](#design-exists-in-formatted-code-documentation-5-points)
-  * [Individual Contribution](#individual-contribution)
-    + [Commits and Pull Requests (10 points)](#commits-and-pull-requests-10-points)
-    + [Minutes (5 points)](#minutes-5-points)
-    + [Pull Request Reviews (10 points)](#pull-request-reviews-10-points)
-    + [Closed Actions (5 points)](#closed-actions-5-points)
-  * [Graduate Level](#graduate-level)
-    + [Program By Contract (5 points)](#program-by-contract-5-points)
-    + [Literate Programming (10 points)](#literate-programming-10-points)
-
 # Grading Breakdown
 
 This document breaks down the grading items on pilot so we can track what items are met, and what artifacts we have as proof of the item being completed.
