@@ -2,70 +2,161 @@
 
 ## Hayden
 
-### Meaningful Pull Requests
-
-{ TODO: describe how the requirement has been, along with evidence of completion }
-
-### Meaningful Commits
-
-{ TODO: describe how the requirement has been, along with evidence of completion }
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
 
 ## Cassandra
 
-### Meaningful Pull Requests
-
-{ TODO: describe how the requirement has been, along with evidence of completion }
-
-### Meaningful Commits
-
-{ TODO: describe how the requirement has been, along with evidence of completion }
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
 
 ## Parker
 
-### Meaningful Pull Requests
-
-{ TODO: describe how the requirement has been, along with evidence of completion }
-
-### Meaningful Commits
-
-{ TODO: describe how the requirement has been, along with evidence of completion }
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
 
 ## William
 
-### Meaningful Pull Requests
-
-{ TODO: describe how the requirement has been, along with evidence of completion }
-
-### Meaningful Commits
-
-{ TODO: describe how the requirement has been, along with evidence of completion }
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
 
 ## Derrick
 
-### Meaningful Pull Requests
-
-{ TODO: describe how the requirement has been, along with evidence of completion }
-
-### Meaningful Commits
-
-{ TODO: describe how the requirement has been, along with evidence of completion }
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
 
 ## Hunter
 
-### Meaningful Pull Requests
-
-{ TODO: describe how the requirement has been, along with evidence of completion }
-
-### Meaningful Commits
-
-{ TODO: describe how the requirement has been, along with evidence of completion }
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
 
 ## Charles
 
-### Meaningful Pull Requests
-
-{ TODO: describe how the requirement has been, along with evidence of completion }
-
-### Meaningful Commits
-
-{ TODO: describe how the requirement has been, along with evidence of completion }
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()
+- [ ] [Pull Request/Commit #]()

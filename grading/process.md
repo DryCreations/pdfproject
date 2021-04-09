@@ -34,33 +34,595 @@
 
 { TODO: describe how the requirement has been, along with evidence of completion }
 
+- [ ] [Task #]()
+- [ ] [Task #]()
+- [ ] [Task #]()
+- [ ] [Task #]()
+- [ ] [Task #]()
+- [ ] [Task #]()
+- [ ] [Task #]()
+- [ ] [Task #]()
+- [ ] [Task #]()
+- [ ] [Task #]()
+- [ ] [Task #]()
+- [ ] [Task #]()
+- [ ] [Task #]()
+- [ ] [Task #]()
+- [ ] [Task #]()
+
 ## Complete 5 non-trivial programming Tasks per team member including test artifacts, formatted documentation, and acceptance through Pull Request Approval.
 
 ### Hayden
+
+#### Task 1
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+#### Task 2
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+#### Task 3
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+#### Task 4
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+#### Task 5
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
 
 { TODO: describe how the requirement has been, along with evidence of completion }
 
 ### Cassandra
 
+#### Task 1
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+#### Task 2
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+#### Task 3
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+#### Task 4
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+#### Task 5
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
+
 { TODO: describe how the requirement has been, along with evidence of completion }
 
 ### Parker
+
+#### Task 1
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+#### Task 2
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+#### Task 3
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+#### Task 4
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+#### Task 5
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
 
 { TODO: describe how the requirement has been, along with evidence of completion }
 
 ### William
 
+#### Task 1
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+#### Task 2
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+#### Task 3
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+#### Task 4
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+#### Task 5
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
+
 { TODO: describe how the requirement has been, along with evidence of completion }
 
 ### Derrick
+
+#### Task 1
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+#### Task 2
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+#### Task 3
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+#### Task 4
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+#### Task 5
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
 
 { TODO: describe how the requirement has been, along with evidence of completion }
 
 ### Hunter
 
+#### Task 1
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+#### Task 2
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+#### Task 3
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+#### Task 4
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+#### Task 5
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
+
 { TODO: describe how the requirement has been, along with evidence of completion }
 
 ### Charles
+
+#### Task 1
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+#### Task 2
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+#### Task 3
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+#### Task 4
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+#### Task 5
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Test Artifacts
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Formatted Documentation
+
+{ TODO: describe how the requirement has been, along with evidence of completion }
+
+- [ ] Pull Request Approval
 
 { TODO: describe how the requirement has been, along with evidence of completion }
 

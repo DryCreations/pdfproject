@@ -14,7 +14,7 @@
 
 { TODO: describe how the requirement has been, along with evidence of completion }
 
-- [ ] Contractual elements like acceptable values, preconditions, and postconditions must be documented.]
+- [ ] Contractual elements like acceptable values, preconditions, and postconditions must be documented.
 
 { TODO: describe how the requirement has been, along with evidence of completion }
 
@@ -34,7 +34,7 @@
 
 { TODO: describe how the requirement has been, along with evidence of completion }
 
-- [ ] Contractual elements like acceptable values, preconditions, and postconditions must be documented.]
+- [ ] Contractual elements like acceptable values, preconditions, and postconditions must be documented.
 
 { TODO: describe how the requirement has been, along with evidence of completion }
 
@@ -54,7 +54,7 @@
 
 { TODO: describe how the requirement has been, along with evidence of completion }
 
-- [ ] Contractual elements like acceptable values, preconditions, and postconditions must be documented.]
+- [ ] Contractual elements like acceptable values, preconditions, and postconditions must be documented.
 
 { TODO: describe how the requirement has been, along with evidence of completion }
 
@@ -74,7 +74,7 @@
 
 { TODO: describe how the requirement has been, along with evidence of completion }
 
-- [ ] Contractual elements like acceptable values, preconditions, and postconditions must be documented.]
+- [ ] Contractual elements like acceptable values, preconditions, and postconditions must be documented.
 
 { TODO: describe how the requirement has been, along with evidence of completion }
 
@@ -94,7 +94,7 @@
 
 { TODO: describe how the requirement has been, along with evidence of completion }
 
-- [ ] Contractual elements like acceptable values, preconditions, and postconditions must be documented.]
+- [ ] Contractual elements like acceptable values, preconditions, and postconditions must be documented.
 
 { TODO: describe how the requirement has been, along with evidence of completion }
 
