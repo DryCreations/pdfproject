@@ -9,5 +9,8 @@ import javafx.scene.shape.Shape;
  * \ref t18_1 "Task 18.1"
  */
 public interface Selectable {
+    /**
+     * @return Shape representing the selected canvas element
+     */
     Shape getSelection();
 }

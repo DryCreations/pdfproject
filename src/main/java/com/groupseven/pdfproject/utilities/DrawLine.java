@@ -2,7 +2,6 @@ package com.groupseven.pdfproject.utilities;
 
 import com.groupseven.pdfproject.MainCanvas;
 import com.groupseven.pdfproject.model.Action;
-import com.groupseven.pdfproject.utilities.DrawingAction;
 import javafx.event.Event;
 import javafx.geometry.Point2D;
 import javafx.scene.input.MouseEvent;
@@ -16,7 +15,6 @@ import java.util.List;
 /**
  * @author Charles Witherspoon
  *
- * @{
  * \brief This class represents an action that draws a line on the canvas
  * \ref t9_1_1 "Task 9.1.1"
  */
@@ -76,4 +74,3 @@ public class DrawLine implements Action {
                 .anyMatch(line -> line.contains(point));
     }
 }
-/**@}*/

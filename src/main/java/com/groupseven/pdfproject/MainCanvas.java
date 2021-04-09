@@ -2,12 +2,11 @@
 package com.groupseven.pdfproject;
 
 import com.groupseven.pdfproject.model.Action;
-import com.groupseven.pdfproject.model.Draggable;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.layout.*;
+import javafx.scene.layout.Pane;
 
 import java.util.Stack;
 
@@ -67,7 +66,7 @@ public class MainCanvas extends Pane {
 
         Action redo = _redoStack.pop();
         _undoStack.push(redo);
-        redo.execute();
+        refresh();
     }
 
     public void clearRedo() {

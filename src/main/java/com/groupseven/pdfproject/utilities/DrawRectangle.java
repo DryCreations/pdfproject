@@ -21,10 +21,8 @@ public class DrawRectangle implements Action, Selectable, Draggable {
     private Point2D _origin;
     private Rectangle _rectangle;
     private boolean _isComplete;
-    private boolean _moved;
     private Color _color;
-    private DrawRectangle _dragReplacement;
-    private DrawRectangle _dragSource;
+    private DrawRectangle _replacement;
 
     public DrawRectangle(MainCanvas canvas, Color color) {
         _canvas = canvas;
@@ -35,15 +33,6 @@ public class DrawRectangle implements Action, Selectable, Draggable {
     public void execute() {
         if (!wasMoved())
             DrawingAction.DRAW_RECTANGLE.accept(_canvas, _rectangle);
-    }
-
-    @Override
-    public boolean wasMoved() {
-        return _dragReplacement != null && !dragReplacementIsInRedoStack();
-    }
-
-    private boolean dragReplacementIsInRedoStack() {
-        return _canvas.getRedoStack().contains(_dragReplacement);
     }
 
     @Override
@@ -68,6 +57,9 @@ public class DrawRectangle implements Action, Selectable, Draggable {
         return this;
     }
 
+    /**
+     * Sets the complete status to true for the Action
+     */
     public void complete() {
         _isComplete = true;
     }
@@ -101,16 +93,27 @@ public class DrawRectangle implements Action, Selectable, Draggable {
     }
 
     @Override
-    public Action dragTo(double x, double y) {
-        _moved = true;
+    public Action shift(Point2D origin, Point2D destination) {
         DrawRectangle drawRectangle = new DrawRectangle(_canvas, _color);
+
+        double xDiff = destination.getX() - origin.getX();
+        double yDiff = destination.getY() - origin.getY();
+
         drawRectangle._rectangle = new Rectangle(
-                x,
-                y,
+                _rectangle.getX() + xDiff,
+                _rectangle.getY() + yDiff,
                 _rectangle.getWidth(),
                 _rectangle.getHeight());
         drawRectangle._rectangle.setFill(_color);
-        _dragReplacement = drawRectangle;
+        _replacement = drawRectangle;
+        drawRectangle.complete();
         return drawRectangle;
+    }
+
+    @Override
+    public boolean wasMoved() {
+        return _replacement != null
+                && (_canvas.getUndoStack().contains(_replacement)
+                || !_canvas.getRedoStack().contains(_replacement));
     }
 }

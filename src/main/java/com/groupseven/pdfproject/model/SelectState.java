@@ -1,9 +1,10 @@
 package com.groupseven.pdfproject.model;
 
-import com.groupseven.pdfproject.utilities.Select;
-import javafx.event.EventType;
-import javafx.scene.input.MouseEvent;
-
+/**
+ * @author Charles Witherspoon
+ * \brief This enum represents the different selection states
+ * \ref t18_1 "Task 18.1"
+ */
 public enum SelectState {
     SELECTED,
     MOVING,

@@ -12,6 +12,9 @@ public enum DrawingMode {
     RECTANGLE,
     SELECT;
 
+    /**
+     * @return a formatted string representation of the DrawingMode
+     */
     public String getName() {
         char firstLetter = this.name().charAt(0);
         String restOfName = this.name().substring(1).toLowerCase();

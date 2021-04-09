@@ -24,10 +24,15 @@ public class DrawingTool implements EventHandler<MouseEvent> {
         _color = Color.BLACK;
     }
 
+    /**
+     * Set the DrawingMode
+     * @param drawingMode DrawingMode to set
+     */
     public void setDrawingMode(DrawingMode drawingMode) {
         _drawingMode = drawingMode;
         _currentAction = null;
     }
+
     @Override
     public void handle(MouseEvent event) {
         EventType<? extends MouseEvent> eventType = event.getEventType();
@@ -54,6 +59,14 @@ public class DrawingTool implements EventHandler<MouseEvent> {
 
     }
 
+    /**
+     * Sets the fill color for strokes and fills
+     * @param color Color to use
+     */
+    public void setColor(Color color) {
+        _color = color;
+    }
+
     private void updateScreen() {
         _canvas.refresh();
         _currentAction.execute();
@@ -63,9 +76,5 @@ public class DrawingTool implements EventHandler<MouseEvent> {
             _canvas.clearRedo();
             _currentAction = null;
         }
-    }
-
-    public void setColor(Color color) {
-        _color = color;
     }
 }

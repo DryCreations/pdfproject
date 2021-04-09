@@ -1,41 +1,24 @@
 package com.groupseven.pdfproject;
 
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import com.groupseven.pdfproject.utilities.DrawingMode;
-import com.groupseven.pdfproject.utilities.DrawingTool;
 import com.groupseven.pdfproject.view.DrawingToolbar;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.Tooltip;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class App extends Application {
-
-
-    public static final int WINDOW_WIDTH = 700;
-    public static final int WINDOW_HEIGHT = 790;
 
     private MainCanvas canvas;
     private static DrawingToolbar _drawingToolBar;
@@ -59,7 +42,6 @@ public class App extends Application {
     private void initializeDocument() {
         try {
             doc = new DocumentModel("src/main/resources/test_pdf.pdf");
-//            doc = new DocumentModel();
             currentPage = 0;
         } catch (IOException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
@@ -75,13 +57,6 @@ public class App extends Application {
         vbox.setAlignment(Pos.BASELINE_RIGHT);
         vbox.getChildren().add(page.getNode());
         page.clear();
-
-//        vbox.setOnKeyPressed(new EventHandler<KeyEvent>() {
-//            @Override
-//            public void handle(KeyEvent event) {
-//                canvas.getEventHandler().Event(event);
-//            }
-//        });
 
         return vbox;
     }
@@ -214,7 +189,6 @@ public class App extends Application {
     public void start(Stage primaryStage) throws Exception {
         initializeDocument();
         primaryStage.setTitle("PDF Project");
-        //root BorderPane allows for more versatile alignment than HBox or VBox
         BorderPane root = new BorderPane();
         GridPane ToolBox = createToolBox();
         MenuBar menuBar = createMenuBar();
@@ -238,9 +212,6 @@ public class App extends Application {
         primaryStage.show();
 
         canvas = doc.getPage(currentPage).getCanvas();
-//        mainScene.setOnKeyPressed((KeyEvent event) -> {
-//            canvas.getEventHandler().Event(event);
-//        });
     }
 
     public void setDisplayDoc(DocumentModel document, int pageNum) {
@@ -249,7 +220,6 @@ public class App extends Application {
         PageModel page = document.getPage(pageNum);
         BorderPane root = (BorderPane) mainScene.getRoot();
 
-        MainCanvas canvas = page.getCanvas();
         root.setCenter(createViewbox(page));
     }
 

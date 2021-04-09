@@ -9,7 +9,10 @@ import javafx.event.Event;
 import javafx.geometry.Point2D;
 import javafx.scene.input.MouseEvent;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 import java.util.function.Predicate;
 
 /**
@@ -21,6 +24,7 @@ public class Select implements Action {
     private MainCanvas _canvas;
     private Selectable _selectedDrawing;
     private SelectState _selectState;
+    private Point2D _origin;
 
     public Select(MainCanvas canvas) {
         _canvas = canvas;
@@ -29,24 +33,10 @@ public class Select implements Action {
 
     @Override
     public void execute() {
-
-        if (_selectState == SelectState.SELECTED)
+        if (_selectState == SelectState.SELECTED
+                && _selectedDrawing instanceof Draggable
+                && !((Draggable) _selectedDrawing).wasMoved())
             DrawingAction.SELECT.accept(_canvas, _selectedDrawing.getSelection());
-
-        else if (_selectState == SelectState.MOVED && _selectedDrawing instanceof Action) {
-            if (_canvas.getUndoStack().contains(this)) {
-                _canvas.clearScreen();
-
-                Stack<Action> undos = _canvas.getUndoStack();
-                for (int i = 0; i < undos.size() - 1; i++) {
-
-                    Action currentAction = undos.get(i);
-                    if (currentAction != this)
-                        currentAction.execute();
-                }
-            }
-            ((Action) _selectedDrawing).execute();
-        }
     }
 
     @Override
@@ -57,31 +47,62 @@ public class Select implements Action {
         MouseEvent mouseEvent = (MouseEvent) event;
         Point2D mousePosition = new Point2D(mouseEvent.getX(), mouseEvent.getY());
 
-        Optional<Action> drawingAtMousePosition = getDrawingAtPoint(mousePosition);
+        if (mouseEvent.getEventType() == MouseEvent.MOUSE_PRESSED)
+            handlePress(mousePosition);
 
-        if (_selectState == SelectState.UNSELECTED && mouseEvent.getEventType() == MouseEvent.MOUSE_PRESSED && drawingAtMousePosition.isPresent()) {
-            select(drawingAtMousePosition.get());
-            _selectState = SelectState.SELECTED;
-        } else if (_selectState == SelectState.SELECTED && mouseEvent.getEventType() == MouseEvent.MOUSE_PRESSED && !drawingAtMousePosition.isPresent()) {
-            _selectState = SelectState.UNSELECTED;
-        } else if (_selectState == SelectState.SELECTED && mouseEvent.getEventType() == MouseEvent.MOUSE_PRESSED && drawingAtMousePosition.isPresent() && drawingAtMousePosition.get() == _selectedDrawing) {
-            _selectState = SelectState.UNSELECTED;
-        } else if (_selectState == SelectState.SELECTED && mouseEvent.getEventType() == MouseEvent.MOUSE_PRESSED && drawingAtMousePosition.isPresent() && drawingAtMousePosition.get() != _selectedDrawing) {
-            select(drawingAtMousePosition.get());
-            _selectState = SelectState.SELECTED;
-        } else if (_selectState == SelectState.SELECTED && mouseEvent.getEventType() == MouseEvent.MOUSE_DRAGGED) {
-            _selectState = SelectState.MOVING;
-        } else if (_selectState == SelectState.MOVING && mouseEvent.getEventType() == MouseEvent.MOUSE_DRAGGED) {
-//            System.out.println("MOVING\tMOUSE_DRAGGED");
-        } else if (_selectState == SelectState.MOVING && mouseEvent.getEventType() == MouseEvent.MOUSE_RELEASED) {
-            moveTo(mousePosition);
-            _selectState = SelectState.MOVED;
-        }
+        else if (mouseEvent.getEventType() == MouseEvent.MOUSE_DRAGGED)
+            handleDrag();
+
+        else if (mouseEvent.getEventType() == MouseEvent.MOUSE_RELEASED)
+            handleRelease(mousePosition);
 
         return _selectState == SelectState.MOVED
                 && _selectedDrawing instanceof Action ?
                 (Action) _selectedDrawing
                 : this;
+    }
+
+    @Override
+    public boolean isComplete() {
+        return _selectState == SelectState.MOVED;
+    }
+
+    @Override
+    public boolean contains(Point2D point) {
+        return ((Action) _selectedDrawing).contains(point);
+    }
+
+    private void handlePress(Point2D mousePosition) {
+        Optional<Action> drawingAtMousePosition = getDrawingAtPoint(mousePosition);
+
+        if (drawingAtMousePosition.isPresent()
+                && drawingAtMousePosition.get() instanceof Draggable
+                && ((Draggable) drawingAtMousePosition.get()).wasMoved())
+            return;
+
+        if (drawingAtMousePosition.isPresent()
+                && (_selectState == SelectState.UNSELECTED
+                || (_selectState == SelectState.SELECTED
+                && drawingAtMousePosition.get() != _selectedDrawing)))
+            select(drawingAtMousePosition.get());
+
+        else if (_selectState == SelectState.SELECTED) {
+            _selectState = SelectState.UNSELECTED;
+        }
+
+        _origin = mousePosition;
+    }
+
+    private void handleDrag() {
+        if (_selectState == SelectState.SELECTED)
+            _selectState = SelectState.MOVING;
+    }
+
+    private void handleRelease(Point2D mousePosition) {
+        if (_selectState == SelectState.MOVING) {
+            moveTo(mousePosition);
+            _selectState = SelectState.MOVED;
+        }
     }
 
     private Optional<Action> getDrawingAtPoint(Point2D mousePosition) {
@@ -103,25 +124,14 @@ public class Select implements Action {
 
     private void select(Action drawing) {
         _selectedDrawing = (Selectable) drawing;
+        _selectState = SelectState.SELECTED;
     }
 
     private void moveTo(Point2D mousePosition) {
         if (_selectedDrawing instanceof Draggable) {
             _selectedDrawing = (Selectable) ((Draggable) _selectedDrawing)
-                    .dragTo(mousePosition.getX(), mousePosition.getY());
-            if (_selectedDrawing instanceof DrawRectangle)
-                ((DrawRectangle) _selectedDrawing).complete();
+                    .shift(_origin, mousePosition);
         }
 
-    }
-
-    @Override
-    public boolean isComplete() {
-        return _selectState == SelectState.MOVED;
-    }
-
-    @Override
-    public boolean contains(Point2D point) {
-        return ((Action) _selectedDrawing).contains(point);
     }
 }
