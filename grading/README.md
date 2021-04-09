@@ -49,16 +49,24 @@ Use an automated code coverage tool to measure the code that executes under test
 
 To earn theses points, the team must implement at least 5 non-trivial requirements, and provide test coverage for code involved with implementing the requirements.
 
+- [ ] Code is being tested.
+- [ ] A code coverage tool is being used to measure the code that executes under a test.
+- [ ] the team has implemented at least 5 non-trivial requirements that are demonstrably being covered by tests.
+
 ### [Product Backlog Items or Requirements](./backlog.md) (10 points)
 
-Teams using the Waterfall Process must produce a Software Requirements Specification (SRS) document. To earn full credit, the SRS must contain at least 10 correctly stated non-trivial testable requirements.
-
 Teams using an Agile Process define a backlog of User Stories and Tasks. To earn full credit, there must be at least 10 correctly stated User Stories that each have one or more pointed Tasks.
+
+- [ ] A backlog of user stories and tasks has been defined.
+- [ ] 10 User Stories have been correctly stated.
+- [ ] Every user story has at least one pointed task
 
 ### [Design Exists in Formatted Code Documentation](./design.md) (5 points)
 
 For both Waterfall and Agile, each team must produce an "As-Built" Software Design Document (SDD) that is substantially generated from formatted code documentation. To earn full credit, design documentation must exist for all code that was written or modified by the team.
 
+- [ ] A Software Design Document can be generated from formatted code documentation.
+- [ ] Design documentation exists for all code that was written or modified by the team
 
 ## Individual Contribution
 
@@ -66,17 +74,49 @@ For both Waterfall and Agile, each team must produce an "As-Built" Software Desi
 
 The sum of your number of meaningful commits and pull requests needs to be greater than or equal to 20 to earn full credit.
 
+- [ ] Hayden
+- [ ] Cassandra
+- [ ] Parker
+- [ ] William
+- [ ] Derrick
+- [ ] Hunter
+- [ ] Charles
+
 ### [Minutes](./minutes.md) (5 points)
 
 To earn full credit, you must be identified as "present" in Minutes for at least 5 separate meetings, and the Minutes must document your non-trivial contribution in the Project. Completion of Action Items that are documented in the Minutes can be used to document your contribution.
+
+- [ ] Hayden
+- [ ] Cassandra
+- [ ] Parker
+- [ ] William
+- [ ] Derrick
+- [ ] Hunter
+- [ ] Charles
 
 ### [Pull Request Reviews](./reviews.md) (10 points)
 
 To earn full credit, you must provide at least 10 non-trivial items of feedback within Pull Requests made by someone other than yourself. You cannot review your own Pull Requests.
 
+- [ ] Hayden
+- [ ] Cassandra
+- [ ] Parker
+- [ ] William
+- [ ] Derrick
+- [ ] Hunter
+- [ ] Charles
+
 ### [Closed Actions](./closed_actions.md) (5 points)
 
 To earn full credit, you must complete and close at least 5 Actions that are correctly stated with objective completion criteria, documented in Minutes, and assigned to you with a due date. You may be required to supply evidence of Action completion.
+
+- [ ] Hayden
+- [ ] Cassandra
+- [ ] Parker
+- [ ] William
+- [ ] Derrick
+- [ ] Hunter
+- [ ] Charles
 
 ## Graduate Level
 
@@ -85,6 +125,8 @@ To earn full credit, you must complete and close at least 5 Actions that are cor
 To earn full credit, each Graduate Student must document contracts for at least 5 non-trivial functions, methods, or classes. Contracts must be verified using pre-condition, post-condition, and invariant assertions within implementations.
 
 Undergraduate Students receive these points for free.
+
+- [ ] 5 non-trivial functions, methods, or classes have documented contracts.
 
 ### [Literate Programming](./literate.md) (10 points)
 
@@ -95,3 +137,5 @@ To earn full credit, each Graduate Student must demonstrate all of the following
 - Contractual elements like acceptable values, preconditions, and postconditions must be documented.
 - Formatted documentation must explain WHY each function or method exists.
 - Undergraduate Students receive these points for free.
+
+- [ ] 5 non-trivial functions meet the described characteristics of literate programming.
