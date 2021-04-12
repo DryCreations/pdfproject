@@ -10,8 +10,7 @@ import javafx.scene.paint.Color;
 /**
  * @author Charles Witherspoon
  *
- * \brief Class that performs different canvas actions based on the DrawingMode
- * \ref t9_1 "Task 9.1"
+ *         \brief Class that performs different canvas actions based on the DrawingMode \ref t9_1 "Task 9.1"
  */
 public class DrawingTool implements EventHandler<MouseEvent> {
     private MainCanvas _canvas;
@@ -28,24 +27,19 @@ public class DrawingTool implements EventHandler<MouseEvent> {
         _drawingMode = drawingMode;
         _currentAction = null;
     }
+
     @Override
     public void handle(MouseEvent event) {
         EventType<? extends MouseEvent> eventType = event.getEventType();
-        if (eventType != MouseEvent.MOUSE_PRESSED
-                && eventType != MouseEvent.MOUSE_DRAGGED
+        if (eventType != MouseEvent.MOUSE_PRESSED && eventType != MouseEvent.MOUSE_DRAGGED
                 && eventType != MouseEvent.MOUSE_RELEASED)
             return;
 
         if (_currentAction == null)
-            _currentAction = (_drawingMode == DrawingMode.PEN) ?
-                    new DrawLine(_canvas, _color)
-                    : (_drawingMode == DrawingMode.ERASER) ?
-                    new Erase(_canvas)
-                    : (_drawingMode == DrawingMode.SELECT) ?
-                    new Select(_canvas)
-                    : (_drawingMode == DrawingMode.RECTANGLE) ?
-                    new DrawRectangle(_canvas, _color)
-                    : null;
+            _currentAction = (_drawingMode == DrawingMode.PEN) ? new DrawLine(_canvas, _color)
+                    : (_drawingMode == DrawingMode.ERASER) ? new Erase(_canvas) : (_drawingMode == DrawingMode.SELECT)
+                            ? new Select(_canvas)
+                            : (_drawingMode == DrawingMode.RECTANGLE) ? new DrawRectangle(_canvas, _color) : null;
 
         if (_currentAction != null)
             _currentAction.handle(event);
