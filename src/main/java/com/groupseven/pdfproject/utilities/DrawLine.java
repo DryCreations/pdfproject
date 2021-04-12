@@ -7,6 +7,7 @@ import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import javafx.event.Event;
 import javafx.geometry.Point2D;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
@@ -41,7 +42,7 @@ public class DrawLine implements Action {
     }
 
     @Override
-    public Action handle(Event event) {
+    public Action handle(MouseEvent event) {
         if (!(event instanceof MouseEvent))
             return this;
 
@@ -78,5 +79,12 @@ public class DrawLine implements Action {
         });
         System.out.println("Line");
     }
+
+
+	@Override
+	public void handle(KeyEvent event) {
+		// TODO Auto-generated method stub
+		
+	}
 }
 /** @} */
