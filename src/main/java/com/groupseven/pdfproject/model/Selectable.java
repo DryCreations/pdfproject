@@ -13,4 +13,12 @@ public interface Selectable {
     void unselect();
 
     Shape getSelection();
+    
+    void setUri(String uri);
+    
+    void setisLinked(boolean linked);
+    
+    String getLink();
+    
+    boolean getisLinked();
 }
