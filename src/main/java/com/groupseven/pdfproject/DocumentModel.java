@@ -12,8 +12,6 @@ import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
-import com.itextpdf.layout.Canvas;
-import com.itextpdf.layout.Document;
 import com.sun.pdfview.PDFFile;
 import com.sun.pdfview.PDFPage;
 import java.awt.Graphics2D;
@@ -35,7 +33,7 @@ import java.util.Stack;
  * @author hayde
  */
 public class DocumentModel {
-    private String filename;
+    private File file;
     private List<PageModel> pages;
 
     /// \ref t8_1 "task 8.1"
@@ -51,11 +49,11 @@ public class DocumentModel {
     /// \brief create document from a specific filename
     ///
     /// \ref t14_1 "task 14.1"
-    public DocumentModel(String filename) throws IOException {
-        this.filename = filename;
+    public DocumentModel(File file) throws IOException {
+        this.file = file;
         this.pages = new ArrayList<>();
 
-        File file = new File(filename);
+        // File file = new File(filename);
 
         RandomAccessFile raf = new RandomAccessFile(file, "r");
         FileChannel fileChannel = raf.getChannel();
@@ -115,8 +113,8 @@ public class DocumentModel {
         dest.getParentFile().mkdirs();
         PdfWriter writer = new PdfWriter(dest);
         PdfDocument pdfDoc;
-        if (filename != null) {
-            PdfReader reader = new PdfReader(filename);
+        if (file != null) {
+            PdfReader reader = new PdfReader(file);
             pdfDoc = new PdfDocument(reader, writer);
         } else {
             pdfDoc = new PdfDocument(writer);
@@ -125,7 +123,7 @@ public class DocumentModel {
         for (int i = 0; i < pages.size(); i++) {
             PdfPage page;
             PageModel pageModel = pages.get(i);
-            if (filename != null) {
+            if (file != null) {
                 page = pdfDoc.getPage(i + 1);
             } else {
                 PageSize pageSize = new PageSize((float) pageModel.getCanvas().getWidth(),
