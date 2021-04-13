@@ -10,19 +10,19 @@ import javafx.scene.input.MouseEvent;
 /**
  * @author Charles Witherspoon
  *
- *         \brief This interface represents an action to be undone/redone.It also mouse and key events
- *         \ref t10_2 "Task 10.2"
+ *         \brief This interface represents an action to be undone/redone.It
+ *         also mouse and key events \ref t10_2 "Task 10.2"
  */
 public interface Action {
-    void execute();
+	void execute();
 
-    Action handle(MouseEvent event);
-    
-    void handle(KeyEvent event);
-   
-    boolean isComplete();
+	Action handle(MouseEvent event);
 
-    boolean contains(Point2D point);
+	void handle(KeyEvent event);
 
-    void pdfExecute(PdfCanvas canvas, PdfPage page);
+	boolean isComplete();
+
+	boolean contains(Point2D point);
+
+	void pdfExecute(PdfCanvas canvas, PdfPage page);
 }

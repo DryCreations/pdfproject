@@ -30,47 +30,46 @@ import java.util.Optional;
 /**
  * @author Charles Witherspoon
  * 
- * @{ \brief This class represents an action to select an object on the canvas and facilitates to provide links to the selected object
- * \ref t18_1 "Task 18.1"
- * \ref t18_2 "Task 18.2"
+ * @{ \brief This class represents an action to select an object on the canvas
+ *    and facilitates to provide links to the selected object \ref t18_1 "Task
+ *    18.1" \ref t18_2 "Task 18.2"
  */
 public class Select implements Action {
-    private MainCanvas _canvas;
-    Selectable _selectedDrawing;
-    private ContextMenu contextMenu;
+	private MainCanvas _canvas;
+	Selectable _selectedDrawing;
+	private ContextMenu contextMenu;
 
-    public Select(MainCanvas canvas) {
-        _canvas = canvas;
-    }
+	public Select(MainCanvas canvas) {
+		_canvas = canvas;
+	}
 
-    @Override
-    public void execute() {
-        if (_selectedDrawing != null) {
-            _selectedDrawing.select();
-            DrawingAction.SELECT.accept(_canvas, _selectedDrawing.getSelection());
-        }
-    }
+	@Override
+	public void execute() {
+		if (_selectedDrawing != null) {
+			_selectedDrawing.select();
+			DrawingAction.SELECT.accept(_canvas, _selectedDrawing.getSelection());
+		}
+	}
 
-    @Override
-    public Action handle(MouseEvent event) {
+	@Override
+	public Action handle(MouseEvent event) {
 
-        MouseEvent mouseEvent = (MouseEvent) event;
+		MouseEvent mouseEvent = (MouseEvent) event;
 
+		if (event.getEventType() == MouseEvent.MOUSE_PRESSED)
+			handlePress(mouseEvent);
 
-    	if(event.getEventType()==MouseEvent.MOUSE_PRESSED)
-       	 handlePress(mouseEvent);
-       
-       if(event.getEventType()==MouseEvent.MOUSE_DRAGGED)
-       	handleDrag(mouseEvent);
-       
-       if(event.getEventType()==MouseEvent.MOUSE_RELEASED)
-       	handleRelease(mouseEvent);
+		if (event.getEventType() == MouseEvent.MOUSE_DRAGGED)
+			handleDrag(mouseEvent);
 
-       /**
+		if (event.getEventType() == MouseEvent.MOUSE_RELEASED)
+			handleRelease(mouseEvent);
+
+		/**
 		 * Only accepts right click and no mouse drag
 		 */
-       if(event.isSecondaryButtonDown()) {
-       	contextMenu = new ContextMenu();
+		if (event.isSecondaryButtonDown()) {
+			contextMenu = new ContextMenu();
 			MenuItem linkObj = new MenuItem("Link Object");
 			contextMenu.getItems().add(linkObj);
 			contextMenu.show(_canvas, event.getScreenX(), event.getScreenY());
@@ -94,7 +93,7 @@ public class Select implements Action {
 			});
 		}
 
-       /***
+		/***
 		 * 
 		 * Takes to the linked web page only if "Control" key is pressed down while
 		 * mouse clicked. User is expected to provide a proper link of a web page
@@ -103,99 +102,97 @@ public class Select implements Action {
 			_canvas.getScene().setCursor(Cursor.HAND);
 			System.out.println("control down");
 			if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {
-				
-						if (_selectedDrawing.getisLinked()) {
-							if(_selectedDrawing.getLink()!= null) {
-							if (Desktop.isDesktopSupported()) {
-								try {
-									Desktop.getDesktop().browse(new URI(_selectedDrawing.getLink()));
-								} catch (IOException e1) {
-									e1.printStackTrace();
-								} catch (URISyntaxException e1) {
-									e1.printStackTrace();
-								}
+
+				if (_selectedDrawing.getisLinked()) {
+					if (_selectedDrawing.getLink() != null) {
+						if (Desktop.isDesktopSupported()) {
+							try {
+								Desktop.getDesktop().browse(new URI(_selectedDrawing.getLink()));
+							} catch (IOException e1) {
+								e1.printStackTrace();
+							} catch (URISyntaxException e1) {
+								e1.printStackTrace();
 							}
 						}
 					}
+				}
 			}
 
 		} else {
 			_canvas.getScene().setCursor(Cursor.DEFAULT);
 		}
-       
-        return this;
-    }
 
-    @Override
-    public boolean isComplete() {
-        return false;
-    }
+		return this;
+	}
 
-    @Override
-    public boolean contains(Point2D point) {
-        return ((Action) _selectedDrawing).contains(point);
-    }
+	@Override
+	public boolean isComplete() {
+		return false;
+	}
 
-    private void handlePress(MouseEvent mouseEvent) {
-    	if (_selectedDrawing != null) {
-        	try {
+	@Override
+	public boolean contains(Point2D point) {
+		return ((Action) _selectedDrawing).contains(point);
+	}
+
+	private void handlePress(MouseEvent mouseEvent) {
+		if (_selectedDrawing != null) {
+			try {
 				if (contextMenu.isShowing()) {
 					contextMenu.hide();
 				}
 			} catch (Exception e) {
 				// do nothing
 			}
-        	 _selectedDrawing.unselect();
-        }
+			_selectedDrawing.unselect();
+		}
 
-        List<Action> undos = new ArrayList<>(_canvas.getUndoStack());
-        Collections.reverse(undos);
-        Point2D mousePosition = new Point2D(mouseEvent.getX(), mouseEvent.getY());
-        Optional<Action> firstActionContainingMousePosition = undos.stream()
-                .filter(action -> action.contains(mousePosition) && action instanceof Selectable).findFirst();
+		List<Action> undos = new ArrayList<>(_canvas.getUndoStack());
+		Collections.reverse(undos);
+		Point2D mousePosition = new Point2D(mouseEvent.getX(), mouseEvent.getY());
+		Optional<Action> firstActionContainingMousePosition = undos.stream()
+				.filter(action -> action.contains(mousePosition) && action instanceof Selectable).findFirst();
 
-        Selectable previousSelection = _selectedDrawing;
-        _selectedDrawing = (Selectable) firstActionContainingMousePosition.orElse(null);
+		Selectable previousSelection = _selectedDrawing;
+		_selectedDrawing = (Selectable) firstActionContainingMousePosition.orElse(null);
 
-        if (previousSelection != null && previousSelection.equals(_selectedDrawing))
-            _selectedDrawing.unselect();
-    }
+		if (previousSelection != null && previousSelection.equals(_selectedDrawing))
+			_selectedDrawing.unselect();
+	}
 
-    private void handleDrag(MouseEvent mouseEvent) {
-        if (_selectedDrawing != null && _selectedDrawing instanceof Draggable) {
-            Action movedRectangle = ((Draggable) _selectedDrawing).dragTo(mouseEvent.getX(), mouseEvent.getY());
-            _canvas.getUndoStack().push(movedRectangle);
-            _selectedDrawing = (Selectable) movedRectangle;
-        }
-    }
+	private void handleDrag(MouseEvent mouseEvent) {
+		if (_selectedDrawing != null && _selectedDrawing instanceof Draggable) {
+			Action movedRectangle = ((Draggable) _selectedDrawing).dragTo(mouseEvent.getX(), mouseEvent.getY());
+			_canvas.getUndoStack().push(movedRectangle);
+			_selectedDrawing = (Selectable) movedRectangle;
+		}
+	}
 
-    private void handleRelease(MouseEvent mouseEvent) {
+	private void handleRelease(MouseEvent mouseEvent) {
 
-    }
+	}
 
-    @Override
-    public void pdfExecute(PdfCanvas canvas, PdfPage page) {
-        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose
-        // Tools | Templates.
+	@Override
+	public void pdfExecute(PdfCanvas canvas, PdfPage page) {
+		// throw new UnsupportedOperationException("Not supported yet."); //To change
+		// body of generated methods, choose
+		// Tools | Templates.
 
-        System.out.println("Select");
-    }
+		System.out.println("Select");
+	}
 
-    /// \brief changes the cursor 
-  	/// \ref t18_1 "task 18.1"
+	/// \brief changes the cursor
+	/// \ref t18_1 "task 18.1"
 	@Override
 	public void handle(KeyEvent event) {
 		// TODO Auto-generated method stub
 		System.out.println("entered keyevent block");
 		if (event.isControlDown())
 			_canvas.getScene().setCursor(Cursor.HAND);
-		
+
 		else
 			_canvas.getScene().setCursor(Cursor.DEFAULT);
 	}
-	
-   
-  
 
 }
 /**

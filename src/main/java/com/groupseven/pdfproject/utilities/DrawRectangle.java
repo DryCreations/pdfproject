@@ -17,121 +17,121 @@ import javafx.scene.shape.Shape;
 /**
  * @author Charles Witherspoon
  * 
- * @{ \brief This class represents an action to draw a shape on the canvas and also allows to attach link
- * \ref t9_1 "Task 9.1"
- * \ref t18_2 "task 18.2" 
+ * @{ \brief This class represents an action to draw a shape on the canvas and
+ *    also allows to attach link \ref t9_1 "Task 9.1" \ref t18_2 "task 18.2"
  */
 public class DrawRectangle implements Action, Selectable, Draggable {
-    private MainCanvas _canvas;
-    private Point2D _origin;
-    private Rectangle _rectangle;
-    private boolean _isComplete;
-    private Rectangle _selectionOverlay;
-    private boolean _moved;
-    private boolean _selected;
-    private Color _color;
-    protected boolean _isLinked;
-    protected String _link;
+	private MainCanvas _canvas;
+	private Point2D _origin;
+	private Rectangle _rectangle;
+	private boolean _isComplete;
+	private Rectangle _selectionOverlay;
+	private boolean _moved;
+	private boolean _selected;
+	private Color _color;
+	protected boolean _isLinked;
+	protected String _link;
 
-    public DrawRectangle(MainCanvas canvas, Color color) {
-        _canvas = canvas;
-        _color = color;
-    }
+	public DrawRectangle(MainCanvas canvas, Color color) {
+		_canvas = canvas;
+		_color = color;
+	}
 
-    @Override
-    public void execute() {
-        if (!_moved || !_selected)
-            DrawingAction.DRAW_RECTANGLE.accept(_canvas, _rectangle);
-        else
-            _moved = false;
-    }
+	@Override
+	public void execute() {
+		if (!_moved || !_selected)
+			DrawingAction.DRAW_RECTANGLE.accept(_canvas, _rectangle);
+		else
+			_moved = false;
+	}
 
-    @Override
-    public Action handle(MouseEvent event) {
-        if (!(event instanceof MouseEvent))
-            return this;
+	@Override
+	public Action handle(MouseEvent event) {
+		if (!(event instanceof MouseEvent))
+			return this;
 
-        MouseEvent mouseEvent = (MouseEvent) event;
+		MouseEvent mouseEvent = (MouseEvent) event;
 
-        if (_origin == null)
-            _origin = new Point2D(mouseEvent.getX(), mouseEvent.getY());
-        else {
-            _rectangle = new Rectangle(_origin.getX(), _origin.getY(), mouseEvent.getX() - _origin.getX(),
-                    mouseEvent.getY() - _origin.getY());
-            _rectangle.setFill(_color);
-        }
+		if (_origin == null)
+			_origin = new Point2D(mouseEvent.getX(), mouseEvent.getY());
+		else {
+			_rectangle = new Rectangle(_origin.getX(), _origin.getY(), mouseEvent.getX() - _origin.getX(),
+					mouseEvent.getY() - _origin.getY());
+			_rectangle.setFill(_color);
+		}
 
-        _isComplete = (mouseEvent.getEventType() == MouseEvent.MOUSE_RELEASED);
-        if (_isComplete) {
-            _selectionOverlay = new Rectangle(_rectangle.getX() - 2, _rectangle.getY() - 2, _rectangle.getWidth() + 4,
-                    _rectangle.getHeight() + 4);
-            _selectionOverlay.setFill(Color.grayRgb(100, 0.2));
-            _selectionOverlay.setOnMouseClicked(__ -> unselect());
-        }
-        return this;
-    }
+		_isComplete = (mouseEvent.getEventType() == MouseEvent.MOUSE_RELEASED);
+		if (_isComplete) {
+			_selectionOverlay = new Rectangle(_rectangle.getX() - 2, _rectangle.getY() - 2, _rectangle.getWidth() + 4,
+					_rectangle.getHeight() + 4);
+			_selectionOverlay.setFill(Color.grayRgb(100, 0.2));
+			_selectionOverlay.setOnMouseClicked(__ -> unselect());
+		}
+		return this;
+	}
 
-    @Override
-    public boolean isComplete() {
-        return _isComplete;
-    }
+	@Override
+	public boolean isComplete() {
+		return _isComplete;
+	}
 
-    @Override
-    public boolean contains(Point2D point) {
-        return _rectangle.contains(point);
-    }
+	@Override
+	public boolean contains(Point2D point) {
+		return _rectangle.contains(point);
+	}
 
-    @Override
-    public void select() {
-        _selected = true;
-    }
+	@Override
+	public void select() {
+		_selected = true;
+	}
 
-    @Override
-    public void unselect() {
-        _selected = false;
-    }
+	@Override
+	public void unselect() {
+		_selected = false;
+	}
 
-    @Override
-    public Shape getSelection() {
-        return _rectangle;
-    }
+	@Override
+	public Shape getSelection() {
+		return _rectangle;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (!(o instanceof DrawRectangle))
-            return false;
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof DrawRectangle))
+			return false;
 
-        DrawRectangle other = (DrawRectangle) o;
-        return this._rectangle.getX() == other._rectangle.getX() && this._rectangle.getY() == other._rectangle.getY()
-                && this._rectangle.getWidth() == other._rectangle.getWidth()
-                && this._rectangle.getHeight() == other._rectangle.getHeight();
-    }
+		DrawRectangle other = (DrawRectangle) o;
+		return this._rectangle.getX() == other._rectangle.getX() && this._rectangle.getY() == other._rectangle.getY()
+				&& this._rectangle.getWidth() == other._rectangle.getWidth()
+				&& this._rectangle.getHeight() == other._rectangle.getHeight();
+	}
 
-    @Override
-    public Action dragTo(double x, double y) {
-        unselect();
-        _moved = true;
-        DrawRectangle drawRectangle = new DrawRectangle(_canvas, _color);
-        drawRectangle._rectangle = new Rectangle(_rectangle.getX(), _rectangle.getY(), _rectangle.getWidth(),
-                _rectangle.getHeight());
-        drawRectangle._rectangle.setFill(_color);
-        return drawRectangle;
-    }
+	@Override
+	public Action dragTo(double x, double y) {
+		unselect();
+		_moved = true;
+		DrawRectangle drawRectangle = new DrawRectangle(_canvas, _color);
+		drawRectangle._rectangle = new Rectangle(_rectangle.getX(), _rectangle.getY(), _rectangle.getWidth(),
+				_rectangle.getHeight());
+		drawRectangle._rectangle.setFill(_color);
+		return drawRectangle;
+	}
 
-    @Override
-    public void pdfExecute(PdfCanvas canvas, PdfPage page) {
-        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose
-        // Tools | Templates.
-        PdfAction.DRAW_RECTANGLE.accept(canvas, page, _rectangle);
-        System.out.println("Rectangle");
-    }
+	@Override
+	public void pdfExecute(PdfCanvas canvas, PdfPage page) {
+		// throw new UnsupportedOperationException("Not supported yet."); //To change
+		// body of generated methods, choose
+		// Tools | Templates.
+		PdfAction.DRAW_RECTANGLE.accept(canvas, page, _rectangle);
+		System.out.println("Rectangle");
+	}
 
 	@Override
 	public void handle(KeyEvent event) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 	@Override
 	public void setUri(String uri) {
 		// TODO Auto-generated method stub
@@ -141,13 +141,13 @@ public class DrawRectangle implements Action, Selectable, Draggable {
 	@Override
 	public void setisLinked(boolean linked) {
 		// TODO Auto-generated method stub
-		this._isLinked=linked;
+		this._isLinked = linked;
 	}
 
 	@Override
 	public String getLink() {
 		// TODO Auto-generated method stub
-		
+
 		return _link;
 	}
 
