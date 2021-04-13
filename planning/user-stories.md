@@ -108,3 +108,7 @@ adding links to objects or text
 
 Priority: 3
 
+## User Story 19
+
+As a user, having more buttons in the toolbox and menu for easily accessing existing functionalities would increase the accessibility of the program.
+

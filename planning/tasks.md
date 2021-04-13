@@ -374,3 +374,32 @@ Demonstrate a way to select an element on the page (5 points)
 \anchor t18_2
 
 Attach a link to a selected element (2 points)
+
+## User Story 19 - As a user, having more buttons in the toolbox and menu for easily accessing existing functionalities would increase the accessibility of the program.
+
+### Tasks
+
+#### 19.1
+\anchor t19_1
+
+Implement increased accessibility into the GUI via additional buttons and menu items
+
+#### 19.1.1
+\anchor t19_1_1
+
+Implement a save button to the toolbox for saving PDFs
+
+#### 19.1.2
+\anchor t19_1_2
+
+Implement a new document button to the toolbox for creating new PDFs
+
+#### 19.1.3
+\anchor t19_1_3
+
+Implement an undo/redo MenuItem in the Edit Menu for accessing undo/redo functionality
+
+#### 19.1.4
+\anchor t19_1_4
+
+Implement access to save document, new document, and undo/redo functionality via keyboard shortcuts
