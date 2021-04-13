@@ -51,27 +51,35 @@ public class Select implements Action {
     }
 
     @Override
-    public Action handle(MouseEvent event) {
+    public Action handle(Event event) {
 
         MouseEvent mouseEvent = (MouseEvent) event;
+        // KeyEvent keyEvent=(KeyEvent) event;
 
-        if (event.getEventType() == MouseEvent.MOUSE_PRESSED)
+        if (mouseEvent.getEventType() == MouseEvent.MOUSE_ENTERED) {
+            if (_selectedDrawing.getisLinked()) {
+                _canvas.getScene().setCursor(Cursor.HAND);
+            }
+
+        }
+
+        if (mouseEvent.getEventType() == MouseEvent.MOUSE_PRESSED)
             handlePress(mouseEvent);
 
-        if (event.getEventType() == MouseEvent.MOUSE_DRAGGED)
+        if (mouseEvent.getEventType() == MouseEvent.MOUSE_DRAGGED)
             handleDrag(mouseEvent);
 
-        if (event.getEventType() == MouseEvent.MOUSE_RELEASED)
+        if (mouseEvent.getEventType() == MouseEvent.MOUSE_RELEASED)
             handleRelease(mouseEvent);
 
         /**
          * Only accepts right click and no mouse drag
          */
-        if (event.isSecondaryButtonDown()) {
+        if (mouseEvent.isSecondaryButtonDown()) {
             contextMenu = new ContextMenu();
             MenuItem linkObj = new MenuItem("Link Object");
             contextMenu.getItems().add(linkObj);
-            contextMenu.show(_canvas, event.getScreenX(), event.getScreenY());
+            contextMenu.show(_canvas, mouseEvent.getScreenX(), mouseEvent.getScreenY());
 
             linkObj.setOnAction(e -> {
                 TextInputDialog dialogBox = new TextInputDialog("http://my%Link%here");
@@ -97,10 +105,10 @@ public class Select implements Action {
          * Takes to the linked web page only if "Control" key is pressed down while mouse clicked. User is expected to
          * provide a proper link of a web page
          */
-        if (event.isControlDown()) {
+        if (mouseEvent.isControlDown()) {
             _canvas.getScene().setCursor(Cursor.HAND);
-            System.out.println("control down");
-            if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {
+
+            if (mouseEvent.getEventType() == MouseEvent.MOUSE_PRESSED) {
 
                 if (_selectedDrawing.getisLinked()) {
                     if (_selectedDrawing.getLink() != null) {
@@ -178,19 +186,6 @@ public class Select implements Action {
         // Tools | Templates.
 
         System.out.println("Select");
-    }
-
-    /// \brief changes the cursor
-    /// \ref t18_1 "task 18.1"
-    @Override
-    public void handle(KeyEvent event) {
-        // TODO Auto-generated method stub
-        System.out.println("entered keyevent block");
-        if (event.isControlDown())
-            _canvas.getScene().setCursor(Cursor.HAND);
-
-        else
-            _canvas.getScene().setCursor(Cursor.DEFAULT);
     }
 
 }

@@ -42,7 +42,7 @@ public class DrawLine implements Action {
     }
 
     @Override
-    public Action handle(MouseEvent event) {
+    public Action handle(Event event) {
         if (!(event instanceof MouseEvent))
             return this;
 
@@ -81,10 +81,5 @@ public class DrawLine implements Action {
         System.out.println("Line");
     }
 
-    @Override
-    public void handle(KeyEvent event) {
-        // TODO Auto-generated method stub
-
-    }
 }
 /** @} */

@@ -46,7 +46,7 @@ public class DrawRectangle implements Action, Selectable, Draggable {
     }
 
     @Override
-    public Action handle(MouseEvent event) {
+    public Action handle(Event event) {
         if (!(event instanceof MouseEvent))
             return this;
 
@@ -125,12 +125,13 @@ public class DrawRectangle implements Action, Selectable, Draggable {
         PdfAction.DRAW_RECTANGLE.accept(canvas, page, _rectangle);
         System.out.println("Rectangle");
     }
-
-    @Override
-    public void handle(KeyEvent event) {
-        // TODO Auto-generated method stub
-
-    }
+    //
+    // @Override
+    // public Action handle(KeyEvent event) {
+    // // TODO Auto-generated method stub
+    //
+    // return this;
+    // }
 
     @Override
     public void setUri(String uri) {

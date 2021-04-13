@@ -16,9 +16,7 @@ import javafx.scene.input.MouseEvent;
 public interface Action {
     void execute();
 
-    Action handle(MouseEvent event);
-
-    void handle(KeyEvent event);
+    Action handle(Event event);
 
     boolean isComplete();
 
