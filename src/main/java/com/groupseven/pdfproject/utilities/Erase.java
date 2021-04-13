@@ -18,61 +18,60 @@ import java.util.List;
 /**
  * @author Charles Witherspoon
  *
- * @{ \brief This class represents an action to erase a spot on the canvas \ref
- *    t9_1_2 "Task 9.1.2"
+ * @{ \brief This class represents an action to erase a spot on the canvas \ref t9_1_2 "Task 9.1.2"
  */
 public class Erase implements Action {
-	private MainCanvas _canvas;
-	private List<Rectangle> _eraseAreas;
-	private boolean _isComplete;
+    private MainCanvas _canvas;
+    private List<Rectangle> _eraseAreas;
+    private boolean _isComplete;
 
-	public Erase(MainCanvas canvas) {
-		_canvas = canvas;
-		_eraseAreas = new ArrayList<>();
-	}
+    public Erase(MainCanvas canvas) {
+        _canvas = canvas;
+        _eraseAreas = new ArrayList<>();
+    }
 
-	@Override
-	public void execute() {
-		_eraseAreas.forEach(area -> DrawingAction.ERASE.accept(_canvas, area));
-	}
+    @Override
+    public void execute() {
+        _eraseAreas.forEach(area -> DrawingAction.ERASE.accept(_canvas, area));
+    }
 
-	@Override
-	public Action handle(MouseEvent event) {
-		if (!(event instanceof MouseEvent))
-			return this;
+    @Override
+    public Action handle(MouseEvent event) {
+        if (!(event instanceof MouseEvent))
+            return this;
 
-		MouseEvent mouseEvent = (MouseEvent) event;
-		Rectangle eraser = new Rectangle(mouseEvent.getX(), mouseEvent.getY(), 5, 5);
-		eraser.setFill(Color.TRANSPARENT);
-		_eraseAreas.add(eraser);
+        MouseEvent mouseEvent = (MouseEvent) event;
+        Rectangle eraser = new Rectangle(mouseEvent.getX(), mouseEvent.getY(), 5, 5);
+        eraser.setFill(Color.TRANSPARENT);
+        _eraseAreas.add(eraser);
 
-		_isComplete = (mouseEvent.getEventType() == MouseEvent.MOUSE_RELEASED);
-		return this;
-	}
+        _isComplete = (mouseEvent.getEventType() == MouseEvent.MOUSE_RELEASED);
+        return this;
+    }
 
-	@Override
-	public boolean isComplete() {
-		return _isComplete;
-	}
+    @Override
+    public boolean isComplete() {
+        return _isComplete;
+    }
 
-	@Override
-	public boolean contains(Point2D point) {
-		return false;
-	}
+    @Override
+    public boolean contains(Point2D point) {
+        return false;
+    }
 
-	@Override
-	public void pdfExecute(PdfCanvas canvas, PdfPage page) {
-		// throw new UnsupportedOperationException("Not supported yet."); //To change
-		// body of generated methods, choose
-		// Tools | Templates.
-		_eraseAreas.forEach(area -> PdfAction.ERASE.accept(canvas, page, area));
-		System.out.println("Erase");
-	}
+    @Override
+    public void pdfExecute(PdfCanvas canvas, PdfPage page) {
+        // throw new UnsupportedOperationException("Not supported yet."); //To change
+        // body of generated methods, choose
+        // Tools | Templates.
+        _eraseAreas.forEach(area -> PdfAction.ERASE.accept(canvas, page, area));
+        System.out.println("Erase");
+    }
 
-	@Override
-	public void handle(KeyEvent event) {
-		// TODO Auto-generated method stub
+    @Override
+    public void handle(KeyEvent event) {
+        // TODO Auto-generated method stub
 
-	}
+    }
 }
 /** @} */
