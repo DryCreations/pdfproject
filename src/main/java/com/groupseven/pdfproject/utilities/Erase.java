@@ -3,8 +3,6 @@ package com.groupseven.pdfproject.utilities;
 import com.groupseven.pdfproject.MainCanvas;
 import com.groupseven.pdfproject.model.Action;
 import com.groupseven.pdfproject.utilities.DrawingAction;
-import com.itextpdf.kernel.pdf.PdfPage;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import javafx.event.Event;
 import javafx.geometry.Point2D;
 import javafx.scene.input.MouseEvent;
@@ -17,7 +15,9 @@ import java.util.List;
 /**
  * @author Charles Witherspoon
  *
- * @{ \brief This class represents an action to erase a spot on the canvas \ref t9_1_2 "Task 9.1.2"
+ * @{
+ * \brief This class represents an action to erase a spot on the canvas
+ * \ref t9_1_2 "Task 9.1.2"
  */
 public class Erase implements Action {
     private MainCanvas _canvas;
@@ -31,7 +31,8 @@ public class Erase implements Action {
 
     @Override
     public void execute() {
-        _eraseAreas.forEach(area -> DrawingAction.ERASE.accept(_canvas, area));
+        _eraseAreas.forEach(
+                area -> DrawingAction.ERASE.accept(_canvas, area));
     }
 
     @Override
@@ -40,7 +41,10 @@ public class Erase implements Action {
             return this;
 
         MouseEvent mouseEvent = (MouseEvent) event;
-        Rectangle eraser = new Rectangle(mouseEvent.getX(), mouseEvent.getY(), 5, 5);
+        Rectangle eraser = new Rectangle(mouseEvent.getX(),
+                mouseEvent.getY(),
+                5,
+                5);
         eraser.setFill(Color.TRANSPARENT);
         _eraseAreas.add(eraser);
 
@@ -57,13 +61,5 @@ public class Erase implements Action {
     public boolean contains(Point2D point) {
         return false;
     }
-
-    @Override
-    public void pdfExecute(PdfCanvas canvas, PdfPage page) {
-        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose
-        // Tools | Templates.
-        _eraseAreas.forEach(area -> PdfAction.ERASE.accept(canvas, page, area));
-        System.out.println("Erase");
-    }
 }
-/** @} */
+/**@}*/
