@@ -6,9 +6,10 @@
 [Example 2:] Action 01
 
 ## Screenshot and its description
+[Add your Screenshot here]
 
 ### Description about screenshot
-[Add your Screenshot here]
+[Add your Description here]
 
 
 ## Notes/ comments
