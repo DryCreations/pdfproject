@@ -1,6 +1,5 @@
 package com.groupseven.pdfproject;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,20 +29,20 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class App extends Application {
+
 
     public static final int WINDOW_WIDTH = 700;
     public static final int WINDOW_HEIGHT = 790;
 
     private MainCanvas canvas;
+    private static DrawingToolbar _drawingToolBar;
 
     private DocumentModel doc;
     int currentPage;
     private Scene mainScene;
-    private static DrawingToolbar _drawingToolBar;
 
     /// \ref t8_3 "task 8.3"
     private EventHandler handleImportAsset = new EventHandler<ActionEvent>() {
@@ -77,12 +76,12 @@ public class App extends Application {
         vbox.getChildren().add(page.getNode());
         page.clear();
 
-        // vbox.setOnKeyPressed(new EventHandler<KeyEvent>() {
-        // @Override
-        // public void handle(KeyEvent event) {
-        // canvas.getEventHandler().Event(event);
-        // }
-        // });
+//        vbox.setOnKeyPressed(new EventHandler<KeyEvent>() {
+//            @Override
+//            public void handle(KeyEvent event) {
+//                canvas.getEventHandler().Event(event);
+//            }
+//        });
 
         return vbox;
     }
@@ -128,15 +127,17 @@ public class App extends Application {
     /// \ref t9_1_2 "task 9.1.2"
     private Menu createDrawingMenu() {
         Label drawLabel = new Label("Drawing");
-        drawLabel.setOnMouseClicked(action -> {
-            if (_drawingToolBar != null && canvas.getChildren().contains(_drawingToolBar)) {
-                canvas.getChildren().remove(_drawingToolBar);
-            } else {
-                _drawingToolBar = new DrawingToolbar(canvas);
-                canvas.getChildren().add(_drawingToolBar);
-            }
+        drawLabel.setOnMouseClicked(
+                action -> {
+                    if (_drawingToolBar == null)
+                        _drawingToolBar = new DrawingToolbar(canvas);
+                    if (canvas.getChildren().contains(_drawingToolBar)) {
+                        canvas.getChildren().remove(_drawingToolBar);
+                    } else {
+                        canvas.getChildren().add(_drawingToolBar);
+                    }
 
-        });
+                });
 
         Menu drawingMenu = new Menu();
         drawingMenu.setGraphic(drawLabel);
@@ -228,12 +229,13 @@ public class App extends Application {
     public void start(Stage primaryStage) throws Exception {
         initializeDocument();
         primaryStage.setTitle("PDF Project");
-        // root BorderPane allows for more versatile alignment than HBox or VBox
+        //root BorderPane allows for more versatile alignment than HBox or VBox
         BorderPane root = new BorderPane();
         GridPane ToolBox = createToolBox();
         MenuBar menuBar = createMenuBar();
         Button undobutton = createUndoButton();
         Button redobutton = createRedoButton();
+
 
         GridPane.setConstraints(undobutton, 0, 0);
         GridPane.setConstraints(redobutton, 1, 0);
@@ -241,7 +243,7 @@ public class App extends Application {
         root.setTop(menuBar);
         root.setLeft(ToolBox);
 
-        ToolBox.getChildren().addAll(undobutton, redobutton);
+        ToolBox.getChildren().addAll(undobutton,redobutton);
 
         mainScene = new Scene(root);
         primaryStage.setScene(mainScene);
@@ -251,9 +253,9 @@ public class App extends Application {
         primaryStage.show();
 
         canvas = doc.getPage(currentPage).getCanvas();
-        // mainScene.setOnKeyPressed((KeyEvent event) -> {
-        // canvas.getEventHandler().Event(event);
-        // });
+//        mainScene.setOnKeyPressed((KeyEvent event) -> {
+//            canvas.getEventHandler().Event(event);
+//        });
     }
 
     public void setDisplayDoc(DocumentModel document, int pageNum) {
@@ -262,7 +264,7 @@ public class App extends Application {
         PageModel page = document.getPage(pageNum);
         BorderPane root = (BorderPane) mainScene.getRoot();
 
-        canvas = page.getCanvas();
+        MainCanvas canvas = page.getCanvas();
         root.setCenter(createViewbox(page));
     }
 

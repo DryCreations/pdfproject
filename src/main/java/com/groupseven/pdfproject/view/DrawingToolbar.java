@@ -18,9 +18,9 @@ import java.util.List;
 
 /**
  * @author Charles Witherspoon
- * 
- * @{ \brief This class represents a toolbar that provides different functionality for interacting with the canvas \ref
- *    t9_1 "Task 9.1"
+ * @{
+ * \brief This class represents a toolbar that provides different functionality for interacting with the canvas
+ * \ref t9_1 "Task 9.1"
  */
 public class DrawingToolbar extends ToolBar {
 
@@ -35,8 +35,12 @@ public class DrawingToolbar extends ToolBar {
         _colorPicker = new ColorPicker(Color.BLACK);
         _drawingTool = new DrawingTool(_canvas);
 
-        List<RadioButton> radioButtons = createRadioButtons(_toggleGroup, DrawingMode.PEN, DrawingMode.ERASER,
-                DrawingMode.RECTANGLE, DrawingMode.SELECT);
+        List<RadioButton> radioButtons = createRadioButtons(
+                _toggleGroup,
+                DrawingMode.PEN,
+                DrawingMode.ERASER,
+                DrawingMode.RECTANGLE,
+                DrawingMode.SELECT);
 
         getItems().addAll(radioButtons);
 
@@ -66,4 +70,4 @@ public class DrawingToolbar extends ToolBar {
         return radioButtons;
     }
 }
-/** @} */
+/**@}*/

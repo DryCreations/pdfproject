@@ -5,8 +5,6 @@ import com.groupseven.pdfproject.model.Action;
 import com.groupseven.pdfproject.model.Draggable;
 import com.groupseven.pdfproject.model.Selectable;
 import com.groupseven.pdfproject.utilities.DrawingAction;
-import com.itextpdf.kernel.pdf.PdfPage;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import javafx.event.Event;
 import javafx.geometry.Point2D;
 import javafx.scene.input.MouseEvent;
@@ -18,8 +16,9 @@ import java.util.Optional;
 
 /**
  * @author Charles Witherspoon
- * 
- * @{ \brief This class represents an action to select an object on the canvas \ref t18_1 "Task 18.1"
+ * @{
+ * \brief This class represents an action to select an object on the canvas
+ * \ref t18_1 "Task 18.1"
  */
 public class Select implements Action {
     private MainCanvas _canvas;
@@ -45,15 +44,15 @@ public class Select implements Action {
         MouseEvent mouseEvent = (MouseEvent) event;
 
         switch (mouseEvent.getEventType().getName()) {
-        case ("MOUSE_PRESSED"):
-            handlePress(mouseEvent);
-            break;
-        case ("MOUSE_DRAGGED"):
-            handleDrag(mouseEvent);
-            break;
-        case ("MOUSE_RELEASED"):
-            handleRelease(mouseEvent);
-            break;
+            case ("MOUSE_PRESSED"):
+                handlePress(mouseEvent);
+                break;
+            case ("MOUSE_DRAGGED"):
+                handleDrag(mouseEvent);
+                break;
+            case ("MOUSE_RELEASED"):
+                handleRelease(mouseEvent);
+                break;
         }
 
         return this;
@@ -77,12 +76,15 @@ public class Select implements Action {
         Collections.reverse(undos);
         Point2D mousePosition = new Point2D(mouseEvent.getX(), mouseEvent.getY());
         Optional<Action> firstActionContainingMousePosition = undos.stream()
-                .filter(action -> action.contains(mousePosition) && action instanceof Selectable).findFirst();
+                .filter(action -> action.contains(mousePosition)
+                        && action instanceof Selectable)
+                .findFirst();
 
         Selectable previousSelection = _selectedDrawing;
         _selectedDrawing = (Selectable) firstActionContainingMousePosition.orElse(null);
 
-        if (previousSelection != null && previousSelection.equals(_selectedDrawing))
+        if (previousSelection != null
+                && previousSelection.equals(_selectedDrawing))
             _selectedDrawing.unselect();
     }
 
@@ -96,14 +98,6 @@ public class Select implements Action {
 
     private void handleRelease(MouseEvent mouseEvent) {
 
-    }
-
-    @Override
-    public void pdfExecute(PdfCanvas canvas, PdfPage page) {
-        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose
-        // Tools | Templates.
-
-        System.out.println("Select");
     }
 }
 /**
