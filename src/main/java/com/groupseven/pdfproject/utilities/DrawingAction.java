@@ -13,8 +13,7 @@ import java.util.function.BiConsumer;
 /**
  * @author Charles Witherspoon
  *
- * \brief This class contains the drawing actions to be performed on the canvas
- * \ref t9_1 "Task 9.1"
+ *         \brief This class contains the drawing actions to be performed on the canvas \ref t9_1 "Task 9.1"
  */
 public class DrawingAction {
 
@@ -26,11 +25,7 @@ public class DrawingAction {
         GraphicsContext gc = canvas.getCanvas().getGraphicsContext2D();
         Paint currentColor = gc.getStroke();
         gc.setStroke(line.getStroke());
-        gc.strokeLine(
-                line.getStartX(),
-                line.getStartY(),
-                line.getEndX(),
-                line.getEndY());
+        gc.strokeLine(line.getStartX(), line.getStartY(), line.getEndX(), line.getEndY());
         gc.setStroke(currentColor);
     };
 
@@ -39,13 +34,8 @@ public class DrawingAction {
             return;
 
         Rectangle rectangle = (Rectangle) object;
-        canvas.getCanvas()
-                .getGraphicsContext2D()
-                .clearRect(
-                        rectangle.getX() - 2,
-                        rectangle.getY() - 2,
-                        rectangle.getWidth(),
-                        rectangle.getHeight());
+        canvas.getCanvas().getGraphicsContext2D().clearRect(rectangle.getX() - 2, rectangle.getY() - 2,
+                rectangle.getWidth(), rectangle.getHeight());
     };
 
     public static final BiConsumer<MainCanvas, Shape> DRAW_RECTANGLE = (canvas, object) -> {
@@ -56,11 +46,7 @@ public class DrawingAction {
         GraphicsContext gc = canvas.getCanvas().getGraphicsContext2D();
         Paint currentFill = gc.getFill();
         gc.setFill(rectangle.getFill());
-        gc.fillRect(
-                rectangle.getX(),
-                rectangle.getY(),
-                rectangle.getWidth(),
-                rectangle.getHeight());
+        gc.fillRect(rectangle.getX(), rectangle.getY(), rectangle.getWidth(), rectangle.getHeight());
         gc.setFill(currentFill);
     };
 
@@ -73,13 +59,8 @@ public class DrawingAction {
         Paint currentColor = gc.getFill();
         Paint selectColor = Color.grayRgb(100, 0.2);
         gc.setFill(selectColor);
-        gc.fillRect(
-                rectangle.getX() - 2,
-                rectangle.getY() - 2,
-                rectangle.getWidth() + 4,
-                rectangle.getHeight() + 4);
+        gc.fillRect(rectangle.getX() - 2, rectangle.getY() - 2, rectangle.getWidth() + 4, rectangle.getHeight() + 4);
         gc.setFill(currentColor);
     };
-
 
 }

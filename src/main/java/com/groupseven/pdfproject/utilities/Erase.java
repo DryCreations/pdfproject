@@ -15,9 +15,7 @@ import java.util.List;
 /**
  * @author Charles Witherspoon
  *
- * @{
- * \brief This class represents an action to erase a spot on the canvas
- * \ref t9_1_2 "Task 9.1.2"
+ * @{ \brief This class represents an action to erase a spot on the canvas \ref t9_1_2 "Task 9.1.2"
  */
 public class Erase implements Action {
     private MainCanvas _canvas;
@@ -31,8 +29,7 @@ public class Erase implements Action {
 
     @Override
     public void execute() {
-        _eraseAreas.forEach(
-                area -> DrawingAction.ERASE.accept(_canvas, area));
+        _eraseAreas.forEach(area -> DrawingAction.ERASE.accept(_canvas, area));
     }
 
     @Override
@@ -41,10 +38,7 @@ public class Erase implements Action {
             return this;
 
         MouseEvent mouseEvent = (MouseEvent) event;
-        Rectangle eraser = new Rectangle(mouseEvent.getX(),
-                mouseEvent.getY(),
-                5,
-                5);
+        Rectangle eraser = new Rectangle(mouseEvent.getX(), mouseEvent.getY(), 5, 5);
         eraser.setFill(Color.TRANSPARENT);
         _eraseAreas.add(eraser);
 
@@ -62,4 +56,4 @@ public class Erase implements Action {
         return false;
     }
 }
-/**@}*/
+/** @} */
