@@ -67,10 +67,10 @@ public class Erase implements Action {
         System.out.println("Erase");
     }
 
-	@Override
-	public void handle(KeyEvent event) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void handle(KeyEvent event) {
+        // TODO Auto-generated method stub
+
+    }
 }
 /** @} */
