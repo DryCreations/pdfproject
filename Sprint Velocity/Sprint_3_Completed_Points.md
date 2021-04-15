@@ -1,4 +1,4 @@
-#  Track number of points completed for Sprint 3 - [04/01/2021]
+#  Track number of points completed for Sprint 3 - [04/01/2021 - 04/08/2021]
 
 ## Number of Sprint
     Sprint 3

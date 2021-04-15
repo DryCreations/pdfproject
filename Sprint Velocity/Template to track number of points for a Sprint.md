@@ -1,4 +1,6 @@
-#  Template to track number of points completed for a Sprint
+#  Template to track number of points completed for a Sprint 
+
+## Track number of points completed for [Sprint #] - [Start Date - End Date]
 
 ## Number of Sprint
     [enter the sprint number here]
