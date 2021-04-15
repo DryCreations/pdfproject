@@ -84,7 +84,7 @@ public class MainCanvas extends Pane {
 
     /// \brief resize canvas with new width and height
     /// \ref t8.2 "task 8.2"
-    public void resizeCanvas(double width, double height){
+    public void resizeCanvas(double width, double height) {
         canvas.resize(width, height);
     }
 

@@ -40,7 +40,6 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 
-
 public class App extends Application {
 
     public static final int WINDOW_WIDTH = 700;
@@ -148,7 +147,7 @@ public class App extends Application {
     /// \brief display new window for creating new documents
     ///
     /// \ref t8_2 "task 8.2"
-    private void newDocumentWindow(){
+    private void newDocumentWindow() {
         BorderPane newdocPane = new BorderPane();
         Scene newdocScene = new Scene(newdocPane, 300, 250);
         Stage newdocWindow = new Stage();
@@ -178,8 +177,8 @@ public class App extends Application {
 
         widthField.textProperty().addListener(new ChangeListener<String>() {
             @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue){
-                if(!newValue.matches("\\d*")){
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d*")) {
                     widthField.setText("595");
                 }
             }
@@ -187,8 +186,8 @@ public class App extends Application {
 
         heightField.textProperty().addListener(new ChangeListener<String>() {
             @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue){
-                if(!newValue.matches("\\d*")){
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d*")) {
                     heightField.setText("842");
                 }
             }
@@ -196,13 +195,14 @@ public class App extends Application {
 
         VBox dimensionBox = new VBox(5);
         dimensionBox.setPadding(new Insets(25, 25, 25, 50));
-        dimensionBox.getChildren().addAll(defaultButton, customButton, widthLabel, widthField, heightLabel, heightField, createdocButton);
+        dimensionBox.getChildren().addAll(defaultButton, customButton, widthLabel, widthField, heightLabel, heightField,
+                createdocButton);
 
         createdocButton.setOnAction(f -> {
-            if(defaultButton.isSelected()){
+            if (defaultButton.isSelected()) {
                 DocumentModel newDoc = new DocumentModel();
                 setDisplayDoc(newDoc, 0);
-            }else{
+            } else {
                 int width = Integer.parseInt(widthField.getText());
                 int height = Integer.parseInt(heightField.getText());
                 DocumentModel newDoc = new DocumentModel(width, height);
@@ -221,7 +221,7 @@ public class App extends Application {
     /// \return Menu containing all relevant dropdown elements
     ///
     /// \ref t8_2 "task 8.2"
-    private Menu createEditMenu(){
+    private Menu createEditMenu() {
         Menu editMenu = new Menu("Edit");
 
         MenuItem resize = new MenuItem("Resize...");
@@ -237,7 +237,7 @@ public class App extends Application {
     /// \brief display new window for resizing existing documents
     ///
     /// \ref t8.2 "task 8.2"
-    private void resizeWindow(){
+    private void resizeWindow() {
         BorderPane resizePane = new BorderPane();
         Scene resizeScene = new Scene(resizePane, 300, 250);
         Stage resizeStage = new Stage();
@@ -253,8 +253,8 @@ public class App extends Application {
 
         widthField.textProperty().addListener(new ChangeListener<String>() {
             @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue){
-                if(!newValue.matches("\\d*")){
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d*")) {
                     widthField.setText("" + (int) doc.getPage(currentPage).getCanvas().getCanvas().getWidth());
                 }
             }
@@ -262,18 +262,18 @@ public class App extends Application {
 
         heightField.textProperty().addListener(new ChangeListener<String>() {
             @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue){
-                if(!newValue.matches("\\d*")){
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d*")) {
                     heightField.setText("" + (int) doc.getPage(currentPage).getCanvas().getCanvas().getHeight());
                 }
             }
         });
 
-        cancelButton.setOnAction(e ->{
+        cancelButton.setOnAction(e -> {
             resizeStage.close();
         });
 
-        resizeButton.setOnAction(e ->{
+        resizeButton.setOnAction(e -> {
             double width = Double.parseDouble(widthField.getText());
             double height = Double.parseDouble(heightField.getText());
             doc.setDimensions(width, height, currentPage);

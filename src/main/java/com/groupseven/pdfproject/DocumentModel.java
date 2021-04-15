@@ -49,12 +49,12 @@ public class DocumentModel {
     /// \brief create new document with specific dimensions
     ///
     /// \ref t8_2 "task 8.2"
-    public DocumentModel(int width, int height){
+    public DocumentModel(int width, int height) {
         this.pages = new ArrayList<>();
         BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         Graphics2D graphics = bufferedImage.createGraphics();
         graphics.setColor(Color.WHITE);
-        graphics.fillRect ( 0, 0, bufferedImage.getWidth(), bufferedImage.getHeight() );
+        graphics.fillRect(0, 0, bufferedImage.getWidth(), bufferedImage.getHeight());
         pages.add(new PageModel(bufferedImage));
     }
 
@@ -102,12 +102,11 @@ public class DocumentModel {
         pages.get(pagenumber).getCanvas().resizeCanvas(width, height);
 
         /*
-        BufferedImage bufferedImage = new BufferedImage((int) pages.get(pagenumber).getCanvas().getCanvas().getWidth()
-                ,(int) pages.get(pagenumber).getCanvas().getCanvas().getHeight()
-                , BufferedImage.TYPE_INT_RGB);
-        Graphics2D graphics = bufferedImage.createGraphics();
-        graphics.setColor(Color.WHITE);
-        graphics.fillRect(0, 0, bufferedImage.getWidth(), bufferedImage.getHeight());
+         * BufferedImage bufferedImage = new BufferedImage((int)
+         * pages.get(pagenumber).getCanvas().getCanvas().getWidth() ,(int)
+         * pages.get(pagenumber).getCanvas().getCanvas().getHeight() , BufferedImage.TYPE_INT_RGB); Graphics2D graphics
+         * = bufferedImage.createGraphics(); graphics.setColor(Color.WHITE); graphics.fillRect(0, 0,
+         * bufferedImage.getWidth(), bufferedImage.getHeight());
          */
         pages.get(pagenumber).refreshPage();
 

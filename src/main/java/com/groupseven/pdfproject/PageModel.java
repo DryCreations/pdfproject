@@ -62,13 +62,11 @@ public class PageModel {
         return node;
     }
 
-
     /// \brief update page after resizing
     ///
     /// \ref t8.2 "task 8.2"
-    public void refreshPage(){
-        bufferedImage = resizeBufferedImage(bufferedImage,
-                (int) getCanvas().getCanvas().getWidth(),
+    public void refreshPage() {
+        bufferedImage = resizeBufferedImage(bufferedImage, (int) getCanvas().getCanvas().getWidth(),
                 (int) getCanvas().getCanvas().getHeight());
         Image fximage = SwingFXUtils.toFXImage(bufferedImage, null);
         BackgroundPosition bp = new BackgroundPosition(Side.LEFT, 0, false, Side.TOP, 0, false);
@@ -80,7 +78,7 @@ public class PageModel {
     /// \brief resize BufferedImage so node background can be updated
     ///
     /// \ref t8.2 "task 8.2"
-    public BufferedImage resizeBufferedImage(BufferedImage img, int width, int height){
+    public BufferedImage resizeBufferedImage(BufferedImage img, int width, int height) {
         java.awt.Image temp = img.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH);
         BufferedImage newimg = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 
