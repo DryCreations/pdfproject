@@ -399,7 +399,19 @@ Implement a new document button to the toolbox for creating new PDFs
 
 Implement an undo/redo MenuItem in the Edit Menu for accessing undo/redo functionality
 
-#### 19.1.4
-\anchor t19_1_4
+#### 19.2
+\anchor t19_2
 
-Implement access to save document, new document, and undo/redo functionality via keyboard shortcuts
+Implement increased accessibility into the GUI via keyboard shortcuts
+
+#### 19.2.1
+
+Implement a keyboard shortcut for saving a document
+
+#### 19.2.2
+
+Implement a keyboard shortcut for creating a new document
+
+#### 19.2.3
+
+Implement a keyboard shortcut for the undo/redo feature
