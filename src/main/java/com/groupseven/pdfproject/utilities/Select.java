@@ -51,74 +51,73 @@ public class Select implements Action {
     @Override
     public Action handle(MouseEvent event) {
 
-     MouseEvent mouseEvent = (MouseEvent) event;
+        MouseEvent mouseEvent = (MouseEvent) event;
 
-        if(event.getEventType()==MouseEvent.MOUSE_PRESSED)
-        	 handlePress(mouseEvent);
-        
-        if(event.getEventType()==MouseEvent.MOUSE_DRAGGED)
-        	handleDrag(mouseEvent);
-        
-        if(event.getEventType()==MouseEvent.MOUSE_RELEASED)
-        	handleRelease(mouseEvent);
-        
+        if (event.getEventType() == MouseEvent.MOUSE_PRESSED)
+            handlePress(mouseEvent);
+
+        if (event.getEventType() == MouseEvent.MOUSE_DRAGGED)
+            handleDrag(mouseEvent);
+
+        if (event.getEventType() == MouseEvent.MOUSE_RELEASED)
+            handleRelease(mouseEvent);
+
         /**
-		 * Only accepts right click and no mouse drag
-		 */
-        if(event.isSecondaryButtonDown()) {
-        	contextMenu = new ContextMenu();
-			MenuItem linkObj = new MenuItem("Link Object");
-			contextMenu.getItems().add(linkObj);
-			contextMenu.show(_canvas, event.getScreenX(), event.getScreenY());
+         * Only accepts right click and no mouse drag
+         */
+        if (event.isSecondaryButtonDown()) {
+            contextMenu = new ContextMenu();
+            MenuItem linkObj = new MenuItem("Link Object");
+            contextMenu.getItems().add(linkObj);
+            contextMenu.show(_canvas, event.getScreenX(), event.getScreenY());
 
-			linkObj.setOnAction(e -> {
-				TextInputDialog dialogBox = new TextInputDialog("http://my%Link%here");
-				dialogBox.setTitle("Link");
-				dialogBox.setHeaderText("What is the desired Link ");
-				dialogBox.setContentText("Link");
+            linkObj.setOnAction(e -> {
+                TextInputDialog dialogBox = new TextInputDialog("http://my%Link%here");
+                dialogBox.setTitle("Link");
+                dialogBox.setHeaderText("What is the desired Link ");
+                dialogBox.setContentText("Link");
 
-				Optional<String> linkProvided = dialogBox.showAndWait();
-				if (linkProvided.isPresent()) {
+                Optional<String> linkProvided = dialogBox.showAndWait();
+                if (linkProvided.isPresent()) {
 
-					Hyperlink url = new Hyperlink();
-					url.setText(linkProvided.get());
-					_selectedDrawing.setisLinked(true);
-					_selectedDrawing.setUri(url.getText());
-					_canvas.getChildren().add(url);
+                    Hyperlink url = new Hyperlink();
+                    url.setText(linkProvided.get());
+                    _selectedDrawing.setisLinked(true);
+                    _selectedDrawing.setUri(url.getText());
+                    _canvas.getChildren().add(url);
 
-				}
-			});
-		}
-        
+                }
+            });
+        }
+
         /***
-		 * 
-		 * Takes to the linked web page only if "Control" key is pressed down while
-		 * mouse clicked. User is expected to provide a proper link of a web page
-		 */
-		if (event.isControlDown()) {
-			_canvas.getScene().setCursor(Cursor.HAND);
-			if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {
-				
-						if (_selectedDrawing.getisLinked()) {
-							if(_selectedDrawing.getLink()!= null) {
-							if (Desktop.isDesktopSupported()) {
-								try {
-									Desktop.getDesktop().browse(new URI(_selectedDrawing.getLink()));
-								} catch (IOException e1) {
-									e1.printStackTrace();
-								} catch (URISyntaxException e1) {
-									e1.printStackTrace();
-								}
-							}
-						}
-					}
-			}
+         * 
+         * Takes to the linked web page only if "Control" key is pressed down while mouse clicked. User is expected to
+         * provide a proper link of a web page
+         */
+        if (event.isControlDown()) {
+            _canvas.getScene().setCursor(Cursor.HAND);
+            if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {
 
-		} else {
-			_canvas.getScene().setCursor(Cursor.DEFAULT);
-		}
-        
-       	 
+                if (_selectedDrawing.getisLinked()) {
+                    if (_selectedDrawing.getLink() != null) {
+                        if (Desktop.isDesktopSupported()) {
+                            try {
+                                Desktop.getDesktop().browse(new URI(_selectedDrawing.getLink()));
+                            } catch (IOException e1) {
+                                e1.printStackTrace();
+                            } catch (URISyntaxException e1) {
+                                e1.printStackTrace();
+                            }
+                        }
+                    }
+                }
+            }
+
+        } else {
+            _canvas.getScene().setCursor(Cursor.DEFAULT);
+        }
+
         return this;
     }
 
@@ -134,16 +133,15 @@ public class Select implements Action {
 
     private void handlePress(MouseEvent mouseEvent) {
         if (_selectedDrawing != null) {
-        	try {
-				if (contextMenu.isShowing()) {
-					contextMenu.hide();
-				}
-			} catch (Exception e) {
-				// do nothing
-			}
-        	 _selectedDrawing.unselect();
+            try {
+                if (contextMenu.isShowing()) {
+                    contextMenu.hide();
+                }
+            } catch (Exception e) {
+                // do nothing
+            }
+            _selectedDrawing.unselect();
         }
-           
 
         List<Action> undos = new ArrayList<>(_canvas.getUndoStack());
         Collections.reverse(undos);
@@ -178,16 +176,15 @@ public class Select implements Action {
         System.out.println("Select");
     }
 
+    @Override
+    public void handle(KeyEvent k_event) {
+        // TODO Auto-generated method stub
+        if (k_event.isControlDown())
+            _canvas.getScene().setCursor(Cursor.HAND);
+        else
+            _canvas.getScene().setCursor(Cursor.DEFAULT);
 
-	@Override
-	public void handle(KeyEvent k_event) {
-		// TODO Auto-generated method stub
-		if (k_event.isControlDown())
-			_canvas.getScene().setCursor(Cursor.HAND);
-		else
-			_canvas.getScene().setCursor(Cursor.DEFAULT);
-
-	}
+    }
 }
 /**
  * @}

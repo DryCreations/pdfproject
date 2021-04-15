@@ -153,7 +153,7 @@ public class App extends Application {
                 _drawingToolBar = new DrawingToolbar(canvas);
                 canvas.getChildren().add(_drawingToolBar);
                 _drawingToolBar.setLayoutY(50);
-              
+
             }
 
         });

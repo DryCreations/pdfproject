@@ -16,7 +16,7 @@ public interface Action {
     void execute();
 
     Action handle(MouseEvent event);
-    
+
     void handle(KeyEvent event);
 
     boolean isComplete();
@@ -24,8 +24,5 @@ public interface Action {
     boolean contains(Point2D point);
 
     void pdfExecute(PdfCanvas canvas, PdfPage page);
-    
-    
-    
-    
+
 }
