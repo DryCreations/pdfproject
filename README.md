@@ -9,7 +9,7 @@ This project can create new PDF documents as well as open and manipulate existin
 - - **/resources** contains relevant assets for the GUI and program initialization
 - **/pdfproject/planning** contains the **/minutes** folder and the tasks.md and user-stories.md files
 - - **/minutes** contains a summation of the work accomplished/assigned for the listed week's sprint
-- - The tasks.md and user-stories.md files contains a list of all generated user stories and task breakdowns of those stories
+- - The [tasks.md](https://github.com/DryCreations/pdfproject/blob/main/planning/tasks.md) and [user-stories.md](https://github.com/DryCreations/pdfproject/blob/main/planning/user-stories.md) files contains a list of all generated user stories and task breakdowns of those stories
 - **/pdfproject/Test_Artifacts** contains screenshot documentation of completed actions
 
 
