@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import javax.swing.text.Document;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.List;
@@ -22,7 +23,7 @@ import java.util.List;
 /// accessing the PDF. 
 
 public class NavigationPane extends Application{
-	private List<PageModel> pages;
+
 	/// \ref t1_1
 	/// \ref t1_2 
 	/// 
@@ -33,8 +34,13 @@ public class NavigationPane extends Application{
 		
 	}
 	/// \ref t1_1
-		public VBox getNavigationPane() {
-			
+		public VBox getNavigationPane(String filename) throws IOException{
+			VBox template = new VBox();
+			DocumentModel read = new DocumentModel(filename);
+			for(int i = 0; i < read.pageNumReturn(); i++){
+				PageModel  displayed = convertPdfToImage(filename, i);
+				template.getChildren().add(displayed.getNode());
+			}
 			return null;
 		}
 	/// \ref t1_3  
@@ -43,15 +49,9 @@ public class NavigationPane extends Application{
 				
 		}
 		/// \ref t1_1
-		public BufferedImage convertPdfToImage(String fileName, int Num) {
+		public PageModel convertPdfToImage(String fileName, int Num) throws IOException {
 
-			try {
-				 new DocumentModel(fileName).getPage(Num);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-
-			return null;
+			return new DocumentModel(fileName).getPage(Num);
 		}
 
 

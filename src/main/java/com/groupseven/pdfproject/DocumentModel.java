@@ -104,4 +104,9 @@ public class DocumentModel {
     public void export() {
 
     }
+
+    // needed to get the total number of pages in the document
+    public int pageNumReturn (){
+        return pages.size();
+    }
 }
