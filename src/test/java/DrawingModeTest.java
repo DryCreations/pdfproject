@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 /**
  * @author Charles Witherspoon
  *
- * \brief This class tests the DrawingMode class methods
+ *         \brief This class tests the DrawingMode class methods
  */
 public class DrawingModeTest {
 
