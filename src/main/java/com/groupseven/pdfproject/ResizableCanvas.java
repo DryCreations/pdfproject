@@ -16,8 +16,8 @@ public class ResizableCanvas extends Canvas{
     /// \ref t8.2 "task 8.2"
     @Override
     public void resize(double width, double height){
-        super.setWidth(width);
-        super.setHeight(height);
+        widthProperty().set(width);
+        heightProperty().set(height);
     }
 
 }

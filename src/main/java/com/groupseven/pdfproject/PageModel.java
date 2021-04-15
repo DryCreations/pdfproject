@@ -5,6 +5,7 @@
  */
 package com.groupseven.pdfproject;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.geometry.Side;
@@ -59,6 +60,35 @@ public class PageModel {
     /// \ref t14_1 "task 14.1"
     public VBox getNode() {
         return node;
+    }
+
+
+    /// \brief update page after resizing
+    ///
+    /// \ref t8.2 "task 8.2"
+    public void refreshPage(){
+        bufferedImage = resizeBufferedImage(bufferedImage,
+                (int) getCanvas().getCanvas().getWidth(),
+                (int) getCanvas().getCanvas().getHeight());
+        Image fximage = SwingFXUtils.toFXImage(bufferedImage, null);
+        BackgroundPosition bp = new BackgroundPosition(Side.LEFT, 0, false, Side.TOP, 0, false);
+        BackgroundImage backgroundImage = new BackgroundImage(fximage, BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT, bp, BackgroundSize.DEFAULT);
+        node.setBackground(new Background(backgroundImage));
+    }
+
+    /// \brief resize BufferedImage so node background can be updated
+    ///
+    /// \ref t8.2 "task 8.2"
+    public BufferedImage resizeBufferedImage(BufferedImage img, int width, int height){
+        java.awt.Image temp = img.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH);
+        BufferedImage newimg = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+
+        Graphics2D graphics = newimg.createGraphics();
+        graphics.drawImage(temp, 0, 0, null);
+        graphics.dispose();
+
+        return newimg;
     }
 
     public void clear() {

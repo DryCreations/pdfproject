@@ -27,7 +27,9 @@ public class MainCanvas extends Pane {
     public MainCanvas(double width, double height) {
         _undoStack = new Stack<>();
         _redoStack = new Stack<>();
-        canvas = new Canvas(width, height);
+        canvas = new ResizableCanvas();
+        canvas.widthProperty().set(width);
+        canvas.heightProperty().set(height);
         getChildren().add(canvas);
     }
 
@@ -79,6 +81,13 @@ public class MainCanvas extends Pane {
     public Stack<Action> getUndoStack() {
         return _undoStack;
     }
+
+    /// \brief resize canvas with new width and height
+    /// \ref t8.2 "task 8.2"
+    public void resizeCanvas(double width, double height){
+        canvas.resize(width, height);
+    }
+
 }
 
 /** @} */

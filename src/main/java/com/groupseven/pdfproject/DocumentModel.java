@@ -46,6 +46,18 @@ public class DocumentModel {
         pages.add(new PageModel(bufferedImage));
     }
 
+    /// \brief create new document with specific dimensions
+    ///
+    /// \ref t8_2 "task 8.2"
+    public DocumentModel(int width, int height){
+        this.pages = new ArrayList<>();
+        BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        Graphics2D graphics = bufferedImage.createGraphics();
+        graphics.setColor(Color.WHITE);
+        graphics.fillRect ( 0, 0, bufferedImage.getWidth(), bufferedImage.getHeight() );
+        pages.add(new PageModel(bufferedImage));
+    }
+
     /// \brief create document from a specific filename
     ///
     /// \ref t14_1 "task 14.1"
@@ -83,8 +95,21 @@ public class DocumentModel {
         return pages.get(i);
     }
 
+    /// \brief set dimensions of page to new dimensions
+    ///
     /// \ref t8.2 "task 8.2"
-    public void setDimensions() {
+    public void setDimensions(double width, double height, int pagenumber) {
+        pages.get(pagenumber).getCanvas().resizeCanvas(width, height);
+
+        /*
+        BufferedImage bufferedImage = new BufferedImage((int) pages.get(pagenumber).getCanvas().getCanvas().getWidth()
+                ,(int) pages.get(pagenumber).getCanvas().getCanvas().getHeight()
+                , BufferedImage.TYPE_INT_RGB);
+        Graphics2D graphics = bufferedImage.createGraphics();
+        graphics.setColor(Color.WHITE);
+        graphics.fillRect(0, 0, bufferedImage.getWidth(), bufferedImage.getHeight());
+         */
+        pages.get(pagenumber).refreshPage();
 
     }
 
@@ -126,8 +151,8 @@ public class DocumentModel {
             if (file != null) {
                 page = pdfDoc.getPage(i + 1);
             } else {
-                PageSize pageSize = new PageSize((float) pageModel.getCanvas().getWidth(),
-                        (float) pageModel.getCanvas().getHeight());
+                PageSize pageSize = new PageSize((float) pageModel.getCanvas().getCanvas().getWidth(),
+                        (float) pageModel.getCanvas().getCanvas().getHeight());
                 page = pdfDoc.addNewPage(pageSize);
             }
 
