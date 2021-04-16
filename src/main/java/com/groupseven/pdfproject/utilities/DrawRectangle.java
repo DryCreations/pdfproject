@@ -118,27 +118,27 @@ public class DrawRectangle implements Action, Selectable, Draggable {
         System.out.println("Rectangle");
     }
 
-	@Override
-	public void setUri(String uri) {
-		// TODO Auto-generated method stub
-		this._link = uri;
-	}
+    @Override
+    public void setUri(String uri) {
+        // TODO Auto-generated method stub
+        this._link = uri;
+    }
 
-	@Override
-	public void setisLinked(boolean linked) {
-		// TODO Auto-generated method stub
-		this._isLinked = linked;
-	}
+    @Override
+    public void setisLinked(boolean linked) {
+        // TODO Auto-generated method stub
+        this._isLinked = linked;
+    }
 
-	@Override
-	public String getLink() {
-		// TODO Auto-generated method stub
-		return _link;
-	}
+    @Override
+    public String getLink() {
+        // TODO Auto-generated method stub
+        return _link;
+    }
 
-	@Override
-	public boolean getisLinked() {
-		// TODO Auto-generated method stub
-		return _isLinked;
-	}
+    @Override
+    public boolean getisLinked() {
+        // TODO Auto-generated method stub
+        return _isLinked;
+    }
 }

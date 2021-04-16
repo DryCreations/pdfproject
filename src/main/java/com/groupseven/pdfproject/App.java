@@ -137,7 +137,8 @@ public class App extends Application {
             if (canvas.getChildren().contains(_drawingToolBar)) {
                 canvas.getChildren().remove(_drawingToolBar);
             } else {
-                canvas.getChildren().add(_drawingToolBar); _drawingToolBar.setLayoutY(50);
+                canvas.getChildren().add(_drawingToolBar);
+                _drawingToolBar.setLayoutY(50);
             }
 
         });

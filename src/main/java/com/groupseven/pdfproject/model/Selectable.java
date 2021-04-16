@@ -12,14 +12,15 @@ public interface Selectable {
      * @return Shape representing the selected canvas element
      */
     Shape getSelection();
-    
+
     /**
-     * \brief  Sets the link provided to the selected canvas element
-     * \ref t18_2 "Task 18.2"
-     * @param uri is the link provided by the user
+     * \brief Sets the link provided to the selected canvas element \ref t18_2 "Task 18.2"
+     * 
+     * @param uri
+     *            is the link provided by the user
      */
     void setUri(String uri);
-    
+
     /**
      * \brief keeps a check if the selected element is linked or not
      * 
