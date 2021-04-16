@@ -1,5 +1,7 @@
 package com.groupseven.pdfproject.model;
 
+import com.itextpdf.kernel.pdf.PdfPage;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import javafx.event.Event;
 import javafx.geometry.Point2D;
 
@@ -34,4 +36,6 @@ public interface Action {
      * @return true if Point is contained by the Action
      */
     boolean contains(Point2D point);
+
+    void pdfExecute(PdfCanvas canvas, PdfPage page);
 }

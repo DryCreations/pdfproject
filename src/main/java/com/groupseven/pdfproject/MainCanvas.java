@@ -10,16 +10,12 @@ import javafx.scene.layout.Pane;
 
 import java.util.Stack;
 
-
-
 /**
- * @author Cassandra Mae
- *  \defgroup canvas
- *  @{
- *  \brief This is the main canvas which show PDF page and allow to draw elements on it and 
- *  select the drawn element. 
- *  \ref 18_1 "Task 18.1" To accomplish this task it is required to have a canvas which can keep the 
- *  track of drawn elements to facilitate the selection of an element.
+ * @author Cassandra Mae \defgroup canvas
+ * 
+ * @{ \brief This is the main canvas which show PDF page and allow to draw elements on it and select the drawn element.
+ *    \ref 18_1 "Task 18.1" To accomplish this task it is required to have a canvas which can keep the track of drawn
+ *    elements to facilitate the selection of an element.
  */
 
 public class MainCanvas extends Pane {
@@ -40,7 +36,7 @@ public class MainCanvas extends Pane {
     }
 
     public void setHandlerForTypes(EventHandler handler, EventType... eventTypes) {
-        for (EventType type: eventTypes)
+        for (EventType type : eventTypes)
             canvas.addEventHandler(type, handler);
     }
 
@@ -52,7 +48,7 @@ public class MainCanvas extends Pane {
         refresh();
     }
 
-    /// \brief The canvas is updated every time the shape is selected  or deselected
+    /// \brief The canvas is updated every time the shape is selected or deselected
     /// or whenever the backspace or delete key is pressed to remove the selected shape.
     /// \ref t18_1 "task 18.1"
     public void refresh() {
@@ -78,7 +74,7 @@ public class MainCanvas extends Pane {
     public void clearScreen() {
         Canvas canvas = getCanvas();
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.clearRect(0,0,canvas.getWidth(), canvas.getHeight());
+        gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
     }
 
     public Stack<Action> getUndoStack() {
@@ -90,4 +86,4 @@ public class MainCanvas extends Pane {
     }
 }
 
-/**@}*/
+/** @} */

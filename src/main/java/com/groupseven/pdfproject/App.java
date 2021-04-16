@@ -1,5 +1,12 @@
 package com.groupseven.pdfproject;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import com.groupseven.pdfproject.utilities.DrawingMode;
+import com.groupseven.pdfproject.utilities.DrawingTool;
 import com.groupseven.pdfproject.view.DrawingToolbar;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -12,6 +19,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -20,12 +28,15 @@ import java.util.logging.Logger;
 
 public class App extends Application {
 
+    public static final int WINDOW_WIDTH = 700;
+    public static final int WINDOW_HEIGHT = 790;
+
     private MainCanvas canvas;
-    private static DrawingToolbar _drawingToolBar;
 
     private DocumentModel doc;
     int currentPage;
     private Scene mainScene;
+    private static DrawingToolbar _drawingToolBar;
 
     /// \ref t8_3 "task 8.3"
     private EventHandler handleImportAsset = new EventHandler<ActionEvent>() {
@@ -41,7 +52,9 @@ public class App extends Application {
     /// \ref t14_1 "task 14.1"
     private void initializeDocument() {
         try {
-            doc = new DocumentModel("src/main/resources/test_pdf.pdf");
+            File file = new File("src/main/resources/test_pdf.pdf");
+            doc = new DocumentModel(file);
+            // doc = new DocumentModel();
             currentPage = 0;
         } catch (IOException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
@@ -74,7 +87,38 @@ public class App extends Application {
             setDisplayDoc(newDoc, 0);
         });
 
+        MenuItem openDocument = new MenuItem("Open Document");
+
+        openDocument.setOnAction(e -> {
+            FileChooser fileChooser = new FileChooser();
+            File selectedFile = fileChooser.showOpenDialog(null);
+
+            try {
+                DocumentModel newDoc = new DocumentModel(selectedFile);
+                setDisplayDoc(newDoc, 0);
+            } catch (IOException ex) {
+                Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        });
+
+        MenuItem saveDocument = new MenuItem("Save Document");
+
+        /// ref t8_8 "task 8.8"
+        saveDocument.setOnAction(e -> {
+            FileChooser fileChooser = new FileChooser();
+            File selectedFile = fileChooser.showSaveDialog(null);
+
+            try {
+                doc.export(selectedFile);
+            } catch (IOException ex) {
+                Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+
         fileMenu.getItems().add(newDocument);
+        fileMenu.getItems().add(openDocument);
+        fileMenu.getItems().add(saveDocument);
 
         return fileMenu;
     }
@@ -202,7 +246,7 @@ public class App extends Application {
         root.setTop(menuBar);
         root.setLeft(ToolBox);
 
-        ToolBox.getChildren().addAll(undobutton,redobutton);
+        ToolBox.getChildren().addAll(undobutton, redobutton);
 
         mainScene = new Scene(root);
         primaryStage.setScene(mainScene);
@@ -220,6 +264,7 @@ public class App extends Application {
         PageModel page = document.getPage(pageNum);
         BorderPane root = (BorderPane) mainScene.getRoot();
 
+        canvas = page.getCanvas();
         root.setCenter(createViewbox(page));
     }
 
