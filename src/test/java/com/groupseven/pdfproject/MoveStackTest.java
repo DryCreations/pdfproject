@@ -18,22 +18,22 @@ import static org.junit.Assert.*;
  * @author dwkal
  */
 public class MoveStackTest {
-    
+
     public MoveStackTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -150,22 +150,22 @@ public class MoveStackTest {
         assertEquals(3, instance.peek());
         assertEquals(3, instance.getSize());
         assertEquals(false, instance.isEmpty());
-        
+
         instance.pop();
         assertEquals(2, instance.peek());
         assertEquals(2, instance.getSize());
         assertEquals(false, instance.isEmpty());
-        
+
         instance.pop();
         assertEquals(1, instance.peek());
         assertEquals(1, instance.getSize());
         assertEquals(false, instance.isEmpty());
-        
+
         instance.pop();
-        //the line below is expected to throw an EmptyStackException
-        assertEquals(null, instance.peek());        
+        // the line below is expected to throw an EmptyStackException
+        assertEquals(null, instance.peek());
         assertEquals(0, instance.getSize());
         assertEquals(true, instance.isEmpty());
     }
-    
+
 }
