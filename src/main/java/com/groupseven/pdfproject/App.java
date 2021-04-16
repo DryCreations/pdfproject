@@ -1,34 +1,42 @@
 package com.groupseven.pdfproject;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.groupseven.pdfproject.utilities.DrawingMode;
+import com.groupseven.pdfproject.utilities.DrawingTool;
+import com.groupseven.pdfproject.view.DrawingToolbar;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class App extends Application {
-    DocumentModel doc;
+
+    public static final int WINDOW_WIDTH = 700;
+    public static final int WINDOW_HEIGHT = 790;
+
+    private MainCanvas canvas;
+
+    private DocumentModel doc;
     int currentPage;
     private Scene mainScene;
-    ShapesToolBar shapesToolBar;
+    private static DrawingToolbar _drawingToolBar;
 
     /// \ref t8_3 "task 8.3"
     private EventHandler handleImportAsset = new EventHandler<ActionEvent>() {
@@ -44,8 +52,9 @@ public class App extends Application {
     /// \ref t14_1 "task 14.1"
     private void initializeDocument() {
         try {
-            doc = new DocumentModel("src/main/resources/test_pdf.pdf");
-//            doc = new DocumentModel();
+            File file = new File("src/main/resources/test_pdf.pdf");
+            doc = new DocumentModel(file);
+            // doc = new DocumentModel();
             currentPage = 0;
         } catch (IOException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
@@ -59,17 +68,9 @@ public class App extends Application {
     private VBox createViewbox(PageModel page) {
         VBox vbox = new VBox(0);
         vbox.setAlignment(Pos.BASELINE_RIGHT);
-        
         vbox.getChildren().add(page.getNode());
         page.clear();
-        
-//        vbox.setOnKeyPressed(new EventHandler<KeyEvent>() {
-//            @Override
-//            public void handle(KeyEvent event) {
-//                canvas.getEventHandler().Event(event);
-//            }
-//        });
-        
+
         return vbox;
     }
 
@@ -79,14 +80,45 @@ public class App extends Application {
     /// \ref t14_2_1 "task 14.2.1"
     private Menu createFileMenu() {
         Menu fileMenu = new Menu("File");
-        
+
         MenuItem newDocument = new MenuItem("New Document");
         newDocument.setOnAction(e -> {
             DocumentModel newDoc = new DocumentModel();
             setDisplayDoc(newDoc, 0);
         });
-        
+
+        MenuItem openDocument = new MenuItem("Open Document");
+
+        openDocument.setOnAction(e -> {
+            FileChooser fileChooser = new FileChooser();
+            File selectedFile = fileChooser.showOpenDialog(null);
+
+            try {
+                DocumentModel newDoc = new DocumentModel(selectedFile);
+                setDisplayDoc(newDoc, 0);
+            } catch (IOException ex) {
+                Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        });
+
+        MenuItem saveDocument = new MenuItem("Save Document");
+
+        /// ref t8_8 "task 8.8"
+        saveDocument.setOnAction(e -> {
+            FileChooser fileChooser = new FileChooser();
+            File selectedFile = fileChooser.showSaveDialog(null);
+
+            try {
+                doc.export(selectedFile);
+            } catch (IOException ex) {
+                Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+
         fileMenu.getItems().add(newDocument);
+        fileMenu.getItems().add(openDocument);
+        fileMenu.getItems().add(saveDocument);
 
         return fileMenu;
     }
@@ -95,9 +127,23 @@ public class App extends Application {
     /// \return
     ///
     /// \ref t14_2_2 "task 14.2.2"
+    /// \ref t9_1_1 "task 9.1.1"
+    /// \ref t9_1_2 "task 9.1.2"
     private Menu createDrawingMenu() {
-        Menu drawingMenu = new Menu("Drawing");
+        Label drawLabel = new Label("Drawing");
+        drawLabel.setOnMouseClicked(action -> {
+            if (_drawingToolBar == null)
+                _drawingToolBar = new DrawingToolbar(canvas);
+            if (canvas.getChildren().contains(_drawingToolBar)) {
+                canvas.getChildren().remove(_drawingToolBar);
+            } else {
+                canvas.getChildren().add(_drawingToolBar);
+            }
 
+        });
+
+        Menu drawingMenu = new Menu();
+        drawingMenu.setGraphic(drawLabel);
         return drawingMenu;
     }
 
@@ -132,7 +178,7 @@ public class App extends Application {
     ///
     /// \ref t14_3 "task 14.3"
     private GridPane createToolBox() {
-        GridPane ToolWindow = new GridPane( );
+        GridPane ToolWindow = new GridPane();
 
         Button doNothing = new Button();
         Button doNothing2 = new Button();
@@ -151,12 +197,13 @@ public class App extends Application {
     /// \return Button for activating undo feature
     ///
     /// \ref t10_1 "task 10.1"
-    private Button createUndoButton(){
+    private Button createUndoButton() {
         Image undoimg = new Image("undoarrow.png");
         ImageView undoview = new ImageView(undoimg);
 
         Button undobutton = new Button();
         undobutton.setGraphic(undoview);
+        undobutton.setOnAction(event -> canvas.undo());
         Tooltip undotip = new Tooltip("Undo");
         Tooltip.install(undobutton, undotip);
         return undobutton;
@@ -166,12 +213,13 @@ public class App extends Application {
     /// \return Button for activating redo feature
     ///
     /// \ref t10_1 "task 10.1"
-    private Button createRedoButton(){
+    private Button createRedoButton() {
         Image redoimg = new Image("redoarrow.png");
         ImageView redoview = new ImageView(redoimg);
 
         Button redobutton = new Button();
         redobutton.setGraphic(redoview);
+        redobutton.setOnAction(event -> canvas.redo());
         Tooltip redotip = new Tooltip("Redo");
         Tooltip.install(redobutton, redotip);
         return redobutton;
@@ -184,52 +232,37 @@ public class App extends Application {
     public void start(Stage primaryStage) throws Exception {
         initializeDocument();
         primaryStage.setTitle("PDF Project");
-        //root BorderPane allows for more versatile alignment than HBox or VBox
         BorderPane root = new BorderPane();
         GridPane ToolBox = createToolBox();
         MenuBar menuBar = createMenuBar();
         Button undobutton = createUndoButton();
-        Button redobutton = createRedoButton(); 
-        
-        /// ref t18_1 "task 18.1"
-        /// The HBox SelectBox provides the option for Select Tool and the Shape
-        HBox selectBox =new HBox();
-        shapesToolBar = new ShapesToolBar();
-        selectBox.getChildren().add(shapesToolBar);
-
+        Button redobutton = createRedoButton();
 
         GridPane.setConstraints(undobutton, 0, 0);
         GridPane.setConstraints(redobutton, 1, 0);
-       
+
         root.setTop(menuBar);
         root.setLeft(ToolBox);
-        root.setRight(selectBox);
-        
-        ToolBox.getChildren().addAll(undobutton,redobutton);
+
+        ToolBox.getChildren().addAll(undobutton, redobutton);
 
         mainScene = new Scene(root);
         primaryStage.setScene(mainScene);
-        
+
         setDisplayDoc(doc, 0);
-       
+
         primaryStage.show();
-        
-        MainCanvas canvas = doc.getPage(currentPage).getCanvas();
-        mainScene.setOnKeyPressed((KeyEvent event) -> {
-            canvas.getEventHandler().Event(event);
-        });
+
+        canvas = doc.getPage(currentPage).getCanvas();
     }
-    
+
     public void setDisplayDoc(DocumentModel document, int pageNum) {
         currentPage = 0;
         doc = document;
         PageModel page = document.getPage(pageNum);
         BorderPane root = (BorderPane) mainScene.getRoot();
-        
-        MainCanvas canvas = page.getCanvas();
-        
-        shapesToolBar.setCanvas(canvas);
-        
+
+        canvas = page.getCanvas();
         root.setCenter(createViewbox(page));
     }
 
