@@ -23,12 +23,6 @@ public class DrawingTool implements EventHandler<MouseEvent> {
         _color = Color.BLACK;
     }
 
-    /**
-     * Set the DrawingMode
-     * 
-     * @param drawingMode
-     *            DrawingMode to set
-     */
     public void setDrawingMode(DrawingMode drawingMode) {
         _drawingMode = drawingMode;
         _currentAction = null;
@@ -45,23 +39,16 @@ public class DrawingTool implements EventHandler<MouseEvent> {
             _currentAction = (_drawingMode == DrawingMode.PEN) ? new DrawLine(_canvas, _color)
                     : (_drawingMode == DrawingMode.ERASER) ? new Erase(_canvas) : (_drawingMode == DrawingMode.SELECT)
                             ? new Select(_canvas)
-                            : (_drawingMode == DrawingMode.RECTANGLE) ? new DrawRectangle(_canvas, _color) : null;
+                            : (_drawingMode == DrawingMode.RECTANGLE) ? new DrawRectangle(_canvas, _color) : 
+                            	(_drawingMode == DrawingMode.TEXTFIELD) ? new DrawTextField(_canvas) : 
+                                	(_drawingMode == DrawingMode.RADIOBUTTON) ? new DrawRadioButton(_canvas) : 
+                                    	(_drawingMode == DrawingMode.CHECKBOX) ? new DrawCheckBox(_canvas) 
+                            	: null;
 
-        if (_currentAction != null) {
-            _currentAction = _currentAction.handle(event);
-            updateScreen();
-        }
+        if (_currentAction != null)
+            _currentAction.handle(event);
 
-    }
-
-    /**
-     * Sets the fill color for strokes and fills
-     * 
-     * @param color
-     *            Color to use
-     */
-    public void setColor(Color color) {
-        _color = color;
+        updateScreen();
     }
 
     private void updateScreen() {
@@ -73,5 +60,9 @@ public class DrawingTool implements EventHandler<MouseEvent> {
             _canvas.clearRedo();
             _currentAction = null;
         }
+    }
+
+    public void setColor(Color color) {
+        _color = color;
     }
 }
