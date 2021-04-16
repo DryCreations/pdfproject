@@ -10,8 +10,19 @@ import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import javafx.event.Event;
 import javafx.geometry.Point2D;
+import javafx.scene.Cursor;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextInputDialog;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -27,6 +38,7 @@ public class Select implements Action {
     private Selectable _selectedDrawing;
     private SelectState _selectState;
     private Point2D _origin;
+    private ContextMenu contextMenu;
 
     public Select(MainCanvas canvas) {
         _canvas = canvas;
@@ -42,8 +54,6 @@ public class Select implements Action {
 
     @Override
     public Action handle(Event event) {
-        if (!(event instanceof MouseEvent))
-            return this;
 
         MouseEvent mouseEvent = (MouseEvent) event;
         Point2D mousePosition = new Point2D(mouseEvent.getX(), mouseEvent.getY());
@@ -57,8 +67,66 @@ public class Select implements Action {
         else if (mouseEvent.getEventType() == MouseEvent.MOUSE_RELEASED)
             handleRelease(mousePosition);
 
+        /**
+         * Only accepts right click and no mouse drag
+         */
+        if (mouseEvent.isSecondaryButtonDown()) {
+            contextMenu = new ContextMenu();
+            MenuItem linkObj = new MenuItem("Link Object");
+            contextMenu.getItems().add(linkObj);
+            contextMenu.show(_canvas, mouseEvent.getScreenX(), mouseEvent.getScreenY());
+
+            linkObj.setOnAction(e -> {
+                TextInputDialog dialogBox = new TextInputDialog("http://my%Link%here");
+                dialogBox.setTitle("Link");
+                dialogBox.setHeaderText("What is the desired Link ");
+                dialogBox.setContentText("Link");
+
+                Optional<String> linkProvided = dialogBox.showAndWait();
+                if (linkProvided.isPresent()) {
+
+                    Hyperlink url = new Hyperlink();
+                    url.setText(linkProvided.get());
+                    _selectedDrawing.setisLinked(true);
+                    _selectedDrawing.setUri(url.getText());
+                    _canvas.getChildren().add(url);
+
+                }
+            });
+        }
+
+        /***
+         * 
+         * Takes to the linked web page only if "Control" key is pressed down while mouse clicked. User is expected to
+         * provide a proper link of a web page
+         */
+        if (mouseEvent.isControlDown()) {
+            _canvas.getScene().setCursor(Cursor.HAND);
+
+            if (mouseEvent.getEventType() == MouseEvent.MOUSE_PRESSED) {
+
+                if (_selectedDrawing.getisLinked()) {
+                    if (_selectedDrawing.getLink() != null) {
+                        if (Desktop.isDesktopSupported()) {
+                            try {
+                                Desktop.getDesktop().browse(new URI(_selectedDrawing.getLink()));
+                            } catch (IOException e1) {
+                                e1.printStackTrace();
+                            } catch (URISyntaxException e1) {
+                                e1.printStackTrace();
+                            }
+                        }
+                    }
+                }
+            }
+
+        } else {
+            _canvas.getScene().setCursor(Cursor.DEFAULT);
+        }
+
         return _selectState == SelectState.MOVED && _selectedDrawing instanceof Action ? (Action) _selectedDrawing
                 : this;
+
     }
 
     @Override
@@ -131,4 +199,5 @@ public class Select implements Action {
 
         System.out.println("Select");
     }
+
 }

@@ -8,13 +8,17 @@ import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import javafx.event.Event;
 import javafx.geometry.Point2D;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
 /**
- * @author Charles Witherspoon \brief This class represents an action to draw a shape on the canvas \ref t9_1 "Task 9.1"
+ * @author Charles Witherspoon
+ * 
+ * @{ \brief This class represents an action to draw a shape on the canvas and also allows to attach link \ref t9_1
+ *    "Task 9.1" \ref t18_2 "task 18.2"
  */
 public class DrawRectangle implements Action, Selectable, Draggable {
     private MainCanvas _canvas;
@@ -22,7 +26,11 @@ public class DrawRectangle implements Action, Selectable, Draggable {
     private Rectangle _rectangle;
     private boolean _isComplete;
     private Color _color;
+
     private DrawRectangle _replacement;
+
+    protected boolean _isLinked;
+    protected String _link;
 
     public DrawRectangle(MainCanvas canvas, Color color) {
         _canvas = canvas;
@@ -115,4 +123,33 @@ public class DrawRectangle implements Action, Selectable, Draggable {
         PdfAction.DRAW_RECTANGLE.accept(canvas, page, _rectangle);
         System.out.println("Rectangle");
     }
+
+    @Override
+    public void setUri(String uri) {
+        // TODO Auto-generated method stub
+        this._link = uri;
+    }
+
+    @Override
+    public void setisLinked(boolean linked) {
+        // TODO Auto-generated method stub
+        this._isLinked = linked;
+    }
+
+    @Override
+    public String getLink() {
+        // TODO Auto-generated method stub
+
+        return _link;
+    }
+
+    @Override
+    public boolean getisLinked() {
+        // TODO Auto-generated method stub
+        return _isLinked;
+    }
+
 }
+/**
+ * @}
+ */
