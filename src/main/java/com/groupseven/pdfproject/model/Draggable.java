@@ -10,8 +10,12 @@ import javafx.geometry.Point2D;
 public interface Draggable {
     /**
      * Shifts a Draggable relative to a starting point and ending point
-     * @param origin Point2D representing the starting point
-     * @param destination Point2D representing the ending point
+     * 
+     * @param origin
+     *            Point2D representing the starting point
+     * @param destination
+     *            Point2D representing the ending point
+     * 
      * @return A "dragging" Action
      */
     Action shift(Point2D origin, Point2D destination);

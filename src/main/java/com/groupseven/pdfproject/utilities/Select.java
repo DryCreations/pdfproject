@@ -19,9 +19,8 @@ import java.util.Optional;
 import java.util.function.Predicate;
 
 /**
- * @author Charles Witherspoon
- * \brief This class represents an action to select an object on the canvas
- * \ref t18_1 "Task 18.1"
+ * @author Charles Witherspoon \brief This class represents an action to select an object on the canvas \ref t18_1 "Task
+ *         18.1"
  */
 public class Select implements Action {
     private MainCanvas _canvas;
@@ -36,8 +35,7 @@ public class Select implements Action {
 
     @Override
     public void execute() {
-        if (_selectState == SelectState.SELECTED
-                && _selectedDrawing instanceof Draggable
+        if (_selectState == SelectState.SELECTED && _selectedDrawing instanceof Draggable
                 && !((Draggable) _selectedDrawing).wasMoved())
             DrawingAction.SELECT.accept(_canvas, _selectedDrawing.getSelection());
     }
@@ -59,9 +57,7 @@ public class Select implements Action {
         else if (mouseEvent.getEventType() == MouseEvent.MOUSE_RELEASED)
             handleRelease(mousePosition);
 
-        return _selectState == SelectState.MOVED
-                && _selectedDrawing instanceof Action ?
-                (Action) _selectedDrawing
+        return _selectState == SelectState.MOVED && _selectedDrawing instanceof Action ? (Action) _selectedDrawing
                 : this;
     }
 
@@ -78,15 +74,12 @@ public class Select implements Action {
     private void handlePress(Point2D mousePosition) {
         Optional<Action> drawingAtMousePosition = getDrawingAtPoint(mousePosition);
 
-        if (drawingAtMousePosition.isPresent()
-                && drawingAtMousePosition.get() instanceof Draggable
+        if (drawingAtMousePosition.isPresent() && drawingAtMousePosition.get() instanceof Draggable
                 && ((Draggable) drawingAtMousePosition.get()).wasMoved())
             return;
 
-        if (drawingAtMousePosition.isPresent()
-                && (_selectState == SelectState.UNSELECTED
-                || (_selectState == SelectState.SELECTED
-                && drawingAtMousePosition.get() != _selectedDrawing)))
+        if (drawingAtMousePosition.isPresent() && (_selectState == SelectState.UNSELECTED
+                || (_selectState == SelectState.SELECTED && drawingAtMousePosition.get() != _selectedDrawing)))
             select(drawingAtMousePosition.get());
 
         else if (_selectState == SelectState.SELECTED) {
@@ -112,17 +105,11 @@ public class Select implements Action {
         List<Action> drawings = new ArrayList<>(_canvas.getUndoStack());
         Collections.reverse(drawings);
 
-        return drawings
-                .stream()
-                .filter(actionContains(mousePosition))
-                .findFirst();
+        return drawings.stream().filter(actionContains(mousePosition)).findFirst();
     }
 
     private Predicate<Action> actionContains(Point2D mousePosition) {
-        return action -> action instanceof Selectable
-                && ((Selectable) action)
-                .getSelection()
-                .contains(mousePosition);
+        return action -> action instanceof Selectable && ((Selectable) action).getSelection().contains(mousePosition);
     }
 
     private void select(Action drawing) {
@@ -132,8 +119,7 @@ public class Select implements Action {
 
     private void moveTo(Point2D mousePosition) {
         if (_selectedDrawing instanceof Draggable) {
-            _selectedDrawing = (Selectable) ((Draggable) _selectedDrawing)
-                    .shift(_origin, mousePosition);
+            _selectedDrawing = (Selectable) ((Draggable) _selectedDrawing).shift(_origin, mousePosition);
         }
 
     }

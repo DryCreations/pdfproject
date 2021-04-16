@@ -25,7 +25,9 @@ public class DrawingTool implements EventHandler<MouseEvent> {
 
     /**
      * Set the DrawingMode
-     * @param drawingMode DrawingMode to set
+     * 
+     * @param drawingMode
+     *            DrawingMode to set
      */
     public void setDrawingMode(DrawingMode drawingMode) {
         _drawingMode = drawingMode;
@@ -54,7 +56,9 @@ public class DrawingTool implements EventHandler<MouseEvent> {
 
     /**
      * Sets the fill color for strokes and fills
-     * @param color Color to use
+     * 
+     * @param color
+     *            Color to use
      */
     public void setColor(Color color) {
         _color = color;

@@ -14,9 +14,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
 /**
- * @author Charles Witherspoon
- * \brief This class represents an action to draw a shape on the canvas
- * \ref t9_1 "Task 9.1"
+ * @author Charles Witherspoon \brief This class represents an action to draw a shape on the canvas \ref t9_1 "Task 9.1"
  */
 public class DrawRectangle implements Action, Selectable, Draggable {
     private MainCanvas _canvas;
@@ -47,10 +45,7 @@ public class DrawRectangle implements Action, Selectable, Draggable {
         if (_origin == null)
             _origin = new Point2D(mouseEvent.getX(), mouseEvent.getY());
         else {
-            _rectangle = new Rectangle(
-                    _origin.getX(),
-                    _origin.getY(),
-                    mouseEvent.getX() - _origin.getX(),
+            _rectangle = new Rectangle(_origin.getX(), _origin.getY(), mouseEvent.getX() - _origin.getX(),
                     mouseEvent.getY() - _origin.getY());
             _rectangle.setFill(_color);
         }
@@ -76,7 +71,6 @@ public class DrawRectangle implements Action, Selectable, Draggable {
         return _rectangle.contains(point);
     }
 
-
     @Override
     public Shape getSelection() {
         return _rectangle;
@@ -88,8 +82,7 @@ public class DrawRectangle implements Action, Selectable, Draggable {
             return false;
 
         DrawRectangle other = (DrawRectangle) o;
-        return this._rectangle.getX() == other._rectangle.getX()
-                && this._rectangle.getY() == other._rectangle.getY()
+        return this._rectangle.getX() == other._rectangle.getX() && this._rectangle.getY() == other._rectangle.getY()
                 && this._rectangle.getWidth() == other._rectangle.getWidth()
                 && this._rectangle.getHeight() == other._rectangle.getHeight();
     }
@@ -101,11 +94,8 @@ public class DrawRectangle implements Action, Selectable, Draggable {
         double xDiff = destination.getX() - origin.getX();
         double yDiff = destination.getY() - origin.getY();
 
-        drawRectangle._rectangle = new Rectangle(
-                _rectangle.getX() + xDiff,
-                _rectangle.getY() + yDiff,
-                _rectangle.getWidth(),
-                _rectangle.getHeight());
+        drawRectangle._rectangle = new Rectangle(_rectangle.getX() + xDiff, _rectangle.getY() + yDiff,
+                _rectangle.getWidth(), _rectangle.getHeight());
         drawRectangle._rectangle.setFill(_color);
         _replacement = drawRectangle;
         drawRectangle.complete();
@@ -115,8 +105,7 @@ public class DrawRectangle implements Action, Selectable, Draggable {
     @Override
     public boolean wasMoved() {
         return _replacement != null
-                && (_canvas.getUndoStack().contains(_replacement)
-                || !_canvas.getRedoStack().contains(_replacement));
+                && (_canvas.getUndoStack().contains(_replacement) || !_canvas.getRedoStack().contains(_replacement));
     }
 
     @Override

@@ -131,17 +131,16 @@ public class App extends Application {
     /// \ref t9_1_2 "task 9.1.2"
     private Menu createDrawingMenu() {
         Label drawLabel = new Label("Drawing");
-        drawLabel.setOnMouseClicked(
-                action -> {
-                    if (_drawingToolBar == null)
-                        _drawingToolBar = new DrawingToolbar(canvas);
-                    if (canvas.getChildren().contains(_drawingToolBar)) {
-                        canvas.getChildren().remove(_drawingToolBar);
-                    } else {
-                        canvas.getChildren().add(_drawingToolBar);
-                    }
-                    
-                });
+        drawLabel.setOnMouseClicked(action -> {
+            if (_drawingToolBar == null)
+                _drawingToolBar = new DrawingToolbar(canvas);
+            if (canvas.getChildren().contains(_drawingToolBar)) {
+                canvas.getChildren().remove(_drawingToolBar);
+            } else {
+                canvas.getChildren().add(_drawingToolBar);
+            }
+
+        });
 
         Menu drawingMenu = new Menu();
         drawingMenu.setGraphic(drawLabel);
@@ -238,7 +237,6 @@ public class App extends Application {
         MenuBar menuBar = createMenuBar();
         Button undobutton = createUndoButton();
         Button redobutton = createRedoButton();
-
 
         GridPane.setConstraints(undobutton, 0, 0);
         GridPane.setConstraints(redobutton, 1, 0);
