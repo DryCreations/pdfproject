@@ -3,6 +3,7 @@ package com.groupseven.pdfproject.utilities;
 import com.groupseven.pdfproject.MainCanvas;
 import com.groupseven.pdfproject.model.Action;
 import com.groupseven.pdfproject.model.Draggable;
+import com.groupseven.pdfproject.model.SelectState;
 import com.groupseven.pdfproject.model.Selectable;
 import com.groupseven.pdfproject.utilities.DrawingAction;
 import com.itextpdf.kernel.pdf.PdfPage;
@@ -15,26 +16,28 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 /**
- * @author Charles Witherspoon
- * 
- * @{ \brief This class represents an action to select an object on the canvas \ref t18_1 "Task 18.1"
+ * @author Charles Witherspoon \brief This class represents an action to select an object on the canvas \ref t18_1 "Task
+ *         18.1"
  */
 public class Select implements Action {
     private MainCanvas _canvas;
-    Selectable _selectedDrawing;
+    private Selectable _selectedDrawing;
+    private SelectState _selectState;
+    private Point2D _origin;
 
     public Select(MainCanvas canvas) {
         _canvas = canvas;
+        _selectState = SelectState.UNSELECTED;
     }
 
     @Override
     public void execute() {
-        if (_selectedDrawing != null) {
-            _selectedDrawing.select();
+        if (_selectState == SelectState.SELECTED && _selectedDrawing instanceof Draggable
+                && !((Draggable) _selectedDrawing).wasMoved())
             DrawingAction.SELECT.accept(_canvas, _selectedDrawing.getSelection());
-        }
     }
 
     @Override
@@ -43,25 +46,24 @@ public class Select implements Action {
             return this;
 
         MouseEvent mouseEvent = (MouseEvent) event;
+        Point2D mousePosition = new Point2D(mouseEvent.getX(), mouseEvent.getY());
 
-        switch (mouseEvent.getEventType().getName()) {
-        case ("MOUSE_PRESSED"):
-            handlePress(mouseEvent);
-            break;
-        case ("MOUSE_DRAGGED"):
-            handleDrag(mouseEvent);
-            break;
-        case ("MOUSE_RELEASED"):
-            handleRelease(mouseEvent);
-            break;
-        }
+        if (mouseEvent.getEventType() == MouseEvent.MOUSE_PRESSED)
+            handlePress(mousePosition);
 
-        return this;
+        else if (mouseEvent.getEventType() == MouseEvent.MOUSE_DRAGGED)
+            handleDrag();
+
+        else if (mouseEvent.getEventType() == MouseEvent.MOUSE_RELEASED)
+            handleRelease(mousePosition);
+
+        return _selectState == SelectState.MOVED && _selectedDrawing instanceof Action ? (Action) _selectedDrawing
+                : this;
     }
 
     @Override
     public boolean isComplete() {
-        return false;
+        return _selectState == SelectState.MOVED;
     }
 
     @Override
@@ -69,32 +71,56 @@ public class Select implements Action {
         return ((Action) _selectedDrawing).contains(point);
     }
 
-    private void handlePress(MouseEvent mouseEvent) {
-        if (_selectedDrawing != null)
-            _selectedDrawing.unselect();
+    private void handlePress(Point2D mousePosition) {
+        Optional<Action> drawingAtMousePosition = getDrawingAtPoint(mousePosition);
 
-        List<Action> undos = new ArrayList<>(_canvas.getUndoStack());
-        Collections.reverse(undos);
-        Point2D mousePosition = new Point2D(mouseEvent.getX(), mouseEvent.getY());
-        Optional<Action> firstActionContainingMousePosition = undos.stream()
-                .filter(action -> action.contains(mousePosition) && action instanceof Selectable).findFirst();
+        if (drawingAtMousePosition.isPresent() && drawingAtMousePosition.get() instanceof Draggable
+                && ((Draggable) drawingAtMousePosition.get()).wasMoved())
+            return;
 
-        Selectable previousSelection = _selectedDrawing;
-        _selectedDrawing = (Selectable) firstActionContainingMousePosition.orElse(null);
+        if (drawingAtMousePosition.isPresent() && (_selectState == SelectState.UNSELECTED
+                || (_selectState == SelectState.SELECTED && drawingAtMousePosition.get() != _selectedDrawing)))
+            select(drawingAtMousePosition.get());
 
-        if (previousSelection != null && previousSelection.equals(_selectedDrawing))
-            _selectedDrawing.unselect();
+        else if (_selectState == SelectState.SELECTED) {
+            _selectState = SelectState.UNSELECTED;
+        }
+
+        _origin = mousePosition;
     }
 
-    private void handleDrag(MouseEvent mouseEvent) {
-        if (_selectedDrawing != null && _selectedDrawing instanceof Draggable) {
-            Action movedRectangle = ((Draggable) _selectedDrawing).dragTo(mouseEvent.getX(), mouseEvent.getY());
-            _canvas.getUndoStack().push(movedRectangle);
-            _selectedDrawing = (Selectable) movedRectangle;
+    private void handleDrag() {
+        if (_selectState == SelectState.SELECTED)
+            _selectState = SelectState.MOVING;
+    }
+
+    private void handleRelease(Point2D mousePosition) {
+        if (_selectState == SelectState.MOVING) {
+            moveTo(mousePosition);
+            _selectState = SelectState.MOVED;
         }
     }
 
-    private void handleRelease(MouseEvent mouseEvent) {
+    private Optional<Action> getDrawingAtPoint(Point2D mousePosition) {
+        List<Action> drawings = new ArrayList<>(_canvas.getUndoStack());
+        Collections.reverse(drawings);
+
+        return drawings.stream().filter(actionContains(mousePosition)).findFirst();
+    }
+
+    private Predicate<Action> actionContains(Point2D mousePosition) {
+        return action -> action instanceof Selectable && ((Selectable) action).getSelection().contains(mousePosition);
+    }
+
+    private void select(Action drawing) {
+        _selectedDrawing = (Selectable) drawing;
+        _selectState = SelectState.SELECTED;
+    }
+
+    private void moveTo(Point2D mousePosition) {
+        if (_selectedDrawing instanceof Draggable) {
+            _selectedDrawing = (Selectable) ((Draggable) _selectedDrawing).shift(_origin, mousePosition);
+        }
 
     }
 
@@ -106,6 +132,3 @@ public class Select implements Action {
         System.out.println("Select");
     }
 }
-/**
- * @}
- */

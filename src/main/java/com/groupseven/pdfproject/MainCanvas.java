@@ -6,7 +6,7 @@ import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.layout.*;
+import javafx.scene.layout.Pane;
 
 import java.util.Stack;
 
@@ -43,6 +43,7 @@ public class MainCanvas extends Pane {
     public void undo() {
         if (_undoStack.empty())
             return;
+
         _redoStack.push(_undoStack.pop());
         refresh();
     }
@@ -61,7 +62,7 @@ public class MainCanvas extends Pane {
 
         Action redo = _redoStack.pop();
         _undoStack.push(redo);
-        redo.execute();
+        refresh();
     }
 
     public void clearRedo() {
@@ -78,6 +79,10 @@ public class MainCanvas extends Pane {
 
     public Stack<Action> getUndoStack() {
         return _undoStack;
+    }
+
+    public Stack<Action> getRedoStack() {
+        return _redoStack;
     }
 }
 
