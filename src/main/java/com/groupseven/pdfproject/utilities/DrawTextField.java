@@ -101,8 +101,6 @@ public class DrawTextField implements Action {
 	            System.out.println("Operation Failed");
 	        }
 	        
-	        rename.delete();
-	        
 	        // Create an object of the File class
 	        // Replace the file path with path of the directory
 	        file = new File("src/main/resources/test_pdf2.pdf");
