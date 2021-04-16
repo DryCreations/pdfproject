@@ -23,6 +23,8 @@ public class DrawRectangle implements Action, Selectable, Draggable {
     private boolean _isComplete;
     private Color _color;
     private DrawRectangle _replacement;
+    protected boolean _isLinked;
+    protected String _link;
 
     public DrawRectangle(MainCanvas canvas, Color color) {
         _canvas = canvas;
@@ -115,4 +117,28 @@ public class DrawRectangle implements Action, Selectable, Draggable {
         PdfAction.DRAW_RECTANGLE.accept(canvas, page, _rectangle);
         System.out.println("Rectangle");
     }
+
+	@Override
+	public void setUri(String uri) {
+		// TODO Auto-generated method stub
+		this._link = uri;
+	}
+
+	@Override
+	public void setisLinked(boolean linked) {
+		// TODO Auto-generated method stub
+		this._isLinked = linked;
+	}
+
+	@Override
+	public String getLink() {
+		// TODO Auto-generated method stub
+		return _link;
+	}
+
+	@Override
+	public boolean getisLinked() {
+		// TODO Auto-generated method stub
+		return _isLinked;
+	}
 }
