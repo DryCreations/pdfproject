@@ -36,7 +36,7 @@ public class DrawingToolbar extends ToolBar {
         _drawingTool = new DrawingTool(_canvas);
 
         List<RadioButton> radioButtons = createRadioButtons(_toggleGroup, DrawingMode.PEN, DrawingMode.ERASER,
-                DrawingMode.RECTANGLE, DrawingMode.SELECT);
+                DrawingMode.RECTANGLE, DrawingMode.SELECT, DrawingMode.TEXTFIELD, DrawingMode.RADIOBUTTON, DrawingMode.CHECKBOX);
 
         getItems().addAll(radioButtons);
 
@@ -47,6 +47,7 @@ public class DrawingToolbar extends ToolBar {
         _colorPicker.setOnAction(__ -> _drawingTool.setColor(_colorPicker.getValue()));
         _toggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
             _drawingTool.setDrawingMode((DrawingMode) newValue.getUserData());
+            
         });
 
         _canvas.setHandlerForTypes(_drawingTool, MouseEvent.ANY);
