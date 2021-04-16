@@ -11,27 +11,20 @@ import com.groupseven.pdfproject.view.DrawingToolbar;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.Tooltip;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class App extends Application {
 
@@ -60,7 +53,6 @@ public class App extends Application {
     private void initializeDocument() {
         try {
             File file = new File("src/main/resources/test_pdf.pdf");
-
             doc = new DocumentModel(file);
             // doc = new DocumentModel();
             currentPage = 0;
@@ -78,13 +70,6 @@ public class App extends Application {
         vbox.setAlignment(Pos.BASELINE_RIGHT);
         vbox.getChildren().add(page.getNode());
         page.clear();
-
-        // vbox.setOnKeyPressed(new EventHandler<KeyEvent>() {
-        // @Override
-        // public void handle(KeyEvent event) {
-        // canvas.getEventHandler().Event(event);
-        // }
-        // });
 
         return vbox;
     }
@@ -147,10 +132,11 @@ public class App extends Application {
     private Menu createDrawingMenu() {
         Label drawLabel = new Label("Drawing");
         drawLabel.setOnMouseClicked(action -> {
-            if (_drawingToolBar != null && canvas.getChildren().contains(_drawingToolBar)) {
+            if (_drawingToolBar == null)
+                _drawingToolBar = new DrawingToolbar(canvas);
+            if (canvas.getChildren().contains(_drawingToolBar)) {
                 canvas.getChildren().remove(_drawingToolBar);
             } else {
-                _drawingToolBar = new DrawingToolbar(canvas);
                 canvas.getChildren().add(_drawingToolBar);
             }
 
@@ -246,7 +232,6 @@ public class App extends Application {
     public void start(Stage primaryStage) throws Exception {
         initializeDocument();
         primaryStage.setTitle("PDF Project");
-        // root BorderPane allows for more versatile alignment than HBox or VBox
         BorderPane root = new BorderPane();
         GridPane ToolBox = createToolBox();
         MenuBar menuBar = createMenuBar();
@@ -269,9 +254,6 @@ public class App extends Application {
         primaryStage.show();
 
         canvas = doc.getPage(currentPage).getCanvas();
-        // mainScene.setOnKeyPressed((KeyEvent event) -> {
-        // canvas.getEventHandler().Event(event);
-        // });
     }
 
     public void setDisplayDoc(DocumentModel document, int pageNum) {
