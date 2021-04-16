@@ -82,6 +82,10 @@ public class DrawCheckBox implements Action {
 	        // Create an object of the File class
 	        // Replace the file path with path of the directory
 	        File rename = new File("src/main/resources/test_pdf_old.pdf");
+	        
+	        if (rename.exists()) {
+	        	rename.delete();
+	        }
 	  
 	        // store the return value of renameTo() method in
 	        // flag
