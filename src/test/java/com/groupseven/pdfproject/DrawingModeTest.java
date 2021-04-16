@@ -1,3 +1,5 @@
+package com.groupseven.pdfproject;
+
 import com.groupseven.pdfproject.utilities.DrawingMode;
 import org.junit.Test;
 import static org.junit.Assert.*;
