@@ -15,9 +15,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
 /**
- * @author Charles Witherspoon
- * 
- * @{ \brief This class represents an action to draw a shape on the canvas \ref t9_1 "Task 9.1"
+ * @author Charles Witherspoon \brief This class represents an action to draw a shape on the canvas \ref t9_1 "Task 9.1"
  */
 public class DrawRectangle implements Action, Selectable, Draggable {
     private MainCanvas _canvas;

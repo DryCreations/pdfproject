@@ -69,7 +69,6 @@ public class Select implements Action {
 
         return _selectState == SelectState.MOVED && _selectedDrawing instanceof Action ? (Action) _selectedDrawing
                 : this;
-
     }
 
     @Override
@@ -144,3 +143,4 @@ public class Select implements Action {
     }
 
 }
+
