@@ -120,7 +120,3 @@ public class DrawRectangle implements Action, Selectable, Draggable {
     }
 
 }
-
-/**
- * @}
- */
