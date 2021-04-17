@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * @author Charles Witherspoon
  *
- * @{ \brief This class represents an action that draws a line on the canvas \ref t9_1_1 "Task 9.1.1"
+ *         \brief This class represents an action that draws a line on the canvas \ref t9_1_1 "Task 9.1.1"
  */
 public class DrawLine implements Action {
     private MainCanvas _canvas;
@@ -42,7 +42,7 @@ public class DrawLine implements Action {
     }
 
     @Override
-    public Action handle(MouseEvent event) {
+    public Action handle(Event event) {
         if (!(event instanceof MouseEvent))
             return this;
 
@@ -80,10 +80,4 @@ public class DrawLine implements Action {
         System.out.println("Line");
     }
 
-    @Override
-    public void handle(KeyEvent event) {
-        // TODO Auto-generated method stub
-
-    }
 }
-/** @} */

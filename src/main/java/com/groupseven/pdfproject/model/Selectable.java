@@ -8,17 +8,9 @@ import javafx.scene.shape.Shape;
  *         \brief This interface represents a selectable canvas element \ref t18_1 "Task 18.1"
  */
 public interface Selectable {
-    void select();
-
-    void unselect();
-
+    /**
+     * @return Shape representing the selected canvas element
+     */
     Shape getSelection();
 
-    void setUri(String uri);
-
-    void setisLinked(boolean linked);
-
-    String getLink();
-
-    boolean getisLinked();
 }

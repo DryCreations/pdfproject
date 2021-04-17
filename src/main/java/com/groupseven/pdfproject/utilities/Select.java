@@ -3,6 +3,7 @@ package com.groupseven.pdfproject.utilities;
 import com.groupseven.pdfproject.MainCanvas;
 import com.groupseven.pdfproject.model.Action;
 import com.groupseven.pdfproject.model.Draggable;
+import com.groupseven.pdfproject.model.SelectState;
 import com.groupseven.pdfproject.model.Selectable;
 import com.groupseven.pdfproject.utilities.DrawingAction;
 import com.itextpdf.kernel.pdf.PdfPage;
@@ -25,105 +26,55 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 /**
- * @author Charles Witherspoon
- * 
- * @{ \brief This class represents an action to select an object on the canvas \ref t18_1 "Task 18.1"
+ * @author Charles Witherspoon \brief This class represents an action to select an object on the canvas \ref t18_1 "Task
+ *         18.1"
  */
 public class Select implements Action {
     private MainCanvas _canvas;
-    Selectable _selectedDrawing;
-    private ContextMenu contextMenu;
+    private Selectable _selectedDrawing;
+    private SelectState _selectState;
+    private Point2D _origin;
 
     public Select(MainCanvas canvas) {
         _canvas = canvas;
+        _selectState = SelectState.UNSELECTED;
     }
 
     @Override
     public void execute() {
-        if (_selectedDrawing != null) {
-            _selectedDrawing.select();
+        if (_selectState == SelectState.SELECTED && _selectedDrawing instanceof Draggable
+                && !((Draggable) _selectedDrawing).wasMoved())
             DrawingAction.SELECT.accept(_canvas, _selectedDrawing.getSelection());
-        }
     }
 
     @Override
-    public Action handle(MouseEvent event) {
+    public Action handle(Event event) {
+        if (!(event instanceof MouseEvent))
+            return this;
 
         MouseEvent mouseEvent = (MouseEvent) event;
+        Point2D mousePosition = new Point2D(mouseEvent.getX(), mouseEvent.getY());
 
-        if (event.getEventType() == MouseEvent.MOUSE_PRESSED)
-            handlePress(mouseEvent);
+        if (mouseEvent.getEventType() == MouseEvent.MOUSE_PRESSED)
+            handlePress(mousePosition);
 
-        if (event.getEventType() == MouseEvent.MOUSE_DRAGGED)
-            handleDrag(mouseEvent);
+        else if (mouseEvent.getEventType() == MouseEvent.MOUSE_DRAGGED)
+            handleDrag();
 
-        if (event.getEventType() == MouseEvent.MOUSE_RELEASED)
-            handleRelease(mouseEvent);
+        else if (mouseEvent.getEventType() == MouseEvent.MOUSE_RELEASED)
+            handleRelease(mousePosition);
 
-        /**
-         * Only accepts right click and no mouse drag
-         */
-        if (event.isSecondaryButtonDown()) {
-            contextMenu = new ContextMenu();
-            MenuItem linkObj = new MenuItem("Link Object");
-            contextMenu.getItems().add(linkObj);
-            contextMenu.show(_canvas, event.getScreenX(), event.getScreenY());
+        return _selectState == SelectState.MOVED && _selectedDrawing instanceof Action ? (Action) _selectedDrawing
+                : this;
 
-            linkObj.setOnAction(e -> {
-                TextInputDialog dialogBox = new TextInputDialog("http://my%Link%here");
-                dialogBox.setTitle("Link");
-                dialogBox.setHeaderText("What is the desired Link ");
-                dialogBox.setContentText("Link");
-
-                Optional<String> linkProvided = dialogBox.showAndWait();
-                if (linkProvided.isPresent()) {
-
-                    Hyperlink url = new Hyperlink();
-                    url.setText(linkProvided.get());
-                    _selectedDrawing.setisLinked(true);
-                    _selectedDrawing.setUri(url.getText());
-                    _canvas.getChildren().add(url);
-
-                }
-            });
-        }
-
-        /***
-         * 
-         * Takes to the linked web page only if "Control" key is pressed down while mouse clicked. User is expected to
-         * provide a proper link of a web page
-         */
-        if (event.isControlDown()) {
-            _canvas.getScene().setCursor(Cursor.HAND);
-            if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {
-
-                if (_selectedDrawing.getisLinked()) {
-                    if (_selectedDrawing.getLink() != null) {
-                        if (Desktop.isDesktopSupported()) {
-                            try {
-                                Desktop.getDesktop().browse(new URI(_selectedDrawing.getLink()));
-                            } catch (IOException e1) {
-                                e1.printStackTrace();
-                            } catch (URISyntaxException e1) {
-                                e1.printStackTrace();
-                            }
-                        }
-                    }
-                }
-            }
-
-        } else {
-            _canvas.getScene().setCursor(Cursor.DEFAULT);
-        }
-
-        return this;
     }
 
     @Override
     public boolean isComplete() {
-        return false;
+        return _selectState == SelectState.MOVED;
     }
 
     @Override
@@ -131,40 +82,56 @@ public class Select implements Action {
         return ((Action) _selectedDrawing).contains(point);
     }
 
-    private void handlePress(MouseEvent mouseEvent) {
-        if (_selectedDrawing != null) {
-            try {
-                if (contextMenu.isShowing()) {
-                    contextMenu.hide();
-                }
-            } catch (Exception e) {
-                // do nothing
-            }
-            _selectedDrawing.unselect();
+    private void handlePress(Point2D mousePosition) {
+        Optional<Action> drawingAtMousePosition = getDrawingAtPoint(mousePosition);
+
+        if (drawingAtMousePosition.isPresent() && drawingAtMousePosition.get() instanceof Draggable
+                && ((Draggable) drawingAtMousePosition.get()).wasMoved())
+            return;
+
+        if (drawingAtMousePosition.isPresent() && (_selectState == SelectState.UNSELECTED
+                || (_selectState == SelectState.SELECTED && drawingAtMousePosition.get() != _selectedDrawing)))
+            select(drawingAtMousePosition.get());
+
+        else if (_selectState == SelectState.SELECTED) {
+            _selectState = SelectState.UNSELECTED;
         }
 
-        List<Action> undos = new ArrayList<>(_canvas.getUndoStack());
-        Collections.reverse(undos);
-        Point2D mousePosition = new Point2D(mouseEvent.getX(), mouseEvent.getY());
-        Optional<Action> firstActionContainingMousePosition = undos.stream()
-                .filter(action -> action.contains(mousePosition) && action instanceof Selectable).findFirst();
-
-        Selectable previousSelection = _selectedDrawing;
-        _selectedDrawing = (Selectable) firstActionContainingMousePosition.orElse(null);
-
-        if (previousSelection != null && previousSelection.equals(_selectedDrawing))
-            _selectedDrawing.unselect();
+        _origin = mousePosition;
     }
 
-    private void handleDrag(MouseEvent mouseEvent) {
-        if (_selectedDrawing != null && _selectedDrawing instanceof Draggable) {
-            Action movedRectangle = ((Draggable) _selectedDrawing).dragTo(mouseEvent.getX(), mouseEvent.getY());
-            _canvas.getUndoStack().push(movedRectangle);
-            _selectedDrawing = (Selectable) movedRectangle;
+    private void handleDrag() {
+        if (_selectState == SelectState.SELECTED)
+            _selectState = SelectState.MOVING;
+    }
+
+    private void handleRelease(Point2D mousePosition) {
+        if (_selectState == SelectState.MOVING) {
+            moveTo(mousePosition);
+            _selectState = SelectState.MOVED;
         }
     }
 
-    private void handleRelease(MouseEvent mouseEvent) {
+    private Optional<Action> getDrawingAtPoint(Point2D mousePosition) {
+        List<Action> drawings = new ArrayList<>(_canvas.getUndoStack());
+        Collections.reverse(drawings);
+
+        return drawings.stream().filter(actionContains(mousePosition)).findFirst();
+    }
+
+    private Predicate<Action> actionContains(Point2D mousePosition) {
+        return action -> action instanceof Selectable && ((Selectable) action).getSelection().contains(mousePosition);
+    }
+
+    private void select(Action drawing) {
+        _selectedDrawing = (Selectable) drawing;
+        _selectState = SelectState.SELECTED;
+    }
+
+    private void moveTo(Point2D mousePosition) {
+        if (_selectedDrawing instanceof Draggable) {
+            _selectedDrawing = (Selectable) ((Draggable) _selectedDrawing).shift(_origin, mousePosition);
+        }
 
     }
 
@@ -176,16 +143,4 @@ public class Select implements Action {
         System.out.println("Select");
     }
 
-    @Override
-    public void handle(KeyEvent k_event) {
-        // TODO Auto-generated method stub
-        if (k_event.isControlDown())
-            _canvas.getScene().setCursor(Cursor.HAND);
-        else
-            _canvas.getScene().setCursor(Cursor.DEFAULT);
-
-    }
 }
-/**
- * @}
- */
