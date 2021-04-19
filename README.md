@@ -7,17 +7,20 @@ This project can create new PDF documents as well as open and manipulate existin
 - **/pdfproject/src/main** contains the **/java/com/groupseven/pdfproject** and **/resources** folder
 - - **/java/com/groupseven/pdfproject** contains the Java files for the main program
 - - **/resources** contains relevant assets for the GUI and program initialization
+- **/pdfproject/src/test** contains junit test classes for testing functionality
 - **/pdfproject/planning** contains the **/minutes** folder and the tasks.md and user-stories.md files
-- - **/minutes** contains a summation of the work accomplished/assigned for the listed week's sprint
+- - **/minutes** contains a summation of the work accomplished/assigned for the listed class week
 - - The [tasks.md](https://github.com/DryCreations/pdfproject/blob/main/planning/tasks.md) and [user-stories.md](https://github.com/DryCreations/pdfproject/blob/main/planning/user-stories.md) files contains a list of all generated user stories and task breakdowns of those stories
 - **/pdfproject/Test_Artifacts** contains screenshot documentation of completed actions
+- **/pdfproject/grading**  contains markdown files documentating all of the course grade requirements that have been met with traceability
 
 
 ### Contributors
-- Cassandra Mae Chandankumar Patel	-	<patel.855@wright.edu>
-- Charles Witherspoon	-	<witherspoon.7@wright.edu>
-- Derrick Kaliney	-	<kaliney.2@wright.edu>
-- Hayden Mankin	-	<mankin.5@wright.edu>
-- Hunter Gongloff	-	<gongloff.2@wright.edu>
-- Parker Leonard	-	<leonard.95@wright.edu>
-- William Harvey	-	<harvey.104@wright.edu>
+#### Group 7
+- Cassandra Mae Chandankumar Patel
+- Charles Witherspoon
+- Derrick Kaliney
+- Hayden Mankin
+- Hunter Gongloff
+- Parker Leonard
+- William Harvey
