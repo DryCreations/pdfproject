@@ -39,7 +39,6 @@ public class DrawTextField implements Action {
 
     public static final String SRC = "src/main/resources/test_pdf.pdf";
     public static final String DES = "src/main/resources/test_pdf_old.pdf";
-    public static final String FIELDS = "src/main/resources/fields.txt";
     
     /// \ref t16_1 "task 16.1"
     public DrawTextField(MainCanvas _canvas) {
