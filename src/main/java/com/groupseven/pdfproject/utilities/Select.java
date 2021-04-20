@@ -19,9 +19,11 @@ import java.util.Optional;
 import java.util.function.Predicate;
 
 /**
- * @author Charles Witherspoon \brief This class represents an action to select an object on the canvas \ref t18_1 "Task
- *         18.1"
+ * @author Charles Witherspoon
  */
+
+/// \brief This class represents an action to select an object on the canvas
+/// \ref t18_1 "Task 18.1"
 public class Select implements Action {
     private MainCanvas _canvas;
     private Selectable _selectedDrawing;
