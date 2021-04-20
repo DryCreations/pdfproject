@@ -28,44 +28,37 @@ import javafx.event.Event;
 import javafx.geometry.Point2D;
 import javafx.scene.input.MouseEvent;
 
+/**
+ * @author Hunter Gongloff
+ * 
+ * @{ \brief This is the class to create a text field on user click
+ *    \ref 16_1 "Task 16.1" 
+ */
+
 public class DrawTextField implements Action {
 
     public static final String SRC = "src/main/resources/test_pdf.pdf";
     public static final String DES = "src/main/resources/test_pdf_old.pdf";
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
     public static final String FIELDS = "src/main/resources/fields.txt";
->>>>>>> parent of bdcd9ac (Removed pointless text file)
     
     /// \ref t16_1 "task 16.1"
-=======
-    public static final String FIELDS = "src/main/resources/fields.txt";
-
->>>>>>> parent of e7868d8 (Added Doxygen comments)
     public DrawTextField(MainCanvas _canvas) {
-        // TODO Auto-generated constructor stub
+   
     }
-
+    /// \ref t16_1 "task 16.1"
     @Override
     public void execute() {
-        // TODO Auto-generated method stub
+  
 
     }
 
+    /// \brief on click creates text field at click location
+    /// \ref t16_1 "task 16.1"
     @Override
     public Action handle(Event event) {
         if (!(event instanceof MouseEvent))
             return this;
-<<<<<<< HEAD
-<<<<<<< HEAD
-        
-=======
->>>>>>> parent of c7e1506 (Update DrawTextField.java)
         byte[] array = new byte[7];
-=======
-        byte[] array = new byte[7]; // length is bounded by 7
->>>>>>> parent of e7868d8 (Added Doxygen comments)
         new Random().nextBytes(array);
         String generatedString = new String(array, Charset.forName("UTF-8"));
 
@@ -90,7 +83,7 @@ public class DrawTextField implements Action {
             try {
                 srcDoc = new PdfDocument(new PdfReader(SRC));
             } catch (IOException e1) {
-                // TODO Auto-generated catch block
+                
                 e1.printStackTrace();
             }
             srcDoc.copyPagesTo(1, srcDoc.getNumberOfPages(), pdfDoc);
@@ -104,71 +97,50 @@ public class DrawTextField implements Action {
             pdfDoc.close();
             srcDoc.close();
 
-            // Create an object of the File class
-            // Replace the file path with path of the directory
             File file = new File("src/main/resources/test_pdf.pdf");
 
-            // Create an object of the File class
-            // Replace the file path with path of the directory
             File rename = new File("src/main/resources/test_pdf_old_old.pdf");
 
-            // store the return value of renameTo() method in
-            // flag
             boolean flag = file.renameTo(rename);
 
-            // if renameTo() return true then if block is
-            // executed
             if (flag == true) {
                 System.out.println("File Successfully Rename");
             }
-            // if renameTo() return false then else block is
-            // executed
+  
             else {
                 System.out.println("Operation Failed");
             }
 
-            // Create an object of the File class
-            // Replace the file path with path of the directory
             file = new File("src/main/resources/test_pdf_old.pdf");
 
-            // Create an object of the File class
-            // Replace the file path with path of the directory
             rename = new File("src/main/resources/test_pdf.pdf");
 
-            // store the return value of renameTo() method in
-            // flag
+ 
             flag = file.renameTo(rename);
 
-            // if renameTo() return true then if block is
-            // executed
+     
             if (flag == true) {
                 System.out.println("File Successfully Rename");
             }
-            // if renameTo() return false then else block is
-            // executed
+         
             else {
                 System.out.println("Operation Failed");
             }
 
-            // Create an object of the File class
-            // Replace the file path with path of the directory
+      
             file = new File("src/main/resources/test_pdf_old_old.pdf");
 
-            // Create an object of the File class
-            // Replace the file path with path of the directory
+     
             rename = new File("src/main/resources/test_pdf_old.pdf");
 
-            // store the return value of renameTo() method in
-            // flag
+       
             flag = file.renameTo(rename);
 
-            // if renameTo() return true then if block is
-            // executed
+       
             if (flag == true) {
                 System.out.println("File Successfully Rename");
             }
-            // if renameTo() return false then else block is
-            // executed
+        
             else {
                 System.out.println("Operation Failed");
             }
@@ -178,21 +150,24 @@ public class DrawTextField implements Action {
         return null;
     }
 
+    /// \ref t16_1 "task 16.1"
     @Override
     public boolean isComplete() {
-        // TODO Auto-generated method stub
+       
         return false;
     }
 
+    /// \ref t16_1 "task 16.1"
     @Override
     public boolean contains(Point2D point) {
-        // TODO Auto-generated method stub
+       
         return false;
     }
 
+    /// \ref t16_1 "task 16.1"
     @Override
     public void pdfExecute(PdfCanvas canvas, PdfPage page) {
-        // TODO Auto-generated method stub
+        
 
     }
 
