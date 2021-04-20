@@ -22,4 +22,3 @@ buildNumber.properties
 doxygen/
 .idea/
 *.iml
-/nbproject/
