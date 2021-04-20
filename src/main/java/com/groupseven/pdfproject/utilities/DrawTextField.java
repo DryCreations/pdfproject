@@ -1,9 +1,14 @@
 package com.groupseven.pdfproject.utilities;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.Optional;
+import java.util.Random;
 
 import com.groupseven.pdfproject.MainCanvas;
 import com.groupseven.pdfproject.model.Action;
@@ -27,6 +32,7 @@ public class DrawTextField implements Action {
 	
 	public static final String SRC = "src/main/resources/test_pdf.pdf";
 	public static final String DES = "src/main/resources/test_pdf_old.pdf";
+	public static final String FIELDS = "src/main/resources/fields.txt";
 
 	public DrawTextField(MainCanvas _canvas) {
 		// TODO Auto-generated constructor stub
@@ -42,13 +48,16 @@ public class DrawTextField implements Action {
     public Action handle(Event event) {
         if (!(event instanceof MouseEvent))
             return this;
-
+        byte[] array = new byte[7]; // length is bounded by 7
+        new Random().nextBytes(array);
+        String generatedString = new String(array, Charset.forName("UTF-8"));
+        
         MouseEvent mouseEvent = (MouseEvent) event;
         Point2D mousePosition = new Point2D(mouseEvent.getX(), mouseEvent.getY());
 
         Point2D currentPoint = new Point2D(mouseEvent.getX(), mouseEvent.getY());
 		float x = (float) currentPoint.getX();
-		// Has to subtract current point from 780 because itext7 uses a bottom to top y instead of top to bottom
+
 		float y = (float) (780.0 - currentPoint.getY());
 		
 		if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {
@@ -69,11 +78,10 @@ public class DrawTextField implements Action {
 			}
 			srcDoc.copyPagesTo(1, srcDoc.getNumberOfPages(), pdfDoc);
 			
-
 			Document doc = new Document(pdfDoc);
 			
 			PdfAcroForm form = PdfAcroForm.getAcroForm(doc.getPdfDocument(), true);
-			PdfTextFormField nameField = PdfTextFormField.createText(doc.getPdfDocument(), new Rectangle(x, y, 150, 15), "name", "");
+			PdfTextFormField nameField = PdfTextFormField.createText(doc.getPdfDocument(), new Rectangle(x, y, 150, 15), generatedString, "");
 			form.addField(nameField);
 			pdfDoc.close();
 			srcDoc.close();
