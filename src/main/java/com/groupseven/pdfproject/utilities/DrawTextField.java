@@ -1,9 +1,15 @@
 package com.groupseven.pdfproject.utilities;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.Optional;
+import java.util.Random;
 
 import com.groupseven.pdfproject.MainCanvas;
 import com.groupseven.pdfproject.model.Action;
@@ -31,11 +37,9 @@ import javafx.scene.input.MouseEvent;
  */
 
 public class DrawTextField implements Action {
-<<<<<<< HEAD
 
     public static final String SRC = "src/main/resources/test_pdf.pdf";
     public static final String DES = "src/main/resources/test_pdf_old.pdf";
-    public static final String FIELDS = "src/main/resources/fields.txt";
     
     /// \ref t16_1 "task 16.1"
     public DrawTextField(MainCanvas _canvas) {
@@ -54,35 +58,15 @@ public class DrawTextField implements Action {
     public Action handle(Event event) {
         if (!(event instanceof MouseEvent))
             return this;
+        
         byte[] array = new byte[7];
         new Random().nextBytes(array);
         String generatedString = new String(array, Charset.forName("UTF-8"));
-=======
-	
-	public static final String SRC = "src/main/resources/test_pdf.pdf";
-	public static final String DES = "src/main/resources/test_pdf2.pdf";
-
-	public DrawTextField(MainCanvas _canvas) {
-		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public void execute() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-    public Action handle(Event event) {
-        if (!(event instanceof MouseEvent))
-            return this;
->>>>>>> parent of a75b6b5 (Fixed Text fields sharing same text)
 
         MouseEvent mouseEvent = (MouseEvent) event;
         Point2D mousePosition = new Point2D(mouseEvent.getX(), mouseEvent.getY());
 
         Point2D currentPoint = new Point2D(mouseEvent.getX(), mouseEvent.getY());
-<<<<<<< HEAD
         float x = (float) currentPoint.getX();
 
         float y = (float) (780.0 - currentPoint.getY());
@@ -113,12 +97,13 @@ public class DrawTextField implements Action {
             form.addField(nameField);
             pdfDoc.close();
             srcDoc.close();
-
+/*
             File file = new File("src/main/resources/test_pdf.pdf");
 
             File rename = new File("src/main/resources/test_pdf_old_old.pdf");
 
             boolean flag = file.renameTo(rename);
+  
 
             if (flag == true) {
                 System.out.println("File Successfully Rename");
@@ -161,88 +146,7 @@ public class DrawTextField implements Action {
             else {
                 System.out.println("Operation Failed");
             }
-=======
-		float x = (float) currentPoint.getX();
-		// Has to subtract current point from 780 because itext7 uses a bottom to top y instead of top to bottom
-		float y = (float) (780.0 - currentPoint.getY());
-		
-		if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {
-			
-			PdfDocument pdfDoc = null;
-			try {
-				pdfDoc = new PdfDocument(new PdfWriter(DES).setSmartMode(true));
-			} catch (FileNotFoundException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			PdfDocument srcDoc = null;
-			try {
-				srcDoc = new PdfDocument(new PdfReader(SRC));
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			srcDoc.copyPagesTo(1, srcDoc.getNumberOfPages(), pdfDoc);
-			
-
-			Document doc = new Document(pdfDoc);
-			
-			PdfAcroForm form = PdfAcroForm.getAcroForm(doc.getPdfDocument(), true);
-			PdfTextFormField nameField = PdfTextFormField.createText(doc.getPdfDocument(), new Rectangle(x, y, 300, 15), "name", "");
-			form.addField(nameField);
-			pdfDoc.close();
-			srcDoc.close();
-			
-			// Create an object of the File class
-	        // Replace the file path with path of the directory
-	        File file = new File("src/main/resources/test_pdf.pdf");
-	  
-	        // Create an object of the File class
-	        // Replace the file path with path of the directory
-	        File rename = new File("src/main/resources/test_pdf_old.pdf");
-	  
-	        // store the return value of renameTo() method in
-	        // flag
-	        boolean flag = file.renameTo(rename);
-	  
-	        // if renameTo() return true then if block is
-	        // executed
-	        if (flag == true) {
-	            System.out.println("File Successfully Rename");
-	        }
-	        // if renameTo() return false then else block is
-	        // executed
-	        else {
-	            System.out.println("Operation Failed");
-	        }
-	        
-	        // Create an object of the File class
-	        // Replace the file path with path of the directory
-	        file = new File("src/main/resources/test_pdf2.pdf");
-	  
-	        // Create an object of the File class
-	        // Replace the file path with path of the directory
-	        rename = new File("src/main/resources/test_pdf.pdf");
-	  
-	        // store the return value of renameTo() method in
-	        // flag
-	        flag = file.renameTo(rename);
-	  
-	        // if renameTo() return true then if block is
-	        // executed
-	        if (flag == true) {
-	            System.out.println("File Successfully Rename");
-	        }
-	        // if renameTo() return false then else block is
-	        // executed
-	        else {
-	            System.out.println("Operation Failed");
-	        }
-			
-		}
-		
->>>>>>> parent of a75b6b5 (Fixed Text fields sharing same text)
-
+*/
         }
 
         return null;
