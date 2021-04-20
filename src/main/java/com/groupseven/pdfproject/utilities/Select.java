@@ -89,7 +89,6 @@ public class Select implements Action {
                     url.setText(linkProvided.get());
                     _selectedDrawing.setisLinked(true);
                     _selectedDrawing.setUri(url.getText());
-                    _canvas.getChildren().add(url);
 
                 }
             });
