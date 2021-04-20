@@ -58,6 +58,7 @@ public class DrawTextField implements Action {
     public Action handle(Event event) {
         if (!(event instanceof MouseEvent))
             return this;
+        
         byte[] array = new byte[7];
         new Random().nextBytes(array);
         String generatedString = new String(array, Charset.forName("UTF-8"));
