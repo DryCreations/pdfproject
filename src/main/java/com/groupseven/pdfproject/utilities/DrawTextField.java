@@ -54,7 +54,10 @@ public class DrawTextField implements Action {
         if (!(event instanceof MouseEvent))
             return this;
 <<<<<<< HEAD
+<<<<<<< HEAD
         
+=======
+>>>>>>> parent of c7e1506 (Update DrawTextField.java)
         byte[] array = new byte[7];
 =======
         byte[] array = new byte[7]; // length is bounded by 7
