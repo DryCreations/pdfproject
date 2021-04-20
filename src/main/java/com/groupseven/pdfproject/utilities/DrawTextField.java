@@ -60,7 +60,7 @@ public class DrawTextField implements Action {
 =======
 	
 	public static final String SRC = "src/main/resources/test_pdf.pdf";
-	public static final String DES = "src/main/resources/test_pdf_old.pdf";
+	public static final String DES = "src/main/resources/test_pdf2.pdf";
 
 	public DrawTextField(MainCanvas _canvas) {
 		// TODO Auto-generated constructor stub
@@ -188,7 +188,7 @@ public class DrawTextField implements Action {
 			Document doc = new Document(pdfDoc);
 			
 			PdfAcroForm form = PdfAcroForm.getAcroForm(doc.getPdfDocument(), true);
-			PdfTextFormField nameField = PdfTextFormField.createText(doc.getPdfDocument(), new Rectangle(x, y, 150, 15), "name", "");
+			PdfTextFormField nameField = PdfTextFormField.createText(doc.getPdfDocument(), new Rectangle(x, y, 300, 15), "name", "");
 			form.addField(nameField);
 			pdfDoc.close();
 			srcDoc.close();
@@ -199,7 +199,7 @@ public class DrawTextField implements Action {
 	  
 	        // Create an object of the File class
 	        // Replace the file path with path of the directory
-	        File rename = new File("src/main/resources/test_pdf_old_old.pdf");
+	        File rename = new File("src/main/resources/test_pdf_old.pdf");
 	  
 	        // store the return value of renameTo() method in
 	        // flag
@@ -218,34 +218,11 @@ public class DrawTextField implements Action {
 	        
 	        // Create an object of the File class
 	        // Replace the file path with path of the directory
-	        file = new File("src/main/resources/test_pdf_old.pdf");
+	        file = new File("src/main/resources/test_pdf2.pdf");
 	  
 	        // Create an object of the File class
 	        // Replace the file path with path of the directory
 	        rename = new File("src/main/resources/test_pdf.pdf");
-	  
-	        // store the return value of renameTo() method in
-	        // flag
-	        flag = file.renameTo(rename);
-	  
-	        // if renameTo() return true then if block is
-	        // executed
-	        if (flag == true) {
-	            System.out.println("File Successfully Rename");
-	        }
-	        // if renameTo() return false then else block is
-	        // executed
-	        else {
-	            System.out.println("Operation Failed");
-	        }
-	        
-	        // Create an object of the File class
-	        // Replace the file path with path of the directory
-	        file = new File("src/main/resources/test_pdf_old_old.pdf");
-	  
-	        // Create an object of the File class
-	        // Replace the file path with path of the directory
-	        rename = new File("src/main/resources/test_pdf_old.pdf");
 	  
 	        // store the return value of renameTo() method in
 	        // flag
