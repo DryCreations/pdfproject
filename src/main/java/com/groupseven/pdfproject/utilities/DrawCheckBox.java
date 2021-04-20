@@ -10,38 +10,38 @@ import javafx.geometry.Point2D;
 
 public class DrawCheckBox implements Action {
 
-	public DrawCheckBox(MainCanvas _canvas) {
-		// TODO Auto-generated constructor stub
-	}
+    public DrawCheckBox(MainCanvas _canvas) {
+        // TODO Auto-generated constructor stub
+    }
 
-	@Override
-	public void execute() {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void execute() {
+        // TODO Auto-generated method stub
 
-	@Override
-	public Action handle(Event event) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    }
 
-	@Override
-	public boolean isComplete() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public Action handle(Event event) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	@Override
-	public boolean contains(Point2D point) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public boolean isComplete() {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
-	@Override
-	public void pdfExecute(PdfCanvas canvas, PdfPage page) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public boolean contains(Point2D point) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public void pdfExecute(PdfCanvas canvas, PdfPage page) {
+        // TODO Auto-generated method stub
+
+    }
 
 }
