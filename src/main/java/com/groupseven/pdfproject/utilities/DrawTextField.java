@@ -33,6 +33,10 @@ public class DrawTextField implements Action {
     public static final String SRC = "src/main/resources/test_pdf.pdf";
     public static final String DES = "src/main/resources/test_pdf_old.pdf";
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    public static final String FIELDS = "src/main/resources/fields.txt";
+>>>>>>> parent of bdcd9ac (Removed pointless text file)
     
     /// \ref t16_1 "task 16.1"
 =======
