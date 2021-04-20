@@ -147,6 +147,16 @@ public class App extends Application {
         return ToolWindow;
     }
 
+    /// \brief creates a new instance of the Navigation bar to be displayed
+    /// \return VBox displaying the thumbnails of the pages. future functionality to be added
+    ///
+    /// \ref t1_1 "task 1.1"
+    private VBox createNavigationBar(DocumentModel document){
+        VBox NavBar = new VBox( );
+
+        return null;
+    }
+
     /// \brief create undo button element
     /// \return Button for activating undo feature
     ///

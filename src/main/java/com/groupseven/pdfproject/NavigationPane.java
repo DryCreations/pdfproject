@@ -12,13 +12,15 @@ import java.util.List;
 
 /**
  * \defgroup NavBar Navigation Pane
+ * 
  * @author Cassandra Mae
  * 
  * @{
  *
  */
-/// 
+///
 /// \ref task_1_1 "Task 1.1"
+
 /// This class provides the functionality for the navigation pane while 
 /// accessing the PDF. 
 
@@ -31,35 +33,43 @@ public class NavigationPane extends Application{
 	@Override
 	public void start(Stage arg0) throws Exception {
 		// TODO Auto-generated method stub
-		
+
+	}
+
+	public VBox getNavigationPane() {
+		VBox template = new VBox();
+
+
+		return template;
 	}
 	/// \ref t1_1
-		public VBox getNavigationPane(String filename) throws IOException{
-			VBox template = new VBox();
-			DocumentModel read = new DocumentModel(filename);
-			for(int i = 0; i < read.pageNumReturn(); i++){
-				PageModel  displayed = convertPdfToImage(filename, i);
-				template.getChildren().add(displayed.getNode());
-			}
-			return null;
+	public VBox getNavigationPane(DocumentModel read) throws IOException{
+		VBox template = new VBox();
+
+		for(int i = 0; i < read.pageNumReturn(); i++){
+			PageModel  displayed = convertPdfToImage(read, i);
+			template.getChildren().add(displayed.getNode());
 		}
+		return template;
+	}
 	/// \ref t1_3  
 	///	This method is called only after the [drag and drop event](\ref t_2 "task 1.2").	
-		public void PdfReorder() {
-				
-		}
-		/// \ref t1_1
-		public PageModel convertPdfToImage(String fileName, int Num) throws IOException {
+	public void PdfReorder() {
 
-			return new DocumentModel(fileName).getPage(Num);
-		}
+	}
+	/// \ref t1_1
+	public PageModel convertPdfToImage(DocumentModel fileName, int Num) throws IOException {
+
+		return fileName.getPage(Num);
+	}
 
 
-		
-		///\ref t1_1
-		public static void getThumbnail() {
-			
-		}
+
+	///\ref t1_1
+	public static void getThumbnail() {
+
+	}
 
 }
-/**@}*/
+
+/** @} */
