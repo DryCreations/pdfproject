@@ -254,6 +254,29 @@ public class App extends Application {
         return savedocbutton;
     }
 
+    /// \brief create new document button element
+    /// \return Button for activating new document feature
+    ///
+    /// \ref t19_1_2 "task 19.1.2
+    private Button createNewDocumentButton(){
+        Image newdocimg = new Image("newbutton.png");
+        ImageView newdocview = new ImageView(newdocimg);
+
+        Button newdocbutton = new Button();
+        newdocbutton.setGraphic(newdocview);
+
+        newdocbutton.setOnAction(event -> {
+            DocumentModel newDoc = new DocumentModel();
+            setDisplayDoc(newDoc, 0);
+        });
+
+        Tooltip newdoctip = new Tooltip("New Document");
+        Tooltip.install(newdocbutton, newdoctip);
+
+        newdocbutton.setPrefSize(22, 22);
+        return newdocbutton;
+    }
+
     /// \brief starts javafx GUI
     ///
     /// \return void
@@ -267,15 +290,17 @@ public class App extends Application {
         Button undobutton = createUndoButton();
         Button redobutton = createRedoButton();
         Button savedocbutton = createSaveDocumentButton();
+        Button newdocbutton = createNewDocumentButton();
 
         GridPane.setConstraints(savedocbutton, 0, 0);
-        GridPane.setConstraints(undobutton, 1, 0);
-        GridPane.setConstraints(redobutton, 2, 0);
+        GridPane.setConstraints(newdocbutton, 1, 0);
+        GridPane.setConstraints(undobutton, 2, 0);
+        GridPane.setConstraints(redobutton, 3, 0);
 
         root.setTop(menuBar);
         root.setLeft(ToolBox);
 
-        ToolBox.getChildren().addAll(savedocbutton, undobutton, redobutton);
+        ToolBox.getChildren().addAll(savedocbutton, newdocbutton, undobutton, redobutton);
 
         mainScene = new Scene(root);
         primaryStage.setScene(mainScene);
