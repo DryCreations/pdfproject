@@ -123,6 +123,30 @@ public class App extends Application {
         return fileMenu;
     }
 
+    /// \brief create edit menu element
+    /// \return Menu for editing functionalities
+    ///
+    /// \ref t19_1_3 "task 19.1.3"
+    private Menu createEditMenu() {
+        Menu editMenu = new Menu("Edit");
+
+        MenuItem undoItem = new MenuItem("Undo");
+        MenuItem redoItem = new MenuItem("Redo");
+
+        undoItem.setOnAction(event -> {
+            canvas.undo();
+        });
+
+        redoItem.setOnAction(event -> {
+            canvas.redo();
+        });
+
+        editMenu.getItems().add(undoItem);
+        editMenu.getItems().add(redoItem);
+
+        return editMenu;
+    }
+
     /// \brief create drawing menu element
     /// \return
     ///
@@ -165,10 +189,11 @@ public class App extends Application {
         MenuBar menuBar = new MenuBar();
 
         Menu fileMenu = createFileMenu();
+        Menu editMenu = createEditMenu();
         Menu drawingMenu = createDrawingMenu();
         Menu helpMenu = createHelpMenu();
 
-        menuBar.getMenus().addAll(fileMenu, drawingMenu, helpMenu);
+        menuBar.getMenus().addAll(fileMenu, editMenu, drawingMenu, helpMenu);
 
         return menuBar;
     }
