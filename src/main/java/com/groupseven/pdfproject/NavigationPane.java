@@ -43,6 +43,7 @@ public class NavigationPane extends Application{
 		return template;
 	}
 	/// \ref t1_1
+
 	public VBox getNavigationPane(DocumentModel read) throws IOException{
 		VBox template = new VBox();
 

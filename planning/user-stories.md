@@ -108,3 +108,7 @@ adding links to objects or text
 
 Priority: 3
 
+## User Story 20
+
+As a user with an unreliable power source, I desire a way to have an emergency recovery of my unsaved, altered documents if the program is ended prematurely
+
