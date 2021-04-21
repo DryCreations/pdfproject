@@ -258,7 +258,7 @@ public class App extends Application {
     /// \return Button for activating new document feature
     ///
     /// \ref t19_1_2 "task 19.1.2
-    private Button createNewDocumentButton(){
+    private Button createNewDocumentButton() {
         Image newdocimg = new Image("newbutton.png");
         ImageView newdocview = new ImageView(newdocimg);
 
