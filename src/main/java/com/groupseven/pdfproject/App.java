@@ -225,6 +225,35 @@ public class App extends Application {
         return redobutton;
     }
 
+    /// \brief create save document button element
+    /// \return Button for activating save document feature
+    ///
+    /// \ref t19_1_1 "task 19.1.1"
+    private Button createSaveDocumentButton() {
+        Image savedocimg = new Image("savebutton.png");
+        ImageView savedocview = new ImageView(savedocimg);
+
+        Button savedocbutton = new Button();
+        savedocbutton.setGraphic(savedocview);
+
+        savedocbutton.setOnAction(event -> {
+            FileChooser fileChooser = new FileChooser();
+            File selectedFile = fileChooser.showSaveDialog(null);
+
+            try {
+                doc.export(selectedFile);
+            } catch (IOException ex) {
+                Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+
+        Tooltip savedoctip = new Tooltip("Save Document");
+        Tooltip.install(savedocbutton, savedoctip);
+
+        savedocbutton.setPrefSize(22, 22);
+        return savedocbutton;
+    }
+
     /// \brief starts javafx GUI
     ///
     /// \return void
@@ -237,14 +266,16 @@ public class App extends Application {
         MenuBar menuBar = createMenuBar();
         Button undobutton = createUndoButton();
         Button redobutton = createRedoButton();
+        Button savedocbutton = createSaveDocumentButton();
 
-        GridPane.setConstraints(undobutton, 0, 0);
-        GridPane.setConstraints(redobutton, 1, 0);
+        GridPane.setConstraints(savedocbutton, 0, 0);
+        GridPane.setConstraints(undobutton, 1, 0);
+        GridPane.setConstraints(redobutton, 2, 0);
 
         root.setTop(menuBar);
         root.setLeft(ToolBox);
 
-        ToolBox.getChildren().addAll(undobutton, redobutton);
+        ToolBox.getChildren().addAll(savedocbutton, undobutton, redobutton);
 
         mainScene = new Scene(root);
         primaryStage.setScene(mainScene);
