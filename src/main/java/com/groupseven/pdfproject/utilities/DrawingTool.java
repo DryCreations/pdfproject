@@ -7,7 +7,6 @@ import javafx.event.EventType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
-
 /// @author Charles Witherspoon
 
 /// \brief Class that performs different canvas actions based on the DrawingMode

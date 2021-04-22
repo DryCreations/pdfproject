@@ -10,7 +10,6 @@ import javafx.scene.shape.Shape;
 
 import java.util.function.BiConsumer;
 
-
 /// @author Charles Witherspoon
 
 /// \brief This class contains the drawing actions to be performed on the canvas \ref t9_1 "Task 9.1"

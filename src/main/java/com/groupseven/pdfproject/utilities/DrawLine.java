@@ -14,7 +14,6 @@ import javafx.scene.shape.Line;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /// @author Charles Witherspoon
 
 /// \brief This class represents an action that draws a line on the canvas

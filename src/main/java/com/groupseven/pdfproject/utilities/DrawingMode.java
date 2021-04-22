@@ -1,6 +1,5 @@
 package com.groupseven.pdfproject.utilities;
 
-
 ///@author Charles Witherspoon
 
 /// \brief This enum represents the different drawing modes available
