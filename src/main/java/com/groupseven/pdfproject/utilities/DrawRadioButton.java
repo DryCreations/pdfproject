@@ -27,73 +27,69 @@ import javafx.event.Event;
 import javafx.geometry.Point2D;
 import javafx.scene.input.MouseEvent;
 
-
 /**
  * @author Hunter Gongloff
  * 
  * @{ \brief This is the class to create radio buttons on user click \ref 16_2 "Task 16.2"
  */
 public class DrawRadioButton implements Action {
-	
+
     public static final String SRC = "src/main/resources/manipulate_pdf/test_pdf.pdf";
     public static final String DES = "src/main/resources/manipulate_pdf/test_pdf_old.pdf";
 
     /// \ref t16_2 "task 16.2"
-	public DrawRadioButton(MainCanvas _canvas) {
-		// TODO Auto-generated constructor stub
-	}
+    public DrawRadioButton(MainCanvas _canvas) {
+        // TODO Auto-generated constructor stub
+    }
 
     /// \ref t16_2 "task 16.2"
-	@Override
-	public void execute() {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void execute() {
+        // TODO Auto-generated method stub
+
+    }
 
     /// \brief on click creates radio buttons at click location
     /// \ref t16_2 "task 16.2"
-	@Override
+    @Override
     public Action handle(Event event) {
         if (!(event instanceof MouseEvent))
             return this;
-
 
         MouseEvent mouseEvent = (MouseEvent) event;
         Point2D mousePosition = new Point2D(mouseEvent.getX(), mouseEvent.getY());
 
         Point2D currentPoint = new Point2D(mouseEvent.getX(), mouseEvent.getY());
-		float x = (float) currentPoint.getX();
-		float y = (float) (780.0 - currentPoint.getY());
-		
-		if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {
-	        
-			PdfDocument pdfDoc = null;
-			try {
-				pdfDoc = new PdfDocument(new PdfWriter(DES).setSmartMode(true));
-			} catch (FileNotFoundException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			PdfDocument srcDoc = null;
-			try {
-				srcDoc = new PdfDocument(new PdfReader(SRC));
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			srcDoc.copyPagesTo(1, srcDoc.getNumberOfPages(), pdfDoc);
-			
-			
-			pdfDoc.setTagged();
-			Document doc = new Document(pdfDoc);
-			PdfAcroForm form = PdfAcroForm.getAcroForm(doc.getPdfDocument(), true);
-	        PdfButtonFormField group = PdfFormField.createRadioGroup(doc.getPdfDocument(), "group", "");
-	        PdfFormField.createRadioButton(doc.getPdfDocument(), new Rectangle(x, y, 15, 15), group, "groups");
-	        form.addField(group);
-	        doc.close();
-	        pdfDoc.close();
-	        srcDoc.close();
+        float x = (float) currentPoint.getX();
+        float y = (float) (780.0 - currentPoint.getY());
 
+        if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {
+
+            PdfDocument pdfDoc = null;
+            try {
+                pdfDoc = new PdfDocument(new PdfWriter(DES).setSmartMode(true));
+            } catch (FileNotFoundException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+            PdfDocument srcDoc = null;
+            try {
+                srcDoc = new PdfDocument(new PdfReader(SRC));
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+            srcDoc.copyPagesTo(1, srcDoc.getNumberOfPages(), pdfDoc);
+
+            pdfDoc.setTagged();
+            Document doc = new Document(pdfDoc);
+            PdfAcroForm form = PdfAcroForm.getAcroForm(doc.getPdfDocument(), true);
+            PdfButtonFormField group = PdfFormField.createRadioGroup(doc.getPdfDocument(), "group", "");
+            PdfFormField.createRadioButton(doc.getPdfDocument(), new Rectangle(x, y, 15, 15), group, "groups");
+            form.addField(group);
+            doc.close();
+            pdfDoc.close();
+            srcDoc.close();
 
             File file = new File("src/main/resources/manipulate_pdf/test_pdf.pdf");
 
@@ -136,34 +132,31 @@ public class DrawRadioButton implements Action {
             else {
                 System.out.println("Operation Failed");
             }
-			
-			
-		}
-		
+
+        }
 
         return null;
     }
 
+    /// \ref t16_2 "task 16.2"
+    @Override
+    public boolean isComplete() {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
     /// \ref t16_2 "task 16.2"
-	@Override
-	public boolean isComplete() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public boolean contains(Point2D point) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
     /// \ref t16_2 "task 16.2"
-	@Override
-	public boolean contains(Point2D point) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public void pdfExecute(PdfCanvas canvas, PdfPage page) {
+        // TODO Auto-generated method stub
 
-    /// \ref t16_2 "task 16.2"
-	@Override
-	public void pdfExecute(PdfCanvas canvas, PdfPage page) {
-		// TODO Auto-generated method stub
-		
-	}
+    }
 
 }
