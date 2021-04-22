@@ -59,7 +59,7 @@ public class MainCanvas extends Pane {
     }
 
     /// \brief undoes last action that is on the undo stack
-    /// 
+    ///
     /// \ref t10_3 "task 10.3"
     public void undo() {
         if (_undoStack.empty())
@@ -79,7 +79,7 @@ public class MainCanvas extends Pane {
     }
 
     /// \brief redoes last action that is on the redo stack
-    /// 
+    ///
     /// \ref t10_3 "task 10.3"
     public void redo() {
         if (_redoStack.empty())
@@ -91,7 +91,7 @@ public class MainCanvas extends Pane {
     }
 
     /// \brief clears the redo stack when an action happens
-    /// 
+    ///
     /// \ref t10_3 "task 10.3"
     public void clearRedo() {
         _redoStack = new Stack<>();
@@ -107,7 +107,7 @@ public class MainCanvas extends Pane {
 
     /// \brief returns current undo stack
     /// \return Stack<Action>
-    /// 
+    ///
     /// \ref t10_3 "task 10.3"
     public Stack<Action> getUndoStack() {
         return _undoStack;
@@ -115,11 +115,11 @@ public class MainCanvas extends Pane {
 
     /// \brief returns current undo stack
     /// \return Stack<Action>
-    /// 
+    ///
     /// \ref t10_3 "task 10.3"
     public Stack<Action> getRedoStack() {
         return _redoStack;
     }
 }
 
-/// @} 
+/// @}
