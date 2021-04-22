@@ -12,7 +12,7 @@ This project can create new PDF documents as well as open and manipulate existin
 - - The [tasks.md](https://github.com/DryCreations/pdfproject/blob/main/planning/tasks.md) and [user-stories.md](https://github.com/DryCreations/pdfproject/blob/main/planning/user-stories.md) files contains a list of all generated user stories and task breakdowns of those stories
 - **[/pdfproject/Test_Artifacts](https://github.com/DryCreations/pdfproject/tree/main/Test_Artifacts)** contains screenshot documentation of completed actions
 - **[/pdfproject/src/test](https://github.com/DryCreations/pdfproject/tree/main/src/test/java/com/groupseven/pdfproject)** contains junit test classes for testing functionality
-- **/pdfproject/grading**  contains markdown files documentating all of the course grade requirements that have been met with traceability
+- **[/pdfproject/grading](https://github.com/DryCreations/pdfproject/tree/main/grading)**  contains markdown files documentating all of the course grade requirements that have been met with traceability
 - [design.md](https://github.com/DryCreations/pdfproject/blob/main/grading/design.md) contains design information that traces testing to implementation to design of user stories
 
 
