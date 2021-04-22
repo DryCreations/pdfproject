@@ -45,7 +45,7 @@ public class Select implements Action {
                 && !((Draggable) _selectedDrawing).wasMoved())
             DrawingAction.SELECT.accept(_canvas, _selectedDrawing.getSelection());
     }
-    
+
     /// \brief Handles user interaction with GUI using select tool
     ///
     /// \ref t18_1 "task 18.1"
