@@ -58,7 +58,7 @@ For both Waterfall and Agile, each team must produce an "As-Built" Software Desi
 
 The sum of your number of meaningful commits and pull requests needs to be greater than or equal to 20 to earn full credit.
 
-- [ ] [Hayden](./pull_request.md#hayden)
+- [x] [Hayden](./pull_request.md#hayden)
 - [ ] [Cassandra](./pull_request.md#cassandra)
 - [ ] [Parker](./pull_request.md#parker)
 - [ ] [William](./pull_request.md#william)
