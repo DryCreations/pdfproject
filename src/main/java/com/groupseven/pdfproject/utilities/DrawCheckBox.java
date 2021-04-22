@@ -23,36 +23,35 @@ import javafx.event.Event;
 import javafx.geometry.Point2D;
 import javafx.scene.input.MouseEvent;
 
-
 /**
  * @author Hunter Gongloff
  * 
  * @{ \brief This is the class to create a checkbox on user click \ref 16_3 "Task 16.3"
  */
 public class DrawCheckBox implements Action {
-	
+
     public static final String SRC = "src/main/resources/manipulate_pdf/test_pdf.pdf";
     public static final String DES = "src/main/resources/manipulate_pdf/test_pdf_old.pdf";
 
     /// \ref t16_3 "task 16.3"
-	public DrawCheckBox(MainCanvas _canvas) {
-		// TODO Auto-generated constructor stub
-	}
+    public DrawCheckBox(MainCanvas _canvas) {
+        // TODO Auto-generated constructor stub
+    }
 
-	/// \ref t16_3 "task 16.3"
-	@Override
-	public void execute() {
-		// TODO Auto-generated method stub
-		
-	}
+    /// \ref t16_3 "task 16.3"
+    @Override
+    public void execute() {
+        // TODO Auto-generated method stub
+
+    }
 
     /// \brief on click creates checkboxes at click location
     /// \ref t16_3 "task 16.3"
-	@Override
+    @Override
     public Action handle(Event event) {
         if (!(event instanceof MouseEvent))
             return this;
-        
+
         byte[] array = new byte[7]; // length is bounded by 7
         new Random().nextBytes(array);
         String generatedString = new String(array, Charset.forName("UTF-8"));
@@ -61,36 +60,36 @@ public class DrawCheckBox implements Action {
         Point2D mousePosition = new Point2D(mouseEvent.getX(), mouseEvent.getY());
 
         Point2D currentPoint = new Point2D(mouseEvent.getX(), mouseEvent.getY());
-		float x = (float) currentPoint.getX();
-		float y = (float) (780.0 - currentPoint.getY());
-		
-		if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {
-			
-			PdfDocument pdfDoc = null;
-			try {
-				pdfDoc = new PdfDocument(new PdfWriter(DES).setSmartMode(true));
-			} catch (FileNotFoundException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			PdfDocument srcDoc = null;
-			try {
-				srcDoc = new PdfDocument(new PdfReader(SRC));
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			srcDoc.copyPagesTo(1, srcDoc.getNumberOfPages(), pdfDoc);
-			
-			Document doc = new Document(pdfDoc);
-			PdfAcroForm form = PdfAcroForm.getAcroForm(doc.getPdfDocument(), true);
-	        PdfButtonFormField checkField = PdfFormField.createCheckBox(doc.getPdfDocument(), new Rectangle(x, y, 15, 15),
-	        		generatedString, "Off", PdfFormField.TYPE_CHECK);
-	        form.addField(checkField);
-	        
-			pdfDoc.close();
-			srcDoc.close();
-			
+        float x = (float) currentPoint.getX();
+        float y = (float) (780.0 - currentPoint.getY());
+
+        if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {
+
+            PdfDocument pdfDoc = null;
+            try {
+                pdfDoc = new PdfDocument(new PdfWriter(DES).setSmartMode(true));
+            } catch (FileNotFoundException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+            PdfDocument srcDoc = null;
+            try {
+                srcDoc = new PdfDocument(new PdfReader(SRC));
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+            srcDoc.copyPagesTo(1, srcDoc.getNumberOfPages(), pdfDoc);
+
+            Document doc = new Document(pdfDoc);
+            PdfAcroForm form = PdfAcroForm.getAcroForm(doc.getPdfDocument(), true);
+            PdfButtonFormField checkField = PdfFormField.createCheckBox(doc.getPdfDocument(),
+                    new Rectangle(x, y, 15, 15), generatedString, "Off", PdfFormField.TYPE_CHECK);
+            form.addField(checkField);
+
+            pdfDoc.close();
+            srcDoc.close();
+
             File file = new File("src/main/resources/manipulate_pdf/test_pdf.pdf");
 
             File rename = new File("src/main/resources/manipulate_pdf/test_pdf_old_old.pdf");
@@ -132,34 +131,31 @@ public class DrawCheckBox implements Action {
             else {
                 System.out.println("Operation Failed");
             }
-			
-			
-		}
-		
+
+        }
 
         return null;
     }
 
+    /// \ref t16_3 "task 16.3"
+    @Override
+    public boolean isComplete() {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
     /// \ref t16_3 "task 16.3"
-	@Override
-	public boolean isComplete() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public boolean contains(Point2D point) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
     /// \ref t16_3 "task 16.3"
-	@Override
-	public boolean contains(Point2D point) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public void pdfExecute(PdfCanvas canvas, PdfPage page) {
+        // TODO Auto-generated method stub
 
-    /// \ref t16_3 "task 16.3"
-	@Override
-	public void pdfExecute(PdfCanvas canvas, PdfPage page) {
-		// TODO Auto-generated method stub
-		
-	}
+    }
 
 }
