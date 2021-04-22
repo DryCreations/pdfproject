@@ -23,21 +23,31 @@ import javafx.event.Event;
 import javafx.geometry.Point2D;
 import javafx.scene.input.MouseEvent;
 
+
+/**
+ * @author Hunter Gongloff
+ * 
+ * @{ \brief This is the class to create a checkbox on user click \ref 16_3 "Task 16.3"
+ */
 public class DrawCheckBox implements Action {
 	
     public static final String SRC = "src/main/resources/manipulate_pdf/test_pdf.pdf";
     public static final String DES = "src/main/resources/manipulate_pdf/test_pdf_old.pdf";
 
+    /// \ref t16_3 "task 16.3"
 	public DrawCheckBox(MainCanvas _canvas) {
 		// TODO Auto-generated constructor stub
 	}
 
+	/// \ref t16_3 "task 16.3"
 	@Override
 	public void execute() {
 		// TODO Auto-generated method stub
 		
 	}
 
+    /// \brief on click creates checkboxes at click location
+    /// \ref t16_3 "task 16.3"
 	@Override
     public Action handle(Event event) {
         if (!(event instanceof MouseEvent))
@@ -131,19 +141,21 @@ public class DrawCheckBox implements Action {
     }
 
 
-	
+    /// \ref t16_3 "task 16.3"
 	@Override
 	public boolean isComplete() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+    /// \ref t16_3 "task 16.3"
 	@Override
 	public boolean contains(Point2D point) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+    /// \ref t16_3 "task 16.3"
 	@Override
 	public void pdfExecute(PdfCanvas canvas, PdfPage page) {
 		// TODO Auto-generated method stub
