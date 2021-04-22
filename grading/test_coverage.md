@@ -14,7 +14,7 @@ you can read about the JaCoCo implementation in it's relevent [pull request](htt
 
 ### Requirement 1
 
-Task 10.2 was implemented as the [MoveStack](src/main/java/com/groupseven/pdfproject/MoveStack.java) class, this class is being tested [here](src/test/java/com/groupseven/pdfproject/MoveStackTest.java). 
+Task 10.2 was implemented as the [MoveStack](../src/main/java/com/groupseven/pdfproject/MoveStack.java) class, this class is being tested [here](src/test/java/com/groupseven/pdfproject/MoveStackTest.java). 
 
 Other testing associated with this task is described [here](../Test_Artifacts/test_artifact_Action26_and_Action27.md)
 
