@@ -29,6 +29,9 @@ public class DrawingToolbar extends ToolBar {
     private ColorPicker _colorPicker;
     private DrawingTool _drawingTool;
 
+    /// \brief constructor of Drawing Toolbar class. Creates the drawing toolbar that provides functionality for interaction with the canvas
+    ///
+    /// \ref t9_1 "task 9.1"
     public DrawingToolbar(MainCanvas canvas) {
         _canvas = canvas;
         _toggleGroup = new ToggleGroup();
