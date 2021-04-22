@@ -27,6 +27,10 @@ import java.util.Stack;
 ///
 /// @author hayde
 ///
+
+/// \brief Model representing a pdf document that contains all pages necessary to interact with the pdf.
+///
+/// \ref t8_1 "task 8.1"
 public class DocumentModel {
     private File file;
     private List<PageModel> pages;

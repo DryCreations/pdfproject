@@ -21,6 +21,8 @@ import java.util.Stack;
 /// To accomplish this task it is required to have a canvas which can keep the track of drawn elements to facilitate the selection of an element.
 ///
 
+/// \brief a class to represent our canvas that will be able to be drawn on by the user, and represent an existing  pdf
+/// \ref t_14_1 "task 14.1"
 public class MainCanvas extends Pane {
 
     protected Canvas canvas;
