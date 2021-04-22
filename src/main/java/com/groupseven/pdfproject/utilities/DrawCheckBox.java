@@ -75,55 +75,47 @@ public class DrawCheckBox implements Action {
 			pdfDoc.close();
 			srcDoc.close();
 			
-			// Create an object of the File class
-	        // Replace the file path with path of the directory
-	        File file = new File("src/main/resources/test_pdf.pdf");
-	  
-	        // Create an object of the File class
-	        // Replace the file path with path of the directory
-	        File rename = new File("src/main/resources/test_pdf_old.pdf");
-	        
-	        if (rename.exists()) {
-	        	rename.delete();
-	        }
-	  
-	        // store the return value of renameTo() method in
-	        // flag
-	        boolean flag = file.renameTo(rename);
-	  
-	        // if renameTo() return true then if block is
-	        // executed
-	        if (flag == true) {
-	            System.out.println("File Successfully Rename");
-	        }
-	        // if renameTo() return false then else block is
-	        // executed
-	        else {
-	            System.out.println("Operation Failed");
-	        }
-	        
-	        // Create an object of the File class
-	        // Replace the file path with path of the directory
-	        file = new File("src/main/resources/test_pdf2.pdf");
-	  
-	        // Create an object of the File class
-	        // Replace the file path with path of the directory
-	        rename = new File("src/main/resources/test_pdf.pdf");
-	  
-	        // store the return value of renameTo() method in
-	        // flag
-	        flag = file.renameTo(rename);
-	  
-	        // if renameTo() return true then if block is
-	        // executed
-	        if (flag == true) {
-	            System.out.println("File Successfully Rename");
-	        }
-	        // if renameTo() return false then else block is
-	        // executed
-	        else {
-	            System.out.println("Operation Failed");
-	        }
+            File file = new File("src/main/resources/manipulate_pdf/test_pdf.pdf");
+
+            File rename = new File("src/main/resources/manipulate_pdf/test_pdf_old_old.pdf");
+
+            boolean flag = file.renameTo(rename);
+
+            if (flag == true) {
+                System.out.println("File Successfully Rename");
+            }
+
+            else {
+                System.out.println("Operation Failed");
+            }
+
+            file = new File("src/main/resources/manipulate_pdf/test_pdf_old.pdf");
+
+            rename = new File("src/main/resources/manipulate_pdf/test_pdf.pdf");
+
+            flag = file.renameTo(rename);
+
+            if (flag == true) {
+                System.out.println("File Successfully Rename");
+            }
+
+            else {
+                System.out.println("Operation Failed");
+            }
+
+            file = new File("src/main/resources/manipulate_pdf/test_pdf_old_old.pdf");
+
+            rename = new File("src/main/resources/manipulate_pdf/test_pdf_old.pdf");
+
+            flag = file.renameTo(rename);
+
+            if (flag == true) {
+                System.out.println("File Successfully Rename");
+            }
+
+            else {
+                System.out.println("Operation Failed");
+            }
 			
 			
 		}
