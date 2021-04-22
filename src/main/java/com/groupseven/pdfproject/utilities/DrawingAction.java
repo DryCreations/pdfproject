@@ -35,7 +35,7 @@ public class DrawingAction {
 
     /// \brief erase on canvas functionality
     ///
-    /// \ref t9_1 "Task 9.1"
+    /// \ref t9_1_2 "Task 9.1.2"
     public static final BiConsumer<MainCanvas, Shape> ERASE = (canvas, shape) -> {
         if (!(shape instanceof Rectangle))
             return;

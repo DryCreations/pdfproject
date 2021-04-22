@@ -30,7 +30,7 @@ public class DrawLine implements Action {
 
     /// \brief draw line on canvas
     ///
-    /// \ref t9_1 "Task 9.1"
+    /// \ref t9_1_1 "Task 9.1.1"
     public DrawLine(MainCanvas canvas, Color color) {
         _canvas = canvas;
         _color = color;
@@ -48,7 +48,7 @@ public class DrawLine implements Action {
     /// \brief handle and return passed action
     /// \return action
     ///
-    /// \ref t9_1 "Task 9.1"
+    /// \ref t9_1_1 "Task 9.1.1"
     @Override
     public Action handle(Event event) {
         if (!(event instanceof MouseEvent))
@@ -71,7 +71,7 @@ public class DrawLine implements Action {
     /// \brief getter for _isComplete boolean
     /// \return _isComplete
     ///
-    /// \ref t9_1 "Task 9.1"
+    /// \ref t9_1_1 "Task 9.1.1"
     @Override
     public boolean isComplete() {
         return _isComplete;
@@ -80,7 +80,7 @@ public class DrawLine implements Action {
     /// \brief determine if point falls on a line
     /// \return true if _lines contains a line that contains the point, otherwise false
     ///
-    /// \ref t9_1 "Task 9.1"
+    /// \ref t9_1_1 "Task 9.1.1"
     @Override
     public boolean contains(Point2D point) {
         return _lines.stream().anyMatch(line -> line.contains(point));
@@ -88,7 +88,7 @@ public class DrawLine implements Action {
 
     /// \brief execute drawing list of lines on pdf
     ///
-    /// \ref t9_1 "Task 9.1"
+    /// \ref t9_1_1 "Task 9.1.1"
     @Override
     public void pdfExecute(PdfCanvas canvas, PdfPage page) {
         _lines.forEach(line -> {
