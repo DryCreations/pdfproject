@@ -10,13 +10,17 @@ import javafx.scene.shape.Shape;
 
 import java.util.function.BiConsumer;
 
-/**
- * @author Charles Witherspoon
- *
- *         \brief This class contains the drawing actions to be performed on the canvas \ref t9_1 "Task 9.1"
- */
+
+/// @author Charles Witherspoon
+
+/// \brief This class contains the drawing actions to be performed on the canvas \ref t9_1 "Task 9.1"
+///
+/// \ref t9_1 "Task 9.1"
 public class DrawingAction {
 
+    /// \brief draw line on canvas functionality
+    ///
+    /// \ref t9_1 "Task 9.1"
     public static final BiConsumer<MainCanvas, Shape> DRAW_LINE = (canvas, shape) -> {
         if (!(shape instanceof Line))
             return;
@@ -29,6 +33,9 @@ public class DrawingAction {
         gc.setStroke(currentColor);
     };
 
+    /// \brief erase on canvas functionality
+    ///
+    /// \ref t9_1 "Task 9.1"
     public static final BiConsumer<MainCanvas, Shape> ERASE = (canvas, shape) -> {
         if (!(shape instanceof Rectangle))
             return;
@@ -38,6 +45,9 @@ public class DrawingAction {
                 rectangle.getWidth(), rectangle.getHeight());
     };
 
+    /// \brief draw rectangle on canvas functionality
+    ///
+    /// \ref t9_1 "Task 9.1"
     public static final BiConsumer<MainCanvas, Shape> DRAW_RECTANGLE = (canvas, shape) -> {
         if (!(shape instanceof Rectangle))
             return;
@@ -50,6 +60,9 @@ public class DrawingAction {
         gc.setFill(currentFill);
     };
 
+    /// \brief select object on canvas functionality
+    ///
+    /// \ref t9_1 "Task 9.1"
     public static final BiConsumer<MainCanvas, Shape> SELECT = (canvas, shape) -> {
         if (!(shape instanceof Rectangle))
             return;
