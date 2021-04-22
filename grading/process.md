@@ -4,7 +4,12 @@
 
 ### Hayden
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+- [User Story 6](../planning/user-stories.md#user-story-6)
+- [User Story 8](../planning/user-stories.md#user-story-8)
+- [User Story 15](../planning/user-stories.md#user-story-15)
+- [User Story 16](../planning/user-stories.md#user-story-16)
+- [User Story 17](../planning/user-stories.md#user-story-17)
+- [User Story 19](../planning/user-stories.md#user-story-19)
 
 ### Cassandra
 
