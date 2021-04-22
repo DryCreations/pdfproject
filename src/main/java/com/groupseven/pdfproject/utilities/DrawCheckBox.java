@@ -3,6 +3,8 @@ package com.groupseven.pdfproject.utilities;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.util.Random;
 
 import com.groupseven.pdfproject.MainCanvas;
 import com.groupseven.pdfproject.model.Action;
@@ -23,8 +25,8 @@ import javafx.scene.input.MouseEvent;
 
 public class DrawCheckBox implements Action {
 	
-	public static final String SRC = "src/main/resources/test_pdf.pdf";
-	public static final String DES = "src/main/resources/test_pdf2.pdf";
+    public static final String SRC = "src/main/resources/manipulate_pdf/test_pdf.pdf";
+    public static final String DES = "src/main/resources/manipulate_pdf/test_pdf_old.pdf";
 
 	public DrawCheckBox(MainCanvas _canvas) {
 		// TODO Auto-generated constructor stub
@@ -40,6 +42,10 @@ public class DrawCheckBox implements Action {
     public Action handle(Event event) {
         if (!(event instanceof MouseEvent))
             return this;
+        
+        byte[] array = new byte[7]; // length is bounded by 7
+        new Random().nextBytes(array);
+        String generatedString = new String(array, Charset.forName("UTF-8"));
 
         MouseEvent mouseEvent = (MouseEvent) event;
         Point2D mousePosition = new Point2D(mouseEvent.getX(), mouseEvent.getY());
@@ -69,7 +75,7 @@ public class DrawCheckBox implements Action {
 			Document doc = new Document(pdfDoc);
 			PdfAcroForm form = PdfAcroForm.getAcroForm(doc.getPdfDocument(), true);
 	        PdfButtonFormField checkField = PdfFormField.createCheckBox(doc.getPdfDocument(), new Rectangle(x, y, 15, 15),
-	                    "experience".concat(String.valueOf(1)), "Off", PdfFormField.TYPE_CHECK);
+	        		generatedString, "Off", PdfFormField.TYPE_CHECK);
 	        form.addField(checkField);
 	        
 			pdfDoc.close();
