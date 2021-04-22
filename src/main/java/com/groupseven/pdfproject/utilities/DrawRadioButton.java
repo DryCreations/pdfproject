@@ -3,7 +3,9 @@ package com.groupseven.pdfproject.utilities;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.Optional;
+import java.util.Random;
 
 import com.groupseven.pdfproject.MainCanvas;
 import com.groupseven.pdfproject.model.Action;
@@ -55,6 +57,7 @@ public class DrawRadioButton implements Action {
         if (!(event instanceof MouseEvent))
             return this;
 
+
         MouseEvent mouseEvent = (MouseEvent) event;
         Point2D mousePosition = new Point2D(mouseEvent.getX(), mouseEvent.getY());
 
@@ -84,8 +87,8 @@ public class DrawRadioButton implements Action {
 			pdfDoc.setTagged();
 			Document doc = new Document(pdfDoc);
 			PdfAcroForm form = PdfAcroForm.getAcroForm(doc.getPdfDocument(), true);
-	        PdfButtonFormField group = PdfFormField.createRadioGroup(doc.getPdfDocument(), "language", "");
-	        PdfFormField.createRadioButton(doc.getPdfDocument(), new Rectangle(x, y, 15, 15), group, "English");
+	        PdfButtonFormField group = PdfFormField.createRadioGroup(doc.getPdfDocument(), "group", "");
+	        PdfFormField.createRadioButton(doc.getPdfDocument(), new Rectangle(x, y, 15, 15), group, "groups");
 	        form.addField(group);
 	        doc.close();
 	        pdfDoc.close();
