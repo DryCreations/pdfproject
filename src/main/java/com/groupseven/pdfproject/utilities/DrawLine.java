@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * @author Charles Witherspoon
  *
- * @{ \brief This class represents an action that draws a line on the canvas \ref t9_1_1 "Task 9.1.1"
+ *         \brief This class represents an action that draws a line on the canvas \ref t9_1_1 "Task 9.1.1"
  */
 public class DrawLine implements Action {
     private MainCanvas _canvas;
@@ -79,4 +79,3 @@ public class DrawLine implements Action {
         System.out.println("Line");
     }
 }
-/** @} */
