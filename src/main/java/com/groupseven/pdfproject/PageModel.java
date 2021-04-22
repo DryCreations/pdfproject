@@ -18,10 +18,10 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.VBox;
 
-/**
- *
- * @author hayde
- */
+///
+///
+/// @author hayde
+///
 
 /// \brief representation of a single page of a PDF
 ///
@@ -61,10 +61,17 @@ public class PageModel {
         return node;
     }
 
+    /// \brief clears the canvas, so that it is blank
+    ///
+    /// \ref t14_1 "task 14.1"
     public void clear() {
         canvas.clearScreen();
     }
 
+    /// \brief returns a copy of the MainCanvas associated with this page
+    /// \return MainCanvas
+    ///
+    /// \ref t14_1 "task 14.1"
     public MainCanvas getCanvas() {
         return canvas;
     }
