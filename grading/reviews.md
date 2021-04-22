@@ -2,7 +2,7 @@
 
 ## Hayden
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Below are 10 lines of feedback, or code reviews left on other pull requests.
 
 - [x] [Feedback 1](https://github.com/DryCreations/pdfproject/pull/20#pullrequestreview-619940188)
 - [x] [Feedback 2](https://github.com/DryCreations/pdfproject/pull/36#discussion_r608287384)

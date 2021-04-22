@@ -2,27 +2,27 @@
 
 ## Hayden
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Below is a list of 5 different actions that were assigned to Hayden, along with the relevant pull request, and the minutes they were marked as assigned, and completed.
 
-- [ ] [Action #]()
+- [x] [Action 59](https://github.com/DryCreations/pdfproject/pull/46)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Action 59 was assigned in these [minutes](planning\minutes\4-8-2021.md) and marked as completed [here](planning\minutes\4-15-2021.md)
 
-- [ ] [Action #]()
+- [x] [Action 50](https://github.com/DryCreations/pdfproject/pull/40)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Action 50 was assigned in these [minutes](planning\minutes\4-1-2021.md) and marked as completed [here](planning\minutes\4-8-2021.md)
 
-- [ ] [Action #]()
+- [x] [Action 47](https://github.com/DryCreations/pdfproject/pull/39)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Action 47 was assigned in these [minutes](planning\minutes\4-1-2021.md) and marked as completed [here](planning\minutes\4-8-2021.md)
 
-- [ ] [Action #]()
+- [x] [Action 37](https://github.com/DryCreations/pdfproject/pull/33)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Action 37 was assigned in these [minutes](planning\minutes\3-25-2021.md) and marked as completed [here](planning\minutes\4-1-2021.md)
 
-- [ ] [Action #]()
+- [x] [Action 36](https://github.com/DryCreations/pdfproject/pull/32)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Action 36 was assigned in these [minutes](planning\minutes\3-25-2021.md) and marked as completed [here](planning\minutes\4-1-2021.md)
 
 ## Cassandra
 
