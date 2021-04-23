@@ -162,6 +162,7 @@ public class App extends Application {
                 canvas.getChildren().remove(_drawingToolBar);
             } else {
                 canvas.getChildren().add(_drawingToolBar);
+                _drawingToolBar.setLayoutY(50);
 
             }
 
@@ -340,13 +341,22 @@ public class App extends Application {
 
     /// \brief Sets up the pdf canvas to display as the center of the javafx GUI
     public void setDisplayDoc(DocumentModel document, int pageNum) {
+        /// preconditions
+        assert (document != null);
+        assert (pageNum >= 0);
         currentPage = 0;
         doc = document;
+
+        /// Actual implementation of method
         PageModel page = document.getPage(pageNum);
         BorderPane root = (BorderPane) mainScene.getRoot();
 
         canvas = page.getCanvas();
         root.setCenter(createViewbox(page));
+        /// End of Actual implementation of method
+
+        /// post-conditions
+        assert (doc.equals(document)); // document used is not changed
     }
 
     /// \brief main method of project
