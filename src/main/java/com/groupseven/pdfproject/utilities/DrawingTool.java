@@ -53,6 +53,7 @@ public class DrawingTool implements EventHandler<MouseEvent> {
 
         if (_currentAction != null)
             _currentAction.handle(event);
+    }
 
     /// \brief set color
     ///
