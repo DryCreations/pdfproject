@@ -33,9 +33,9 @@ Use an automated code coverage tool to measure the code that executes under test
 
 To earn theses points, the team must implement at least 5 non-trivial requirements, and provide test coverage for code involved with implementing the requirements.
 
-- [ ] [Code is being tested.](./test_coverage.md#code-is-being-tested)
-- [ ] [A code coverage tool is being used to measure the code that executes under a test.](./test_coverage.md#a-code-coverage-tool-is-being-used-to-measure-the-code-that-executes-under-a-test)
-- [ ] [the team has implemented at least 5 non-trivial requirements that are demonstrably being covered by tests.](./test_coverage.md#the-team-has-implemented-at-least-5-non-trivial-requirements-that-are-demonstrably-being-covered-by-tests)
+- [x] [Code is being tested.](./test_coverage.md#code-is-being-tested)
+- [x] [A code coverage tool is being used to measure the code that executes under a test.](./test_coverage.md#a-code-coverage-tool-is-being-used-to-measure-the-code-that-executes-under-a-test)
+- [x] [the team has implemented at least 5 non-trivial requirements that are demonstrably being covered by tests.](./test_coverage.md#the-team-has-implemented-at-least-5-non-trivial-requirements-that-are-demonstrably-being-covered-by-tests)
 
 ### [Product Backlog Items or Requirements](./backlog.md) (10 points)
 
