@@ -4,6 +4,7 @@ This project can create new PDF documents as well as open and manipulate existin
 
 ## Information
 ### File Structure
+#### Doxygen generation of repository can be found at https://drycreations.github.io/pdfproject/
 - **/pdfproject/src/main** contains the **/java/com/groupseven/pdfproject** and **/resources** folder
 - - **/java/com/groupseven/pdfproject** contains the Java files for the main program
 - - **/resources** contains relevant assets for the GUI and program initialization
