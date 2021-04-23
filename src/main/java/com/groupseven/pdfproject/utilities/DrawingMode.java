@@ -6,7 +6,7 @@ package com.groupseven.pdfproject.utilities;
 ///
 /// \ref t9_1 "Task 9.1"
 public enum DrawingMode {
-    PEN, ERASER, RECTANGLE, SELECT;
+    PEN, ERASER, RECTANGLE, SELECT, TEXTFIELD, RADIOBUTTON, CHECKBOX;
 
     /// \brief get a formatted string representation of the DrawingMode
     /// \return a formatted string representation of the DrawingMode

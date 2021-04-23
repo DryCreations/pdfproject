@@ -2,7 +2,7 @@ package com.groupseven.pdfproject;
 
 import java.util.EmptyStackException;
 
-/// \brief stack for storing move data
+/// \brief stack for storing move data 
 ///
 /// \ref t10_2 "task 10.2"
 public class MoveStack<T> {
