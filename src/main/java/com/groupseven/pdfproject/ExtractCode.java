@@ -4,21 +4,21 @@ package com.groupseven.pdfproject;
  * 
  * @author Cassandra Mae
  *
- *
- * 
  * @{ \defgroup Extract Extract code from the PDF
  */
-/// Ref User_Story
-///
+/// \brief Class for extracting code from PDF
+/// \ref t11_1 "Task 11.1"
+/// \ref t11_2 "Task 11.2"
+/// \ref t11_3 "Task 11.3"
 public class ExtractCode {
-    /// Ref: 11.1
-    /// Ref: 11.2
+
+    /// \ref t11_1 "Task 11.1"
+    /// \ref t11_2 "Task 11.2"
     public void getCodeFromPdf() {
-        /// Ref: 11.3
         extractTo();
     }
 
-    /// Ref:11.3
+    /// \ref t11_3 "Task 11.3"
     public void extractTo() {
 
     }
