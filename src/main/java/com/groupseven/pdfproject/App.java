@@ -123,6 +123,30 @@ public class App extends Application {
         return fileMenu;
     }
 
+    /// \brief create edit menu element
+    /// \return Menu for editing functionalities
+    ///
+    /// \ref t19_1_3 "task 19.1.3"
+    private Menu createEditMenu() {
+        Menu editMenu = new Menu("Edit");
+
+        MenuItem undoItem = new MenuItem("Undo");
+        MenuItem redoItem = new MenuItem("Redo");
+
+        undoItem.setOnAction(event -> {
+            canvas.undo();
+        });
+
+        redoItem.setOnAction(event -> {
+            canvas.redo();
+        });
+
+        editMenu.getItems().add(undoItem);
+        editMenu.getItems().add(redoItem);
+
+        return editMenu;
+    }
+
     /// \brief create drawing menu element
     /// \return
     ///
@@ -166,10 +190,11 @@ public class App extends Application {
         MenuBar menuBar = new MenuBar();
 
         Menu fileMenu = createFileMenu();
+        Menu editMenu = createEditMenu();
         Menu drawingMenu = createDrawingMenu();
         Menu helpMenu = createHelpMenu();
 
-        menuBar.getMenus().addAll(fileMenu, drawingMenu, helpMenu);
+        menuBar.getMenus().addAll(fileMenu, editMenu, drawingMenu, helpMenu);
 
         return menuBar;
     }
@@ -226,6 +251,58 @@ public class App extends Application {
         return redobutton;
     }
 
+    /// \brief create save document button element
+    /// \return Button for activating save document feature
+    ///
+    /// \ref t19_1_1 "task 19.1.1"
+    private Button createSaveDocumentButton() {
+        Image savedocimg = new Image("savebutton.png");
+        ImageView savedocview = new ImageView(savedocimg);
+
+        Button savedocbutton = new Button();
+        savedocbutton.setGraphic(savedocview);
+
+        savedocbutton.setOnAction(event -> {
+            FileChooser fileChooser = new FileChooser();
+            File selectedFile = fileChooser.showSaveDialog(null);
+
+            try {
+                doc.export(selectedFile);
+            } catch (IOException ex) {
+                Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+
+        Tooltip savedoctip = new Tooltip("Save Document");
+        Tooltip.install(savedocbutton, savedoctip);
+
+        savedocbutton.setPrefSize(22, 22);
+        return savedocbutton;
+    }
+
+    /// \brief create new document button element
+    /// \return Button for activating new document feature
+    ///
+    /// \ref t19_1_2 "task 19.1.2
+    private Button createNewDocumentButton() {
+        Image newdocimg = new Image("newbutton.png");
+        ImageView newdocview = new ImageView(newdocimg);
+
+        Button newdocbutton = new Button();
+        newdocbutton.setGraphic(newdocview);
+
+        newdocbutton.setOnAction(event -> {
+            DocumentModel newDoc = new DocumentModel();
+            setDisplayDoc(newDoc, 0);
+        });
+
+        Tooltip newdoctip = new Tooltip("New Document");
+        Tooltip.install(newdocbutton, newdoctip);
+
+        newdocbutton.setPrefSize(22, 22);
+        return newdocbutton;
+    }
+
     /// \brief starts javafx GUI
     ///
     /// \return void
@@ -238,14 +315,18 @@ public class App extends Application {
         MenuBar menuBar = createMenuBar();
         Button undobutton = createUndoButton();
         Button redobutton = createRedoButton();
+        Button savedocbutton = createSaveDocumentButton();
+        Button newdocbutton = createNewDocumentButton();
 
-        GridPane.setConstraints(undobutton, 0, 0);
-        GridPane.setConstraints(redobutton, 1, 0);
+        GridPane.setConstraints(savedocbutton, 0, 0);
+        GridPane.setConstraints(newdocbutton, 1, 0);
+        GridPane.setConstraints(undobutton, 2, 0);
+        GridPane.setConstraints(redobutton, 3, 0);
 
         root.setTop(menuBar);
         root.setLeft(ToolBox);
 
-        ToolBox.getChildren().addAll(undobutton, redobutton);
+        ToolBox.getChildren().addAll(savedocbutton, newdocbutton, undobutton, redobutton);
 
         mainScene = new Scene(root);
         primaryStage.setScene(mainScene);
