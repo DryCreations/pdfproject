@@ -170,6 +170,7 @@ public class App extends Application {
                 canvas.getChildren().remove(_drawingToolBar);
             } else {
                 canvas.getChildren().add(_drawingToolBar);
+
             }
 
         });
@@ -347,6 +348,7 @@ public class App extends Application {
         canvas = doc.getPage(currentPage).getCanvas();
     }
 
+
     /// \brief handle keyboard shortcut events
     ///
     /// \ref t19_2 "Task 19.2"
@@ -372,6 +374,7 @@ public class App extends Application {
         });
     }
 
+    /// \brief Sets up the pdf canvas to display as the center of the javafx GUI
     public void setDisplayDoc(DocumentModel document, int pageNum) {
         currentPage = 0;
         doc = document;
@@ -382,6 +385,7 @@ public class App extends Application {
         root.setCenter(createViewbox(page));
     }
 
+    /// \brief main method of project
     public static void main(String[] args) {
         launch(args);
     }
