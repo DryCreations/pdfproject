@@ -22,7 +22,10 @@ import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Document;
 import javafx.event.Event;
 import javafx.geometry.Point2D;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 
 /**
  * @author Hunter Gongloff
@@ -31,18 +34,24 @@ import javafx.scene.input.MouseEvent;
  */
 public class DrawTextField implements Action {
 
-    public static final String SRC = "src/main/resources/manipulate_pdf/test_pdf.pdf";
-    public static final String DES = "src/main/resources/manipulate_pdf/test_pdf_old.pdf";
+    private MainCanvas _canvas;
+    private Point2D _origin;
+    private boolean _isComplete;
 
     /// \ref t16_1 "task 16.1"
-    public DrawTextField(MainCanvas _canvas) {
-        // TODO Auto-generated constructor stub
+    public DrawTextField(MainCanvas canvas) {
+        _canvas = canvas;
     }
 
     /// \ref t16_1 "task 16.1"
     @Override
     public void execute() {
-        // TODO Auto-generated method stub
+        System.out.println("test");
+        GraphicsContext gc = _canvas.getCanvas().getGraphicsContext2D();
+        Paint currentFill = gc.getFill();
+        gc.setFill(Color.ALICEBLUE);
+        gc.fillRect(_origin.getX(), _origin.getY(), 100, 10);
+        gc.setFill(currentFill);
 
     }
 
@@ -53,96 +62,18 @@ public class DrawTextField implements Action {
         if (!(event instanceof MouseEvent))
             return this;
 
-        byte[] array = new byte[7]; // length is bounded by 7
-        new Random().nextBytes(array);
-        String generatedString = new String(array, Charset.forName("UTF-8"));
-
         MouseEvent mouseEvent = (MouseEvent) event;
-        Point2D mousePosition = new Point2D(mouseEvent.getX(), mouseEvent.getY());
-        Point2D currentPoint = new Point2D(mouseEvent.getX(), mouseEvent.getY());
-        float x = (float) currentPoint.getX();
-        // Has to subtract current point from 780 because itext7 uses a bottom to top y instead of top to bottom
-        float y = (float) (780.0 - currentPoint.getY());
 
-        if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {
-
-            PdfDocument pdfDoc = null;
-            try {
-                pdfDoc = new PdfDocument(new PdfWriter(DES).setSmartMode(true));
-            } catch (FileNotFoundException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-            }
-            PdfDocument srcDoc = null;
-            try {
-                srcDoc = new PdfDocument(new PdfReader(SRC));
-            } catch (IOException e1) {
-
-                e1.printStackTrace();
-            }
-            srcDoc.copyPagesTo(1, srcDoc.getNumberOfPages(), pdfDoc);
-
-            Document doc = new Document(pdfDoc);
-
-            PdfAcroForm form = PdfAcroForm.getAcroForm(doc.getPdfDocument(), true);
-            PdfTextFormField nameField = PdfTextFormField.createText(doc.getPdfDocument(), new Rectangle(x, y, 150, 15),
-                    generatedString, "");
-            form.addField(nameField);
-            pdfDoc.close();
-            srcDoc.close();
-
-            File file = new File("src/main/resources/manipulate_pdf/test_pdf.pdf");
-
-            File rename = new File("src/main/resources/manipulate_pdf/test_pdf_old_old.pdf");
-
-            boolean flag = file.renameTo(rename);
-
-            if (flag == true) {
-                System.out.println("File Successfully Rename");
-            }
-
-            else {
-                System.out.println("Operation Failed");
-            }
-
-            file = new File("src/main/resources/manipulate_pdf/test_pdf_old.pdf");
-
-            rename = new File("src/main/resources/manipulate_pdf/test_pdf.pdf");
-
-            flag = file.renameTo(rename);
-
-            if (flag == true) {
-                System.out.println("File Successfully Rename");
-            }
-
-            else {
-                System.out.println("Operation Failed");
-            }
-
-            file = new File("src/main/resources/manipulate_pdf/test_pdf_old_old.pdf");
-
-            rename = new File("src/main/resources/manipulate_pdf/test_pdf_old.pdf");
-
-            flag = file.renameTo(rename);
-
-            if (flag == true) {
-                System.out.println("File Successfully Rename");
-            }
-
-            else {
-                System.out.println("Operation Failed");
-            }
-
-        }
-
-        return null;
+        _origin = new Point2D(mouseEvent.getX(), mouseEvent.getY());
+        _isComplete = true;
+        return this;
     }
 
     /// \ref t16_1 "task 16.1"
     @Override
     public boolean isComplete() {
         // TODO Auto-generated method stub
-        return false;
+        return _isComplete;
     }
 
     /// \ref t16_1 "task 16.1"
@@ -155,7 +86,15 @@ public class DrawTextField implements Action {
     /// \ref t16_1 "task 16.1"
     @Override
     public void pdfExecute(PdfCanvas canvas, PdfPage page) {
-        // TODO Auto-generated method stub
-
+        byte[] array = new byte[7]; // length is bounded by 7
+        new Random().nextBytes(array);
+        String generatedString = new String(array, Charset.forName("UTF-8"));
+        PdfAcroForm form = PdfAcroForm.getAcroForm(canvas.getDocument(), true);
+        PdfTextFormField nameField = PdfTextFormField
+                .createText(
+                        canvas.getDocument(), new Rectangle((float) _origin.getX(),
+                                (float) (page.getPageSize().getHeight() - _origin.getY()), 150, 15),
+                        generatedString, "");
+        form.addField(nameField);
     }
 }
