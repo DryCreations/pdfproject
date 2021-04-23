@@ -7,7 +7,7 @@ import java.util.EmptyStackException;
 /// \ref t10_2 "task 10.2"
 public class MoveStack<T> {
 
-    /// \brief nodes for storing individual moves 
+    /// \brief nodes for storing individual moves
     ///
     /// \ref t10_2 "task 10.2"
     private class Node {
