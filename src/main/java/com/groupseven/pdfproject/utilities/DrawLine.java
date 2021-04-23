@@ -15,11 +15,12 @@ import javafx.scene.shape.Line;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author Charles Witherspoon
- *
- *         \brief This class represents an action that draws a line on the canvas \ref t9_1_1 "Task 9.1.1"
- */
+/// @author Charles Witherspoon
+
+/// \brief This class represents an action that draws a line on the canvas
+///
+///
+/// \ref t9_1_1 "Task 9.1.1"
 public class DrawLine implements Action {
     private MainCanvas _canvas;
     private List<Line> _lines;
@@ -27,6 +28,9 @@ public class DrawLine implements Action {
     private boolean _isComplete;
     private Color _color;
 
+    /// \brief draw line on canvas
+    ///
+    /// \ref t9_1_1 "Task 9.1.1"
     public DrawLine(MainCanvas canvas, Color color) {
         _canvas = canvas;
         _color = color;
@@ -41,6 +45,10 @@ public class DrawLine implements Action {
         });
     }
 
+    /// \brief handle and return passed action
+    /// \return action
+    ///
+    /// \ref t9_1_1 "Task 9.1.1"
     @Override
     public Action handle(Event event) {
         if (!(event instanceof MouseEvent))
@@ -60,20 +68,29 @@ public class DrawLine implements Action {
         return this;
     }
 
+    /// \brief getter for _isComplete boolean
+    /// \return _isComplete
+    ///
+    /// \ref t9_1_1 "Task 9.1.1"
     @Override
     public boolean isComplete() {
         return _isComplete;
     }
 
+    /// \brief determine if point falls on a line
+    /// \return true if _lines contains a line that contains the point, otherwise false
+    ///
+    /// \ref t9_1_1 "Task 9.1.1"
     @Override
     public boolean contains(Point2D point) {
         return _lines.stream().anyMatch(line -> line.contains(point));
     }
 
+    /// \brief execute drawing list of lines on pdf
+    ///
+    /// \ref t9_1_1 "Task 9.1.1"
     @Override
     public void pdfExecute(PdfCanvas canvas, PdfPage page) {
-        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose
-        // Tools | Templates.
         _lines.forEach(line -> {
             PdfAction.DRAW_LINE.accept(canvas, page, line);
         });
