@@ -12,4 +12,5 @@ public interface Selectable {
      * @return Shape representing the selected canvas element
      */
     Shape getSelection();
+
 }
