@@ -162,7 +162,6 @@ public class App extends Application {
                 canvas.getChildren().remove(_drawingToolBar);
             } else {
                 canvas.getChildren().add(_drawingToolBar);
-                _drawingToolBar.setLayoutY(50);
 
             }
 
