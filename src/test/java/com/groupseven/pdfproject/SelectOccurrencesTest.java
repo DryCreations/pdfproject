@@ -17,22 +17,22 @@ import static org.junit.Assert.*;
  * @author dwkal
  */
 public class SelectOccurrencesTest {
-    
+
     public SelectOccurrencesTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -46,7 +46,7 @@ public class SelectOccurrencesTest {
         SelectOccurrences instance = new SelectOccurrences();
         instance.findSelectedOccurrences();
         // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        // fail("The test case is a prototype.");
     }
 
     /**
@@ -58,7 +58,7 @@ public class SelectOccurrencesTest {
         SelectOccurrences instance = new SelectOccurrences();
         instance.replaceAllOccurrences();
         // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        // fail("The test case is a prototype.");
     }
-    
+
 }

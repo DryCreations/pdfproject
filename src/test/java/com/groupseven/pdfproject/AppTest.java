@@ -18,22 +18,22 @@ import static org.junit.Assert.*;
  * @author dwkal
  */
 public class AppTest {
-    
+
     public AppTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -48,7 +48,7 @@ public class AppTest {
         App instance = new App();
         instance.start(primaryStage);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // fail("The test case is a prototype.");
     }
 
     /**
@@ -60,7 +60,7 @@ public class AppTest {
         String[] args = null;
         App.main(args);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // fail("The test case is a prototype.");
     }
-    
+
 }

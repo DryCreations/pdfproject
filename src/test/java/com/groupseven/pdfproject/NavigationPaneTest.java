@@ -19,22 +19,22 @@ import static org.junit.Assert.*;
  * @author dwkal
  */
 public class NavigationPaneTest {
-    
+
     public NavigationPaneTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -49,7 +49,7 @@ public class NavigationPaneTest {
         NavigationPane instance = new NavigationPane();
         instance.start(arg0);
         // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        // fail("The test case is a prototype.");
     }
 
     /**
@@ -63,7 +63,7 @@ public class NavigationPaneTest {
         VBox result = instance.getNavigationPane();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        // fail("The test case is a prototype.");
     }
 
     /**
@@ -75,7 +75,7 @@ public class NavigationPaneTest {
         NavigationPane instance = new NavigationPane();
         instance.PdfReorder();
         // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        // fail("The test case is a prototype.");
     }
 
     /**
@@ -87,7 +87,7 @@ public class NavigationPaneTest {
         NavigationPane instance = new NavigationPane();
         instance.convertPdfToImage();
         // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        // fail("The test case is a prototype.");
     }
 
     /**
@@ -98,7 +98,7 @@ public class NavigationPaneTest {
         System.out.println("getThumbnail");
         NavigationPane.getThumbnail();
         // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        // fail("The test case is a prototype.");
     }
-    
+
 }
