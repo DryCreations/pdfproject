@@ -5,7 +5,8 @@ import javafx.geometry.Point2D;
 /**
  * @author Charles Witherspoon
  *
- *         \brief This interface represents a draggable canvas element \ref t8_6 "Task 8.6"
+ *         \brief This interface represents a draggable canvas element
+ *         \ref t8_6 "Task 8.6"
  */
 public interface Draggable {
     /// \Shifts a Draggable relative to a starting point and ending point
