@@ -10,8 +10,7 @@ import javafx.scene.input.MouseEvent;
 /**
  * @author Charles Witherspoon
  *
- *         \brief This interface represents an action to be undone/redone
- *         \ref t10_2 "Task 10.2"
+ *         \brief This interface represents an action to be undone/redone \ref t10_2 "Task 10.2"
  */
 public interface Action {
 
