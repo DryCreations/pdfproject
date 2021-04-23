@@ -74,8 +74,4 @@ public class DrawingTool implements EventHandler<MouseEvent> {
             _currentAction = null;
         }
     }
-
-    public void setColor(Color color) {
-        _color = color;
-    }
 }
