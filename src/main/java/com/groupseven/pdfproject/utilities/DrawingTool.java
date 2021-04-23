@@ -7,11 +7,11 @@ import javafx.event.EventType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
-/**
- * @author Charles Witherspoon
- *
- *         \brief Class that performs different canvas actions based on the DrawingMode \ref t9_1 "Task 9.1"
- */
+/// @author Charles Witherspoon
+
+/// \brief Class that performs different canvas actions based on the DrawingMode
+///
+/// \ref t9_1 "Task 9.1"
 public class DrawingTool implements EventHandler<MouseEvent> {
     private MainCanvas _canvas;
     private DrawingMode _drawingMode;
@@ -23,17 +23,17 @@ public class DrawingTool implements EventHandler<MouseEvent> {
         _color = Color.BLACK;
     }
 
-    /**
-     * Set the DrawingMode
-     * 
-     * @param drawingMode
-     *            DrawingMode to set
-     */
+    /// \brief set the drawing mode of the tool
+    ///
+    /// \ref t9_1 "Task 9.1"
     public void setDrawingMode(DrawingMode drawingMode) {
         _drawingMode = drawingMode;
         _currentAction = null;
     }
 
+    /// \brief handle passed in mouse event
+    ///
+    /// \ref t9_1 "Task 9.1"
     @Override
     public void handle(MouseEvent event) {
         EventType<? extends MouseEvent> eventType = event.getEventType();
@@ -54,16 +54,16 @@ public class DrawingTool implements EventHandler<MouseEvent> {
 
     }
 
-    /**
-     * Sets the fill color for strokes and fills
-     * 
-     * @param color
-     *            Color to use
-     */
+    /// \brief set color
+    ///
+    /// \ref t9_1 "Task 9.1"
     public void setColor(Color color) {
         _color = color;
     }
 
+    /// \brief update screen with changes
+    ///
+    /// \ref t9_1 "Task 9.1"
     private void updateScreen() {
         _canvas.refresh();
         _currentAction.execute();
