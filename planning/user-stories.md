@@ -112,3 +112,7 @@ Priority: 3
 
 As a user, having more buttons in the toolbox and menu for easily accessing existing functionalities would increase the accessibility of the program.
 
+## User Story 20
+
+As a user, I would like an emergency recovery of pdf alterations in case of unexpected closing of the program.
+
