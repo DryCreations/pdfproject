@@ -81,7 +81,6 @@ public class Select implements Action {
         if (drawingAtMousePosition.isPresent() && (_selectState == SelectState.UNSELECTED
                 || (_selectState == SelectState.SELECTED && drawingAtMousePosition.get() != _selectedDrawing)))
             select(drawingAtMousePosition.get());
-
         else if (_selectState == SelectState.SELECTED) {
             _selectState = SelectState.UNSELECTED;
         }
@@ -132,3 +131,4 @@ public class Select implements Action {
         System.out.println("Select");
     }
 }
+
