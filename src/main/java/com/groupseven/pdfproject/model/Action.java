@@ -7,23 +7,20 @@ import javafx.geometry.Point2D;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
-
- /// \ @author Charles Witherspoon
- ///
- /// \brief This interface represents an action to be undone/redone \ref t10_2 "Task 10.2"
+/// \ @author Charles Witherspoon
+///
+/// \brief This interface represents an action to be undone/redone \ref t10_2 "Task 10.2"
 
 public interface Action {
 
-
-     /// \Performs the action
+    /// \Performs the action
 
     void execute();
 
     /**
-     /// \Sets up the environment for the action to take place
+     * /// \Sets up the environment for the action to take place
      * 
-    /// \@param event
-     /// \Event triggering the action
+     * /// \@param event /// \Event triggering the action
      * 
      * @return a constructed action based on the Event source
      */
