@@ -41,7 +41,8 @@ public class Erase implements Action {
     }
 
     /// \ref t9_1_2 "Task 9.1.2"
-    /// \brief This function erases the pen strokes or the shapes drawn on the canvas on mouse events like mouse pressed and released or mouse drag.
+    /// \brief This function erases the pen strokes or the shapes drawn on the canvas on mouse events like mouse pressed
+    /// and released or mouse drag.
     @Override
     public Action handle(Event event) {
         if (!(event instanceof MouseEvent))
@@ -78,4 +79,4 @@ public class Erase implements Action {
     }
 
 }
-/// @} 
+/// @}

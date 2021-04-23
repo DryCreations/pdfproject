@@ -348,7 +348,6 @@ public class App extends Application {
         canvas = doc.getPage(currentPage).getCanvas();
     }
 
-
     /// \brief handle keyboard shortcut events
     ///
     /// \ref t19_2 "Task 19.2"
