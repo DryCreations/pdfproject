@@ -5,9 +5,9 @@ import javafx.scene.shape.Shape;
 /**
  * @author Charles Witherspoon
  *
- * \brief This interface represents a selectable canvas element
+ *         \brief This interface represents a selectable canvas element
  *
- *  \ref t18_1 "Task 18.1"
+ *         \ref t18_1 "Task 18.1"
  */
 public interface Selectable {
     /// \@return Shape representing the selected canvas element
@@ -21,7 +21,7 @@ public interface Selectable {
     void setUri(String uri);
 
     /// \brief keeps a check if the selected element is linked or not
-     void setisLinked(boolean linked);
+    void setisLinked(boolean linked);
 
     /// \@return the link attached to the selected canvas element
     String getLink();
