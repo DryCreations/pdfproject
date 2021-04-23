@@ -19,10 +19,10 @@ This project can create new PDF documents as well as open and manipulate existin
 
 ### Contributors
 #### Group 7
-- Cassandra Mae Chandankumar Patel
-- Charles Witherspoon
-- Derrick Kaliney
-- Hayden Mankin
-- Hunter Gongloff
-- Parker Leonard
-- William Harvey
+- **Cassandra Mae Chandankumar Patel** / Cassandra-Mae-Patel / CassandraMae99
+- **Charles Witherspoon** / charles-witherspoon
+- **Derrick Kaliney** / PythonProgramm3r 
+- **Hayden Mankin** / DryCreations 
+- **Hunter Gongloff** / hgongloff 
+- **Parker Leonard** / leonard-parker5
+- **William Harvey** / bobobo77 
