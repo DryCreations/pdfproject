@@ -8,6 +8,7 @@ import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import javafx.event.Event;
 import javafx.geometry.Point2D;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -115,4 +116,5 @@ public class DrawRectangle implements Action, Selectable, Draggable {
         PdfAction.DRAW_RECTANGLE.accept(canvas, page, _rectangle);
         System.out.println("Rectangle");
     }
+
 }

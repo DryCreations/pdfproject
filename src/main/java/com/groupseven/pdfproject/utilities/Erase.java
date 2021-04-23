@@ -7,6 +7,7 @@ import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import javafx.event.Event;
 import javafx.geometry.Point2D;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -65,5 +66,6 @@ public class Erase implements Action {
         _eraseAreas.forEach(area -> PdfAction.ERASE.accept(canvas, page, area));
         System.out.println("Erase");
     }
+
 }
 /** @} */
