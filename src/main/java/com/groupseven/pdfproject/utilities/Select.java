@@ -10,8 +10,18 @@ import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import javafx.event.Event;
 import javafx.geometry.Point2D;
+import javafx.scene.Cursor;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextInputDialog;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -131,4 +141,5 @@ public class Select implements Action {
 
         System.out.println("Select");
     }
+
 }
