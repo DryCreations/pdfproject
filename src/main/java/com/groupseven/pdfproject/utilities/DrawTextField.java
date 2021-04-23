@@ -37,7 +37,7 @@ public class DrawTextField implements Action {
     private MainCanvas _canvas;
     private Point2D _origin;
     private boolean _isComplete;
-    
+
     /// \ref t16_1 "task 16.1"
     public DrawTextField(MainCanvas canvas) {
         _canvas = canvas;
@@ -90,7 +90,11 @@ public class DrawTextField implements Action {
         new Random().nextBytes(array);
         String generatedString = new String(array, Charset.forName("UTF-8"));
         PdfAcroForm form = PdfAcroForm.getAcroForm(canvas.getDocument(), true);
-        PdfTextFormField nameField = PdfTextFormField.createText(canvas.getDocument(), new Rectangle((float)_origin.getX(), (float)(page.getPageSize().getHeight() - _origin.getY()), 150, 15),generatedString, "");
+        PdfTextFormField nameField = PdfTextFormField
+                .createText(
+                        canvas.getDocument(), new Rectangle((float) _origin.getX(),
+                                (float) (page.getPageSize().getHeight() - _origin.getY()), 150, 15),
+                        generatedString, "");
         form.addField(nameField);
     }
 }
