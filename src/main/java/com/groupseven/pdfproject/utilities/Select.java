@@ -38,11 +38,17 @@ public class Select implements Action {
     private Point2D _origin;
     private ContextMenu contextMenu;
 
+    /// \brief constructor of Select class
+    ///
+    /// \ref t18_1 "task 18.1"
     public Select(MainCanvas canvas) {
         _canvas = canvas;
         _selectState = SelectState.UNSELECTED;
     }
 
+    /// \brief Executes user interaction with Select tool
+    ///
+    /// \ref t18_1 "task 18.1"
     @Override
     public void execute() {
         if (_selectState == SelectState.SELECTED && _selectedDrawing instanceof Draggable
@@ -50,6 +56,9 @@ public class Select implements Action {
             DrawingAction.SELECT.accept(_canvas, _selectedDrawing.getSelection());
     }
 
+    /// \brief Handles user interaction with GUI using select tool
+    ///
+    /// \ref t18_1 "task 18.1"
     @Override
     public Action handle(Event event) {
         if (!(event instanceof MouseEvent))
@@ -126,11 +135,19 @@ public class Select implements Action {
                 : this;
     }
 
+    /// \brief checks if user interaction is completed
+    /// \return boolean
+    ///
+    /// \ref t18_1 "task 18.1"
     @Override
     public boolean isComplete() {
         return _selectState == SelectState.MOVED;
     }
 
+    /// \brief checks if selected drawing contains given 2D point
+    /// \return boolean
+    ///
+    /// \ref t18_1 "task 18.1"
     @Override
     public boolean contains(Point2D point) {
         return ((Action) _selectedDrawing).contains(point);

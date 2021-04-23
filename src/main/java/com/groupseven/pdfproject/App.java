@@ -257,6 +257,7 @@ public class App extends Application {
         canvas = doc.getPage(currentPage).getCanvas();
     }
 
+    /// \brief Sets up the pdf canvas to display as the center of the javafx GUI
     public void setDisplayDoc(DocumentModel document, int pageNum) {
         currentPage = 0;
         doc = document;
@@ -267,6 +268,7 @@ public class App extends Application {
         root.setCenter(createViewbox(page));
     }
 
+    /// \brief main method of project
     public static void main(String[] args) {
         launch(args);
     }
