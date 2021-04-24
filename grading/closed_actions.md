@@ -91,7 +91,7 @@
 
 - [ ] [Action #76](https://github.com/DryCreations/pdfproject/tree/WH_action_68/76/81)
 
- Action 76 was assigned in these [minutes](../planning/minutes/4-15-2021.md) and is currently complete, but not marked. Still aspire to finish it this finals week.
+ Action 76 was assigned in these [minutes](../planning/minutes/4-15-2021.md) and is currently complete, but not marked. 
 
 - [ ] [Action #68](https://github.com/DryCreations/pdfproject/tree/WH_action_68/76/81)
 
