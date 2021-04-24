@@ -74,17 +74,18 @@
 
 ## William
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+ Below is a list of 5 different actions that were assigned to William, along with the relevant pull request, and the minutes they were marked as assigned, and completed.
 
-- [ ] [Action #]()
+- [ ] [Action #30](https://github.com/DryCreations/pdfproject/pull/25)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+ Action 30 was assigned in these [minutes](../planning/minutes/3-18-2021.md) and marked as completed [here](../planning/minutes/3-25-2021.md)
 
-- [ ] [Action #]()
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+- [ ] [Action #41](https://github.com/DryCreations/pdfproject/tree/wh_action41)
 
-- [ ] [Action #]()
+ Action 41 was assigned in these [minutes](../planning/minutes/3-25-2021.md) and is currently incomplete. Still aspire to finish it this finals week.
+
+- [ ] [Action #68](Added Doxygen comments to )
 
 { TODO: describe how the requirement has been, along with evidence of completion }
 
