@@ -8,15 +8,17 @@ import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import javafx.event.Event;
 import javafx.geometry.Point2D;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
-/**
- * @author Charles Witherspoon \brief This class represents an action to draw a shape on the canvas \ref t9_1 "Task 9.1"
- */
+/// @author Charles Witherspoon 
+/// \brief This class represents an action to draw a shape on the canvas 
+/// \ref t8_6 "Task 8.6"
+/// \ref t9_1 "Task 9.1"
+/// \ref t18_1 "Task 18.1"
+/// \ref t18_2 "Task 18.2"
 public class DrawRectangle implements Action, Selectable, Draggable {
     private MainCanvas _canvas;
     private Point2D _origin;
@@ -27,17 +29,21 @@ public class DrawRectangle implements Action, Selectable, Draggable {
     protected boolean _isLinked;
     protected String _link;
 
+    /// \ref t9_1 "Task 9.1"
     public DrawRectangle(MainCanvas canvas, Color color) {
         _canvas = canvas;
         _color = color;
     }
 
+    /// \ref t9_1 "Task 9.1"
     @Override
     public void execute() {
         if (!wasMoved())
             DrawingAction.DRAW_RECTANGLE.accept(_canvas, _rectangle);
     }
 
+    /// \ref t9_1 "Task 9.1"
+    /// \brief draws a rectangle
     @Override
     public Action handle(Event event) {
         if (!(event instanceof MouseEvent))
@@ -57,28 +63,31 @@ public class DrawRectangle implements Action, Selectable, Draggable {
         return this;
     }
 
-    /**
-     * Sets the complete status to true for the Action
-     */
+    /// \ref t9_1 "Task 9.1"
+    /// Sets the complete status to true for the Action
     public void complete() {
         _isComplete = true;
     }
 
+    /// \ref t9_1 "Task 9.1"
     @Override
     public boolean isComplete() {
         return _isComplete;
     }
 
+    /// \ref t9_1 "Task 9.1"
     @Override
     public boolean contains(Point2D point) {
         return _rectangle.contains(point);
     }
 
+    /// \ref t18_1 "Task 18.1"
     @Override
     public Shape getSelection() {
         return _rectangle;
     }
 
+    /// \ref t9_1 "Task 9.1"
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof DrawRectangle))
@@ -90,6 +99,8 @@ public class DrawRectangle implements Action, Selectable, Draggable {
                 && this._rectangle.getHeight() == other._rectangle.getHeight();
     }
 
+    /// \ref t8_6 "Task 8.6"
+    /// \brief shifts the rectangle relative to the starting and ending point.
     @Override
     public Action shift(Point2D origin, Point2D destination) {
         DrawRectangle drawRectangle = new DrawRectangle(_canvas, _color);
@@ -105,12 +116,16 @@ public class DrawRectangle implements Action, Selectable, Draggable {
         return drawRectangle;
     }
 
+    /// \ref t8_6 "Task 8.6"
     @Override
     public boolean wasMoved() {
         return _replacement != null
                 && (_canvas.getUndoStack().contains(_replacement) || !_canvas.getRedoStack().contains(_replacement));
     }
 
+    /// \ref t9_1 "Task 9.1"
+    /// \ref t8_6 "Task 8.6"
+    /// \brief draws a rectangle on Pdf Canvas
     @Override
     public void pdfExecute(PdfCanvas canvas, PdfPage page) {
         // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose
@@ -119,27 +134,27 @@ public class DrawRectangle implements Action, Selectable, Draggable {
         System.out.println("Rectangle");
     }
 
+    /// \ref t18_2 "Task 18.2"
     @Override
     public void setUri(String uri) {
-        // TODO Auto-generated method stub
         this._link = uri;
     }
 
+    /// \ref t18_2 "Task 18.2"
     @Override
     public void setisLinked(boolean linked) {
-        // TODO Auto-generated method stub
         this._isLinked = linked;
     }
 
+    /// \ref t18_2 "Task 18.2"
     @Override
     public String getLink() {
-        // TODO Auto-generated method stub
         return _link;
     }
 
+    /// \ref t18_2 "Task 18.2"
     @Override
     public boolean getisLinked() {
-        // TODO Auto-generated method stub
         return _isLinked;
     }
 
