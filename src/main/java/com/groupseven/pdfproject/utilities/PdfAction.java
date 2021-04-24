@@ -15,6 +15,11 @@ import javafx.scene.shape.Shape;
 ///
 
 /// \brief This class performs the action of drawing line and rectangle, select an object and erasing the drawn shape or line on a PdfCanvas.
+/// \ref t8_5 "Task 8.5"
+/// \ref t9_1 "Task 9.1"
+/// \ref t9_1_1 "Task 9.1.1"
+/// \ref t9_1_2 "Task 9.1.2"
+/// \ref t18_1 "Task 18.1"
 public class PdfAction {
 
     /// \ref t9_1_1 "Task 9.1.1"
@@ -70,6 +75,7 @@ public class PdfAction {
         canvas.restoreState();
     };
 
+    /// \ref t8_5 "Task 8.5"
     /// \ref t9_1_1 "Task 9.1.1"
     /// \brief draws a rectangle on the PDF canvas
     public static final TriConsumer<PdfCanvas, PdfPage, Shape> DRAW_RECTANGLE = (canvas, page, object) -> {

@@ -21,8 +21,6 @@ import java.util.List;
 /// @{ 
 /// \brief This class represents an action to erase a spot on the canvas.
 /// \ref t9_1_2 "Task 9.1.2"
-///
-
 public class Erase implements Action {
     private MainCanvas _canvas;
     private List<Rectangle> _eraseAreas;
@@ -41,8 +39,8 @@ public class Erase implements Action {
     }
 
     /// \ref t9_1_2 "Task 9.1.2"
-    /// \brief This function erases the pen strokes or the shapes drawn on the canvas on mouse events like mouse pressed
-    /// and released or mouse drag.
+    /// \brief Erases the pen strokes or the shapes drawn on the canvas on mouse events like mouse pressed and released
+    /// or mouse drag.
     @Override
     public Action handle(Event event) {
         if (!(event instanceof MouseEvent))
@@ -70,6 +68,7 @@ public class Erase implements Action {
     }
 
     /// \ref t9_1_2 "Task 9.1.2"
+    /// \breif Erases the the shape or the line on the PDF Canvas
     @Override
     public void pdfExecute(PdfCanvas canvas, PdfPage page) {
         // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose

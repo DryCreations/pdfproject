@@ -44,6 +44,7 @@ public class DrawRectangle implements Action, Selectable, Draggable {
     }
 
     /// \ref t9_1 "Task 9.1"
+    /// \ref t8_5 "Task 8.5"
     /// \brief draws a rectangle
     @Override
     public Action handle(Event event) {
