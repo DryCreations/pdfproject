@@ -15,6 +15,7 @@ import javafx.scene.shape.Shape;
 
 /// @author Charles Witherspoon 
 /// \brief This class represents an action to draw a shape on the canvas 
+/// \ref t8_5 "Task 8.5"
 /// \ref t8_6 "Task 8.6"
 /// \ref t9_1 "Task 9.1"
 /// \ref t18_1 "Task 18.1"
