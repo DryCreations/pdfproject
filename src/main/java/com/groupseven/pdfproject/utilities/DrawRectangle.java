@@ -107,6 +107,7 @@ public class DrawRectangle implements Action, Selectable, Draggable {
 
     @Override
     public boolean wasMoved() {
+
         return _replacement != null
                 && (_canvas.getUndoStack().contains(_replacement) || !_canvas.getRedoStack().contains(_replacement));
     }

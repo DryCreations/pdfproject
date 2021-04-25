@@ -27,101 +27,88 @@ import javafx.scene.paint.Color;
 /**
  * @author Hunter Gongloff
  * 
- * @{ \brief This is the class to create a checkbox on user click \ref 16_3
- *    "Task 16.3"
+ * @{ \brief This is the class to create a checkbox on user click \ref 16_3 "Task 16.3"
  */
 public class DrawCheckBox implements Action {
 
-	private MainCanvas _canvas;
-	private Point2D _origin;
-	private javafx.scene.shape.Rectangle _rectangle;
-	private boolean _isComplete;
-	protected boolean _isLinked;
-	protected String _link;
+    private MainCanvas _canvas;
+    private Point2D _origin;
+    private javafx.scene.shape.Rectangle _rectangle;
+    private boolean _isComplete;
+    protected boolean _isLinked;
+    protected String _link;
 
-	/// \ref t16_3 "task 16.3"
-	public DrawCheckBox(MainCanvas canvas) {
-		_canvas = canvas;
-	}
+    /// \ref t16_3 "task 16.3"
+    public DrawCheckBox(MainCanvas canvas) {
+        _canvas = canvas;
+    }
 
-	/// \ref t16_3 "task 16.3"
-	@Override
-	public void execute() {
-		DrawingAction.DRAW_RECTANGLE.accept(_canvas, _rectangle);
+    /// \ref t16_3 "task 16.3"
+    @Override
+    public void execute() {
+        DrawingAction.DRAW_RECTANGLE.accept(_canvas, _rectangle);
 
-	}
+    }
 
+    /// \ref t16_3 "task 16.3"
+    @Override
+    public Action handle(Event event) {
+        if (!(event instanceof MouseEvent))
+            return this;
 
-	/// \ref t16_3 "task 16.3"
-	@Override
-	public Action handle(Event event) {
-		if (!(event instanceof MouseEvent))
-			return this;
+        MouseEvent mouseEvent = (MouseEvent) event;
 
-		MouseEvent mouseEvent = (MouseEvent) event;
+        if (_origin == null)
+            _origin = new Point2D(mouseEvent.getX(), mouseEvent.getY());
+        else {
+            double squareHeight = mouseEvent.getY() - _origin.getY();
+            double squareWidth = mouseEvent.getX() - _origin.getX();
 
-		if (_origin == null)
-			_origin = new Point2D(mouseEvent.getX(), mouseEvent.getY());
-		else {
-			_rectangle = new javafx.scene.shape.Rectangle(_origin.getX(), _origin.getY(),
-					mouseEvent.getX() - _origin.getX(), mouseEvent.getY() - _origin.getY());
-			_rectangle.setFill(Color.web("#F1F4FF"));
-		}
+            if (squareHeight > squareWidth)
+                squareWidth = squareHeight;
+            else
+                squareHeight = squareWidth;
 
-		_isComplete = (mouseEvent.getEventType() == MouseEvent.MOUSE_RELEASED);
-		return this;
-	}
+            _rectangle = new javafx.scene.shape.Rectangle(_origin.getX(), _origin.getY(), squareWidth, squareHeight);
+            _rectangle.setFill(Color.web("#F1F4FF"));
+        }
 
-	/// \ref t16_3 "task 16.3"
-	@Override
-	public boolean isComplete() {
-		
-		return _isComplete;
-	}
+        _isComplete = (mouseEvent.getEventType() == MouseEvent.MOUSE_RELEASED);
+        return this;
+    }
 
-	/// \ref t16_3 "task 16.3"
-	@Override
-	public boolean contains(Point2D point) {
-		
-		return false;
-	}
+    /// \ref t16_3 "task 16.3"
+    @Override
+    public boolean isComplete() {
 
-	/// \ref t16_3 "task 16.3"
-	@Override
-	public void pdfExecute(PdfCanvas canvas, PdfPage page) {
-		byte[] array = new byte[7];
-		new Random().nextBytes(array);
-		String generatedString = new String(array, Charset.forName("UTF-8"));
+        return _isComplete;
+    }
 
-		float rectangleHeight = (float) _rectangle.getHeight();
-		float rectangleWidth = (float) _rectangle.getWidth();
+    /// \ref t16_3 "task 16.3"
+    @Override
+    public boolean contains(Point2D point) {
 
-		PdfAcroForm form = PdfAcroForm.getAcroForm(canvas.getDocument(), true);
-		PdfButtonFormField checkField = PdfFormField.createCheckBox(canvas.getDocument(), new Rectangle( (float) _origin.getX(), (float) (page.getPageSize().getHeight() - _origin.getY() - rectangleHeight), rectangleWidth,
-                rectangleHeight),
-				generatedString, "Off", PdfFormField.TYPE_CHECK);
-		form.addField(checkField);
+        return false;
+    }
 
-	}
+    /// \ref t16_3 "task 16.3"
+    @Override
+    public void pdfExecute(PdfCanvas canvas, PdfPage page) {
+        byte[] array = new byte[7];
+        new Random().nextBytes(array);
+        String generatedString = new String(array, Charset.forName("UTF-8"));
+
+        float rectangleHeight = (float) _rectangle.getHeight();
+        float rectangleWidth = (float) _rectangle.getWidth();
+
+        PdfAcroForm form = PdfAcroForm.getAcroForm(canvas.getDocument(), true);
+        PdfButtonFormField checkField = PdfFormField.createCheckBox(canvas.getDocument(),
+                new Rectangle((float) _origin.getX(),
+                        (float) (page.getPageSize().getHeight() - _origin.getY() - rectangleHeight), rectangleWidth,
+                        rectangleHeight),
+                generatedString, "Off", PdfFormField.TYPE_CHECK);
+        form.addField(checkField);
+
+    }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

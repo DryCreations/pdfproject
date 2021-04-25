@@ -55,7 +55,6 @@ public class DrawingTool implements EventHandler<MouseEvent> {
             _currentAction.handle(event);
             updateScreen();
         }
-        	
 
     }
 
