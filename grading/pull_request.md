@@ -27,28 +27,30 @@ Below are 9 different pull requests tied to specific assigned actions, and 11 di
 
 ## Cassandra
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Below are 6 different pull requests tied to specific assigned actions, and 14 different commits. for a total of 20 items.
 
-- [ ] [Pull Request/Commit #]()
-- [ ] [Pull Request/Commit #]()
-- [ ] [Pull Request/Commit #]()
-- [ ] [Pull Request/Commit #]()
-- [ ] [Pull Request/Commit #]()
-- [ ] [Pull Request/Commit #]()
-- [ ] [Pull Request/Commit #]()
-- [ ] [Pull Request/Commit #]()
-- [ ] [Pull Request/Commit #]()
-- [ ] [Pull Request/Commit #]()
-- [ ] [Pull Request/Commit #]()
-- [ ] [Pull Request/Commit #]()
-- [ ] [Pull Request/Commit #]()
-- [ ] [Pull Request/Commit #]()
-- [ ] [Pull Request/Commit #]()
-- [ ] [Pull Request/Commit #]()
-- [ ] [Pull Request/Commit #]()
-- [ ] [Pull Request/Commit #]()
-- [ ] [Pull Request/Commit #]()
-- [ ] [Pull Request/Commit #]()
+- [x] [Pull Request 49](https://github.com/DryCreations/pdfproject/pull/49)
+- [x] [Pull Request 51](https://github.com/DryCreations/pdfproject/pull/51)
+- [x] [Pull Request 55](https://github.com/DryCreations/pdfproject/pull/55)
+- [x] [Pull Request 30](https://github.com/DryCreations/pdfproject/pull/30)
+- [x] [Pull Request 75](https://github.com/DryCreations/pdfproject/pull/75)
+- [x] [Pull Request 73](https://github.com/DryCreations/pdfproject/pull/73)
+- [x] [Commit 87d1f03a28f7a5a11b12931d5c4e14ff6ec86f7f](https://github.com/DryCreations/pdfproject/commit/87d1f03a28f7a5a11b12931d5c4e14ff6ec86f7f)
+- [x] [Commit e66ed9ba7863219a8ec54cff177812888fc2b908](https://github.com/DryCreations/pdfproject/commit/e66ed9ba7863219a8ec54cff177812888fc2b908)
+- [x] [Commit 9556e742450e49a630ba0a6a35ac714b65b754ea](https://github.com/DryCreations/pdfproject/commit/9556e742450e49a630ba0a6a35ac714b65b754ea)
+- [x] [Commit e08bc15b50fe98debc595f7906f4df0960b9d291](https://github.com/DryCreations/pdfproject/commit/e08bc15b50fe98debc595f7906f4df0960b9d291)
+- [x] [Commit 3c0b443dc6e3253b1a34dd105f27358792f2b3d1](https://github.com/DryCreations/pdfproject/commit/3c0b443dc6e3253b1a34dd105f27358792f2b3d1)
+- [x] [Commit 40692dcf26d59d3523fa3d31420aeaafa4e2c480](https://github.com/DryCreations/pdfproject/commit/40692dcf26d59d3523fa3d31420aeaafa4e2c480)
+- [x] [Commit 3b8c5874500f880122df044fc4a836b716c3e4cb](https://github.com/DryCreations/pdfproject/commit/3b8c5874500f880122df044fc4a836b716c3e4cb)
+- [x] [Commit 57fcad00e0cf484ab9e36f6f65b58c522cdcc5cd](https://github.com/DryCreations/pdfproject/commit/57fcad00e0cf484ab9e36f6f65b58c522cdcc5cd)
+- [x] [Commit fd121aa67a9eff171eca34f4fb817d409db6f533](https://github.com/DryCreations/pdfproject/commit/fd121aa67a9eff171eca34f4fb817d409db6f533)
+- [x] [Commit aeb978dc988a6138c0c6b2028eb9705cbb92be22](https://github.com/DryCreations/pdfproject/commit/aeb978dc988a6138c0c6b2028eb9705cbb92be22)
+- [x] [Commit 15e7a5f71111b19ac46216d6da055d5e84cb419d](https://github.com/DryCreations/pdfproject/commit/15e7a5f71111b19ac46216d6da055d5e84cb419d)
+- [x] [Commit 6fbeba95d5e4117c868804794cc286446dc4e3ff](https://github.com/DryCreations/pdfproject/commit/6fbeba95d5e4117c868804794cc286446dc4e3ff)
+- [x] [Commit b728f50b7b41523e0be7fd90ffd7add9050a0957](https://github.com/DryCreations/pdfproject/commit/b728f50b7b41523e0be7fd90ffd7add9050a0957)
+- [x] [Commit 43fb2de091c812ce611d419ccd13e44559262198](https://github.com/DryCreations/pdfproject/commit/43fb2de091c812ce611d419ccd13e44559262198)
+
+
 
 ## Parker
 
