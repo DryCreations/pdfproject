@@ -22,140 +22,106 @@ import com.itextpdf.layout.Document;
 import javafx.event.Event;
 import javafx.geometry.Point2D;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 
 /**
  * @author Hunter Gongloff
  * 
- * @{ \brief This is the class to create a checkbox on user click \ref 16_3 "Task 16.3"
+ * @{ \brief This is the class to create a checkbox on user click \ref 16_3
+ *    "Task 16.3"
  */
 public class DrawCheckBox implements Action {
 
-    public static final String SRC = "src/main/resources/manipulate_pdf/test_pdf.pdf";
-    public static final String DES = "src/main/resources/manipulate_pdf/test_pdf_old.pdf";
+	private MainCanvas _canvas;
+	private Point2D _origin;
+	private javafx.scene.shape.Rectangle _rectangle;
+	private boolean _isComplete;
+	protected boolean _isLinked;
+	protected String _link;
 
-    /// \ref t16_3 "task 16.3"
-    public DrawCheckBox(MainCanvas _canvas) {
-        // TODO Auto-generated constructor stub
-    }
+	/// \ref t16_3 "task 16.3"
+	public DrawCheckBox(MainCanvas canvas) {
+		_canvas = canvas;
+	}
 
-    /// \ref t16_3 "task 16.3"
-    @Override
-    public void execute() {
-        // TODO Auto-generated method stub
+	/// \ref t16_3 "task 16.3"
+	@Override
+	public void execute() {
+		DrawingAction.DRAW_RECTANGLE.accept(_canvas, _rectangle);
 
-    }
+	}
 
-    /// \brief on click creates checkboxes at click location
-    /// \ref t16_3 "task 16.3"
-    @Override
-    public Action handle(Event event) {
-        if (!(event instanceof MouseEvent))
-            return this;
 
-        byte[] array = new byte[7]; // length is bounded by 7
-        new Random().nextBytes(array);
-        String generatedString = new String(array, Charset.forName("UTF-8"));
+	/// \ref t16_3 "task 16.3"
+	@Override
+	public Action handle(Event event) {
+		if (!(event instanceof MouseEvent))
+			return this;
 
-        MouseEvent mouseEvent = (MouseEvent) event;
-        Point2D mousePosition = new Point2D(mouseEvent.getX(), mouseEvent.getY());
+		MouseEvent mouseEvent = (MouseEvent) event;
 
-        Point2D currentPoint = new Point2D(mouseEvent.getX(), mouseEvent.getY());
-        float x = (float) currentPoint.getX();
-        float y = (float) (780.0 - currentPoint.getY());
+		if (_origin == null)
+			_origin = new Point2D(mouseEvent.getX(), mouseEvent.getY());
+		else {
+			_rectangle = new javafx.scene.shape.Rectangle(_origin.getX(), _origin.getY(),
+					mouseEvent.getX() - _origin.getX(), mouseEvent.getY() - _origin.getY());
+			_rectangle.setFill(Color.web("#F1F4FF"));
+		}
 
-        if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {
+		_isComplete = (mouseEvent.getEventType() == MouseEvent.MOUSE_RELEASED);
+		return this;
+	}
 
-            PdfDocument pdfDoc = null;
-            try {
-                pdfDoc = new PdfDocument(new PdfWriter(DES).setSmartMode(true));
-            } catch (FileNotFoundException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-            }
-            PdfDocument srcDoc = null;
-            try {
-                srcDoc = new PdfDocument(new PdfReader(SRC));
-            } catch (IOException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-            }
-            srcDoc.copyPagesTo(1, srcDoc.getNumberOfPages(), pdfDoc);
+	/// \ref t16_3 "task 16.3"
+	@Override
+	public boolean isComplete() {
+		
+		return _isComplete;
+	}
 
-            Document doc = new Document(pdfDoc);
-            PdfAcroForm form = PdfAcroForm.getAcroForm(doc.getPdfDocument(), true);
-            PdfButtonFormField checkField = PdfFormField.createCheckBox(doc.getPdfDocument(),
-                    new Rectangle(x, y, 15, 15), generatedString, "Off", PdfFormField.TYPE_CHECK);
-            form.addField(checkField);
+	/// \ref t16_3 "task 16.3"
+	@Override
+	public boolean contains(Point2D point) {
+		
+		return false;
+	}
 
-            pdfDoc.close();
-            srcDoc.close();
+	/// \ref t16_3 "task 16.3"
+	@Override
+	public void pdfExecute(PdfCanvas canvas, PdfPage page) {
+		byte[] array = new byte[7];
+		new Random().nextBytes(array);
+		String generatedString = new String(array, Charset.forName("UTF-8"));
 
-            File file = new File("src/main/resources/manipulate_pdf/test_pdf.pdf");
+		float rectangleHeight = (float) _rectangle.getHeight();
+		float rectangleWidth = (float) _rectangle.getWidth();
 
-            File rename = new File("src/main/resources/manipulate_pdf/test_pdf_old_old.pdf");
+		PdfAcroForm form = PdfAcroForm.getAcroForm(canvas.getDocument(), true);
+		PdfButtonFormField checkField = PdfFormField.createCheckBox(canvas.getDocument(), new Rectangle( (float) _origin.getX(), (float) (page.getPageSize().getHeight() - _origin.getY() - rectangleHeight), rectangleWidth,
+                rectangleHeight),
+				generatedString, "Off", PdfFormField.TYPE_CHECK);
+		form.addField(checkField);
 
-            boolean flag = file.renameTo(rename);
-
-            if (flag == true) {
-                System.out.println("File Successfully Rename");
-            }
-
-            else {
-                System.out.println("Operation Failed");
-            }
-
-            file = new File("src/main/resources/manipulate_pdf/test_pdf_old.pdf");
-
-            rename = new File("src/main/resources/manipulate_pdf/test_pdf.pdf");
-
-            flag = file.renameTo(rename);
-
-            if (flag == true) {
-                System.out.println("File Successfully Rename");
-            }
-
-            else {
-                System.out.println("Operation Failed");
-            }
-
-            file = new File("src/main/resources/manipulate_pdf/test_pdf_old_old.pdf");
-
-            rename = new File("src/main/resources/manipulate_pdf/test_pdf_old.pdf");
-
-            flag = file.renameTo(rename);
-
-            if (flag == true) {
-                System.out.println("File Successfully Rename");
-            }
-
-            else {
-                System.out.println("Operation Failed");
-            }
-
-        }
-
-        return null;
-    }
-
-    /// \ref t16_3 "task 16.3"
-    @Override
-    public boolean isComplete() {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    /// \ref t16_3 "task 16.3"
-    @Override
-    public boolean contains(Point2D point) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    /// \ref t16_3 "task 16.3"
-    @Override
-    public void pdfExecute(PdfCanvas canvas, PdfPage page) {
-        // TODO Auto-generated method stub
-
-    }
+	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

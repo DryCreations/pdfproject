@@ -51,8 +51,11 @@ public class DrawingTool implements EventHandler<MouseEvent> {
                                                     : (_drawingMode == DrawingMode.CHECKBOX) ? new DrawCheckBox(_canvas)
                                                             : null;
 
-        if (_currentAction != null)
+        if (_currentAction != null) {
             _currentAction.handle(event);
+            updateScreen();
+        }
+        	
 
     }
 
