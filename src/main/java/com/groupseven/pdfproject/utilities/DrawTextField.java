@@ -21,14 +21,13 @@ import javafx.scene.paint.Color;
  * @{ \brief This is the class to create a text field on user click \ref 16_1 "Task 16.1"
  */
 public class DrawTextField implements Action {
-	
+
     private MainCanvas _canvas;
     private Point2D _origin;
     private javafx.scene.shape.Rectangle _rectangle;
     private boolean _isComplete;
     protected boolean _isLinked;
     protected String _link;
-    
 
     /// \ref t16_1 "task 16.1"
     public DrawTextField(MainCanvas canvas) {
@@ -38,15 +37,15 @@ public class DrawTextField implements Action {
     /// \ref t16_1 "task 16.1"
     @Override
     public void execute() {
-        
-    	DrawingAction.DRAW_RECTANGLE.accept(_canvas, _rectangle);
+
+        DrawingAction.DRAW_RECTANGLE.accept(_canvas, _rectangle);
 
     }
 
     /// \ref t16_1 "task 16.1"
     @Override
     public Action handle(Event event) {
-    	if (!(event instanceof MouseEvent))
+        if (!(event instanceof MouseEvent))
             return this;
 
         MouseEvent mouseEvent = (MouseEvent) event;
@@ -54,9 +53,9 @@ public class DrawTextField implements Action {
         if (_origin == null)
             _origin = new Point2D(mouseEvent.getX(), mouseEvent.getY());
         else {
-        	
-            _rectangle = new javafx.scene.shape.Rectangle(_origin.getX(), _origin.getY(), mouseEvent.getX() - _origin.getX(),
-                    mouseEvent.getY() - _origin.getY());
+
+            _rectangle = new javafx.scene.shape.Rectangle(_origin.getX(), _origin.getY(),
+                    mouseEvent.getX() - _origin.getX(), mouseEvent.getY() - _origin.getY());
             _rectangle.setFill(Color.web("#F1F4FF"));
         }
 
@@ -81,30 +80,21 @@ public class DrawTextField implements Action {
     /// \ref t16_1 "task 16.1"
     @Override
     public void pdfExecute(PdfCanvas canvas, PdfPage page) {
-        byte[] array = new byte[7]; 
+        byte[] array = new byte[7];
         new Random().nextBytes(array);
         String generatedString = new String(array, Charset.forName("UTF-8"));
-        
+
         float rectangleHeight = (float) _rectangle.getHeight();
         float rectangleWidth = (float) _rectangle.getWidth();
-        
+
         PdfAcroForm form = PdfAcroForm.getAcroForm(canvas.getDocument(), true);
-        PdfTextFormField nameField = PdfTextFormField
-                .createText(
-                        canvas.getDocument(), new Rectangle((float) _origin.getX(),
-                                (float) (page.getPageSize().getHeight() - _origin.getY() - rectangleHeight), rectangleWidth, rectangleHeight),
-                        generatedString, "");
+        PdfTextFormField nameField = PdfTextFormField.createText(canvas.getDocument(),
+                new Rectangle((float) _origin.getX(),
+                        (float) (page.getPageSize().getHeight() - _origin.getY() - rectangleHeight), rectangleWidth,
+                        rectangleHeight),
+                generatedString, "");
         float fontSize = (float) (rectangleHeight * 0.8);
         nameField.setFontSize(fontSize);
         form.addField(nameField);
     }
 }
-
-
-
-
-
-
-
-
-
