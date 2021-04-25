@@ -71,7 +71,7 @@ The sum of your number of meaningful commits and pull requests needs to be great
 To earn full credit, you must be identified as "present" in Minutes for at least 5 separate meetings, and the Minutes must document your non-trivial contribution in the Project. Completion of Action Items that are documented in the Minutes can be used to document your contribution.
 
 - [x] [Hayden](./minutes.md#hayden)
-- [ ] [Cassandra](./pull_request.md#cassandra)
+- [x] [Cassandra](./minutes.md#cassandra)
 - [ ] [Parker](./pull_request.md#parker)
 - [ ] [William](./pull_request.md#william)
 - [ ] [Derrick](./pull_request.md#derrick)

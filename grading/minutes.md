@@ -26,23 +26,23 @@ I was present at this [meeting](../planning/minutes/4-1-2021.md) noted by my com
 
 ### Meeting 1
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+I was present at this [meeting](../planning/minutes/2-18-2021.md) noted by my completion of action 4.
 
 ### Meeting 2
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+I was present at this [meeting](../planning/minutes/2-25-2021.md) noted by my completion of action 8.
 
 ### Meeting 3
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+I was present at this [meeting](../planning/minutes/3-25-2021.md) noted by my completion of action 33.
 
 ### Meeting 4
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+I was present at this [meeting](../planning/minutes/4-8-2021.md) noted by my completion of action 34.
 
 ### Meeting 5
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+I was present at this [meeting](../planning/minutes/4-15-2021.md) noted by my completion of action 49, 53 and 60.
 
 ## Parker
 
