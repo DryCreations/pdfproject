@@ -26,6 +26,7 @@ import com.itextpdf.layout.Document;
 import javafx.event.Event;
 import javafx.geometry.Point2D;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 
 /**
  * @author Hunter Gongloff
@@ -34,22 +35,26 @@ import javafx.scene.input.MouseEvent;
  */
 public class DrawRadioButton implements Action {
 
-    public static final String SRC = "src/main/resources/manipulate_pdf/test_pdf.pdf";
-    public static final String DES = "src/main/resources/manipulate_pdf/test_pdf_old.pdf";
+    private MainCanvas _canvas;
+    private Point2D _origin;
+    private javafx.scene.shape.Rectangle _rectangle;
+    private boolean _isComplete;
+    protected boolean _isLinked;
+    protected String _link;
 
     /// \ref t16_2 "task 16.2"
-    public DrawRadioButton(MainCanvas _canvas) {
-        // TODO Auto-generated constructor stub
+    public DrawRadioButton(MainCanvas canvas) {
+        _canvas = canvas;
     }
 
     /// \ref t16_2 "task 16.2"
     @Override
     public void execute() {
-        // TODO Auto-generated method stub
+
+        DrawingAction.DRAW_RECTANGLE.accept(_canvas, _rectangle);
 
     }
 
-    /// \brief on click creates radio buttons at click location
     /// \ref t16_2 "task 16.2"
     @Override
     public Action handle(Event event) {
@@ -57,105 +62,58 @@ public class DrawRadioButton implements Action {
             return this;
 
         MouseEvent mouseEvent = (MouseEvent) event;
-        Point2D mousePosition = new Point2D(mouseEvent.getX(), mouseEvent.getY());
 
-        Point2D currentPoint = new Point2D(mouseEvent.getX(), mouseEvent.getY());
-        float x = (float) currentPoint.getX();
-        float y = (float) (780.0 - currentPoint.getY());
+        if (_origin == null)
+            _origin = new Point2D(mouseEvent.getX(), mouseEvent.getY());
+        else {
+            double squareHeight = mouseEvent.getY() - _origin.getY();
+            double squareWidth = mouseEvent.getX() - _origin.getX();
 
-        if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {
+            if (squareHeight > squareWidth)
+                squareWidth = squareHeight;
+            else
+                squareHeight = squareWidth;
 
-            PdfDocument pdfDoc = null;
-            try {
-                pdfDoc = new PdfDocument(new PdfWriter(DES).setSmartMode(true));
-            } catch (FileNotFoundException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-            }
-            PdfDocument srcDoc = null;
-            try {
-                srcDoc = new PdfDocument(new PdfReader(SRC));
-            } catch (IOException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-            }
-            srcDoc.copyPagesTo(1, srcDoc.getNumberOfPages(), pdfDoc);
-
-            pdfDoc.setTagged();
-            Document doc = new Document(pdfDoc);
-            PdfAcroForm form = PdfAcroForm.getAcroForm(doc.getPdfDocument(), true);
-            PdfButtonFormField group = PdfFormField.createRadioGroup(doc.getPdfDocument(), "group", "");
-            PdfFormField.createRadioButton(doc.getPdfDocument(), new Rectangle(x, y, 15, 15), group, "groups");
-            form.addField(group);
-            doc.close();
-            pdfDoc.close();
-            srcDoc.close();
-
-            File file = new File("src/main/resources/manipulate_pdf/test_pdf.pdf");
-
-            File rename = new File("src/main/resources/manipulate_pdf/test_pdf_old_old.pdf");
-
-            boolean flag = file.renameTo(rename);
-
-            if (flag == true) {
-                System.out.println("File Successfully Rename");
-            }
-
-            else {
-                System.out.println("Operation Failed");
-            }
-
-            file = new File("src/main/resources/manipulate_pdf/test_pdf_old.pdf");
-
-            rename = new File("src/main/resources/manipulate_pdf/test_pdf.pdf");
-
-            flag = file.renameTo(rename);
-
-            if (flag == true) {
-                System.out.println("File Successfully Rename");
-            }
-
-            else {
-                System.out.println("Operation Failed");
-            }
-
-            file = new File("src/main/resources/manipulate_pdf/test_pdf_old_old.pdf");
-
-            rename = new File("src/main/resources/manipulate_pdf/test_pdf_old.pdf");
-
-            flag = file.renameTo(rename);
-
-            if (flag == true) {
-                System.out.println("File Successfully Rename");
-            }
-
-            else {
-                System.out.println("Operation Failed");
-            }
-
+            _rectangle = new javafx.scene.shape.Rectangle(_origin.getX(), _origin.getY(), squareWidth, squareHeight);
+            _rectangle.setFill(Color.web("#F1F4FF"));
         }
 
-        return null;
+        _isComplete = (mouseEvent.getEventType() == MouseEvent.MOUSE_RELEASED);
+        return this;
+
     }
 
     /// \ref t16_2 "task 16.2"
     @Override
     public boolean isComplete() {
-        // TODO Auto-generated method stub
-        return false;
+        return _isComplete;
     }
 
     /// \ref t16_2 "task 16.2"
     @Override
     public boolean contains(Point2D point) {
-        // TODO Auto-generated method stub
         return false;
     }
 
     /// \ref t16_2 "task 16.2"
     @Override
     public void pdfExecute(PdfCanvas canvas, PdfPage page) {
-        // TODO Auto-generated method stub
+
+        byte[] array = new byte[7];
+        new Random().nextBytes(array);
+        String generatedString = new String(array, Charset.forName("UTF-8"));
+
+        float rectangleHeight = (float) _rectangle.getHeight();
+        float rectangleWidth = (float) _rectangle.getWidth();
+
+        PdfAcroForm form = PdfAcroForm.getAcroForm(canvas.getDocument(), true);
+        PdfButtonFormField group = PdfFormField.createRadioGroup(canvas.getDocument(), "group", "");
+        PdfFormField.createRadioButton(canvas.getDocument(),
+                new Rectangle((float) _origin.getX(),
+                        (float) (page.getPageSize().getHeight() - _origin.getY() - rectangleHeight), rectangleWidth,
+                        rectangleHeight),
+                group, "groups");
+        form.addField(group);
 
     }
 
