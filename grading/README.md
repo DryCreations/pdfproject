@@ -83,7 +83,7 @@ To earn full credit, you must be identified as "present" in Minutes for at least
 To earn full credit, you must provide at least 10 non-trivial items of feedback within Pull Requests made by someone other than yourself. You cannot review your own Pull Requests.
 
 - [x] [Hayden](./reviews.md#hayden)
-- [ ] [Cassandra](./pull_request.md#cassandra)
+- [x] [Cassandra](./reviews.md#cassandra)
 - [ ] [Parker](./pull_request.md#parker)
 - [ ] [William](./pull_request.md#william)
 - [ ] [Derrick](./pull_request.md#derrick)
