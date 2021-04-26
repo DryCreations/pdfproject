@@ -110,7 +110,7 @@ To earn full credit, each Graduate Student must document contracts for at least 
 
 Undergraduate Students receive these points for free.
 
-- [ ] [5 non-trivial functions, methods, or classes have documented contracts.](./contract.md#5-non-trivial-functions-methods-or-classes-have-documented-contracts)
+- [x] [5 non-trivial functions, methods, or classes have documented contracts.](./contract.md#5-non-trivial-functions-methods-or-classes-have-documented-contracts)
 
 ### [Literate Programming](./literate.md) (10 points)
 
