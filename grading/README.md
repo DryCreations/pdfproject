@@ -121,4 +121,4 @@ To earn full credit, each Graduate Student must demonstrate all of the following
 - Contractual elements like acceptable values, preconditions, and postconditions must be documented.
 - Formatted documentation must explain WHY each function or method exists.
 
-- [ ] [5 non-trivial functions meet the described characteristics of literate programming.](./literate.md#5-non-trivial-functions-meet-the-described-characteristics-of-literate-programming)
+- [x] [5 non-trivial functions meet the described characteristics of literate programming.](./literate.md#5-non-trivial-functions-meet-the-described-characteristics-of-literate-programming)
