@@ -95,7 +95,7 @@ To earn full credit, you must provide at least 10 non-trivial items of feedback 
 To earn full credit, you must complete and close at least 5 Actions that are correctly stated with objective completion criteria, documented in Minutes, and assigned to you with a due date. You may be required to supply evidence of Action completion.
 
 - [x] [Hayden](./closed_actions.md#hayden)
-- [ ] [Cassandra](./pull_request.md#cassandra)
+- [x] [Cassandra](./closed_actions.md#cassandra)
 - [ ] [Parker](./pull_request.md#parker)
 - [ ] [William](./pull_request.md#william)
 - [ ] [Derrick](./pull_request.md#derrick)
