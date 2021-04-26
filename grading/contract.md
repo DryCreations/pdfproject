@@ -29,4 +29,5 @@ The screenshot below shows the documented contract for **handleRightClick** meth
 ### Function 5: handleOpeningLink(Event event)
 
 The screenshot below shows the documented contract for **handleOpeningLink** method of Select class, which includes, preconditions, post-conditions and invariant assertions within implementation.
+
 ![Select_handleOpeningLink](graduateLevelRequirements/Select_handleOpeningLink.png)
