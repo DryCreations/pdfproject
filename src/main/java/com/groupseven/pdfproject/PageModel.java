@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.groupseven.pdfproject;
 
 import javafx.embed.swing.SwingFXUtils;
@@ -13,10 +8,10 @@ import javafx.scene.layout.*;
 
 import java.awt.image.BufferedImage;
 
-/**
- *
- * @author hayde
- */
+///
+///
+/// @author hayde
+///
 
 /// \brief representation of a single page of a PDF
 ///
@@ -56,10 +51,17 @@ public class PageModel {
         return node;
     }
 
+    /// \brief clears the canvas, so that it is blank
+    ///
+    /// \ref t14_1 "task 14.1"
     public void clear() {
         canvas.clearScreen();
     }
 
+    /// \brief returns a copy of the MainCanvas associated with this page
+    /// \return MainCanvas
+    ///
+    /// \ref t14_1 "task 14.1"
     public MainCanvas getCanvas() {
         return canvas;
     }
