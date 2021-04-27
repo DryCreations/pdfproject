@@ -58,6 +58,11 @@ public class Select implements Action {
             DrawingAction.SELECT.accept(_canvas, _selectedDrawing.getSelection());
     }
 
+    /***
+     * The user is expected to right click the mouse and not drag the mouse after pressing down the right mouse button
+     * to get option to link the shape. The user is also expected to put in the valid link/url in the dialog box
+     * prompted for the link to be attached to the shape.
+     */
     /// \brief Handles user interaction with GUI using select tool
     ///
     /// \ref t18_1 "task 18.1"
@@ -82,29 +87,8 @@ public class Select implements Action {
          * Only accepts right click and no mouse drag
          */
         if (mouseEvent.isSecondaryButtonDown()) {
-            contextMenu = new ContextMenu();
-            MenuItem linkObj = new MenuItem("Link Object");
-            contextMenu.getItems().add(linkObj);
-            contextMenu.show(_canvas, mouseEvent.getScreenX(), mouseEvent.getScreenY());
-
-            linkObj.setOnAction(e -> {
-                TextInputDialog dialogBox = new TextInputDialog("http://my%Link%here");
-                dialogBox.setTitle("Link");
-                dialogBox.setHeaderText("What is the desired Link ");
-                dialogBox.setContentText("Link");
-
-                Optional<String> linkProvided = dialogBox.showAndWait();
-                if (linkProvided.isPresent()) {
-
-                    Hyperlink url = new Hyperlink();
-                    url.setText(linkProvided.get());
-                    _selectedDrawing.setisLinked(true);
-                    _selectedDrawing.setUri(url.getText());
-
-                }
-            });
+            handleRightClick(mouseEvent);
         }
-
         /***
          * 
          * Takes to the linked web page only if "Control" key is pressed down while mouse clicked. User is expected to
@@ -112,25 +96,11 @@ public class Select implements Action {
          */
         if (mouseEvent.isControlDown()) {
             _canvas.getScene().setCursor(Cursor.HAND);
-            if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {
-
-                if (_selectedDrawing.getisLinked()) {
-                    if (_selectedDrawing.getLink() != null) {
-                        if (Desktop.isDesktopSupported()) {
-                            try {
-                                Desktop.getDesktop().browse(new URI(_selectedDrawing.getLink()));
-                            } catch (IOException e1) {
-                                e1.printStackTrace();
-                            } catch (URISyntaxException e1) {
-                                e1.printStackTrace();
-                            }
-                        }
-                    }
-                }
+            if (event.getEventType() == MouseEvent.MOUSE_PRESSED)
+                handleOpeningLink(mouseEvent);
+            else {
+                _canvas.getScene().setCursor(Cursor.DEFAULT);
             }
-
-        } else {
-            _canvas.getScene().setCursor(Cursor.DEFAULT);
         }
 
         return _selectState == SelectState.MOVED && _selectedDrawing instanceof Action ? (Action) _selectedDrawing
@@ -233,5 +203,72 @@ public class Select implements Action {
         // Tools | Templates.
 
         System.out.println("Select");
+    }
+
+    /// If the object is already linked calling this method will throw an error.
+    /// if the object is already linked this function will not allow to provide another link
+    public void handleRightClick(Event event) {
+        /// pre-conditions
+        if (event instanceof MouseEvent)
+            assert true;
+        assert (!_selectedDrawing.getisLinked());
+        Selectable _selectedDrawing_pre = _selectedDrawing;// Only to check the post-condition
+
+        ///////////////////////////////////////////////////
+        /// Actual implementation of code
+        contextMenu = new ContextMenu();
+        MenuItem linkObj = new MenuItem("Link Object");
+        contextMenu.getItems().add(linkObj);
+        contextMenu.show(_canvas, ((MouseEvent) event).getScreenX(), ((MouseEvent) event).getScreenY());
+
+        linkObj.setOnAction(e -> {
+            TextInputDialog dialogBox = new TextInputDialog("http://my%Link%here");
+            dialogBox.setTitle("Link");
+            dialogBox.setHeaderText("What is the desired Link ");
+            dialogBox.setContentText("Link");
+
+            Optional<String> linkProvided = dialogBox.showAndWait();
+            if (linkProvided.isPresent()) {
+
+                Hyperlink url = new Hyperlink();
+                url.setText(linkProvided.get());
+                _selectedDrawing.setisLinked(true);
+                _selectedDrawing.setUri(url.getText());
+
+            }
+        });
+        /// End of the actual implementation of the function
+        //////////////////////////////////////////////////////
+
+        /// post-conditions
+        if (_selectedDrawing_pre.equals(_selectedDrawing))
+            assert true;
+        /// The selected object is not changed by calling this function.
+    }
+
+    public void handleOpeningLink(Event event) {
+
+        /// pre-conditions
+        if (event instanceof MouseEvent)
+            assert true;
+        assert (_selectedDrawing.getisLinked());
+        /// Only used to check the post-condition
+        String link_pre = _selectedDrawing.getLink();
+
+        /// Actual Implementation of the function
+        if (Desktop.isDesktopSupported()) {
+            try {
+                Desktop.getDesktop().browse(new URI(_selectedDrawing.getLink()));
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            } catch (URISyntaxException e1) {
+                e1.printStackTrace();
+            }
+        }
+        /// End of the actual implementation of the function
+
+        /// Post-condition
+        assert (link_pre.contentEquals(_selectedDrawing.getLink()));
+        /// The original link provided was not changed
     }
 }
