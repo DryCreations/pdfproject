@@ -60,7 +60,7 @@ The sum of your number of meaningful commits and pull requests needs to be great
 
 - [x] [Hayden](./pull_request.md#hayden)
 - [ ] [Cassandra](./pull_request.md#cassandra)
-- [ ] [Parker](./pull_request.md#parker)
+- [x] [Parker](./pull_request.md#parker)
 - [ ] [William](./pull_request.md#william)
 - [ ] [Derrick](./pull_request.md#derrick)
 - [ ] [Hunter](./pull_request.md#hunter)
@@ -72,7 +72,7 @@ To earn full credit, you must be identified as "present" in Minutes for at least
 
 - [x] [Hayden](./minutes.md#hayden)
 - [ ] [Cassandra](./pull_request.md#cassandra)
-- [ ] [Parker](./pull_request.md#parker)
+- [x] [Parker](./minutes.md#parker)
 - [ ] [William](./pull_request.md#william)
 - [ ] [Derrick](./pull_request.md#derrick)
 - [ ] [Hunter](./pull_request.md#hunter)
@@ -84,7 +84,7 @@ To earn full credit, you must provide at least 10 non-trivial items of feedback 
 
 - [x] [Hayden](./reviews.md#hayden)
 - [ ] [Cassandra](./pull_request.md#cassandra)
-- [ ] [Parker](./pull_request.md#parker)
+- [x] [Parker](./reviews.md#parker)
 - [ ] [William](./pull_request.md#william)
 - [ ] [Derrick](./pull_request.md#derrick)
 - [ ] [Hunter](./pull_request.md#hunter)
@@ -96,7 +96,7 @@ To earn full credit, you must complete and close at least 5 Actions that are cor
 
 - [x] [Hayden](./closed_actions.md#hayden)
 - [ ] [Cassandra](./pull_request.md#cassandra)
-- [ ] [Parker](./pull_request.md#parker)
+- [x] [Parker](./closed_actions.md#parker)
 - [ ] [William](./pull_request.md#william)
 - [ ] [Derrick](./pull_request.md#derrick)
 - [ ] [Hunter](./pull_request.md#hunter)
