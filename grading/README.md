@@ -110,7 +110,7 @@ To earn full credit, each Graduate Student must document contracts for at least 
 
 Undergraduate Students receive these points for free.
 
-- [ ] [5 non-trivial functions, methods, or classes have documented contracts.](./contract.md#5-non-trivial-functions-methods-or-classes-have-documented-contracts)
+- [x] [5 non-trivial functions, methods, or classes have documented contracts.](./contract.md#5-non-trivial-functions-methods-or-classes-have-documented-contracts)
 
 ### [Literate Programming](./literate.md) (10 points)
 
@@ -121,4 +121,4 @@ To earn full credit, each Graduate Student must demonstrate all of the following
 - Contractual elements like acceptable values, preconditions, and postconditions must be documented.
 - Formatted documentation must explain WHY each function or method exists.
 
-- [ ] [5 non-trivial functions meet the described characteristics of literate programming.](./literate.md#5-non-trivial-functions-meet-the-described-characteristics-of-literate-programming)
+- [x] [5 non-trivial functions meet the described characteristics of literate programming.](./literate.md#5-non-trivial-functions-meet-the-described-characteristics-of-literate-programming)
