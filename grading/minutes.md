@@ -48,23 +48,23 @@ I was present at this [meeting](../planning/minutes/4-15-2021.md) noted by my co
 
 ### Meeting 1
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+I was present at this [meeting](https://github.com/DryCreations/pdfproject/blob/main/planning/minutes/4-22-2021.md) noted by my completion of action 67, 75, 83, and 84.
 
 ### Meeting 2
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+I was present at this [meeting](https://github.com/DryCreations/pdfproject/blob/main/planning/minutes/4-15-2021.md) noted by my completion of action 52 and 57.
 
 ### Meeting 3
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+I was present at this [meeting](https://github.com/DryCreations/pdfproject/blob/main/planning/minutes/4-8-2021.md) noted by my completion of action 39 and 51.
 
 ### Meeting 4
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+I was present at this [meeting](https://github.com/DryCreations/pdfproject/blob/main/planning/minutes/3-25-2021.md) noted by my completion of action 26 and 27.
 
 ### Meeting 5
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+I was present at this [meeting](https://github.com/DryCreations/pdfproject/blob/main/planning/minutes/3-18-2021.md) noted by my completion of action 24.
 
 ## William
 

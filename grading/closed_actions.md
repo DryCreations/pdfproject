@@ -50,27 +50,27 @@ Action 15 was assigned in these [minutes](../planning/minutes/2-25-2021.md) and 
 
 ## Parker
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Below is a list of 5 different actions that were assigned to Parker, along with the relevant pull request, and the minutes they were marked as assigned, and completed.
 
-- [ ] [Action #]()
+- [x] [Action 84](https://github.com/DryCreations/pdfproject/pull/61)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Action 84 was assigned in these [minutes](https://github.com/DryCreations/pdfproject/blob/main/planning/minutes/4-15-2021.md) and marked as completed [here](https://github.com/DryCreations/pdfproject/blob/main/planning/minutes/4-22-2021.md)
 
-- [ ] [Action #]()
+- [x] [Action 83](https://github.com/DryCreations/pdfproject/pull/59)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Action 83 was assigned in these [minutes](https://github.com/DryCreations/pdfproject/blob/main/planning/minutes/4-15-2021.md) and marked as completed [here](https://github.com/DryCreations/pdfproject/blob/main/planning/minutes/4-22-2021.md)
 
-- [ ] [Action #]()
+- [x] [Action 51](https://github.com/DryCreations/pdfproject/pull/68)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Action 51 was assigned in these [minutes](https://github.com/DryCreations/pdfproject/blob/main/planning/minutes/4-1-2021.md) and marked as completed [here](https://github.com/DryCreations/pdfproject/blob/main/planning/minutes/4-8-2021.md)
 
-- [ ] [Action #]()
+- [x] [Action 27](https://github.com/DryCreations/pdfproject/pull/26)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Action 27 was assigned in these [minutes](https://github.com/DryCreations/pdfproject/blob/main/planning/minutes/3-18-2021.md) and marked as completed [here](https://github.com/DryCreations/pdfproject/blob/main/planning/minutes/3-25-2021.md)
 
-- [ ] [Action #]()
+- [x] [Action 26](https://github.com/DryCreations/pdfproject/pull/26)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Action 26 was assigned in these [minutes](https://github.com/DryCreations/pdfproject/blob/main/planning/minutes/3-18-2021.md) and marked as completed [here](https://github.com/DryCreations/pdfproject/blob/main/planning/minutes/3-25-2021.md)
 
 ## William
 
