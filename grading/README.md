@@ -59,8 +59,8 @@ For both Waterfall and Agile, each team must produce an "As-Built" Software Desi
 The sum of your number of meaningful commits and pull requests needs to be greater than or equal to 20 to earn full credit.
 
 - [x] [Hayden](./pull_request.md#hayden)
-- [ ] [Cassandra](./pull_request.md#cassandra)
-- [ ] [Parker](./pull_request.md#parker)
+- [x] [Cassandra](./pull_request.md#cassandra)
+- [x] [Parker](./pull_request.md#parker)
 - [ ] [William](./pull_request.md#william)
 - [ ] [Derrick](./pull_request.md#derrick)
 - [ ] [Hunter](./pull_request.md#hunter)
@@ -71,8 +71,8 @@ The sum of your number of meaningful commits and pull requests needs to be great
 To earn full credit, you must be identified as "present" in Minutes for at least 5 separate meetings, and the Minutes must document your non-trivial contribution in the Project. Completion of Action Items that are documented in the Minutes can be used to document your contribution.
 
 - [x] [Hayden](./minutes.md#hayden)
-- [ ] [Cassandra](./pull_request.md#cassandra)
-- [ ] [Parker](./pull_request.md#parker)
+- [x] [Cassandra](./minutes.md#cassandra)
+- [x] [Parker](./minutes.md#parker)
 - [ ] [William](./pull_request.md#william)
 - [ ] [Derrick](./pull_request.md#derrick)
 - [ ] [Hunter](./pull_request.md#hunter)
@@ -83,8 +83,8 @@ To earn full credit, you must be identified as "present" in Minutes for at least
 To earn full credit, you must provide at least 10 non-trivial items of feedback within Pull Requests made by someone other than yourself. You cannot review your own Pull Requests.
 
 - [x] [Hayden](./reviews.md#hayden)
-- [ ] [Cassandra](./pull_request.md#cassandra)
-- [ ] [Parker](./pull_request.md#parker)
+- [x] [Cassandra](./reviews.md#cassandra)
+- [x] [Parker](./reviews.md#parker)
 - [ ] [William](./pull_request.md#william)
 - [ ] [Derrick](./pull_request.md#derrick)
 - [ ] [Hunter](./pull_request.md#hunter)
@@ -95,8 +95,8 @@ To earn full credit, you must provide at least 10 non-trivial items of feedback 
 To earn full credit, you must complete and close at least 5 Actions that are correctly stated with objective completion criteria, documented in Minutes, and assigned to you with a due date. You may be required to supply evidence of Action completion.
 
 - [x] [Hayden](./closed_actions.md#hayden)
-- [ ] [Cassandra](./pull_request.md#cassandra)
-- [ ] [Parker](./pull_request.md#parker)
+- [x] [Cassandra](./closed_actions.md#cassandra)
+- [x] [Parker](./closed_actions.md#parker)
 - [ ] [William](./pull_request.md#william)
 - [ ] [Derrick](./pull_request.md#derrick)
 - [ ] [Hunter](./pull_request.md#hunter)
@@ -110,7 +110,7 @@ To earn full credit, each Graduate Student must document contracts for at least 
 
 Undergraduate Students receive these points for free.
 
-- [ ] [5 non-trivial functions, methods, or classes have documented contracts.](./contract.md#5-non-trivial-functions-methods-or-classes-have-documented-contracts)
+- [x] [5 non-trivial functions, methods, or classes have documented contracts.](./contract.md#5-non-trivial-functions-methods-or-classes-have-documented-contracts)
 
 ### [Literate Programming](./literate.md) (10 points)
 
@@ -121,4 +121,4 @@ To earn full credit, each Graduate Student must demonstrate all of the following
 - Contractual elements like acceptable values, preconditions, and postconditions must be documented.
 - Formatted documentation must explain WHY each function or method exists.
 
-- [ ] [5 non-trivial functions meet the described characteristics of literate programming.](./literate.md#5-non-trivial-functions-meet-the-described-characteristics-of-literate-programming)
+- [x] [5 non-trivial functions meet the described characteristics of literate programming.](./literate.md#5-non-trivial-functions-meet-the-described-characteristics-of-literate-programming)

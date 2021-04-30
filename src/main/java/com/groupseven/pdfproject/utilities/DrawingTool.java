@@ -45,13 +45,16 @@ public class DrawingTool implements EventHandler<MouseEvent> {
             _currentAction = (_drawingMode == DrawingMode.PEN) ? new DrawLine(_canvas, _color)
                     : (_drawingMode == DrawingMode.ERASER) ? new Erase(_canvas) : (_drawingMode == DrawingMode.SELECT)
                             ? new Select(_canvas)
-                            : (_drawingMode == DrawingMode.RECTANGLE) ? new DrawRectangle(_canvas, _color) : null;
+                            : (_drawingMode == DrawingMode.RECTANGLE) ? new DrawRectangle(_canvas, _color)
+                                    : (_drawingMode == DrawingMode.TEXTFIELD) ? new DrawTextField(_canvas)
+                                            : (_drawingMode == DrawingMode.RADIOBUTTON) ? new DrawRadioButton(_canvas)
+                                                    : (_drawingMode == DrawingMode.CHECKBOX) ? new DrawCheckBox(_canvas)
+                                                            : null;
 
         if (_currentAction != null) {
-            _currentAction = _currentAction.handle(event);
+            _currentAction.handle(event);
             updateScreen();
         }
-
     }
 
     /// \brief set color
