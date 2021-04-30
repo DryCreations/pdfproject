@@ -17,7 +17,7 @@ import javafx.scene.paint.Color;
 
 /**
  * @author Hunter Gongloff
- * 
+ *
  * @{ \brief This is the class to create a text field on user click \ref 16_1 "Task 16.1"
  */
 public class DrawTextField implements Action {
