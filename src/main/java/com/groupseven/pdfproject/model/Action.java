@@ -18,20 +18,20 @@ public interface Action {
     void execute();
 
     /// \Sets up the environment for the action to take place
-    /// \@param event
+    /// @param event
     /// \Event triggering the action
     ///
-    /// \@return a constructed action based on the Event source
+    /// @return a constructed action based on the Event source
     Action handle(Event event);
 
-    /// \@return true if the action is complete
+    /// @return true if the action is complete
     boolean isComplete();
 
     /// \ Evaluates whether a point is contained by the Action
-    /// \@param point
+    /// @param point
     /// \Point to be checked
     ///
-    /// \@return true if Point is contained by the Action
+    /// @return true if Point is contained by the Action
     boolean contains(Point2D point);
 
     void pdfExecute(PdfCanvas canvas, PdfPage page);
