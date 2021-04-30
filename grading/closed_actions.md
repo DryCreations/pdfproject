@@ -26,27 +26,27 @@ Action 36 was assigned in these [minutes](../planning/minutes/3-25-2021.md) and 
 
 ## Cassandra
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Below is a list of 5 different actions that were assigned to Cassandra, along with the relevant pull request, and the minutes they were marked as assigned, and completed.
 
-- [ ] [Action #]()
+- [x] [Action 60](https://github.com/DryCreations/pdfproject/pull/51)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Action 60 was assigned in these [minutes](../planning/minutes/4-8-2021.md) and marked as completed [here](../planning/minutes/4-15-2021.md)
 
-- [ ] [Action #]()
+- [x] [Action 49](https://github.com/DryCreations/pdfproject/pull/50)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Action 49 was assigned in these [minutes](../planning/minutes/4-1-2021.md) and marked as completed [here](../planning/minutes/4-15-2021.md)
 
-- [ ] [Action #]()
+- [x] [Action 34](https://github.com/DryCreations/pdfproject/pull/55)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Action 34 was assigned in these [minutes](../planning/minutes/3-18-2021.md) and marked as completed [here](../planning/minutes/4-8-2021.md)
 
-- [ ] [Action #]()
+- [x] [Action 33](https://github.com/DryCreations/pdfproject/pull/30)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Action 33 was assigned in these [minutes](../planning/minutes/3-18-2021.md) and marked as completed [here](../planning/minutes/3-25-2021.md)
 
-- [ ] [Action #]()
+- [x] [Action 15](https://github.com/DryCreations/pdfproject/pull/18)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Action 15 was assigned in these [minutes](../planning/minutes/2-25-2021.md) and marked as completed [here](../planning/minutes/3-11-2021.md)
 
 ## Parker
 
