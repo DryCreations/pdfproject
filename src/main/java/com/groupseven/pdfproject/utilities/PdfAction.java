@@ -1,12 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.groupseven.pdfproject.utilities;
 
 import com.groupseven.pdfproject.TriConsumer;
-import com.itextpdf.kernel.color.DeviceRgb;
+import com.itextpdf.kernel.colors.DeviceRgb;
 import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.extgstate.PdfExtGState;
@@ -15,11 +10,20 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
-/**
- *
- * @author hayde
- */
+///
+/// @author hayde
+///
+
+/// \brief This class performs the action of drawing line and rectangle, select an object and erasing the drawn shape or line on a PdfCanvas.
+/// \ref t8_5 "Task 8.5"
+/// \ref t9_1 "Task 9.1"
+/// \ref t9_1_1 "Task 9.1.1"
+/// \ref t9_1_2 "Task 9.1.2"
+/// \ref t18_1 "Task 18.1"
 public class PdfAction {
+
+    /// \ref t9_1_1 "Task 9.1.1"
+    /// \brief Draws a line on PDF Canvas
     public static final TriConsumer<PdfCanvas, PdfPage, Shape> DRAW_LINE = (canvas, page, object) -> {
         if (!(object instanceof Line))
             return;
@@ -45,6 +49,8 @@ public class PdfAction {
         canvas.restoreState();
     };
 
+    /// \ref t9_1_2 "Task 9.1.2"
+    /// \brief Erases the line or shape drawn on the PDF canvas.
     public static final TriConsumer<PdfCanvas, PdfPage, Shape> ERASE = (canvas, page, object) -> {
         if (!(object instanceof Rectangle))
             return;
@@ -52,8 +58,6 @@ public class PdfAction {
         Rectangle rectangle = (Rectangle) object;
 
         canvas.saveState();
-
-        // canvas.setExtGState(new PdfExtGState().setFillOpacity(0.1f));
 
         com.itextpdf.kernel.geom.Rectangle size = page.getPageSize();
 
@@ -71,6 +75,9 @@ public class PdfAction {
         canvas.restoreState();
     };
 
+    /// \ref t8_5 "Task 8.5"
+    /// \ref t9_1_1 "Task 9.1.1"
+    /// \brief draws a rectangle on the PDF canvas
     public static final TriConsumer<PdfCanvas, PdfPage, Shape> DRAW_RECTANGLE = (canvas, page, object) -> {
         if (!(object instanceof Rectangle))
             return;
@@ -95,6 +102,8 @@ public class PdfAction {
         canvas.restoreState();
     };
 
+    /// \ref t18_1 "Task 18.1"
+    /// \brief selects the shape drawn on the PDF canvas
     public static final TriConsumer<PdfCanvas, PdfPage, Shape> SELECT = (canvas, page, object) -> {
         if (!(object instanceof Rectangle))
             return;

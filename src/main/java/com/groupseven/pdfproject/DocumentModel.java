@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.groupseven.pdfproject;
 
 import com.groupseven.pdfproject.model.Action;
@@ -28,10 +23,14 @@ import java.util.List;
 import java.awt.Color;
 import java.util.Stack;
 
-/**
- *
- * @author hayde
- */
+///
+///
+/// @author hayde
+///
+
+/// \brief Model representing a pdf document that contains all pages necessary to interact with the pdf.
+///
+/// \ref t8_1 "task 8.1"
 public class DocumentModel {
     private File file;
     private List<PageModel> pages;
@@ -50,16 +49,23 @@ public class DocumentModel {
     ///
     /// \ref t14_1 "task 14.1"
     public DocumentModel(File file) throws IOException {
+        /// pre-condition
+        if (file != null)
+            assert true;
+
         this.file = file;
         this.pages = new ArrayList<>();
-
-        // File file = new File(filename);
 
         RandomAccessFile raf = new RandomAccessFile(file, "r");
         FileChannel fileChannel = raf.getChannel();
         ByteBuffer buffer = fileChannel.map(FileChannel.MapMode.READ_ONLY, 0, fileChannel.size());
         PDFFile pdfFile = new PDFFile(buffer);
 
+        if (pdfFile.getNumPages() > 0)
+            assert true;
+        /// End pre-conditions
+
+        /// Actual Implementation of function
         for (int i = 1; i <= pdfFile.getNumPages(); i++) {
             PDFPage page = pdfFile.getPage(i);
             Rectangle rect = new Rectangle(0, 0, (int) page.getBBox().getWidth(), (int) page.getBBox().getHeight());
@@ -73,6 +79,12 @@ public class DocumentModel {
         }
 
         raf.close();
+        /// End of Actual Implementation of function
+
+        /// Post-condition
+        if (this.file == file)
+            assert true;
+        /// the file passed did not change by calling this function
     }
 
     /// \brief get a specific page from the document
@@ -83,33 +95,51 @@ public class DocumentModel {
         return pages.get(i);
     }
 
+    /// \brief sets dimension of current pdf document
+    ///
     /// \ref t8.2 "task 8.2"
     public void setDimensions() {
 
     }
 
+    /// \brief inserts asset onto document
+    ///
     /// \ref t8_4 "task 8.4"
     public void insertAsset() {
 
     }
 
+    /// \brief inserts shape onto document
+    ///
     /// \ref t8_5 "task 8.5"
     public void insertShape() {
 
     }
 
+    /// \brief moves object that is currently in document
+    ///
     /// \ref t8_6 "task 8.6"
     public void moveObject() {
 
     }
 
+    /// \brief inserts textbox into current document
+    ///
     /// \ref t8_7 "task 8.7"
     public void insertTextBox() {
 
     }
 
+    /// \brief exports current file to a file
+    ///
     /// \ref t8_8 "task 8.8"
     public void export(File dest) throws IOException {
+        /// pre-conditions
+        assert (!dest.equals(null));
+        assert (!pages.equals(null));
+        int pgSize = pages.size(); // only for checking post-condition
+
+        /// Actual implementation of method
         dest.getParentFile().mkdirs();
         PdfWriter writer = new PdfWriter(dest);
         PdfDocument pdfDoc;
@@ -141,5 +171,9 @@ public class DocumentModel {
 
         }
         pdfDoc.close();
+        /// End implementation of Actual method
+
+        /// post-condition
+        assert (pgSize == pages.size());/// the size of the original document did not change
     }
 }

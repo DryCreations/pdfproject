@@ -12,12 +12,15 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -37,6 +40,11 @@ public class App extends Application {
     int currentPage;
     private Scene mainScene;
     private static DrawingToolbar _drawingToolBar;
+
+    private Button undoButton;
+    private Button redoButton;
+    private Button saveDocButton;
+    private Button newDocButton;
 
     /// \ref t8_3 "task 8.3"
     private EventHandler handleImportAsset = new EventHandler<ActionEvent>() {
@@ -81,7 +89,7 @@ public class App extends Application {
     private Menu createFileMenu() {
         Menu fileMenu = new Menu("File");
 
-        MenuItem newDocument = new MenuItem("New Document");
+        MenuItem newDocument = new MenuItem("New Document   (CTRL+N)");
         newDocument.setOnAction(e -> {
             DocumentModel newDoc = new DocumentModel();
             setDisplayDoc(newDoc, 0);
@@ -102,7 +110,7 @@ public class App extends Application {
 
         });
 
-        MenuItem saveDocument = new MenuItem("Save Document");
+        MenuItem saveDocument = new MenuItem("Save Document   (CTRL+S)");
 
         /// ref t8_8 "task 8.8"
         saveDocument.setOnAction(e -> {
@@ -123,6 +131,30 @@ public class App extends Application {
         return fileMenu;
     }
 
+    /// \brief create edit menu element
+    /// \return Menu for editing functionalities
+    ///
+    /// \ref t19_1_3 "task 19.1.3"
+    private Menu createEditMenu() {
+        Menu editMenu = new Menu("Edit");
+
+        MenuItem undoItem = new MenuItem("Undo   (CTRL+Z)");
+        MenuItem redoItem = new MenuItem("Redo  (CTRL+Y)");
+
+        undoItem.setOnAction(event -> {
+            canvas.undo();
+        });
+
+        redoItem.setOnAction(event -> {
+            canvas.redo();
+        });
+
+        editMenu.getItems().add(undoItem);
+        editMenu.getItems().add(redoItem);
+
+        return editMenu;
+    }
+
     /// \brief create drawing menu element
     /// \return
     ///
@@ -138,6 +170,7 @@ public class App extends Application {
                 canvas.getChildren().remove(_drawingToolBar);
             } else {
                 canvas.getChildren().add(_drawingToolBar);
+
             }
 
         });
@@ -165,10 +198,11 @@ public class App extends Application {
         MenuBar menuBar = new MenuBar();
 
         Menu fileMenu = createFileMenu();
+        Menu editMenu = createEditMenu();
         Menu drawingMenu = createDrawingMenu();
         Menu helpMenu = createHelpMenu();
 
-        menuBar.getMenus().addAll(fileMenu, drawingMenu, helpMenu);
+        menuBar.getMenus().addAll(fileMenu, editMenu, drawingMenu, helpMenu);
 
         return menuBar;
     }
@@ -225,6 +259,58 @@ public class App extends Application {
         return redobutton;
     }
 
+    /// \brief create save document button element
+    /// \return Button for activating save document feature
+    ///
+    /// \ref t19_1_1 "task 19.1.1"
+    private Button createSaveDocumentButton() {
+        Image savedocimg = new Image("savebutton.png");
+        ImageView savedocview = new ImageView(savedocimg);
+
+        Button savedocbutton = new Button();
+        savedocbutton.setGraphic(savedocview);
+
+        savedocbutton.setOnAction(event -> {
+            FileChooser fileChooser = new FileChooser();
+            File selectedFile = fileChooser.showSaveDialog(null);
+
+            try {
+                doc.export(selectedFile);
+            } catch (IOException ex) {
+                Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+
+        Tooltip savedoctip = new Tooltip("Save Document");
+        Tooltip.install(savedocbutton, savedoctip);
+
+        savedocbutton.setPrefSize(22, 22);
+        return savedocbutton;
+    }
+
+    /// \brief create new document button element
+    /// \return Button for activating new document feature
+    ///
+    /// \ref t19_1_2 "task 19.1.2
+    private Button createNewDocumentButton() {
+        Image newdocimg = new Image("newbutton.png");
+        ImageView newdocview = new ImageView(newdocimg);
+
+        Button newdocbutton = new Button();
+        newdocbutton.setGraphic(newdocview);
+
+        newdocbutton.setOnAction(event -> {
+            DocumentModel newDoc = new DocumentModel();
+            setDisplayDoc(newDoc, 0);
+        });
+
+        Tooltip newdoctip = new Tooltip("New Document");
+        Tooltip.install(newdocbutton, newdoctip);
+
+        newdocbutton.setPrefSize(22, 22);
+        return newdocbutton;
+    }
+
     /// \brief starts javafx GUI
     ///
     /// \return void
@@ -235,17 +321,23 @@ public class App extends Application {
         BorderPane root = new BorderPane();
         GridPane ToolBox = createToolBox();
         MenuBar menuBar = createMenuBar();
-        Button undobutton = createUndoButton();
-        Button redobutton = createRedoButton();
 
-        GridPane.setConstraints(undobutton, 0, 0);
-        GridPane.setConstraints(redobutton, 1, 0);
+        undoButton = createUndoButton();
+        redoButton = createRedoButton();
+        saveDocButton = createSaveDocumentButton();
+        newDocButton = createNewDocumentButton();
+
+        GridPane.setConstraints(saveDocButton, 0, 0);
+        GridPane.setConstraints(newDocButton, 1, 0);
+        GridPane.setConstraints(undoButton, 2, 0);
+        GridPane.setConstraints(redoButton, 3, 0);
 
         root.setTop(menuBar);
         root.setLeft(ToolBox);
 
-        ToolBox.getChildren().addAll(undobutton, redobutton);
+        ToolBox.getChildren().addAll(saveDocButton, newDocButton, undoButton, redoButton);
 
+        setShortcutEventHandler(root);
         mainScene = new Scene(root);
         primaryStage.setScene(mainScene);
 
@@ -256,15 +348,49 @@ public class App extends Application {
         canvas = doc.getPage(currentPage).getCanvas();
     }
 
+    /// \brief handle keyboard shortcut events
+    ///
+    /// \ref t19_2 "Task 19.2"
+    public void setShortcutEventHandler(Node root) {
+        root.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
+
+            if (event.getCode() == KeyCode.S && event.isControlDown()) {
+                saveDocButton.fire();
+                event.consume();
+            }
+            if (event.getCode() == KeyCode.N && event.isControlDown()) {
+                newDocButton.fire();
+                event.consume();
+            }
+            if (event.getCode() == KeyCode.Z && event.isControlDown()) {
+                undoButton.fire();
+                event.consume();
+            }
+            if (event.getCode() == KeyCode.Y && event.isControlDown()) {
+                redoButton.fire();
+                event.consume();
+            }
+        });
+    }
+
     /// \brief Sets up the pdf canvas to display as the center of the javafx GUI
     public void setDisplayDoc(DocumentModel document, int pageNum) {
+        /// preconditions
+        assert (document != null);
+        assert (pageNum >= 0);
         currentPage = 0;
         doc = document;
+
+        /// Actual implementation of method
         PageModel page = document.getPage(pageNum);
         BorderPane root = (BorderPane) mainScene.getRoot();
 
         canvas = page.getCanvas();
         root.setCenter(createViewbox(page));
+        /// End of Actual implementation of method
+
+        /// post-conditions
+        assert (doc.equals(document)); // document used is not changed
     }
 
     /// \brief main method of project

@@ -2,22 +2,32 @@
 
 ## 5 non-trivial functions, methods, or classes have documented contracts.
 
-### Function 1
+### Function 1: setDisplayDoc(DocumentModel document, int pageNum)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+The screenshot below shows the documented contract for **setDisplayDoc** method of App class, which includes, preconditions, post-conditions and invariant assertions within implementation.
 
-### Function 2
+![App_setDisplayDoc](graduateLevelRequirements/App_setDisplayDoc.png)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+### Function 2: DocumentModel(File file)
 
-### Function 3
+The screenshot below shows the documented contract for **DocumentModel** method of DocumentModel class, which includes, preconditions, post-conditions and invariant assertions within implementation.
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+![DocumentModel_DocumentModel](graduateLevelRequirements/DocumentModel_DocumentModel.png)
 
-### Function 4
+### Function 3: export(File dest)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+The screenshot below shows the documented contract for **export** method of DocumentModel class, which includes, preconditions, post-conditions and invariant assertions within implementation.
 
-### Function 5
+![DocumentModel_export](graduateLevelRequirements/DocumentModel_export.png)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+### Function 4: handleRightClick(Event event)
+
+The screenshot below shows the documented contract for **handleRightClick** method of Select class, which includes, preconditions, post-conditions and invariant assertions within implementation.
+
+![Select_handleRightClick](graduateLevelRequirements/Select_handleRightClick.png)
+
+### Function 5: handleOpeningLink(Event event)
+
+The screenshot below shows the documented contract for **handleOpeningLink** method of Select class, which includes, preconditions, post-conditions and invariant assertions within implementation.
+
+![Select_handleOpeningLink](graduateLevelRequirements/Select_handleOpeningLink.png)

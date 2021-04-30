@@ -2,102 +2,112 @@
 
 ## 5 non-trivial functions meet the described characteristics of literate programming.
 
-### Function 1
+### Function 1: setDisplayDoc(DocumentModel document, int pageNum)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Below is the screenshot of the function (from App class) and also the description which satisfies the requirements for literate programming.
 
-- [ ] Method or function names and arguments must be self documenting.
+![App_setDisplayDoc](graduateLevelRequirements/App_setDisplayDoc.png)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+- [x] Method or function names and arguments must be self documenting.
 
-- [ ] Named data types must be used as a form of documentation.
+From the above image it can be seen that the method name "setDisplayDoc" and the arguments "document, pageNum" are self documenting.
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+- [x] Named data types must be used as a form of documentation.
 
-- [ ] Contractual elements like acceptable values, preconditions, and postconditions must be documented.
+In the above image the data type of document is DocumentModel and that of pageNum is int.
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+- [x] Contractual elements like acceptable values, preconditions, and postconditions must be documented.
 
-- [ ] Formatted documentation must explain WHY each function or method exists.
+From the above image it can be seen that the preconditions are that the document cannot be null and the pageNum must be greater than or equal to 0. While the post condition is that the original document which is to be displayed is not changed/modified.
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+- [x] Formatted documentation must explain WHY each function or method exists.
 
-### Function 2
+By looking at the formatted documentation it explains that this method exists to display the PDF canvas as the center of the GUI.
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+### Function 2: DocumentModel(File file)
 
-- [ ] Method or function names and arguments must be self documenting.
+Below is the screenshot of the function (from DocumentModek class) and also the description which satisfies the requirements for literate programming.
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+![DocumentModel_DocumentModel](graduateLevelRequirements/DocumentModel_DocumentModel.png)
 
-- [ ] Named data types must be used as a form of documentation.
+- [x] Method or function names and arguments must be self documenting.
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+From the above image it can be seen that the method name "DocumentModel" and the argument "file" are self documenting.
 
-- [ ] Contractual elements like acceptable values, preconditions, and postconditions must be documented.
+- [x] Named data types must be used as a form of documentation.
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+In the above image the data type of file is File.
 
-- [ ] Formatted documentation must explain WHY each function or method exists.
+- [x] Contractual elements like acceptable values, preconditions, and postconditions must be documented.
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+From the above image it can be seen that the preconditions are that the file cannot be null and the pages of the PdfFile must be greater than 0. While the post condition is that the file which was passed did not change/modify.
 
-### Function 3
+- [x] Formatted documentation must explain WHY each function or method exists.
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+This particular method exists to create a document for a specific file and also to satisfy the requirement of task 14.1.
 
-- [ ] Method or function names and arguments must be self documenting.
+### Function 3: export(File dest)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Below is the screenshot of the function (from DocumentModel class) and also the description which satisfies the requirements for literate programming.
 
-- [ ] Named data types must be used as a form of documentation.
+![DocumentModel_export](graduateLevelRequirements/DocumentModel_export.png)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+- [x] Method or function names and arguments must be self documenting.
 
-- [ ] Contractual elements like acceptable values, preconditions, and postconditions must be documented.
+From the above image it can be seen that the method name "export" and the argument "dest" are self documenting.
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+- [x] Named data types must be used as a form of documentation.
 
-- [ ] Formatted documentation must explain WHY each function or method exists.
+In the above image the data type of dest is File.
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+- [x] Contractual elements like acceptable values, preconditions, and postconditions must be documented.
 
-### Function 4
+From the above image it can be seen that the preconditions are that the destination file cannot be null and the List<PageModel> pages cannot be null. While the post condition is that the size of the original document did not change.
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+- [x] Formatted documentation must explain WHY each function or method exists.
 
-- [ ] Method or function names and arguments must be self documenting.
+This particular method exists to export current file to a file and also to satisfy the requirement of task 8.8.
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+### Function 4: handleRightClick(Event event)
 
-- [ ] Named data types must be used as a form of documentation.
+Below is the screenshot of the function (from Select class) and also the description of the function which satisfies the requirements for literate programming.
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+![Select_handleRightClick](graduateLevelRequirements/Select_handleRightClick.png)
 
-- [ ] Contractual elements like acceptable values, preconditions, and postconditions must be documented.
+- [x] Method or function names and arguments must be self documenting.
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+From the above image it can be seen that the method name "handleRightClick" and the argument "event" are self documenting.
 
-- [ ] Formatted documentation must explain WHY each function or method exists.
+- [x] Named data types must be used as a form of documentation.
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+In the above image the data type of event is Event.
 
-### Function 5
+- [x] Contractual elements like acceptable values, preconditions, and postconditions must be documented.
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+From the above image it can be seen that the preconditions are that the event must be an instance of MouseEvent and selected drawing must not contain any link. While the post condition is that the selected object did not change. Hence, if the object is already having a link calling this method will throw an error and also will not let to provide a link.
 
-- [ ] Method or function names and arguments must be self documenting.
+- [x] Formatted documentation must explain WHY each function or method exists.
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+This particular method exists to handle the right click event which can be known from the self documenting name of the function itself and to satisfy the requirement of task 18.2.
 
-- [ ] Named data types must be used as a form of documentation.
+### Function 5: handleOpeningLink(Event event)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Below is the screenshot of the function (from Select class) and also the description of the function which satisfies the requirements for literate programming.
 
-- [ ] Contractual elements like acceptable values, preconditions, and postconditions must be documented.
+![Select_handleOpeningLink](graduateLevelRequirements/Select_handleOpeningLink.png)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+- [x] Method or function names and arguments must be self documenting.
 
-- [ ] Formatted documentation must explain WHY each function or method exists.
+From the above image it can be seen that the method name "handleOpeningLink" and the argument "event" are self documenting.
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+- [x] Named data types must be used as a form of documentation.
+
+In the above image the data type of event is Event.
+
+- [x] Contractual elements like acceptable values, preconditions, and postconditions must be documented.
+
+From the above image it can be seen that the preconditions are that the event must be an instance of MouseEvent and selected drawing must have a link attached to it. While the post condition is that the selected object's link did not change/modify by calling this method.
+
+- [x] Formatted documentation must explain WHY each function or method exists.
+
+This function is called to open the link attached to the object/shape and to satisfy the requirement of task 18.2.

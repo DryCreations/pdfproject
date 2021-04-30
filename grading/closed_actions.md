@@ -2,75 +2,75 @@
 
 ## Hayden
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Below is a list of 5 different actions that were assigned to Hayden, along with the relevant pull request, and the minutes they were marked as assigned, and completed.
 
-- [ ] [Action #]()
+- [x] [Action 59](https://github.com/DryCreations/pdfproject/pull/46)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Action 59 was assigned in these [minutes](../planning/minutes/4-8-2021.md) and marked as completed [here](../planning/minutes/4-15-2021.md)
 
-- [ ] [Action #]()
+- [x] [Action 50](https://github.com/DryCreations/pdfproject/pull/40)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Action 50 was assigned in these [minutes](../planning/minutes/4-1-2021.md) and marked as completed [here](../planning/minutes/4-8-2021.md)
 
-- [ ] [Action #]()
+- [x] [Action 47](https://github.com/DryCreations/pdfproject/pull/39)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Action 47 was assigned in these [minutes](../planning/minutes/4-1-2021.md) and marked as completed [here](../planning/minutes/4-8-2021.md)
 
-- [ ] [Action #]()
+- [x] [Action 37](https://github.com/DryCreations/pdfproject/pull/33)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Action 37 was assigned in these [minutes](../planning/minutes/3-25-2021.md) and marked as completed [here](../planning/minutes/4-1-2021.md)
 
-- [ ] [Action #]()
+- [x] [Action 36](https://github.com/DryCreations/pdfproject/pull/32)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Action 36 was assigned in these [minutes](../planning/minutes/3-25-2021.md) and marked as completed [here](../planning/minutes/4-1-2021.md)
 
 ## Cassandra
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Below is a list of 5 different actions that were assigned to Cassandra, along with the relevant pull request, and the minutes they were marked as assigned, and completed.
 
-- [ ] [Action #]()
+- [x] [Action 60](https://github.com/DryCreations/pdfproject/pull/51)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Action 60 was assigned in these [minutes](../planning/minutes/4-8-2021.md) and marked as completed [here](../planning/minutes/4-15-2021.md)
 
-- [ ] [Action #]()
+- [x] [Action 49](https://github.com/DryCreations/pdfproject/pull/50)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Action 49 was assigned in these [minutes](../planning/minutes/4-1-2021.md) and marked as completed [here](../planning/minutes/4-15-2021.md)
 
-- [ ] [Action #]()
+- [x] [Action 34](https://github.com/DryCreations/pdfproject/pull/55)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Action 34 was assigned in these [minutes](../planning/minutes/3-18-2021.md) and marked as completed [here](../planning/minutes/4-8-2021.md)
 
-- [ ] [Action #]()
+- [x] [Action 33](https://github.com/DryCreations/pdfproject/pull/30)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Action 33 was assigned in these [minutes](../planning/minutes/3-18-2021.md) and marked as completed [here](../planning/minutes/3-25-2021.md)
 
-- [ ] [Action #]()
+- [x] [Action 15](https://github.com/DryCreations/pdfproject/pull/18)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Action 15 was assigned in these [minutes](../planning/minutes/2-25-2021.md) and marked as completed [here](../planning/minutes/3-11-2021.md)
 
 ## Parker
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Below is a list of 5 different actions that were assigned to Parker, along with the relevant pull request, and the minutes they were marked as assigned, and completed.
 
-- [ ] [Action #]()
+- [x] [Action 84](https://github.com/DryCreations/pdfproject/pull/61)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Action 84 was assigned in these [minutes](https://github.com/DryCreations/pdfproject/blob/main/planning/minutes/4-15-2021.md) and marked as completed [here](https://github.com/DryCreations/pdfproject/blob/main/planning/minutes/4-22-2021.md)
 
-- [ ] [Action #]()
+- [x] [Action 83](https://github.com/DryCreations/pdfproject/pull/59)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Action 83 was assigned in these [minutes](https://github.com/DryCreations/pdfproject/blob/main/planning/minutes/4-15-2021.md) and marked as completed [here](https://github.com/DryCreations/pdfproject/blob/main/planning/minutes/4-22-2021.md)
 
-- [ ] [Action #]()
+- [x] [Action 51](https://github.com/DryCreations/pdfproject/pull/68)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Action 51 was assigned in these [minutes](https://github.com/DryCreations/pdfproject/blob/main/planning/minutes/4-1-2021.md) and marked as completed [here](https://github.com/DryCreations/pdfproject/blob/main/planning/minutes/4-8-2021.md)
 
-- [ ] [Action #]()
+- [x] [Action 27](https://github.com/DryCreations/pdfproject/pull/26)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Action 27 was assigned in these [minutes](https://github.com/DryCreations/pdfproject/blob/main/planning/minutes/3-18-2021.md) and marked as completed [here](https://github.com/DryCreations/pdfproject/blob/main/planning/minutes/3-25-2021.md)
 
-- [ ] [Action #]()
+- [x] [Action 26](https://github.com/DryCreations/pdfproject/pull/26)
 
-{ TODO: describe how the requirement has been, along with evidence of completion }
+Action 26 was assigned in these [minutes](https://github.com/DryCreations/pdfproject/blob/main/planning/minutes/3-18-2021.md) and marked as completed [here](https://github.com/DryCreations/pdfproject/blob/main/planning/minutes/3-25-2021.md)
 
 ## William
 

@@ -7,11 +7,11 @@ import javafx.event.EventType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
-/**
- * @author Charles Witherspoon
- *
- *         \brief Class that performs different canvas actions based on the DrawingMode \ref t9_1 "Task 9.1"
- */
+/// @author Charles Witherspoon
+
+/// \brief Class that performs different canvas actions based on the DrawingMode
+///
+/// \ref t9_1 "Task 9.1"
 public class DrawingTool implements EventHandler<MouseEvent> {
     private MainCanvas _canvas;
     private DrawingMode _drawingMode;
@@ -23,17 +23,17 @@ public class DrawingTool implements EventHandler<MouseEvent> {
         _color = Color.BLACK;
     }
 
-    /**
-     * Set the DrawingMode
-     * 
-     * @param drawingMode
-     *            DrawingMode to set
-     */
+    /// \brief set the drawing mode of the tool
+    ///
+    /// \ref t9_1 "Task 9.1"
     public void setDrawingMode(DrawingMode drawingMode) {
         _drawingMode = drawingMode;
         _currentAction = null;
     }
 
+    /// \brief handle passed in mouse event
+    ///
+    /// \ref t9_1 "Task 9.1"
     @Override
     public void handle(MouseEvent event) {
         EventType<? extends MouseEvent> eventType = event.getEventType();
@@ -45,25 +45,28 @@ public class DrawingTool implements EventHandler<MouseEvent> {
             _currentAction = (_drawingMode == DrawingMode.PEN) ? new DrawLine(_canvas, _color)
                     : (_drawingMode == DrawingMode.ERASER) ? new Erase(_canvas) : (_drawingMode == DrawingMode.SELECT)
                             ? new Select(_canvas)
-                            : (_drawingMode == DrawingMode.RECTANGLE) ? new DrawRectangle(_canvas, _color) : null;
+                            : (_drawingMode == DrawingMode.RECTANGLE) ? new DrawRectangle(_canvas, _color)
+                                    : (_drawingMode == DrawingMode.TEXTFIELD) ? new DrawTextField(_canvas)
+                                            : (_drawingMode == DrawingMode.RADIOBUTTON) ? new DrawRadioButton(_canvas)
+                                                    : (_drawingMode == DrawingMode.CHECKBOX) ? new DrawCheckBox(_canvas)
+                                                            : null;
 
         if (_currentAction != null) {
-            _currentAction = _currentAction.handle(event);
+            _currentAction.handle(event);
             updateScreen();
         }
-
     }
 
-    /**
-     * Sets the fill color for strokes and fills
-     * 
-     * @param color
-     *            Color to use
-     */
+    /// \brief set color
+    ///
+    /// \ref t9_1 "Task 9.1"
     public void setColor(Color color) {
         _color = color;
     }
 
+    /// \brief update screen with changes
+    ///
+    /// \ref t9_1 "Task 9.1"
     private void updateScreen() {
         _canvas.refresh();
         _currentAction.execute();
