@@ -76,7 +76,7 @@
 
  Below is a list of 5 different actions that were assigned to William, along with the relevant pull request, and the minutes they were marked as assigned, and completed.
 
-- [ ] [Action #30](https://github.com/DryCreations/pdfproject/pull/25)
+- [X] [Action #30](https://github.com/DryCreations/pdfproject/pull/25)
 
  Action 30 was assigned in these [minutes](../planning/minutes/3-18-2021.md) and marked as completed [here](../planning/minutes/3-25-2021.md)
 
@@ -85,11 +85,11 @@
 
  Action 41 was assigned in these [minutes](../planning/minutes/3-25-2021.md) and is currently incomplete. Still aspire to finish it this finals week.
 
-- [ ] [Action #56](https://github.com/DryCreations/pdfproject/tree/WH_action_68/76/81)
+- [X] [Action #56](https://github.com/DryCreations/pdfproject/tree/WH_action_68/76/81)
 
  Action 56 was assigned in these [minutes](../planning/minutes/4-8-2021.md) and is currently complete, but not marked.
 
-- [ ] [Action #76](https://github.com/DryCreations/pdfproject/tree/WH_action_68/76/81)
+- [X] [Action #76](https://github.com/DryCreations/pdfproject/tree/WH_action_68/76/81)
 
  Action 76 was assigned in these [minutes](../planning/minutes/4-15-2021.md) and is currently complete, but not marked. 
 
