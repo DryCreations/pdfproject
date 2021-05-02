@@ -85,7 +85,7 @@ To earn full credit, you must provide at least 10 non-trivial items of feedback 
 - [ ] [Hayden](./pull_request.md#hayden)
 - [ ] [Cassandra](./pull_request.md#cassandra)
 - [ ] [Parker](./pull_request.md#parker)
-- [ ] [William](./pull_request.md#william)
+- [X] [William](./pull_request.md#william)
 - [ ] [Derrick](./pull_request.md#derrick)
 - [ ] [Hunter](./pull_request.md#hunter)
 - [ ] [Charles](./pull_request.md#charles)
